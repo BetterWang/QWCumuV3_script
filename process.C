@@ -19,7 +19,6 @@
 {
 #include "label.h"
 	int s1 = 1;
-//	int s2 = 2; // N = 2, 3...
 
 	TChain * ch[7];
 	for ( int i = 1; i < 7; i++ ) {
@@ -102,9 +101,6 @@
 	TH1D * hWp[7][4][24];
 	TH1D * hWeta[7][4][24];
 	TH1D * hWc[7][4][24];
-
-	TH1D * hNoff = new TH1D("hNoff", "hNoff", 500, 0.5, 500.5);
-	TH1D * hMult = new TH1D("hMult", "hMult", 500, 0.5, 500.5);
 
 	for ( int n = 1; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
