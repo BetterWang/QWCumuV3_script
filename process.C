@@ -18,13 +18,9 @@
 
 {
 #include "label.h"
-	int s1 = 1;
+	int s1 = 0;
 
-	TChain * ch[7];
-	for ( int i = 1; i < 7; i++ ) {
-		ch[i] = new TChain();
-	}
-	TChain * chG = new TChain("trG");
+	TChain * chV = new TChain("trV");
 	if ( s1 == 4 ) {
 		addchain(1);
 		addchain(2);
@@ -56,29 +52,29 @@
 	double iQc[7][4][2];
 	double wQc[7][4][2];
 
-	chG->SetBranchAddress("Noff", &gNoff);
-	chG->SetBranchAddress("Mult", &gMult);
+	chV->SetBranchAddress("Noff", &gNoff);
+	chV->SetBranchAddress("Mult", &gMult);
 	for ( int n = 1; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
-			ch[n]->SetBranchAddress(Form("rQ%i%i", n, 2+2*np), &rQ[n][np]);
-			ch[n]->SetBranchAddress(Form("iQ%i%i", n, 2+2*np), &iQ[n][np]);
-			ch[n]->SetBranchAddress(Form("wQ%i%i", n, 2+2*np), &wQ[n][np]);
+			chV->SetBranchAddress(Form("rQ%i%i", n, 2+2*np), &rQ[n][np]);
+			chV->SetBranchAddress(Form("iQ%i%i", n, 2+2*np), &iQ[n][np]);
+			chV->SetBranchAddress(Form("wQ%i%i", n, 2+2*np), &wQ[n][np]);
 
-			ch[n]->SetBranchAddress(Form("rX%i%i", n, 2+2*np), &rX[n][np]);
-			ch[n]->SetBranchAddress(Form("iX%i%i", n, 2+2*np), &iX[n][np]);
-			ch[n]->SetBranchAddress(Form("wX%i%i", n, 2+2*np), &wX[n][np]);
+			chV->SetBranchAddress(Form("rX%i%i", n, 2+2*np), &rX[n][np]);
+			chV->SetBranchAddress(Form("iX%i%i", n, 2+2*np), &iX[n][np]);
+			chV->SetBranchAddress(Form("wX%i%i", n, 2+2*np), &wX[n][np]);
 
-			ch[n]->SetBranchAddress(Form("rQ%i%ip", n, 2+2*np), rQp[n][np]);
-			ch[n]->SetBranchAddress(Form("iQ%i%ip", n, 2+2*np), iQp[n][np]);
-			ch[n]->SetBranchAddress(Form("wQ%i%ip", n, 2+2*np), wQp[n][np]);
+			chV->SetBranchAddress(Form("rQ%i%ip", n, 2+2*np), rQp[n][np]);
+			chV->SetBranchAddress(Form("iQ%i%ip", n, 2+2*np), iQp[n][np]);
+			chV->SetBranchAddress(Form("wQ%i%ip", n, 2+2*np), wQp[n][np]);
 
-			ch[n]->SetBranchAddress(Form("rQ%i%ic", n, 2+2*np), rQc[n][np]);
-			ch[n]->SetBranchAddress(Form("iQ%i%ic", n, 2+2*np), iQc[n][np]);
-			ch[n]->SetBranchAddress(Form("wQ%i%ic", n, 2+2*np), wQc[n][np]);
+			chV->SetBranchAddress(Form("rQ%i%ic", n, 2+2*np), rQc[n][np]);
+			chV->SetBranchAddress(Form("iQ%i%ic", n, 2+2*np), iQc[n][np]);
+			chV->SetBranchAddress(Form("wQ%i%ic", n, 2+2*np), wQc[n][np]);
 
-			ch[n]->SetBranchAddress(Form("rQ%i%ieta", n, 2+2*np), rQeta[n][np]);
-			ch[n]->SetBranchAddress(Form("iQ%i%ieta", n, 2+2*np), iQeta[n][np]);
-			ch[n]->SetBranchAddress(Form("wQ%i%ieta", n, 2+2*np), wQeta[n][np]);
+			chV->SetBranchAddress(Form("rQ%i%ieta", n, 2+2*np), rQeta[n][np]);
+			chV->SetBranchAddress(Form("iQ%i%ieta", n, 2+2*np), iQeta[n][np]);
+			chV->SetBranchAddress(Form("wQ%i%ieta", n, 2+2*np), wQeta[n][np]);
 		}
 	}
 
@@ -139,8 +135,7 @@
 	double yQc[7][4][24][500];
 
 	int ievt = 0;
-	while ( chG->GetEntry(ievt) ) {
-		for ( int i = 1; i < 7; i++ ) ch[i]->GetEntry(i);
+	while ( chV->GetEntry(ievt) ) {
 		if ( !(ievt%100000) ) cout << "!! ievt = " << ievt << endl;
 		ievt++;
 

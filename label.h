@@ -1,6 +1,6 @@
 
 char * fname[] = {
-	"reserved/",			// 0
+	"test/",			// 0
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_v12_cm1/", 			// 1 pPb HLT std closed
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_v12_cm1_rereco/", 			// 2 pPb HLT rereco std closed
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_v12_cm1_reverse/", 		// 3 pPb HLT reverse std closed
@@ -8,7 +8,7 @@ char * fname[] = {
 };
 
 char * ftxt[] = {
-	"reserved/",								// 0
+	"txt/test/",								// 0
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_v12_cm1/",				// 1
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_v12_cm1_rereco/",			// 2
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_v12_cm1_reverse/",			// 3
@@ -18,16 +18,9 @@ char * ftxt[] = {
 void addchain(int s1)
 {
 	cout << fname[s1] << endl;
-	for ( int n = 1; n < 7; n++ ) {
-		ch[n]->Add(Form("%s/*.root/cumulant100/trV%i", fname[s1], n));
-		ch[n]->Add(Form("%s/*.root/cumulant130/trV%i", fname[s1], n));
-		ch[n]->Add(Form("%s/*.root/cumulant160/trV%i", fname[s1], n));
-		ch[n]->Add(Form("%s/*.root/cumulant190/trV%i", fname[s1], n));
-		ch[n]->Add(Form("%s/*.root/cumulant220/trV%i", fname[s1], n));
-	}
-	chG->Add(Form("%s/*.root/cumulant100/trG", fname[s1]));
-	chG->Add(Form("%s/*.root/cumulant130/trG", fname[s1]));
-	chG->Add(Form("%s/*.root/cumulant160/trG", fname[s1]));
-	chG->Add(Form("%s/*.root/cumulant190/trG", fname[s1]));
-	chG->Add(Form("%s/*.root/cumulant220/trG", fname[s1]));
+	chV->Add(Form("%s/*.root/cumulant100/trV", fname[s1]));
+	chV->Add(Form("%s/*.root/cumulant130/trV", fname[s1]));
+	chV->Add(Form("%s/*.root/cumulant160/trV", fname[s1]));
+	chV->Add(Form("%s/*.root/cumulant190/trV", fname[s1]));
+	chV->Add(Form("%s/*.root/cumulant220/trV", fname[s1]));
 }
