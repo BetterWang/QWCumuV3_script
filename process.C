@@ -143,21 +143,21 @@
 			for ( int np = 0; np < 4; np++ ) {
 				if ( TMath::IsNaN(rQ[n][np]) ) continue;
 				dQ[n][np][gNoff] += rQ[n][np];
-				yQ[n][np][gNoff] += yQ[n][np];
+				yQ[n][np][gNoff] += wQ[n][np];
 
 				dX[n][np][gNoff] += rX[n][np];
-				yX[n][np][gNoff] += yX[n][np];
+				yX[n][np][gNoff] += wX[n][np];
 
 				for ( int i = 0; i < 24; i++ ) {
 					dQp[n][np][i][gNoff] += rQp[n][np][i];
-					yQp[n][np][i][gNoff] += yQp[n][np][i];
+					yQp[n][np][i][gNoff] += wQp[n][np][i];
 
 					dQeta[n][np][i][gNoff] += rQeta[n][np][i];
-					yQeta[n][np][i][gNoff] += yQeta[n][np][i];
+					yQeta[n][np][i][gNoff] += wQeta[n][np][i];
 				}
 				for ( int i = 0; i < 2; i++ ) {
 					dQc[n][np][i][gNoff] += rQc[n][np][i];
-					yQc[n][np][i][gNoff] += yQc[n][np][i];
+					yQc[n][np][i][gNoff] += wQc[n][np][i];
 				}
 			}
 		}
