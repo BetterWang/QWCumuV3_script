@@ -18,7 +18,7 @@
 
 {
 #include "label.h"
-	int s1 = 0;
+	int s1 = 4;
 
 	TChain * chV = new TChain("trV");
 	if ( s1 == 4 ) {
