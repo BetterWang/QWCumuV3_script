@@ -2,7 +2,7 @@
 {
 #include "label.h"
 #include "noff.h"
-	int s1 = 1;
+	int s1 = 3;
 	TFile *f = new TFile(Form("%s/outputC.root", ftxt[s1]));
 
 	////////////
@@ -125,9 +125,9 @@
 				double C8p = dCp[n][3][j][i];
 
 				if ( C2 > 0 ) V2 =       C2p/pow(C2, 1./2) ; else V2 = -fabs(C2p/pow(-C2, 1./2));
-				if ( C4 > 0 ) V4 = -fabs(C4p/pow(C4, 3./4)); else V4 =       C4p/pow(-C4, 3./4);
+				if ( C4 > 0 ) V4 = -fabs(C4p/pow(C4, 3./4)); else V4 =      -C4p/pow(-C4, 3./4);
 				if ( C6 > 0 ) V6 =       C6p/pow(C6, 5./6) ; else V6 = -fabs(C6p/pow(-C6, 5./6));
-				if ( C8 > 0 ) V8 = -fabs(C8p/pow(C8, 1./8)); else V8 =       C8p/pow(-C8, 1./8);
+				if ( C8 > 0 ) V8 = -fabs(C8p/pow(C8, 7./8)); else V8 =      -C8p/pow(-C8, 7./8);
 
 				dVp[n][0][j][i] = V2;
 				dVp[n][1][j][i] = V4;
@@ -140,9 +140,14 @@
 				C8p = dCeta[n][3][j][i];
 
 				if ( C2 > 0 ) V2 =       C2p/pow(C2, 1./2) ; else V2 = -fabs(C2p/pow(-C2, 1./2));
-				if ( C4 > 0 ) V4 = -fabs(C4p/pow(C4, 3./4)); else V4 =       C4p/pow(-C4, 3./4);
+				if ( C4 > 0 ) V4 = -fabs(C4p/pow(C4, 3./4)); else V4 =      -C4p/pow(-C4, 3./4);
 				if ( C6 > 0 ) V6 =       C6p/pow(C6, 5./6) ; else V6 = -fabs(C6p/pow(-C6, 5./6));
-				if ( C8 > 0 ) V8 = -fabs(C8p/pow(C8, 1./8)); else V8 =       C8p/pow(-C8, 1./8);
+				if ( C8 > 0 ) V8 = -fabs(C8p/pow(C8, 7./8)); else V8 =      -C8p/pow(-C8, 7./8);
+
+//				cout << "n = " << n << "\tj = " << j << "\ti = " << i << "\tC2 = " << C2 << "\tC2p = " << dCp[n][0][j][i] << "\tV2p = " << dVp[n][0][j][i] << "\tC2eta = " << C2p << "\tV2 = " << "\tV2eta = " << V2 << endl;
+//				cout << "n = " << n << "\tj = " << j << "\ti = " << i << "\tC4 = " << C4 << "\tC4p = " << dCp[n][1][j][i] << "\tV4p = " << dVp[n][1][j][i] << "\tC4eta = " << C4p << "\tV4 = " << "\tV4eta = " << V4 << endl;
+//				cout << "n = " << n << "\tj = " << j << "\ti = " << i << "\tC6 = " << C6 << "\tC6p = " << dCp[n][2][j][i] << "\tV6p = " << dVp[n][2][j][i] << "\tC6eta = " << C6p << "\tV6 = " << "\tV6eta = " << V6 << endl;
+//				cout << "n = " << n << "\tj = " << j << "\ti = " << i << "\tC8 = " << C8 << "\tC8p = " << dCp[n][3][j][i] << "\tV8p = " << dVp[n][3][j][i] << "\tC8eta = " << C8p << "\tV8 = " << "\tV8eta = " << V8 << endl;
 
 				dVeta[n][0][j][i] = V2;
 				dVeta[n][1][j][i] = V4;
@@ -162,9 +167,9 @@
 				double C8p = dCc[n][3][j][i];
 
 				if ( C2 > 0 ) V2 =       C2p/pow(C2, 1./2) ; else V2 = -fabs(C2p/pow(-C2, 1./2));
-				if ( C4 > 0 ) V4 = -fabs(C4p/pow(C4, 3./4)); else V4 =       C4p/pow(-C4, 3./4);
+				if ( C4 > 0 ) V4 = -fabs(C4p/pow(C4, 3./4)); else V4 =      -C4p/pow(-C4, 3./4);
 				if ( C6 > 0 ) V6 =       C6p/pow(C6, 5./6) ; else V6 = -fabs(C6p/pow(-C6, 5./6));
-				if ( C8 > 0 ) V8 = -fabs(C8p/pow(C8, 1./8)); else V8 =       C8p/pow(-C8, 1./8);
+				if ( C8 > 0 ) V8 = -fabs(C8p/pow(C8, 7./8)); else V8 =      -C8p/pow(-C8, 7./8);
 
 				dVc[n][0][j][i] = V2;
 				dVc[n][1][j][i] = V4;
@@ -182,5 +187,101 @@
 	mgr_HIN_13_002_pPbv22pt7->Draw();
 	mgr_HIN_13_002_pPbv24pt7->Draw();
 
+	double dgrV22pt7[24];
+	double dgrV24pt7[24];
+	double dgrV26pt7[24];
+	double dgrV28pt7[24];
+//	int testN = 6;
+	for ( int i = 0; i < 24; i++ ) {
+		dgrV22pt7[i] = dVp[2][0][i][7];
+		dgrV24pt7[i] = dVp[2][1][i][7];
+		dgrV26pt7[i] = dVp[2][2][i][6];
+		dgrV28pt7[i] = dVp[2][3][i][4];
+	}
+	TGraphErrors * gr_pPbv22pt7 = new TGraphErrors(18, ptX, dgrV22pt7, 0, 0);
+	TGraphErrors * gr_pPbv24pt7 = new TGraphErrors(18, ptX, dgrV24pt7, 0, 0);
+	TGraphErrors * gr_pPbv26pt7 = new TGraphErrors(18, ptX, dgrV26pt7, 0, 0);
+	TGraphErrors * gr_pPbv28pt7 = new TGraphErrors(18, ptX, dgrV28pt7, 0, 0);
 
+	gr_pPbv22pt7->SetMarkerStyle(kFullCircle);
+	gr_pPbv22pt7->SetMarkerColor(kGreen+2);
+
+	gr_pPbv24pt7->SetMarkerStyle(kFullSquare);
+	gr_pPbv24pt7->SetMarkerColor(kGreen+2);
+
+	gr_pPbv26pt7->SetMarkerStyle(kFullCross);
+	gr_pPbv26pt7->SetMarkerColor(kBlue);
+
+	gr_pPbv28pt7->SetMarkerStyle(kFullDiamond);
+	gr_pPbv28pt7->SetMarkerColor(kRed);
+
+	gr_pPbv22pt7->Draw("Psame");
+	gr_pPbv24pt7->Draw("Psame");
+	gr_pPbv26pt7->Draw("Psame");
+	gr_pPbv28pt7->Draw("Psame");
+
+	TLegend * legPt7 = new TLegend(0.2, 0.6, 0.55, 0.9);
+	legPt7->SetFillColor(kWhite);
+	legPt7->SetTextFont(42);
+	legPt7->SetTextSize(0.05);
+	legPt7->SetBorderSize(0);
+
+	legPt7->AddEntry(gr_HIN_13_002_pPbv22pt7, "v_{2}{2, |#Delta#eta|>2}", "p");
+	legPt7->AddEntry(gr_pPbv22pt7, "v_{2}{2}", "p");
+	legPt7->AddEntry(gr_HIN_13_002_pPbv24pt7, "v_{2}{4}", "p");
+	legPt7->AddEntry(gr_pPbv24pt7, "v_{2}{4}", "p");
+	legPt7->AddEntry(gr_pPbv26pt7, "v_{2}{6}", "p");
+	legPt7->AddEntry(gr_pPbv28pt7, "v_{2}{8}", "p");
+
+	legPt7->Draw();
+
+	TCanvas * cEta = MakeCanvas("cEta", "cEta", 600, 500);
+	TH2D * hframe_eta = new TH2D("hframe_eta", "", 1, -2.4, 2.4, 1, 0, 0.25);
+	InitHist(hframe_eta, "#eta", "v_{2}");
+	hframe_eta->Draw();
+
+	double dgrV22eta7[24];
+	double dgrV24eta7[24];
+	double dgrV26eta7[24];
+	double dgrV28eta7[24];
+	for ( int i = 0; i < 24; i++ ) {
+		dgrV22eta7[i] = dVeta[2][0][i][7];
+		dgrV24eta7[i] = dVeta[2][1][i][7];
+		dgrV26eta7[i] = dVeta[2][2][i][6];
+		dgrV28eta7[i] = dVeta[2][3][i][4];
+	}
+	TGraphErrors * gr_pPbv22eta7 = new TGraphErrors(24, etaX, dgrV22eta7, 0, 0);
+	TGraphErrors * gr_pPbv24eta7 = new TGraphErrors(24, etaX, dgrV24eta7, 0, 0);
+	TGraphErrors * gr_pPbv26eta7 = new TGraphErrors(24, etaX, dgrV26eta7, 0, 0);
+	TGraphErrors * gr_pPbv28eta7 = new TGraphErrors(24, etaX, dgrV28eta7, 0, 0);
+
+	gr_pPbv22eta7->SetMarkerStyle(kFullCircle);
+	gr_pPbv22eta7->SetMarkerColor(kGreen+2);
+
+	gr_pPbv24eta7->SetMarkerStyle(kFullSquare);
+	gr_pPbv24eta7->SetMarkerColor(kGreen+2);
+
+	gr_pPbv26eta7->SetMarkerStyle(kFullCross);
+	gr_pPbv26eta7->SetMarkerColor(kBlue);
+
+	gr_pPbv28eta7->SetMarkerStyle(kFullDiamond);
+	gr_pPbv28eta7->SetMarkerColor(kRed);
+
+	gr_pPbv22eta7->Draw("Psame");
+	gr_pPbv24eta7->Draw("Psame");
+	gr_pPbv26eta7->Draw("Psame");
+	gr_pPbv28eta7->Draw("Psame");
+
+	TLegend * legEta7 = new TLegend(0.2, 0.6, 0.55, 0.9);
+	legEta7->SetFillColor(kWhite);
+	legEta7->SetTextFont(42);
+	legEta7->SetTextSize(0.05);
+	legEta7->SetBorderSize(0);
+
+	legEta7->AddEntry(gr_pPbv22eta7, "v_{2}{2}", "p");
+	legEta7->AddEntry(gr_pPbv24eta7, "v_{2}{4}", "p");
+	legEta7->AddEntry(gr_pPbv26eta7, "v_{2}{6}", "p");
+	legEta7->AddEntry(gr_pPbv28eta7, "v_{2}{8}", "p");
+
+	legEta7->Draw();
 }

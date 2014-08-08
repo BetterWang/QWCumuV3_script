@@ -1522,10 +1522,10 @@
 	TGraphErrors * gr_HIN_13_002_pPbv24pt5s = new TGraphErrors(9, pPb_v22pt_x, pPb_v24pt5_y, sysPtWidth, pPb_v24pt5_ye2);
 
 
-	gr_HIN_13_002_pPbv22pt8->SetMarkerStyle(kFullCircle);
-	gr_HIN_13_002_pPbv22pt7->SetMarkerStyle(kFullCircle);
-	gr_HIN_13_002_pPbv22pt6->SetMarkerStyle(kFullCircle);
-	gr_HIN_13_002_pPbv22pt5->SetMarkerStyle(kFullCircle);
+	gr_HIN_13_002_pPbv22pt8->SetMarkerStyle(kOpenCircle);
+	gr_HIN_13_002_pPbv22pt7->SetMarkerStyle(kOpenCircle);
+	gr_HIN_13_002_pPbv22pt6->SetMarkerStyle(kOpenCircle);
+	gr_HIN_13_002_pPbv22pt5->SetMarkerStyle(kOpenCircle);
 	gr_HIN_13_002_pPbv22pt8->SetMarkerColor(kRed);
 	gr_HIN_13_002_pPbv22pt7->SetMarkerColor(kRed);
 	gr_HIN_13_002_pPbv22pt6->SetMarkerColor(kRed);
@@ -1539,10 +1539,10 @@
 	gr_HIN_13_002_pPbv22pt6->SetLineColor(kRed);
 	gr_HIN_13_002_pPbv22pt5->SetLineColor(kRed);
 
-	gr_HIN_13_002_pPbv24pt8->SetMarkerStyle(kFullSquare);
-	gr_HIN_13_002_pPbv24pt7->SetMarkerStyle(kFullSquare);
-	gr_HIN_13_002_pPbv24pt6->SetMarkerStyle(kFullSquare);
-	gr_HIN_13_002_pPbv24pt5->SetMarkerStyle(kFullSquare);
+	gr_HIN_13_002_pPbv24pt8->SetMarkerStyle(kOpenSquare);
+	gr_HIN_13_002_pPbv24pt7->SetMarkerStyle(kOpenSquare);
+	gr_HIN_13_002_pPbv24pt6->SetMarkerStyle(kOpenSquare);
+	gr_HIN_13_002_pPbv24pt5->SetMarkerStyle(kOpenSquare);
 	gr_HIN_13_002_pPbv24pt8->SetMarkerColor(kBlue);
 	gr_HIN_13_002_pPbv24pt7->SetMarkerColor(kBlue);
 	gr_HIN_13_002_pPbv24pt6->SetMarkerColor(kBlue);

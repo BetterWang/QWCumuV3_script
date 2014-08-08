@@ -2,7 +2,7 @@
 {
 #include "label.h"
 #include "noff.h"
-	int s1 = 0;
+	int s1 = 3;
 
 	TFile *f = new TFile(Form("%s/output.root", ftxt[s1]));
 
@@ -176,7 +176,7 @@
 				dCp[n][0][i][m] = Q2p;
 				dCp[n][1][i][m] = Q4p - 2*Q2*Q2p;
 				dCp[n][2][i][m] = Q6p - 6*Q2*Q4p - 3*Q2p*Q4 + 12*Q2p*Q2*Q2;
-				dCp[n][3][i][m] = Q8p - 12*Q2*Q6p - 18*Q4p*Q4 + 72*Q4p*Q2*Q2 + 72*Q4*Q2p*Q2 - 144*Q2p*Q2*Q2*Q2;
+				dCp[n][3][i][m] = Q8p - 12*Q2*Q6p - 4*Q2p*Q6 - 18*Q4p*Q4 + 72*Q4p*Q2*Q2 + 72*Q4*Q2p*Q2 - 144*Q2p*Q2*Q2*Q2;
 
 				Q2p = dQeta[n][0][i][m];
 				Q4p = dQeta[n][1][i][m];
@@ -186,7 +186,7 @@
 				dCeta[n][0][i][m] = Q2p;
 				dCeta[n][1][i][m] = Q4p - 2*Q2*Q2p;
 				dCeta[n][2][i][m] = Q6p - 6*Q2*Q4p - 3*Q2p*Q4 + 12*Q2p*Q2*Q2;
-				dCeta[n][3][i][m] = Q8p - 12*Q2*Q6p - 18*Q4p*Q4 + 72*Q4p*Q2*Q2 + 72*Q4*Q2p*Q2 - 144*Q2p*Q2*Q2*Q2;
+				dCeta[n][3][i][m] = Q8p - 12*Q2*Q6p - 4*Q2p*Q6 - 18*Q4p*Q4 + 72*Q4p*Q2*Q2 + 72*Q4*Q2p*Q2 - 144*Q2p*Q2*Q2*Q2;
 			}
 		}
 
@@ -205,7 +205,7 @@
 				dCc[n][0][i][m] = Q2p;
 				dCc[n][1][i][m] = Q4p - 2*Q2*Q2p;
 				dCc[n][2][i][m] = Q6p - 6*Q2*Q4p - 3*Q2p*Q4 + 12*Q2p*Q2*Q2;
-				dCc[n][3][i][m] = Q8p - 12*Q2*Q6p - 18*Q4p*Q4 + 72*Q4p*Q2*Q2 + 72*Q4*Q2p*Q2 - 144*Q2p*Q2*Q2*Q2;
+				dCc[n][3][i][m] = Q8p - 12*Q2*Q6p - 4*Q2p*Q6 - 18*Q4p*Q4 + 72*Q4p*Q2*Q2 + 72*Q4*Q2p*Q2 - 144*Q2p*Q2*Q2*Q2;
 			}
 		}
 	}
@@ -349,11 +349,11 @@
 				fW[n][np]->SetBinContent(i+1, wCx[n][np][i]);
 				fX[n][np]->SetBinContent(i+1, wDx[n][np][i]);
 			}
-			for ( int i = 0; i < 500; i++ ) {
-				fCraw[n][np]->SetBinContent(i+1, dC[n][np][i]);
-				fDraw[n][np]->SetBinContent(i+1, dD[n][np][i]);
-				fWraw[n][np]->SetBinContent(i+1, wQ[n][np][i]);
-				fXraw[n][np]->SetBinContent(i+1, wX[n][np][i]);
+			for ( int i = 1; i < 500; i++ ) {
+				fCraw[n][np]->SetBinContent(i, dC[n][np][i]);
+				fDraw[n][np]->SetBinContent(i, dD[n][np][i]);
+				fWraw[n][np]->SetBinContent(i, wQ[n][np][i]);
+				fXraw[n][np]->SetBinContent(i, wX[n][np][i]);
 			}
 
 			for ( int j = 0; j < 24; j++ ) {
