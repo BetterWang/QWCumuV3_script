@@ -18,7 +18,9 @@
 
 {
 #include "label.h"
-	int s1 = 4;
+//	int s1 = 4;
+//	int s2 = 10;
+//	int s3 = 10;
 
 	TChain * chV = new TChain("trV");
 	if ( s1 == 4 ) {
@@ -138,6 +140,7 @@
 	while ( chV->GetEntry(ievt) ) {
 		if ( !(ievt%100000) ) cout << "!! ievt = " << ievt << endl;
 		ievt++;
+		if ( (s2!=s3) && ((ievt%s3)!=s2) ) continue;
 
 		for ( int n = 1; n < 7; n++ ) {
 			for ( int np = 0; np < 4; np++ ) {
@@ -185,7 +188,12 @@
 		}
 	}
 
-	TFile * fwrite = new TFile(Form("%s/output.root", ftxt[s1]), "recreate");
+	TFile * fwrite;
+	if ( s2==s3 ) {
+		fwrite = new TFile(Form("%s/output.root", ftxt[s1]), "recreate");
+	} else {
+		fwrite = new TFile(Form("%s/output_%i_%i.root", ftxt[s1], s2, s3), "recreate");
+	}
 	for ( int n = 1; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			hQ[n][np]->Write();

@@ -1,13 +1,14 @@
 txt/
 backup/
 *.swp
-sync.sh
 png/
-bproc.sh
 *.png
 *.eps
 *.pdf
-*.sh
 test*.C
 *_C.C
 *.root
+*.out
+batch*
+LSF*
+core.*
