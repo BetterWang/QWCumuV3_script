@@ -5,6 +5,8 @@ char * fname[] = {
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_noeff_v12_cm1_rereco/", 			// 2 pPb HLT rereco std closed
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_noeff_v12_cm1_reverse/", 		// 3 pPb HLT reverse std closed
 	"NA", 									// 4 1+2+3 pPb HLT std closed
+	"../MC/PionFlatPt_M200/", 						// 5 Flat pT M200
+	"../MC/PionExpoPt_M200/", 						// 6 Expo pT M200
 };
 
 char * ftxt[] = {
@@ -13,11 +15,14 @@ char * ftxt[] = {
 	"txt/pPb_HLT_rfp24_Noff_noacc_noeff_v12_cm1_rereco/",			// 2
 	"txt/pPb_HLT_rfp24_Noff_noacc_noeff_v12_cm1_reverse/",			// 3
 	"txt/pPb_HLT_rfp24_Noff_noacc_noeff_v12_cm1_full/",			// 4
+	"txt/PionFlatPt_M200/",			// 5
+	"txt/PionExpoPt_M200/",			// 6
 };
 
 void addchain(int s1)
 {
 	cout << fname[s1] << endl;
+	chV->Add(Form("%s/*.root/cumulant/trV", fname[s1]));
 	chV->Add(Form("%s/*.root/cumulant100/trV", fname[s1]));
 	chV->Add(Form("%s/*.root/cumulant130/trV", fname[s1]));
 	chV->Add(Form("%s/*.root/cumulant160/trV", fname[s1]));
