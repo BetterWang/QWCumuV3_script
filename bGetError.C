@@ -38,6 +38,7 @@
 
 
 
+	// Get
 	for ( int fn = 0; fn <= s3; fn++ ) {
 		TFile * f = fr[fn];
 		for ( int n = 1; n < 7; n++ ) {
@@ -86,6 +87,7 @@
 			}
 		}
 
+		// C->V
 		for ( int n = 1; n < 7; n++ ) {
 			for ( int i = 0; i < 20; i++ ) {
 				double C2 = dC[fn][n][0][i];
@@ -134,6 +136,7 @@
 					if ( C6 > 0 ) V6 =       C6p/pow(C6, 5./6) ; else V6 = -fabs(C6p/pow(-C6, 5./6));
 					if ( C8 > 0 ) V8 = -fabs(C8p/pow(C8, 7./8)); else V8 =      -C8p/pow(-C8, 7./8);
 	
+///					if ( fn == s3 ) cout << " fn = " << fn << "\tn = " << n << "\tj = " << j << "\ti = " << i << "\t np = " << 0 << "\tV2 = " << V2 << "\tC2p = " << C2p << "\tC2 = " << C2 << endl;
 					dVp[fn][n][0][j][i] = V2;
 					dVp[fn][n][1][j][i] = V4;
 					dVp[fn][n][2][j][i] = V6;
@@ -180,6 +183,7 @@
 		}
 	}
 
+	// Saved histo
 	TH1D * fC[7][4];
 	TH1D * fW[7][4];
 	TH1D * fD[7][4];
@@ -199,32 +203,31 @@
 
 	for ( int n = 1; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
-			fC[n][np] = (TH1D*)fr[s1]->Get(Form("hC%i%i", n, 2+2*np));
-			fD[n][np] = (TH1D*)fr[s1]->Get(Form("hD%i%i", n, 2+2*np));
-			fW[n][np] = (TH1D*)fr[s1]->Get(Form("hW%i%i", n, 2+2*np));
-			fX[n][np] = (TH1D*)fr[s1]->Get(Form("hX%i%i", n, 2+2*np));
+			fC[n][np] = (TH1D*)fr[s3]->Get(Form("hC%i%i", n, 2+2*np));
+			fD[n][np] = (TH1D*)fr[s3]->Get(Form("hD%i%i", n, 2+2*np));
+			fW[n][np] = (TH1D*)fr[s3]->Get(Form("hW%i%i", n, 2+2*np));
+			fX[n][np] = (TH1D*)fr[s3]->Get(Form("hX%i%i", n, 2+2*np));
 
-			fCraw[n][np] = (TH1D*)fr[s1]->Get(Form("hCraw%i%i", n, 2+2*np));
-			fDraw[n][np] = (TH1D*)fr[s1]->Get(Form("hDraw%i%i", n, 2+2*np));
-			fWraw[n][np] = (TH1D*)fr[s1]->Get(Form("hWraw%i%i", n, 2+2*np));
-			fXraw[n][np] = (TH1D*)fr[s1]->Get(Form("hXraw%i%i", n, 2+2*np));
+			fCraw[n][np] = (TH1D*)fr[s3]->Get(Form("hCraw%i%i", n, 2+2*np));
+			fDraw[n][np] = (TH1D*)fr[s3]->Get(Form("hDraw%i%i", n, 2+2*np));
+			fWraw[n][np] = (TH1D*)fr[s3]->Get(Form("hWraw%i%i", n, 2+2*np));
+			fXraw[n][np] = (TH1D*)fr[s3]->Get(Form("hXraw%i%i", n, 2+2*np));
 
 			for ( int j = 0; j < 24; j++ ) {
-				fCp[n][np][j] = (TH1D*)fr[s1]->Get(Form("hCp%i%i_%i", n, 2+2*np, j));
-				fWp[n][np][j] = (TH1D*)fr[s1]->Get(Form("hWp%i%i_%i", n, 2+2*np, j));
-				fCeta[n][np][j] = (TH1D*)fr[s1]->Get(Form("hCeta%i%i_%i", n, 2+2*np, j));
-				fWeta[n][np][j] = (TH1D*)fr[s1]->Get(Form("hWeta%i%i_%i", n, 2+2*np, j));
+				fCp[n][np][j] = (TH1D*)fr[s3]->Get(Form("hCp%i%i_%i", n, 2+2*np, j));
+				fWp[n][np][j] = (TH1D*)fr[s3]->Get(Form("hWp%i%i_%i", n, 2+2*np, j));
+				fCeta[n][np][j] = (TH1D*)fr[s3]->Get(Form("hCeta%i%i_%i", n, 2+2*np, j));
+				fWeta[n][np][j] = (TH1D*)fr[s3]->Get(Form("hWeta%i%i_%i", n, 2+2*np, j));
 			}
 
 			for ( int j = 0; j < 2; j++ ) {
-				fCc[n][np][j] = (TH1D*)fr[s1]->Get(Form("hCc%i%i_%i", n, 2+2*np, j));
-				fWc[n][np][j] = (TH1D*)fr[s1]->Get(Form("hWc%i%i_%i", n, 2+2*np, j));
+				fCc[n][np][j] = (TH1D*)fr[s3]->Get(Form("hCc%i%i_%i", n, 2+2*np, j));
+				fWc[n][np][j] = (TH1D*)fr[s3]->Get(Form("hWc%i%i_%i", n, 2+2*np, j));
 			}
 		}
 	}
 
 	TH1D * fV[7][4];
-	TH1D * fX[7][4];
 	TH1D * fVp[7][4][24];
 	TH1D * fVeta[7][4][24];
 	TH1D * fVc[7][4][2];
@@ -239,7 +242,6 @@
 	for ( int n = 1; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			fV[n][np] = new TH1D(Form("hV%i%i", n, 2+2*np), "", 20, 0, 20);
-			fX[n][np] = new TH1D(Form("hX%i%i", n, 2+2*np), "", 20, 0, 20);
 			fcV[n][np] = new TH1D(Form("hcV%i%i", n, 2+2*np), "", 20, 0, 20);
 			fcX[n][np] = new TH1D(Form("hcX%i%i", n, 2+2*np), "", 20, 0, 20);
 			for ( int j = 0; j < 24; j++ ) {
@@ -272,6 +274,7 @@
 	TH1D * hFGausVc = new TH1D("hFGausVc", "hFGausVc", 2000, -10, 10);
 
 
+	// Get Error
 	for ( int n = 1; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			for ( int i = 0; i < 20; i++ ) {
@@ -280,15 +283,15 @@
 				double sumV = 0;
 				double sumX = 0;
 				for ( int fn = 0; fn < s3; fn++ ) {
-					sumC += dC[fn][n][np][i]*dC[fn][n][np][i];
-					sumD += dD[fn][n][np][i]*dD[fn][n][np][i];
-					sumV += dV[fn][n][np][i]*dV[fn][n][np][i];
-					sumX += dX[fn][n][np][i]*dX[fn][n][np][i];
+					sumC += (dC[fn][n][np][i]-dC[s3][n][np][i])*(dC[fn][n][np][i]-dC[s3][n][np][i]);
+					sumD += (dD[fn][n][np][i]-dD[s3][n][np][i])*(dD[fn][n][np][i]-dD[s3][n][np][i]);
+					sumV += (dV[fn][n][np][i]-dV[s3][n][np][i])*(dV[fn][n][np][i]-dV[s3][n][np][i]);
+					sumX += (dX[fn][n][np][i]-dX[s3][n][np][i])*(dX[fn][n][np][i]-dX[s3][n][np][i]);
 				}
-				double errC = sqrt( (sumC/s3 - dC[s3][n][np][i]*dC[s3][n][np][i] ) / s3 );
-				double errD = sqrt( (sumD/s3 - dD[s3][n][np][i]*dD[s3][n][np][i] ) / s3 );
-				double errV = sqrt( (sumV/s3 - dV[s3][n][np][i]*dV[s3][n][np][i] ) / s3 );
-				double errX = sqrt( (sumX/s3 - dX[s3][n][np][i]*dX[s3][n][np][i] ) / s3 );
+				double errC = sqrt( sumC )/s3;
+				double errD = sqrt( sumD )/s3;
+				double errV = sqrt( sumV )/s3;
+				double errX = sqrt( sumX )/s3;
 				fC[n][np]->SetBinError(i+1, errC);
 				fD[n][np]->SetBinError(i+1, errD);
 
@@ -314,27 +317,29 @@
 					if ( dX[fn][n][np][i] > 0 ) hFGausX->Fill((dX[fn][n][np][i] - dX[s3][n][np][i])/errX);
 				}
 
-				/////  
+				///// pT eta
 				for ( j = 0; j < 24; j++ ) {
 					double sumVp = 0;
 					double sumVeta = 0;
 					double sumCp = 0;
 					double sumCeta = 0;
 					for ( int fn = 0; fn < s3; fn++ ) {
-						sumVp += dVp[fn][n][np][j][i]*dVp[fn][n][np][j][i];
-						sumVeta += dVeta[fn][n][np][j][i]*dVeta[fn][n][np][j][i];
+						sumVp += (dVp[fn][n][np][j][i]-dVp[s3][n][np][j][i])*(dVp[fn][n][np][j][i]-dVp[s3][n][np][j][i]);
+						sumVeta += (dVeta[fn][n][np][j][i]-dVeta[s3][n][np][j][i])*(dVeta[fn][n][np][j][i]-dVeta[s3][n][np][j][i]);
 
-						sumCp += dCp[fn][n][np][j][i]*dCp[fn][n][np][j][i];
-						sumCeta += dCeta[fn][n][np][j][i]*dCeta[fn][n][np][j][i];
+						sumCp += (dCp[fn][n][np][j][i]-dCp[s3][n][np][j][i])*(dCp[fn][n][np][j][i]-dCp[s3][n][np][j][i]);
+						sumCeta += (dCeta[fn][n][np][j][i]-dCeta[s3][n][np][j][i])*(dCeta[fn][n][np][j][i]-dCeta[s3][n][np][j][i]);
 					}
-					double errVp = sqrt( (sumVp/s3 - dVp[s3][n][np][j][i]) / s3 );
-					double errVeta = sqrt( (sumVeta/s3 - dVeta[s3][n][np][j][i]) / s3 );
+					double errVp = sqrt( sumVp )/s3;
+					double errVeta = sqrt( sumVeta )/s3;
 
-					double errCp = sqrt( (sumCp/s3 - dCp[s3][n][np][j][i]) / s3 );
-					double errCeta = sqrt( (sumCeta/s3 - dCeta[s3][n][np][j][i]) / s3 );
+					double errCp = sqrt( sumCp )/s3;
+					double errCeta = sqrt( sumCeta )/s3;
 
 					fVp[n][np][j]->SetBinContent(i+1, dVp[s3][n][np][j][i]);
 					fVeta[n][np][j]->SetBinContent(i+1, dVeta[s3][n][np][j][i]);
+//					if (errVp != errVp && n == 2) cout << "n = " << n << "\tnp = " << np << "\tj = " << j << "\ti = " << i << "\tsumVp = " << sumVp << "\terrVp NaN" << endl;
+//					if (errCp != errVp && n == 2) cout << "n = " << n << "\tnp = " << np << "\tj = " << j << "\ti = " << i << "\terrCp NaN" << endl;
 					fVp[n][np][j]->SetBinError(i+1, errVp);
 					fVeta[n][np][j]->SetBinError(i+1, errVeta);
 
@@ -356,16 +361,16 @@
 						if ( dVeta[fn][n][np][j][i] > 0 ) hFGausVeta->Fill( (dVeta[fn][n][np][j][i] - dVeta[s3][n][np][j][i]) / errVeta );
 					}
 				}
-				/////  
+				/////  charge
 				for ( j = 0; j < 2; j++ ) {
 					double sumVc = 0;
 					double sumCc = 0;
 					for ( int fn = 0; fn < s3; fn++ ) {
-						sumVc += dVc[fn][n][np][j][i]*dVc[fn][n][np][j][i];
-						sumCc += dCc[fn][n][np][j][i]*dCc[fn][n][np][j][i];
+						sumVc += (dVc[fn][n][np][j][i]-dVc[s3][n][np][j][i])*(dVc[fn][n][np][j][i]-dVc[s3][n][np][j][i]);
+						sumCc += (dCc[fn][n][np][j][i]-dCc[s3][n][np][j][i])*(dCc[fn][n][np][j][i]-dCc[s3][n][np][j][i]);
 					}
-					double errVc = sqrt( (sumVc/s3 - dVc[s3][n][np][j][i]) / s3 );
-					double errCc = sqrt( (sumCc/s3 - dCc[s3][n][np][j][i]) / s3 );
+					double errVc = sqrt( sumVc )/s3;
+					double errCc = sqrt( sumCc )/s3;
 
 					fVc[n][np][j]->SetBinContent(i+1, dVc[s3][n][np][j][i]);
 					fVc[n][np][j]->SetBinError(i+1, errVc);
@@ -387,7 +392,7 @@
 
 
 
-
+	// Write
 	TFile * fwrite = new TFile(Form("%s/outputE.root", ftxt[s1]), "recreate");
 	for ( int n = 1; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {

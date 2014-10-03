@@ -1626,4 +1626,18 @@
 	mgr_HIN_13_002_pPbv24pt6->Add(gr_HIN_13_002_pPbv24pt6, "p");
 	mgr_HIN_13_002_pPbv24pt5->Add(gr_HIN_13_002_pPbv24pt5s, "[]2");
 	mgr_HIN_13_002_pPbv24pt5->Add(gr_HIN_13_002_pPbv24pt5, "p");
+
+	TMultiGraph * mgr_HIN13002_pPbPt[7][4][20];
+	memset(mgr_HIN13002_pPbPt, 0, sizeof(mgr_HIN13002_pPbPt));
+
+	mgr_HIN13002_pPbPt[2][0][5] = mgr_HIN_13_002_pPbv22pt5;
+	mgr_HIN13002_pPbPt[2][0][6] = mgr_HIN_13_002_pPbv22pt6;
+	mgr_HIN13002_pPbPt[2][0][7] = mgr_HIN_13_002_pPbv22pt7;
+	mgr_HIN13002_pPbPt[2][0][8] = mgr_HIN_13_002_pPbv22pt8;
+
+	mgr_HIN13002_pPbPt[2][1][5] = mgr_HIN_13_002_pPbv24pt5;
+	mgr_HIN13002_pPbPt[2][1][6] = mgr_HIN_13_002_pPbv24pt6;
+	mgr_HIN13002_pPbPt[2][1][7] = mgr_HIN_13_002_pPbv24pt7;
+	mgr_HIN13002_pPbPt[2][1][8] = mgr_HIN_13_002_pPbv24pt8;
+
 }

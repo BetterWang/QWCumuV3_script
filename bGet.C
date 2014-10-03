@@ -117,8 +117,11 @@
 					dQeta[n][np][c][i] = hQeta->GetBinContent(i);
 					wQeta[n][np][c][i] = hWeta->GetBinContent(i);
 
-					dQp[n][np][c][i] /= wQp[n][np][c][i];
-					dQeta[n][np][c][i] /= wQeta[n][np][c][i];
+//					cout << "n = " << n << "\tnp = " << np << "\tc = " << c << "\ti = " << i << "\tdQp = " << dQp[n][np][c][i] << "\t wQp = " << wQp[n][np][c][i] << endl;
+
+					if ( wQp[n][np][c][i] != 0 ) dQp[n][np][c][i] /= wQp[n][np][c][i];
+					if ( wQeta[n][np][c][i] != 0 ) dQeta[n][np][c][i] /= wQeta[n][np][c][i];
+
 				}
 				delete hQp;
 				delete hWp;
@@ -133,7 +136,7 @@
 					dQc[n][np][c][i] = hQc->GetBinContent(i);
 					wQc[n][np][c][i] = hWc->GetBinContent(i);
 
-					dQc[n][np][c][i] /= wQc[n][np][c][i];
+					if ( wQc[n][np][c][i] != 0 ) dQc[n][np][c][i] /= wQc[n][np][c][i];
 				}
 				delete hQc;
 				delete hWc;
@@ -284,6 +287,7 @@
 					if ( weighteta > 0 ) sumeta /= weighteta;
 					else sumeta = 0;
 
+//					cout << "n = " << n << "\tnp = " << np << "\tj = " << j << "\ti = " << i << "\tsump = " << sump << "\tweightp = " << weightp << endl;
 					dCxp[n][np][j][i] = sump;
 					wCxp[n][np][j][i] = weightp;
 					dCxeta[n][np][j][i] = sumeta;
