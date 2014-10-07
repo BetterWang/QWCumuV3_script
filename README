@@ -1,3 +1,4 @@
 1) process.C to get raw histo
 2) bGet.C to get derived C, rebin
-3) plot.C to get final object
+3) bGetError.C to get stat. err
+4) genPlot.C to get final object

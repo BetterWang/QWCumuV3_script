@@ -20,9 +20,10 @@
 {
 #include "label.h"
 #include "noff.h"
-	int s1 = 4;
+	int s1 = 5;
 
-	int sC = 0;
+	int sC = 1;
+	int sSimV2 = 1;
 	
 	bool SAVE = true;
 
@@ -239,8 +240,12 @@
 	latex.SetTextSize(20);
 	latex.SetTextAlign(13);
 
+	TF1 *finputv2 = new TF1("finputv2", "0.165646*exp(-( (x-2.64741)/1.36298 + exp( -(x-2.64741)/1.36298 ) )/2.)", 0.2, 15);
+
 	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 12, 1, 0, 0.35);
 	InitHist(hframe_pt, "p_{T} (GeV/c)", "v_{2}");
+	TH2D * hframe_eta = new TH2D("hframe_eta", "", 1, -2.5, 2.5, 1, 0, 0.35);
+	InitHist(hframe_eta, "#eta", "v_{2}");
 
 	TCanvas * cT = MakeCanvas("cT", "cT", 600, 500);
 
@@ -299,14 +304,53 @@
 				gr_vnPtV[n][3][c3]->Draw("Psame");
 			}
 
+			if ( sSimV2 ) {
+				if ( n == 2 ) {
+					finputv2->Draw("same");
+				}
+			}
+
 			legPt->AddEntry(gr_vnPtV[n][0][i], Form("v_{%i}{2} %i#leq N_{off} < %i", n, pCent[0][i+1], pCent[0][i]), "p");
 			legPt->AddEntry(gr_vnPtV[n][1][i], Form("v_{%i}{4} %i#leq N_{off} < %i", n, pCent[1][i+1], pCent[0][i]), "p");
 			legPt->AddEntry(gr_vnPtV[n][2][c2], Form("v_{%i}{6} %i#leq N_{off} < %i", n, pCent[2][c2+1], pCent[2][c2]), "p");
 			legPt->AddEntry(gr_vnPtV[n][3][c2], Form("v_{%i}{8} %i#leq N_{off} < %i", n, pCent[3][c3+1], pCent[3][c3]),"p");
 
 			legPt->Draw();
-			cT->SaveAs(Form("cT_%i_%i_%i.pdf", n, i, sC));
+			cT->SaveAs(Form("%s/cPt_%i_%i_%i.pdf", ftxt[s1], n, i, sC));
 			delete legPt;
+
+
+			// plot eta
+			cT->cd();
+			hframe_eta->GetYaxis()->SetTitle(Form("v_{%i}",n));
+			hframe_eta->Draw();
+
+			if (sC) {
+				gr_vnEtaC[n][0][i]->Draw("Psame");
+				gr_vnEtaC[n][1][i]->Draw("Psame");
+				gr_vnEtaC[n][2][c2]->Draw("Psame");
+				gr_vnEtaC[n][3][c3]->Draw("Psame");
+			} else {
+				gr_vnEtaV[n][0][i]->Draw("Psame");
+				gr_vnEtaV[n][1][i]->Draw("Psame");
+				gr_vnEtaV[n][2][c2]->Draw("Psame");
+				gr_vnEtaV[n][3][c3]->Draw("Psame");
+			}
+			TLegend * legEta = new TLegend(0.2, 0.6, 0.55, 0.9);
+			legEta->SetFillColor(kWhite);
+			legEta->SetTextFont(42);
+			legEta->SetTextSize(0.03);
+			legEta->SetBorderSize(0);
+
+			legEta->AddEntry(gr_vnEtaV[n][0][i], Form("v_{%i}{2} %i#leq N_{off} < %i", n, pCent[0][i+1], pCent[0][i]), "p");
+			legEta->AddEntry(gr_vnEtaV[n][1][i], Form("v_{%i}{4} %i#leq N_{off} < %i", n, pCent[1][i+1], pCent[0][i]), "p");
+			legEta->AddEntry(gr_vnEtaV[n][2][c2], Form("v_{%i}{6} %i#leq N_{off} < %i", n, pCent[2][c2+1], pCent[2][c2]), "p");
+			legEta->AddEntry(gr_vnEtaV[n][3][c2], Form("v_{%i}{8} %i#leq N_{off} < %i", n, pCent[3][c3+1], pCent[3][c3]),"p");
+
+			legEta->Draw();
+			cT->SaveAs(Form("%s/cEta_%i_%i_%i.pdf", ftxt[s1], n, i, sC));
+			delete legEta;
+
 		}
 	}
 }

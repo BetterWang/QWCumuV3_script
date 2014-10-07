@@ -5,7 +5,7 @@
 {
 #include "label.h"
 #include "noff.h"
-	int s1 = 4;
+	int s1 = 5;
 	int s3 = 10;
 
 	bool SAVE = true;
@@ -133,8 +133,8 @@
 	
 					if ( C2 > 0 ) V2 =       C2p/pow(C2, 1./2) ; else V2 = -fabs(C2p/pow(-C2, 1./2));
 					if ( C4 > 0 ) V4 = -fabs(C4p/pow(C4, 3./4)); else V4 =      -C4p/pow(-C4, 3./4);
-					if ( C6 > 0 ) V6 =       C6p/pow(C6, 5./6) ; else V6 = -fabs(C6p/pow(-C6, 5./6));
-					if ( C8 > 0 ) V8 = -fabs(C8p/pow(C8, 7./8)); else V8 =      -C8p/pow(-C8, 7./8);
+					if ( C6 > 0 ) V6 =       C6p/pow(C6/4., 5./6)/4. ; else V6 = -fabs(C6p/pow(-C6/4., 5./6))/4.;
+					if ( C8 > 0 ) V8 = -fabs(C8p/pow(C8/33., 7./8))/33.; else V8 =      -C8p/pow(-C8/33., 7./8)/33.;
 	
 ///					if ( fn == s3 ) cout << " fn = " << fn << "\tn = " << n << "\tj = " << j << "\ti = " << i << "\t np = " << 0 << "\tV2 = " << V2 << "\tC2p = " << C2p << "\tC2 = " << C2 << endl;
 					dVp[fn][n][0][j][i] = V2;
@@ -149,8 +149,8 @@
 	
 					if ( C2 > 0 ) V2 =       C2p/pow(C2, 1./2) ; else V2 = -fabs(C2p/pow(-C2, 1./2));
 					if ( C4 > 0 ) V4 = -fabs(C4p/pow(C4, 3./4)); else V4 =      -C4p/pow(-C4, 3./4);
-					if ( C6 > 0 ) V6 =       C6p/pow(C6, 5./6) ; else V6 = -fabs(C6p/pow(-C6, 5./6));
-					if ( C8 > 0 ) V8 = -fabs(C8p/pow(C8, 7./8)); else V8 =      -C8p/pow(-C8, 7./8);
+					if ( C6 > 0 ) V6 =       C6p/pow(C6/4., 5./6)/4. ; else V6 = -fabs(C6p/pow(-C6/4., 5./6))/4.;
+					if ( C8 > 0 ) V8 = -fabs(C8p/pow(C8/33., 7./8))/33.; else V8 =      -C8p/pow(-C8/33., 7./8)/33.;
 	
 					dVeta[fn][n][0][j][i] = V2;
 					dVeta[fn][n][1][j][i] = V4;
@@ -171,8 +171,8 @@
 	
 					if ( C2 > 0 ) V2 =       C2p/pow(C2, 1./2) ; else V2 = -fabs(C2p/pow(-C2, 1./2));
 					if ( C4 > 0 ) V4 = -fabs(C4p/pow(C4, 3./4)); else V4 =      -C4p/pow(-C4, 3./4);
-					if ( C6 > 0 ) V6 =       C6p/pow(C6, 5./6) ; else V6 = -fabs(C6p/pow(-C6, 5./6));
-					if ( C8 > 0 ) V8 = -fabs(C8p/pow(C8, 7./8)); else V8 =      -C8p/pow(-C8, 7./8);
+					if ( C6 > 0 ) V6 =       C6p/pow(C6/4., 5./6) ; else V6 = -fabs(C6p/pow(-C6/4., 5./6));
+					if ( C8 > 0 ) V8 = -fabs(C8p/pow(C8/33., 7./8)); else V8 =      -C8p/pow(-C8/33., 7./8);
 	
 					dVc[fn][n][0][j][i] = V2;
 					dVc[fn][n][1][j][i] = V4;
@@ -302,8 +302,10 @@
 
 				fcV[n][np]->SetBinContent(i+1, dV[s3][n][np][i]);
 				fcX[n][np]->SetBinContent(i+1, dX[s3][n][np][i]);
-				fcV[n][np]->SetBinError(i+1, dV[s3][n][np][i]/(2+2*np)*errC/dC[s3][n][np][i]);
-				fcX[n][np]->SetBinError(i+1, dX[s3][n][np][i]/(2+2*np)*errD/dD[s3][n][np][i]);
+				double te = dV[s3][n][np][i]/(2+2*np)*errC/dC[s3][n][np][i];
+				fcV[n][np]->SetBinError(i+1, te);
+				te = dX[s3][n][np][i]/(2+2*np)*errD/dD[s3][n][np][i];
+				fcX[n][np]->SetBinError(i+1, te);
 
 				for ( int fn = 0; fn < s3; fn++ ) {
 					hGausC->Fill((dC[fn][n][np][i] - dC[s3][n][np][i])/errC);
@@ -345,14 +347,16 @@
 
 					fcVp[n][np][j]->SetBinContent(i+1, dVp[s3][n][np][j][i]);
 					fcVeta[n][np][j]->SetBinContent(i+1, dVeta[s3][n][np][j][i]);
-					fcVp[n][np][j]->SetBinError(i+1, 
-							sqrt( errCp*errCp/dCp[s3][n][np][j][i]/dCp[s3][n][np][j][i]
-								+ (1+2*np)*(1+2*np)/(2+2*np)/(2+2*np)*errC*errC/dC[s3][n][np][i]/dC[s3][n][np][i])*fabs(dVp[s3][n][np][j][i] )
-							);
-					fcVeta[n][np][j]->SetBinError(i+1, 
-							sqrt( errCeta*errCeta/dCeta[s3][n][np][j][i]/dCeta[s3][n][np][j][i]
-								+ (1+2*np)*(1+2*np)/(2+2*np)/(2+2*np)*errC*errC/dC[s3][n][np][i]/dC[s3][n][np][i])*fabs(dVeta[s3][n][np][j][i] )
-							);
+					te = sqrt( errCp*errCp/dCp[s3][n][np][j][i]/dCp[s3][n][np][j][i]
+						+ (1+2*np)*(1+2*np)/(2+2*np)/(2+2*np)*errC*errC/dC[s3][n][np][i]/dC[s3][n][np][i])*fabs(dVp[s3][n][np][j][i] );
+					if ( np == 2 ) te /= pow(4., 1./6);
+					if ( np == 3 ) te /= pow(33., 1./8);
+					fcVp[n][np][j]->SetBinError(i+1, te);
+					te = sqrt( errCeta*errCeta/dCeta[s3][n][np][j][i]/dCeta[s3][n][np][j][i]
+						+ (1+2*np)*(1+2*np)/(2+2*np)/(2+2*np)*errC*errC/dC[s3][n][np][i]/dC[s3][n][np][i])*fabs(dVeta[s3][n][np][j][i] );
+					if ( np == 2 ) { te /= pow(4., 1./6); }
+					if ( np == 3 ) { te /= pow(33., 1./8); }
+					fcVeta[n][np][j]->SetBinError(i+1, te);
 
 					for ( int fn = 0; fn < s3; fn++ ) {
 						hGausVp->Fill( (dVp[fn][n][np][j][i] - dVp[s3][n][np][j][i]) / errVp );
@@ -376,10 +380,11 @@
 					fVc[n][np][j]->SetBinError(i+1, errVc);
 
 					fcVc[n][np][j]->SetBinContent(i+1, dVc[s3][n][np][j][i]);
-					fcVc[n][np][j]->SetBinError(i+1, 
-							sqrt( errCc*errCc/dCc[s3][n][np][j][i]/dCc[s3][n][np][j][i]
-								+ (1+2*np)*(1+2*np)/(2+2*np)/(2+2*np)*errC*errC/dC[s3][n][np][i]/dC[s3][n][np][i])*fabs(dVc[s3][n][np][j][i] )
-							);
+					te = sqrt( errCc*errCc/dCc[s3][n][np][j][i]/dCc[s3][n][np][j][i]
+						+ (1+2*np)*(1+2*np)/(2+2*np)/(2+2*np)*errC*errC/dC[s3][n][np][i]/dC[s3][n][np][i])*fabs(dVc[s3][n][np][j][i] );
+					if ( np == 2 ) te /= pow(4., 1./6);
+					if ( np == 3 ) te /= pow(33., 1./8);
+					fcVc[n][np][j]->SetBinError(i+1, te);
 
 					for ( int fn = 0; fn < s3; fn++ ) {
 						hGausVc->Fill( (dVc[fn][n][np][j][i] - dVc[s3][n][np][j][i]) / errVc );
