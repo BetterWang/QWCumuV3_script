@@ -2,7 +2,10 @@
 {
 #include "label.h"
 #include "noff.h"
-	int s1 = 3;
+	int s1 = 4;
+	
+	bool SAVE = true;
+
 	TFile *f = new TFile(Form("%s/outputC.root", ftxt[s1]));
 
 	////////////
@@ -144,11 +147,6 @@
 				if ( C6 > 0 ) V6 =       C6p/pow(C6, 5./6) ; else V6 = -fabs(C6p/pow(-C6, 5./6));
 				if ( C8 > 0 ) V8 = -fabs(C8p/pow(C8, 7./8)); else V8 =      -C8p/pow(-C8, 7./8);
 
-//				cout << "n = " << n << "\tj = " << j << "\ti = " << i << "\tC2 = " << C2 << "\tC2p = " << dCp[n][0][j][i] << "\tV2p = " << dVp[n][0][j][i] << "\tC2eta = " << C2p << "\tV2 = " << "\tV2eta = " << V2 << endl;
-//				cout << "n = " << n << "\tj = " << j << "\ti = " << i << "\tC4 = " << C4 << "\tC4p = " << dCp[n][1][j][i] << "\tV4p = " << dVp[n][1][j][i] << "\tC4eta = " << C4p << "\tV4 = " << "\tV4eta = " << V4 << endl;
-//				cout << "n = " << n << "\tj = " << j << "\ti = " << i << "\tC6 = " << C6 << "\tC6p = " << dCp[n][2][j][i] << "\tV6p = " << dVp[n][2][j][i] << "\tC6eta = " << C6p << "\tV6 = " << "\tV6eta = " << V6 << endl;
-//				cout << "n = " << n << "\tj = " << j << "\ti = " << i << "\tC8 = " << C8 << "\tC8p = " << dCp[n][3][j][i] << "\tV8p = " << dVp[n][3][j][i] << "\tC8eta = " << C8p << "\tV8 = " << "\tV8eta = " << V8 << endl;
-
 				dVeta[n][0][j][i] = V2;
 				dVeta[n][1][j][i] = V4;
 				dVeta[n][2][j][i] = V6;
@@ -179,11 +177,22 @@
 		}
 	}
 
-	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 6, 1, 0, 0.35);
+
+	/////////////////////////////////////////////////////////
+	// Pilot plot
+	/////////////////////////////////////////////////////////
+	TLatex latex;
+	latex.SetTextFont(43);
+	latex.SetTextSize(20);
+	latex.SetTextAlign(13);
+
+	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 12, 1, 0, 0.35);
 	InitHist(hframe_pt, "p_{T} (GeV/c)", "v_{2}");
 
 	TCanvas * cT = MakeCanvas("cT", "cT", 600, 500);
 	hframe_pt->Draw();
+	latex.DrawLatexNDC(0.6, 0.85, "pPb 150 #leq N_{trk}^{offline} < 185");
+
 	mgr_HIN_13_002_pPbv22pt7->Draw();
 	mgr_HIN_13_002_pPbv24pt7->Draw();
 
@@ -192,11 +201,12 @@
 	double dgrV26pt7[24];
 	double dgrV28pt7[24];
 //	int testN = 6;
+	int vn = 2;
 	for ( int i = 0; i < 24; i++ ) {
-		dgrV22pt7[i] = dVp[2][0][i][7];
-		dgrV24pt7[i] = dVp[2][1][i][7];
-		dgrV26pt7[i] = dVp[2][2][i][6];
-		dgrV28pt7[i] = dVp[2][3][i][4];
+		dgrV22pt7[i] = dVp[vn][0][i][7];
+		dgrV24pt7[i] = dVp[vn][1][i][7];
+		dgrV26pt7[i] = dVp[vn][2][i][6];
+		dgrV28pt7[i] = dVp[vn][3][i][4];
 	}
 	TGraphErrors * gr_pPbv22pt7 = new TGraphErrors(18, ptX, dgrV22pt7, 0, 0);
 	TGraphErrors * gr_pPbv24pt7 = new TGraphErrors(18, ptX, dgrV24pt7, 0, 0);
@@ -239,16 +249,17 @@
 	TH2D * hframe_eta = new TH2D("hframe_eta", "", 1, -2.4, 2.4, 1, 0, 0.25);
 	InitHist(hframe_eta, "#eta", "v_{2}");
 	hframe_eta->Draw();
+	latex.DrawLatexNDC(0.6, 0.85, "pPb 150 #leq N_{trk}^{offline} < 185");
 
 	double dgrV22eta7[24];
 	double dgrV24eta7[24];
 	double dgrV26eta7[24];
 	double dgrV28eta7[24];
 	for ( int i = 0; i < 24; i++ ) {
-		dgrV22eta7[i] = dVeta[2][0][i][7];
-		dgrV24eta7[i] = dVeta[2][1][i][7];
-		dgrV26eta7[i] = dVeta[2][2][i][6];
-		dgrV28eta7[i] = dVeta[2][3][i][4];
+		dgrV22eta7[i] = dVeta[vn][0][i][7];
+		dgrV24eta7[i] = dVeta[vn][1][i][7];
+		dgrV26eta7[i] = dVeta[vn][2][i][6];
+		dgrV28eta7[i] = dVeta[vn][3][i][4];
 	}
 	TGraphErrors * gr_pPbv22eta7 = new TGraphErrors(24, etaX, dgrV22eta7, 0, 0);
 	TGraphErrors * gr_pPbv24eta7 = new TGraphErrors(24, etaX, dgrV24eta7, 0, 0);
@@ -284,4 +295,7 @@
 	legEta7->AddEntry(gr_pPbv28eta7, "v_{2}{8}", "p");
 
 	legEta7->Draw();
+
+	cT->SaveAs("V2pt_7.pdf");
+	cEta->SaveAs("V2eta_7.pdf");
 }
