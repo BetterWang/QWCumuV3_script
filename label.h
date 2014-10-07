@@ -7,6 +7,8 @@ char * fname[] = {
 	"NA", 									// 4 1+2+3 pPb HLT std closed
 	"../MC/PionFlatPt_M200/", 						// 5 Flat pT M200
 	"../MC/PionExpoPt_M200/", 						// 6 Expo pT M200
+	"../pPb/Pbp_HLT_rfp24_Noff_noacc_noeff_v12_cm1/", 			// 7 Pbp HLT std closed reversed eta
+	"NA", 									// 8 1+2+7 pPb HLT std closed
 };
 
 char * ftxt[] = {
@@ -17,6 +19,8 @@ char * ftxt[] = {
 	"txt/pPb_HLT_rfp24_Noff_noacc_noeff_v12_cm1_full/",			// 4
 	"txt/PionFlatPt_M200/",			// 5
 	"txt/PionExpoPt_M200/",			// 6
+	"txt/Pbp_HLT_rfp24_Noff_noacc_noeff_v12_cm1/",				// 7
+	"txt/pPb_HLT_rfp24_Noff_noacc_noeff_v12_cm1_full_reverse/",		// 8
 };
 
 void addchain(int s1)

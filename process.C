@@ -27,6 +27,11 @@
 		addchain(1);
 		addchain(2);
 		addchain(3);
+	} else 
+	if ( s1 == 8 ) {
+		addchain(1);
+		addchain(2);
+		addchain(7);
 	} else {
 		addchain(s1);
 	}
