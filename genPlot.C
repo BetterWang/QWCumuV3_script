@@ -20,7 +20,7 @@
 {
 #include "label.h"
 #include "noff.h"
-	int s1 = 5;
+	int s1 = 8;
 
 	int sC = 1;
 	int sSimV2 = 1;
@@ -351,6 +351,30 @@
 			cT->SaveAs(Form("%s/cEta_%i_%i_%i.pdf", ftxt[s1], n, i, sC));
 			delete legEta;
 
+		}
+	}
+
+	TFile * fsave = new TFile(Form("%s/outGraph.root", ftxt[s1]),"recreate");
+	for ( int n = 1; n < 7; n++ ) {
+		for ( int np = 0; np < 4; np++ ) {
+			for ( int c = 0; c < 20; c++ ) {
+				if (gr_vnPtV[n][np][c]) {
+					gr_vnPtV[n][np][c]->SetName(Form("gr_vnPtV_%i_%i_%i", n, np, c));
+					gr_vnPtV[n][np][c]->Write();
+				}
+				if (gr_vnPtC[n][np][c]) {
+					gr_vnPtC[n][np][c]->SetName(Form("gr_vnPtC_%i_%i_%i", n, np, c));
+					gr_vnPtC[n][np][c]->Write();
+				}
+				if (gr_vnEtaV[n][np][c]) {
+					gr_vnEtaV[n][np][c]->SetName(Form("gr_vnEtaV_%i_%i_%i", n, np, c));
+					gr_vnEtaV[n][np][c]->Write();
+				}
+				if (gr_vnEtaC[n][np][c]) {
+					gr_vnEtaC[n][np][c]->SetName(Form("gr_vnEtaC_%i_%i_%i", n, np, c));
+					gr_vnEtaC[n][np][c]->Write();
+				}
+			}
 		}
 	}
 }
