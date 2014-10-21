@@ -32,6 +32,21 @@
 		addchain(1);
 		addchain(2);
 		addchain(7);
+	} else 
+	if ( s1 == 12 ) {
+		addchain(9);
+		addchain(10);
+		addchain(11);
+	} else 
+	if ( s1 == 16 ) {
+		addchain(13);
+		addchain(14);
+		addchain(15);
+	} else 
+	if ( s1 == 20 ) {
+		addchain(17);
+		addchain(18);
+		addchain(19);
 	} else {
 		addchain(s1);
 	}
