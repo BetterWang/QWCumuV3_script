@@ -47,6 +47,16 @@
 		addchain(17);
 		addchain(18);
 		addchain(19);
+	} else 
+	if ( s1 == 24 ) {
+		addchain(21);
+		addchain(22);
+		addchain(23);
+	} else 
+	if ( s1 == 28 ) {
+		addchain(25);
+		addchain(26);
+		addchain(27);
 	} else {
 		addchain(s1);
 	}
