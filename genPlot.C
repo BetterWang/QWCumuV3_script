@@ -20,7 +20,7 @@
 {
 #include "label.h"
 #include "noff.h"
-	int s1 = 8;
+	int s1 = 28;
 
 	int sC = 1;
 	int sSimV2 = 1;

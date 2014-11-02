@@ -5,7 +5,7 @@
 {
 #include "label.h"
 #include "noff.h"
-	int s1 = 8;
+	int s1 = 28;
 	int s3 = 10;
 
 	bool SAVE = true;
