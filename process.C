@@ -57,6 +57,36 @@
 		addchain(25);
 		addchain(26);
 		addchain(27);
+	} else 
+	if ( s1 == 32 ) {
+		addchain(29);
+		addchain(30);
+		addchain(31);
+	} else 
+	if ( s1 == 36 ) {
+		addchain(33);
+		addchain(34);
+		addchain(35);
+	} else 
+	if ( s1 == 40 ) {
+		addchain(37);
+		addchain(38);
+		addchain(39);
+	} else 
+	if ( s1 == 44 ) {
+		addchain(41);
+		addchain(42);
+		addchain(43);
+	} else 
+	if ( s1 == 48 ) {
+		addchain(45);
+		addchain(46);
+		addchain(47);
+	} else 
+	if ( s1 == 52 ) {
+		addchain(49);
+		addchain(50);
+		addchain(51);
 	} else {
 		addchain(s1);
 	}
