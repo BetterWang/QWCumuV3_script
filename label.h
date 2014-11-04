@@ -53,6 +53,40 @@ char * fname[] = {
 	"../pPb/pPb_HLT_rfp24_poi3_Noff_noacc_noeff_cm1_rereco/", 		// 49 pPb HLT std closed rfp 24 poi eta 1.2, 2.4
 	"../pPb/Pbp_HLT_rfp24_poi3_Noff_noacc_noeff_cm1/", 			// 51 Pbp HLT std closed rfp 24 poi eta 1.2, 2.4
 	"NA", 									// 52 45+46+47 pPb HLT std closed rfp 24 poi eta 1.2, 2.4
+	"../MC/PionFlatPt_M200_rfppos_poipos/", 				// 53 Flat pT M200 rfp eta > 0, poi eta > 0
+	"../MC/PionFlatPt_M200_rfppos_poineg/", 				// 54 Flat pT M200 rfp eta > 0, poi eta < 0
+	"../pPb/pPb_HLT_rfppos_poi0_Noff_noacc_noeff_cm1/", 			// 55 pPb HLT std closed rfp pos poi eta -2.4, -1.2
+	"../pPb/pPb_HLT_rfppos_poi0_Noff_noacc_noeff_cm1_rereco/",		// 56 pPb HLT std closed rfp pos poi eta -2.4, -1.2
+	"../pPb/Pbp_HLT_rfppos_poi0_Noff_noacc_noeff_cm1/",			// 57 pPb HLT std closed rfp pos poi eta -2.4, -1.2
+	"NA",									// 58 pPb HLT std closed rfp pos poi eta -2.4, -1.2
+	"../pPb/pPb_HLT_rfppos_poi1_Noff_noacc_noeff_cm1/", 			// 59 pPb HLT std closed rfp pos poi eta -1.2, 0
+	"../pPb/pPb_HLT_rfppos_poi1_Noff_noacc_noeff_cm1_rereco/",		// 60 pPb HLT std closed rfp pos poi eta -1.2, 0
+	"../pPb/Pbp_HLT_rfppos_poi1_Noff_noacc_noeff_cm1/",			// 61 pPb HLT std closed rfp pos poi eta -1.2, 0
+	"NA",									// 62 pPb HLT std closed rfp pos poi eta -1.2, 0
+	"../pPb/pPb_HLT_rfppos_poi2_Noff_noacc_noeff_cm1/", 			// 63 pPb HLT std closed rfp pos poi eta 0, 1.2
+	"../pPb/pPb_HLT_rfppos_poi2_Noff_noacc_noeff_cm1_rereco/",		// 64 pPb HLT std closed rfp pos poi eta 0, 1.2
+	"../pPb/Pbp_HLT_rfppos_poi2_Noff_noacc_noeff_cm1/",			// 65 pPb HLT std closed rfp pos poi eta 0, 1.2
+	"NA",									// 66 pPb HLT std closed rfp pos poi eta 0, 1.2
+	"../pPb/pPb_HLT_rfppos_poi3_Noff_noacc_noeff_cm1/", 			// 67 pPb HLT std closed rfp pos poi eta 1.2, 2.4
+	"../pPb/pPb_HLT_rfppos_poi3_Noff_noacc_noeff_cm1_rereco/",		// 68 pPb HLT std closed rfp pos poi eta 1.2, 2.4
+	"../pPb/Pbp_HLT_rfppos_poi3_Noff_noacc_noeff_cm1/",			// 69 pPb HLT std closed rfp pos poi eta 1.2, 2.4
+	"NA",									// 70 pPb HLT std closed rfp pos poi eta 1.2, 2.4
+	"../pPb/pPb_HLT_rfpneg_poi0_Noff_noacc_noeff_cm1/", 			// 71 pPb HLT std closed rfp neg poi eta -2.4, -1.2
+	"../pPb/pPb_HLT_rfpneg_poi0_Noff_noacc_noeff_cm1_rereco/",		// 72 pPb HLT std closed rfp neg poi eta -2.4, -1.2
+	"../pPb/Pbp_HLT_rfpneg_poi0_Noff_noacc_noeff_cm1/",			// 73 pPb HLT std closed rfp neg poi eta -2.4, -1.2
+	"NA",									// 74 pPb HLT std closed rfp neg poi eta -2.4, -1.2
+	"../pPb/pPb_HLT_rfpneg_poi1_Noff_noacc_noeff_cm1/", 			// 75 pPb HLT std closed rfp neg poi eta -1.2, 0
+	"../pPb/pPb_HLT_rfpneg_poi1_Noff_noacc_noeff_cm1_rereco/",		// 76 pPb HLT std closed rfp neg poi eta -1.2, 0
+	"../pPb/Pbp_HLT_rfpneg_poi1_Noff_noacc_noeff_cm1/",			// 77 pPb HLT std closed rfp neg poi eta -1.2, 0
+	"NA",									// 78 pPb HLT std closed rfp neg poi eta -1.2, 0
+	"../pPb/pPb_HLT_rfpneg_poi2_Noff_noacc_noeff_cm1/", 			// 78 pPb HLT std closed rfp neg poi eta 0, 1.2
+	"../pPb/pPb_HLT_rfpneg_poi2_Noff_noacc_noeff_cm1_rereco/",		// 80 pPb HLT std closed rfp neg poi eta 0, 1.2
+	"../pPb/Pbp_HLT_rfpneg_poi2_Noff_noacc_noeff_cm1/",			// 81 pPb HLT std closed rfp neg poi eta 0, 1.2
+	"NA",									// 82 pPb HLT std closed rfp neg poi eta 0, 1.2
+	"../pPb/pPb_HLT_rfpneg_poi3_Noff_noacc_noeff_cm1/", 			// 83 pPb HLT std closed rfp neg poi eta 1.2, 2.4
+	"../pPb/pPb_HLT_rfpneg_poi3_Noff_noacc_noeff_cm1_rereco/",		// 84 pPb HLT std closed rfp neg poi eta 1.2, 2.4
+	"../pPb/Pbp_HLT_rfpneg_poi3_Noff_noacc_noeff_cm1/",			// 85 pPb HLT std closed rfp neg poi eta 1.2, 2.4
+	"NA",									// 86 pPb HLT std closed rfp neg poi eta 1.2, 2.4
 };
 
 char * ftxt[] = {
@@ -109,6 +143,40 @@ char * ftxt[] = {
 	"txt/pPb_HLT_rfp24_poi3_Noff_noacc_noeff_cm1_rereco/",			// 50
 	"txt/Pbp_HLT_rfp24_poi3_Noff_noacc_noeff_cm1/",				// 51
 	"txt/pPb_HLT_rfp24_poi3_Noff_noacc_noeff_cm1_full_reverse/",		// 52
+	"txt/PionFlatPt_M200_rfppos_poipos/", 					// 53
+	"txt/PionFlatPt_M200_rfppos_poineg/", 					// 54
+	"txt/pPb_HLT_rfppos_poi0_Noff_noacc_noeff_cm1/", 			// 55
+	"txt/pPb_HLT_rfppos_poi0_Noff_noacc_noeff_cm1_rereco/", 		// 56
+	"txt/Pbp_HLT_rfppos_poi0_Noff_noacc_noeff_cm1/", 			// 57
+	"txt/pPb_HLT_rfppos_poi0_Noff_noacc_noeff_cm1_full_reverse/", 		// 58
+	"txt/pPb_HLT_rfppos_poi1_Noff_noacc_noeff_cm1/", 			// 59
+	"txt/pPb_HLT_rfppos_poi1_Noff_noacc_noeff_cm1_rereco/", 		// 60
+	"txt/Pbp_HLT_rfppos_poi1_Noff_noacc_noeff_cm1/", 			// 61
+	"txt/pPb_HLT_rfppos_poi1_Noff_noacc_noeff_cm1_full_reverse/", 		// 62
+	"txt/pPb_HLT_rfppos_poi2_Noff_noacc_noeff_cm1/", 			// 63
+	"txt/pPb_HLT_rfppos_poi2_Noff_noacc_noeff_cm1_rereco/", 		// 64
+	"txt/Pbp_HLT_rfppos_poi2_Noff_noacc_noeff_cm1/", 			// 65
+	"txt/pPb_HLT_rfppos_poi2_Noff_noacc_noeff_cm1_full_reverse/", 		// 66
+	"txt/pPb_HLT_rfppos_poi3_Noff_noacc_noeff_cm1/", 			// 67
+	"txt/pPb_HLT_rfppos_poi3_Noff_noacc_noeff_cm1_rereco/", 		// 68
+	"txt/Pbp_HLT_rfppos_poi3_Noff_noacc_noeff_cm1/", 			// 69
+	"txt/pPb_HLT_rfppos_poi3_Noff_noacc_noeff_cm1_full_reverse/", 		// 70
+	"txt/pPb_HLT_rfpneg_poi0_Noff_noacc_noeff_cm1/", 			// 71
+	"txt/pPb_HLT_rfpneg_poi0_Noff_noacc_noeff_cm1_rereco/", 		// 72
+	"txt/Pbp_HLT_rfpneg_poi0_Noff_noacc_noeff_cm1/", 			// 73
+	"txt/pPb_HLT_rfpneg_poi0_Noff_noacc_noeff_cm1_full_reverse/", 		// 74
+	"txt/pPb_HLT_rfpneg_poi1_Noff_noacc_noeff_cm1/", 			// 75
+	"txt/pPb_HLT_rfpneg_poi1_Noff_noacc_noeff_cm1_rereco/", 		// 76
+	"txt/Pbp_HLT_rfpneg_poi1_Noff_noacc_noeff_cm1/", 			// 77
+	"txt/pPb_HLT_rfpneg_poi1_Noff_noacc_noeff_cm1_full_reverse/", 		// 78
+	"txt/pPb_HLT_rfpneg_poi2_Noff_noacc_noeff_cm1/", 			// 79
+	"txt/pPb_HLT_rfpneg_poi2_Noff_noacc_noeff_cm1_rereco/", 		// 80
+	"txt/Pbp_HLT_rfpneg_poi2_Noff_noacc_noeff_cm1/", 			// 81
+	"txt/pPb_HLT_rfpneg_poi2_Noff_noacc_noeff_cm1_full_reverse/", 		// 82
+	"txt/pPb_HLT_rfpneg_poi3_Noff_noacc_noeff_cm1/", 			// 83
+	"txt/pPb_HLT_rfpneg_poi3_Noff_noacc_noeff_cm1_rereco/", 		// 84
+	"txt/Pbp_HLT_rfpneg_poi3_Noff_noacc_noeff_cm1/", 			// 85
+	"txt/pPb_HLT_rfpneg_poi3_Noff_noacc_noeff_cm1_full_reverse/", 		// 86
 };
 
 void addchain(int s1)
