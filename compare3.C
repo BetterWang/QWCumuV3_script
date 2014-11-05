@@ -2,14 +2,14 @@
 {
 #include "label.h"
 	int s1 = 12; // black
-	int s2 = 24; // green
-	int s3 = 24; // cyan
-	int s4 = 24; // red
-	int s5 = 28; // blue
+	int s2 = 20; // green
+	int s3 = 20; // cyan
+	int s4 = 20; // red
+	int s5 = 16; // blue
 
 	bool b1 = 1;
-	bool b2 = 1;
-	bool b3 = 1;
+	bool b2 = 0;
+	bool b3 = 0;
 	bool b4 = 1;
 	bool b5 = 1;
 
@@ -129,7 +129,7 @@
 	if ( b3 ) gr_v22_3->Draw("Psame");
 	if ( b4 ) gr_v22_4->Draw("Psame");
 	if ( b5 ) gr_v22_5->Draw("Psame");
-	cT->SaveAs("compV22.pdf");
+	cT->SaveAs(Form("compV22_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
 
 	hframe_pt->Draw();
 	if ( b1 ) gr_v24_1->Draw("Psame");
@@ -137,7 +137,7 @@
 	if ( b3 ) gr_v24_3->Draw("Psame");
 	if ( b4 ) gr_v24_4->Draw("Psame");
 	if ( b5 ) gr_v24_5->Draw("Psame");
-	cT->SaveAs("compV24.pdf");
+	cT->SaveAs(Form("compV24_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
 
 	hframe_pt->Draw();
 	if ( b1 ) gr_v26_1->Draw("Psame");
@@ -145,7 +145,7 @@
 	if ( b3 ) gr_v26_3->Draw("Psame");
 	if ( b4 ) gr_v26_4->Draw("Psame");
 	if ( b5 ) gr_v26_5->Draw("Psame");
-	cT->SaveAs("compV26.pdf");
+	cT->SaveAs(Form("compV26_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
 
 	hframe_pt->Draw();
 	if ( b1 ) gr_v28_1->Draw("Psame");
@@ -153,7 +153,7 @@
 	if ( b3 ) gr_v28_3->Draw("Psame");
 	if ( b4 ) gr_v28_4->Draw("Psame");
 	if ( b5 ) gr_v28_5->Draw("Psame");
-	cT->SaveAs("compV28.pdf");
+	cT->SaveAs(Form("compV28_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
 
 
 }
