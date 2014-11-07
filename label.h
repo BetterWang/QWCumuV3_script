@@ -87,6 +87,8 @@ char * fname[] = {
 	"../pPb/pPb_HLT_rfpneg_poi3_Noff_noacc_noeff_cm1_rereco/",		// 84 pPb HLT std closed rfp neg poi eta 1.2, 2.4
 	"../pPb/Pbp_HLT_rfpneg_poi3_Noff_noacc_noeff_cm1/",			// 85 pPb HLT std closed rfp neg poi eta 1.2, 2.4
 	"NA",									// 86 pPb HLT std closed rfp neg poi eta 1.2, 2.4
+	"../MC/PionFlatPt_M200_rfpneg_poipos/", 				// 87 Flat pT M200 rfp eta < 0, poi eta > 0
+	"../MC/PionFlatPt_M200_rfpneg_poineg/", 				// 88 Flat pT M200 rfp eta < 0, poi eta < 0
 };
 
 char * ftxt[] = {
@@ -177,6 +179,8 @@ char * ftxt[] = {
 	"txt/pPb_HLT_rfpneg_poi3_Noff_noacc_noeff_cm1_rereco/", 		// 84
 	"txt/Pbp_HLT_rfpneg_poi3_Noff_noacc_noeff_cm1/", 			// 85
 	"txt/pPb_HLT_rfpneg_poi3_Noff_noacc_noeff_cm1_full_reverse/", 		// 86
+	"txt/PionFlatPt_M200_rfpneg_poipos/", 					// 87
+	"txt/PionFlatPt_M200_rfpneg_poineg/", 					// 88
 };
 
 void addchain(int s1)
