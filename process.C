@@ -87,6 +87,46 @@
 		addchain(49);
 		addchain(50);
 		addchain(51);
+	} else 
+	if ( s1 == 58 ) {
+		addchain(55);
+		addchain(56);
+		addchain(57);
+	} else 
+	if ( s1 == 62 ) {
+		addchain(59);
+		addchain(60);
+		addchain(61);
+	} else 
+	if ( s1 == 66 ) {
+		addchain(63);
+		addchain(64);
+		addchain(65);
+	} else 
+	if ( s1 == 70 ) {
+		addchain(67);
+		addchain(68);
+		addchain(69);
+	} else 
+	if ( s1 == 74 ) {
+		addchain(71);
+		addchain(72);
+		addchain(73);
+	} else 
+	if ( s1 == 78 ) {
+		addchain(75);
+		addchain(76);
+		addchain(77);
+	} else 
+	if ( s1 == 82 ) {
+		addchain(79);
+		addchain(80);
+		addchain(81);
+	} else 
+	if ( s1 == 86 ) {
+		addchain(83);
+		addchain(84);
+		addchain(85);
 	} else {
 		addchain(s1);
 	}

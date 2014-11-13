@@ -89,6 +89,10 @@ char * fname[] = {
 	"NA",									// 86 pPb HLT std closed rfp neg poi eta 1.2, 2.4
 	"../MC/PionFlatPt_M200_rfpneg_poipos/", 				// 87 Flat pT M200 rfp eta < 0, poi eta > 0
 	"../MC/PionFlatPt_M200_rfpneg_poineg/", 				// 88 Flat pT M200 rfp eta < 0, poi eta < 0
+	"../MC/PionFlatPt_M200_rfppos_poipos_D2/", 				// 89 Flat pT M200 rfp eta > 0, poi eta > 0
+	"../MC/PionFlatPt_M200_rfppos_poineg_D2/", 				// 90 Flat pT M200 rfp eta > 0, poi eta < 0
+	"../MC/PionFlatPt_M200_rfpneg_poipos_D2/", 				// 91 Flat pT M200 rfp eta < 0, poi eta > 0
+	"../MC/PionFlatPt_M200_rfpneg_poineg_D2/", 				// 92 Flat pT M200 rfp eta < 0, poi eta < 0
 };
 
 char * ftxt[] = {
@@ -181,6 +185,10 @@ char * ftxt[] = {
 	"txt/pPb_HLT_rfpneg_poi3_Noff_noacc_noeff_cm1_full_reverse/", 		// 86
 	"txt/PionFlatPt_M200_rfpneg_poipos/", 					// 87
 	"txt/PionFlatPt_M200_rfpneg_poineg/", 					// 88
+	"txt/PionFlatPt_M200_rfppos_poipos_D2/", 				// 89
+	"txt/PionFlatPt_M200_rfppos_poineg_D2/", 				// 90
+	"txt/PionFlatPt_M200_rfpneg_poipos_D2/", 				// 91
+	"txt/PionFlatPt_M200_rfpneg_poineg_D2/", 				// 92
 };
 
 void addchain(int s1)
