@@ -89,10 +89,22 @@ char * fname[] = {
 	"NA",									// 86 pPb HLT std closed rfp neg poi eta 1.2, 2.4
 	"../MC/PionFlatPt_M200_rfpneg_poipos/", 				// 87 Flat pT M200 rfp eta < 0, poi eta > 0
 	"../MC/PionFlatPt_M200_rfpneg_poineg/", 				// 88 Flat pT M200 rfp eta < 0, poi eta < 0
-	"../MC/PionFlatPt_M200_rfppos_poipos_D2/", 				// 89 Flat pT M200 rfp eta > 0, poi eta > 0
-	"../MC/PionFlatPt_M200_rfppos_poineg_D2/", 				// 90 Flat pT M200 rfp eta > 0, poi eta < 0
-	"../MC/PionFlatPt_M200_rfpneg_poipos_D2/", 				// 91 Flat pT M200 rfp eta < 0, poi eta > 0
-	"../MC/PionFlatPt_M200_rfpneg_poineg_D2/", 				// 92 Flat pT M200 rfp eta < 0, poi eta < 0
+	"../MC/PionFlatPt_M200_rfppos_poipos_D2/", 				// 89 Flat pT M200 rfp eta > 0, poi eta > 0 pos 2*v2
+	"../MC/PionFlatPt_M200_rfppos_poineg_D2/", 				// 90 Flat pT M200 rfp eta > 0, poi eta < 0 pos 2*v2
+	"../MC/PionFlatPt_M200_rfpneg_poipos_D2/", 				// 91 Flat pT M200 rfp eta < 0, poi eta > 0 pos 2*v2
+	"../MC/PionFlatPt_M200_rfpneg_poineg_D2/", 				// 92 Flat pT M200 rfp eta < 0, poi eta < 0 pos 2*v2
+	"../MC/PionFlatPt_M200_rfppos_poipos_D1/", 				// 93 Flat pT M200 rfp eta > 0, poi eta > 0 neg 2*v2
+	"../MC/PionFlatPt_M200_rfppos_poineg_D1/", 				// 94 Flat pT M200 rfp eta > 0, poi eta < 0 neg 2*v2
+	"../MC/PionFlatPt_M200_rfpneg_poipos_D1/", 				// 95 Flat pT M200 rfp eta < 0, poi eta > 0 neg 2*v2
+	"../MC/PionFlatPt_M200_rfpneg_poineg_D1/", 				// 96 Flat pT M200 rfp eta < 0, poi eta < 0 neg 2*v2
+	"../MC/PionFlatPt_M200_rfppos_poipos_D3/", 				// 97 Flat pT M200 rfp eta > 0, poi eta > 0 neg .5*v2
+	"../MC/PionFlatPt_M200_rfppos_poineg_D3/", 				// 98 Flat pT M200 rfp eta > 0, poi eta < 0 neg .5*v2
+	"../MC/PionFlatPt_M200_rfpneg_poipos_D3/", 				// 99 Flat pT M200 rfp eta < 0, poi eta > 0 neg .5*v2
+	"../MC/PionFlatPt_M200_rfpneg_poineg_D3/", 				// 100 Flat pT M200 rfp eta < 0, poi eta < 0 neg .5*v2
+	"../MC/PionFlatPt_M200_rfppos_poipos_D4/", 				// 101 Flat pT M200 rfp eta > 0, poi eta > 0 pos .5*v2
+	"../MC/PionFlatPt_M200_rfppos_poineg_D4/", 				// 102 Flat pT M200 rfp eta > 0, poi eta < 0 pos .5*v2
+	"../MC/PionFlatPt_M200_rfpneg_poipos_D4/", 				// 103 Flat pT M200 rfp eta < 0, poi eta > 0 pos .5*v2
+	"../MC/PionFlatPt_M200_rfpneg_poineg_D4/", 				// 104 Flat pT M200 rfp eta < 0, poi eta < 0 pos .5*v2
 };
 
 char * ftxt[] = {
@@ -189,6 +201,18 @@ char * ftxt[] = {
 	"txt/PionFlatPt_M200_rfppos_poineg_D2/", 				// 90
 	"txt/PionFlatPt_M200_rfpneg_poipos_D2/", 				// 91
 	"txt/PionFlatPt_M200_rfpneg_poineg_D2/", 				// 92
+	"txt/PionFlatPt_M200_rfppos_poipos_D1/", 				// 93
+	"txt/PionFlatPt_M200_rfppos_poineg_D1/", 				// 94
+	"txt/PionFlatPt_M200_rfpneg_poipos_D1/", 				// 95
+	"txt/PionFlatPt_M200_rfpneg_poineg_D1/", 				// 96
+	"txt/PionFlatPt_M200_rfppos_poipos_D3/", 				// 97
+	"txt/PionFlatPt_M200_rfppos_poineg_D3/", 				// 98
+	"txt/PionFlatPt_M200_rfpneg_poipos_D3/", 				// 99
+	"txt/PionFlatPt_M200_rfpneg_poineg_D3/", 				// 100
+	"txt/PionFlatPt_M200_rfppos_poipos_D4/", 				// 101
+	"txt/PionFlatPt_M200_rfppos_poineg_D4/", 				// 102
+	"txt/PionFlatPt_M200_rfpneg_poipos_D4/", 				// 103
+	"txt/PionFlatPt_M200_rfpneg_poineg_D4/", 				// 104
 };
 
 void addchain(int s1)
