@@ -2,17 +2,20 @@
 {
 #include "label.h"
 	int s1 = 12; // black
-	int s2 = 20; // green
-	int s3 = 20; // cyan
-	int s4 = 20; // red
-	int s5 = 16; // blue
+	int s2 = 87; // green
+	int s3 = 88; // cyan
+	int s4 = 53; // red
+	int s5 = 54; // blue
 
 	bool b1 = 1;
-	bool b2 = 0;
-	bool b3 = 0;
+	bool b2 = 1;
+	bool b3 = 1;
 	bool b4 = 1;
 	bool b5 = 1;
 
+	bool bfit = 1;
+
+	TF1 *finputv2 = new TF1("finputv2", "0.165646*exp(-( (x-2.64741)/1.36298 + exp( -(x-2.64741)/1.36298 ) )/2.)", 0.2, 15);
 //	int s2 = 20; // red pos/Pb side
 //	int s3 = 16; // blue neg/p side
 
@@ -129,6 +132,7 @@
 	if ( b3 ) gr_v22_3->Draw("Psame");
 	if ( b4 ) gr_v22_4->Draw("Psame");
 	if ( b5 ) gr_v22_5->Draw("Psame");
+	if ( bfit ) finputv2->Draw("same");
 	cT->SaveAs(Form("compV22_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
 
 	hframe_pt->Draw();
@@ -137,6 +141,7 @@
 	if ( b3 ) gr_v24_3->Draw("Psame");
 	if ( b4 ) gr_v24_4->Draw("Psame");
 	if ( b5 ) gr_v24_5->Draw("Psame");
+	if ( bfit ) finputv2->Draw("same");
 	cT->SaveAs(Form("compV24_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
 
 	hframe_pt->Draw();
@@ -145,6 +150,7 @@
 	if ( b3 ) gr_v26_3->Draw("Psame");
 	if ( b4 ) gr_v26_4->Draw("Psame");
 	if ( b5 ) gr_v26_5->Draw("Psame");
+	if ( bfit ) finputv2->Draw("same");
 	cT->SaveAs(Form("compV26_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
 
 	hframe_pt->Draw();
@@ -153,6 +159,7 @@
 	if ( b3 ) gr_v28_3->Draw("Psame");
 	if ( b4 ) gr_v28_4->Draw("Psame");
 	if ( b5 ) gr_v28_5->Draw("Psame");
+	if ( bfit ) finputv2->Draw("same");
 	cT->SaveAs(Form("compV28_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
 
 
