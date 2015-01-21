@@ -105,6 +105,10 @@ char * fname[] = {
 	"../MC/PionFlatPt_M200_rfppos_poineg_D4/", 				// 102 Flat pT M200 rfp eta > 0, poi eta < 0 pos .5*v2
 	"../MC/PionFlatPt_M200_rfpneg_poipos_D4/", 				// 103 Flat pT M200 rfp eta < 0, poi eta > 0 pos .5*v2
 	"../MC/PionFlatPt_M200_rfpneg_poineg_D4/", 				// 104 Flat pT M200 rfp eta < 0, poi eta < 0 pos .5*v2
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_cm1/", 				// 105 pPb HLT std closed rfp full, eff applied
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_cm1_rereco/", 			// 106 pPb HLT std closed rfp full, eff applied
+	"../pPb/Pbp_HLT_rfp24_Noff_noacc_eff_cm1/", 				// 107 pPb HLT std closed rfp full, eff applied
+	"NA", 									// 108 pPb HLT std closed rfp full, eff applied
 };
 
 char * ftxt[] = {
@@ -213,6 +217,10 @@ char * ftxt[] = {
 	"txt/PionFlatPt_M200_rfppos_poineg_D4/", 				// 102
 	"txt/PionFlatPt_M200_rfpneg_poipos_D4/", 				// 103
 	"txt/PionFlatPt_M200_rfpneg_poineg_D4/", 				// 104
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_cm1/", 				// 105
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_cm1_rereco/", 			// 106
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_cm1_reverse/", 			// 107
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_cm1_full_reverse/", 			// 108
 };
 
 void addchain(int s1)

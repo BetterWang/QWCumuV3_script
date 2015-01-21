@@ -127,7 +127,13 @@
 		addchain(83);
 		addchain(84);
 		addchain(85);
-	} else {
+	} else 
+	if ( s1 == 108 ) {
+		addchain(105);
+		addchain(106);
+		addchain(107);
+	} else 
+	{
 		addchain(s1);
 	}
 
