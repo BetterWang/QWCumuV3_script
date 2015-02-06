@@ -109,6 +109,7 @@ char * fname[] = {
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_cm1_rereco/", 			// 106 pPb HLT std closed rfp full, eff applied
 	"../pPb/Pbp_HLT_rfp24_Noff_noacc_eff_cm1/", 				// 107 pPb HLT std closed rfp full, eff applied
 	"NA", 									// 108 pPb HLT std closed rfp full, eff applied
+	"../pPb/PbPb_ppreco_rfp24_Noff_noacc_eff", 				// 109 PbPb pp-rereco std closed rfp full, eff applied
 };
 
 char * ftxt[] = {
@@ -221,6 +222,7 @@ char * ftxt[] = {
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_cm1_rereco/", 			// 106
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_cm1_reverse/", 			// 107
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_cm1_full_reverse/", 			// 108
+	"txt/PbPb_ppreco_rfp24_Noff_noacc_eff/", 				// 109
 };
 
 void addchain(int s1)

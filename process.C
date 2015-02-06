@@ -247,6 +247,7 @@
 		if ( !(ievt%100000) ) cout << "!! ievt = " << ievt << endl;
 		ievt++;
 		if ( (s2!=s3) && ((ievt%s3)!=s2) ) continue;
+		if (gNoff >=500) continue;
 
 		for ( int n = 1; n < 7; n++ ) {
 			for ( int np = 0; np < 4; np++ ) {
