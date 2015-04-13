@@ -133,6 +133,26 @@
 		addchain(106);
 		addchain(107);
 	} else 
+	if ( s1 == 114 ) {
+		addchain(111);
+		addchain(112);
+		addchain(113);
+	} else 
+	if ( s1 == 118 ) {
+		addchain(115);
+		addchain(116);
+		addchain(117);
+	} else 
+	if ( s1 == 122 ) {
+		addchain(119);
+		addchain(121);
+		addchain(121);
+	} else 
+	if ( s1 == 126 ) {
+		addchain(123);
+		addchain(124);
+		addchain(125);
+	} else 
 	{
 		addchain(s1);
 	}
