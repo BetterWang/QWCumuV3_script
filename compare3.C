@@ -3,15 +3,15 @@
 #include "label.h"
 	int s1 = 12; // black
 	int s2 = 108; // green
-	int s3 = 104; // cyan
-	int s4 = 82; // red
-	int s5 = 86; // blue
+	int s3 = 109; // cyan
+	int s4 = 108; // red
+	int s5 = 109; // blue
 
 	bool b1 = 1;
-	bool b2 = 1;
+	bool b2 = 0;
 	bool b3 = 0;
-	bool b4 = 0;
-	bool b5 = 0;
+	bool b4 = 1;
+	bool b5 = 1;
 
 	bool bfit = 0;
 	bool bfit2 = 0;
@@ -262,7 +262,7 @@
 
 
 	TH2D * hframe_eta = new TH2D("hframe_eta", "", 1, -2.5, 2.5, 1, 0, 0.15);
-	InitHist(hframe_pt, "#eta", "v_{2}");
+	InitHist(hframe_eta, "#eta", "v_{2}");
 
 	hframe_eta->Draw();
 	if ( b1 ) gr_v22eta_1->Draw("Psame");
@@ -296,4 +296,113 @@
 	if ( b5 ) gr_v28eta_5->Draw("Psame");
 	cT->SaveAs(Form("compV28eta_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
 
+
+	double x[24], y[24], ey[24];
+	for ( int i = 0; i < 24; ++i ) {
+		x[i] = gr_v24eta_4->GetX()[i];
+		y[i] = gr_v24eta_4->GetY()[i]/gr_v24eta_5->GetY()[i];
+		ey[i] = y[i]*sqrt( (gr_v24eta_4->GetEY()[i]*gr_v24eta_4->GetEY()[i]/gr_v24eta_4->GetY()[i]/gr_v24eta_4->GetY()[i]) + (gr_v24eta_5->GetEY()[i]*gr_v24eta_5->GetEY()[i]/gr_v24eta_5->GetY()[i]/gr_v24eta_5->GetY()[i]) );
+	}
+
+	TGraphErrors * gr_v24eta_4r = new TGraphErrors(24, x, y, 0, ey);
+	gr_v24eta_4r->SetMarkerStyle(kFullSquare);
+	gr_v24eta_4r->SetMarkerColor(kRed);
+	gr_v24eta_4r->SetLineColor(kRed);
+
+	for ( int i = 0; i < 24; ++i ) {
+		y[i] = gr_v26eta_4->GetY()[i]/gr_v26eta_5->GetY()[i];
+		ey[i] = y[i]*sqrt( (gr_v26eta_4->GetEY()[i]*gr_v26eta_4->GetEY()[i]/gr_v26eta_4->GetY()[i]/gr_v26eta_4->GetY()[i]) + (gr_v26eta_5->GetEY()[i]*gr_v26eta_5->GetEY()[i]/gr_v26eta_5->GetY()[i]/gr_v26eta_5->GetY()[i]) );
+	}
+
+	TGraphErrors * gr_v26eta_4r = new TGraphErrors(24, x, y, 0, ey);
+	gr_v26eta_4r->SetMarkerStyle(kFullCross);
+	gr_v26eta_4r->SetMarkerColor(kRed);
+	gr_v26eta_4r->SetLineColor(kRed);
+
+	for ( int i = 0; i < 24; ++i ) {
+		y[i] = gr_v28eta_4->GetY()[i]/gr_v28eta_5->GetY()[i];
+		ey[i] = y[i]*sqrt( (gr_v28eta_4->GetEY()[i]*gr_v28eta_4->GetEY()[i]/gr_v28eta_4->GetY()[i]/gr_v28eta_4->GetY()[i]) + (gr_v28eta_5->GetEY()[i]*gr_v28eta_5->GetEY()[i]/gr_v28eta_5->GetY()[i]/gr_v28eta_5->GetY()[i]) );
+	}
+
+	TGraphErrors * gr_v28eta_4r = new TGraphErrors(24, x, y, 0, ey);
+	gr_v28eta_4r->SetMarkerStyle(kFullDiamond);
+	gr_v28eta_4r->SetMarkerColor(kRed);
+	gr_v28eta_4r->SetLineColor(kRed);
+
+
+	TH2D * hframe_etaratio = new TH2D("hframe_etaratio", "", 1, -2.5, 2.5, 1, 0, 1.);
+	InitHist(hframe_etaratio, "#eta", "v_{2,pPb}/v_{2,PbPb}");
+
+	hframe_etaratio->Draw();
+	gr_v24eta_4r->Draw("Psame");
+	cT->SaveAs(Form("compV24etar_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
+
+	hframe_etaratio->Draw();
+	gr_v26eta_4r->Draw("Psame");
+	cT->SaveAs(Form("compV26etar_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
+
+	hframe_etaratio->Draw();
+	gr_v28eta_4r->Draw("Psame");
+	cT->SaveAs(Form("compV28etar_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
+
+	TFile * fsave = new TFile("graph.root","recreate");
+	gr_v22_1->SetName("gr_v22_1");
+	gr_v24_1->SetName("gr_v24_1");
+	gr_v26_1->SetName("gr_v26_1");
+	gr_v28_1->SetName("gr_v28_1");
+
+	gr_v22_4->SetName("gr_v22_4");
+	gr_v24_4->SetName("gr_v24_4");
+	gr_v26_4->SetName("gr_v26_4");
+	gr_v28_4->SetName("gr_v28_4");
+
+	gr_v22_5->SetName("gr_v22_5");
+	gr_v24_5->SetName("gr_v24_5");
+	gr_v26_5->SetName("gr_v26_5");
+	gr_v28_5->SetName("gr_v28_5");
+
+	gr_v22eta_1->SetName("gr_v22eta_1");
+	gr_v24eta_1->SetName("gr_v24eta_1");
+	gr_v26eta_1->SetName("gr_v26eta_1");
+	gr_v28eta_1->SetName("gr_v28eta_1");
+
+	gr_v22eta_4->SetName("gr_v22eta_4");
+	gr_v24eta_4->SetName("gr_v24eta_4");
+	gr_v26eta_4->SetName("gr_v26eta_4");
+	gr_v28eta_4->SetName("gr_v28eta_4");
+
+	gr_v22eta_5->SetName("gr_v22eta_5");
+	gr_v24eta_5->SetName("gr_v24eta_5");
+	gr_v26eta_5->SetName("gr_v26eta_5");
+	gr_v28eta_5->SetName("gr_v28eta_5");
+
+	gr_v22_1->Write();
+	gr_v24_1->Write();
+	gr_v26_1->Write();
+	gr_v28_1->Write();
+
+	gr_v22_4->Write();
+	gr_v24_4->Write();
+	gr_v26_4->Write();
+	gr_v28_4->Write();
+
+	gr_v22_5->Write();
+	gr_v24_5->Write();
+	gr_v26_5->Write();
+	gr_v28_5->Write();
+
+	gr_v22eta_1->Write();
+	gr_v24eta_1->Write();
+	gr_v26eta_1->Write();
+	gr_v28eta_1->Write();
+
+	gr_v22eta_4->Write();
+	gr_v24eta_4->Write();
+	gr_v26eta_4->Write();
+	gr_v28eta_4->Write();
+
+	gr_v22eta_5->Write();
+	gr_v24eta_5->Write();
+	gr_v26eta_5->Write();
+	gr_v28eta_5->Write();
 }
