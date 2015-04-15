@@ -23,8 +23,8 @@
 //	int s1 = 92;
 
 	int sC = 1;
-	int sSimV2 = 1;
-	
+	int sSimV2 = 0;
+
 	bool SAVE = true;
 
 	TFile *f = new TFile(Form("%s/outputE.root", ftxt[s1]));
@@ -316,6 +316,7 @@
 			legPt->AddEntry(gr_vnPtV[n][3][c2], Form("v_{%i}{8} %i#leq N_{off} < %i", n, pCent[3][c3+1], pCent[3][c3]),"p");
 
 			legPt->Draw();
+			cout << " cPt n = " << n << " i = " << i << " c2 = " << c2 << " c3 = " << c3 << endl;
 			cT->SaveAs(Form("%s/cPt_%i_%i_%i.pdf", ftxt[s1], n, i, sC));
 			delete legPt;
 

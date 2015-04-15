@@ -1,19 +1,20 @@
 
 {
 #include "label.h"
-	int s1 = 12; // black
-	int s2 = 108; // green
-	int s3 = 109; // cyan
-	int s4 = 108; // red
-	int s5 = 109; // blue
+//	int s1 = 12; // black
+	int s1 = 110; // black
+	int s2 = 110; // green
+	int s3 = 110; // cyan
+	int s4 = 110; // red
+	int s5 = 110; // blue
 
 	bool b1 = 1;
 	bool b2 = 0;
 	bool b3 = 0;
-	bool b4 = 1;
-	bool b5 = 1;
+	bool b4 = 0;
+	bool b5 = 0;
 
-	bool bfit = 0;
+	bool bfit = 1;
 	bool bfit2 = 0;
 
 	TF1 *finputv2 = new TF1("finputv2", "0.165646*exp(-( (x-2.64741)/1.36298 + exp( -(x-2.64741)/1.36298 ) )/2.)", 0.2, 15);
@@ -228,6 +229,7 @@
 	if ( b5 ) gr_v22_5->Draw("Psame");
 	if ( bfit ) finputv2->Draw("same");
 	if ( bfit2 ) finputv2D2->Draw("same");
+	hframe_pt->GetYaxis()->SetTitle("v_{2}{2}");
 	cT->SaveAs(Form("compV22_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
 
 	hframe_pt->Draw();
@@ -238,6 +240,7 @@
 	if ( b5 ) gr_v24_5->Draw("Psame");
 	if ( bfit ) finputv2->Draw("same");
 	if ( bfit2 ) finputv2D2->Draw("same");
+	hframe_pt->GetYaxis()->SetTitle("v_{2}{4}");
 	cT->SaveAs(Form("compV24_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
 
 	hframe_pt->Draw();
@@ -248,6 +251,7 @@
 	if ( b5 ) gr_v26_5->Draw("Psame");
 	if ( bfit ) finputv2->Draw("same");
 	if ( bfit2 ) finputv2D2->Draw("same");
+	hframe_pt->GetYaxis()->SetTitle("v_{2}{6}");
 	cT->SaveAs(Form("compV26_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
 
 	hframe_pt->Draw();
@@ -258,6 +262,7 @@
 	if ( b5 ) gr_v28_5->Draw("Psame");
 	if ( bfit ) finputv2->Draw("same");
 	if ( bfit2 ) finputv2D2->Draw("same");
+	hframe_pt->GetYaxis()->SetTitle("v_{2}{8}");
 	cT->SaveAs(Form("compV28_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
 
 
@@ -270,6 +275,7 @@
 	if ( b3 ) gr_v22eta_3->Draw("Psame");
 	if ( b4 ) gr_v22eta_4->Draw("Psame");
 	if ( b5 ) gr_v22eta_5->Draw("Psame");
+	hframe_eta->GetYaxis()->SetTitle("v_{2}{2}");
 	cT->SaveAs(Form("compV22eta_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
 
 	hframe_eta->Draw();
@@ -278,6 +284,7 @@
 	if ( b3 ) gr_v24eta_3->Draw("Psame");
 	if ( b4 ) gr_v24eta_4->Draw("Psame");
 	if ( b5 ) gr_v24eta_5->Draw("Psame");
+	hframe_eta->GetYaxis()->SetTitle("v_{2}{4}");
 	cT->SaveAs(Form("compV24eta_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
 
 	hframe_eta->Draw();
@@ -286,6 +293,7 @@
 	if ( b3 ) gr_v26eta_3->Draw("Psame");
 	if ( b4 ) gr_v26eta_4->Draw("Psame");
 	if ( b5 ) gr_v26eta_5->Draw("Psame");
+	hframe_eta->GetYaxis()->SetTitle("v_{2}{6}");
 	cT->SaveAs(Form("compV26eta_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
 
 	hframe_eta->Draw();
@@ -294,6 +302,7 @@
 	if ( b3 ) gr_v28eta_3->Draw("Psame");
 	if ( b4 ) gr_v28eta_4->Draw("Psame");
 	if ( b5 ) gr_v28eta_5->Draw("Psame");
+	hframe_eta->GetYaxis()->SetTitle("v_{2}{8}");
 	cT->SaveAs(Form("compV28eta_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
 
 
