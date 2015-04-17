@@ -42,37 +42,37 @@
 
 	cT->cd(1);
 	hframe_pt->Draw();
-	mgr_HIN13002_pPbPt[2][0][8]->Draw();
-	mgr_HIN13002_pPbPt[2][1][8]->Draw();
-	gr_vnPt[2][0][8]->Draw("Psame");
-	gr_vnPt[2][1][8]->Draw("Psame");
-	gr_vnPt[2][2][7]->Draw("Psame");
-	gr_vnPt[2][3][5]->Draw("Psame");
-
-	cT->cd(2);
-	hframe_pt->Draw();
 	mgr_HIN13002_pPbPt[2][0][7]->Draw();
 	mgr_HIN13002_pPbPt[2][1][7]->Draw();
 	gr_vnPt[2][0][7]->Draw("Psame");
 	gr_vnPt[2][1][7]->Draw("Psame");
 	gr_vnPt[2][2][6]->Draw("Psame");
-	gr_vnPt[2][3][4]->Draw("Psame");
+	gr_vnPt[2][3][5]->Draw("Psame");
 
-	cT->cd(3);
+	cT->cd(2);
 	hframe_pt->Draw();
 	mgr_HIN13002_pPbPt[2][0][6]->Draw();
 	mgr_HIN13002_pPbPt[2][1][6]->Draw();
 	gr_vnPt[2][0][6]->Draw("Psame");
 	gr_vnPt[2][1][6]->Draw("Psame");
 	gr_vnPt[2][2][5]->Draw("Psame");
-	gr_vnPt[2][3][3]->Draw("Psame");
+	gr_vnPt[2][3][4]->Draw("Psame");
 
-	cT->cd(4);
+	cT->cd(3);
 	hframe_pt->Draw();
 	mgr_HIN13002_pPbPt[2][0][5]->Draw();
 	mgr_HIN13002_pPbPt[2][1][5]->Draw();
 	gr_vnPt[2][0][5]->Draw("Psame");
 	gr_vnPt[2][1][5]->Draw("Psame");
 	gr_vnPt[2][2][4]->Draw("Psame");
+	gr_vnPt[2][3][3]->Draw("Psame");
+
+	cT->cd(4);
+	hframe_pt->Draw();
+	mgr_HIN13002_pPbPt[2][0][4]->Draw();
+	mgr_HIN13002_pPbPt[2][1][4]->Draw();
+	gr_vnPt[2][0][4]->Draw("Psame");
+	gr_vnPt[2][1][4]->Draw("Psame");
+	gr_vnPt[2][2][3]->Draw("Psame");
 	gr_vnPt[2][3][2]->Draw("Psame");
 }
