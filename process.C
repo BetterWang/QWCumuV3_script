@@ -152,7 +152,12 @@
 		addchain(123);
 		addchain(124);
 		addchain(125);
-	} else 
+	} else
+	if ( s1 == 135 ) {
+		addchain(132);
+		addchain(133);
+		addchain(134);
+	} else
 	{
 		addchain(s1);
 	}

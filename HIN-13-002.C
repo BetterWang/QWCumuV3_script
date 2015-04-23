@@ -429,8 +429,8 @@
 	gr_HIN_13_002_PbPbv22s->SetFillColor(kGray);
 
 	TMultiGraph * mgr_HIN_13_002_PbPbv22 = new TMultiGraph();
-	mgr_HIN_13_002_pPbv22->Add(gr_HIN_13_002_PbPbv22s, "[]2");
-	mgr_HIN_13_002_pPbv22->Add(gr_HIN_13_002_PbPbv22);
+	mgr_HIN_13_002_PbPbv22->Add(gr_HIN_13_002_PbPbv22s, "[]2");
+	mgr_HIN_13_002_PbPbv22->Add(gr_HIN_13_002_PbPbv22);
 
 	double pPb_bin5_evt[36] = {
 		8556   ,
@@ -1226,7 +1226,7 @@
 		0.1193 ,
 		0.1385 ,
 		0.1498 ,
-		0.1612 ,		
+		0.1612 ,
 		0.1622 ,
 		0.1636 
 	};
@@ -1502,6 +1502,195 @@
 	TGraphErrors * gr_HIN_13_002_pPbv24pt6 = new TGraphErrors(9, pPb_v22pt_x, pPb_v24pt6_y, 0, pPb_v24pt6_ye);
 	TGraphErrors * gr_HIN_13_002_pPbv24pt5 = new TGraphErrors(9, pPb_v22pt_x, pPb_v24pt5_y, 0, pPb_v24pt5_ye);
 
+	double PbPb_v22pt8_y[9] = {
+		0.04742,
+		0.08948,
+		0.1383 ,
+		0.1637 ,
+		0.1778 ,
+		0.1776 ,
+		0.1728 ,
+		0.1606 ,
+		0.1521
+	};
+	double PbPb_v22pt8_ye[9] = {
+		0.00025,
+		0.00025,
+		0.00043,
+		0.00074,
+		0.0012,
+		0.0018,
+		0.0022,
+		0.0041,
+		0.0071
+	};
+	double PbPb_v24pt8_y[9] = {
+		0.04176,
+		0.07576,
+		0.1121 ,
+		0.1316 ,
+		0.1382 ,
+		0.1306 ,
+		0.1316 ,
+		0.1169 ,
+		0.09505
+	};
+	double PbPb_v24pt8_ye[9] = {
+		0.001  ,
+		0.00085,
+		0.0014 ,
+		0.0026 ,
+		0.0048 ,
+		0.0077 ,
+		0.0095 ,
+		0.017  ,
+		0.028
+	};
+
+	double PbPb_v22pt7_y[9] = {
+		0.04931,
+		0.09327,
+		0.1436 ,
+		0.171  ,
+		0.183  ,
+		0.1842 ,
+		0.1756 ,
+		0.158  ,
+		0.1428 
+	};
+	double PbPb_v22pt7_ye[9] = {
+		0.00019,
+		0.00019,
+		0.00033,
+		0.00056,
+		0.00095,
+		0.0014,
+		0.0017,
+		0.0032,
+		0.0055
+	};
+	double PbPb_v24pt7_y[9] = {
+		0.0437 ,
+		0.07871,
+		0.1176 ,
+		0.1368 ,
+		0.1354 ,
+		0.1304 ,
+		0.1258 ,
+		0.1083 ,
+		0.1031 
+	};
+	double PbPb_v24pt7_ye[9] = {
+		0.00073,
+		0.00061,
+		0.001  ,
+		0.0019 ,
+		0.0035 ,
+		0.0057 ,
+		0.0071 ,
+		0.012  ,
+		0.02   
+	};
+
+	double PbPb_v22pt6_y[9] = {
+		0.05099,
+		0.09618,
+		0.1482 ,
+		0.1775 ,
+		0.1884 ,
+		0.1904 ,
+		0.1832 ,
+		0.1566 ,
+		0.1426 
+	};
+	double PbPb_v22pt6_ye[9] = {
+		0.00016,
+		0.00017,
+		0.00028,
+		0.00047,
+		0.0008 ,
+		0.0012 ,
+		0.0015 ,
+		0.0028 ,
+		0.0047 
+	};
+	double PbPb_v24pt6_y[9] = {
+		0.04406,
+		0.08152,
+		0.1205 ,
+		0.1434 ,
+		0.1489 ,
+		0.1462 ,
+		0.1371 ,
+		0.1149 ,
+		0.1093 
+	};
+	double PbPb_v24pt6_ye[9] = {
+		0.00061,
+		0.00052,
+		0.00083,
+		0.0014,
+		0.0028,
+		0.0048,
+		0.006 ,
+		0.01,
+		0.017
+	};
+
+	double PbPb_v22pt5_y[9] = {
+		0.05251,
+		0.09825,
+		0.1515 ,
+		0.1809 ,
+		0.1952 ,
+		0.1967 ,
+		0.1867 ,
+		0.1732 ,
+		0.1531 
+	};
+	double PbPb_v22pt5_ye[9] = {
+		0.00014,
+		0.00014,
+		0.00023,
+		0.00037,
+		0.00064,
+		0.001  ,
+		0.0012 ,
+		0.0023 ,
+		0.0038 
+	};
+	double PbPb_v24pt5_y[9] = {
+		0.04554,
+		0.08337,
+		0.1245 ,
+		0.1468 ,
+		0.1531 ,
+		0.1518 ,
+		0.1412 ,
+		0.1183 ,
+		0.1131 
+	};
+	double PbPb_v24pt5_ye[9] = {
+		0.00049,
+		0.00044,
+		0.00067,
+		0.0011,
+		0.0021,
+		0.0039,
+		0.0049,
+		0.0085,
+		0.013 
+	};
+
+	TGraphErrors * gr_HIN_13_002_PbPbv22pt8 = new TGraphErrors(9, pPb_v22pt_x, PbPb_v22pt8_y, 0, PbPb_v22pt8_ye);
+	TGraphErrors * gr_HIN_13_002_PbPbv22pt7 = new TGraphErrors(9, pPb_v22pt_x, PbPb_v22pt7_y, 0, PbPb_v22pt7_ye);
+	TGraphErrors * gr_HIN_13_002_PbPbv22pt6 = new TGraphErrors(9, pPb_v22pt_x, PbPb_v22pt6_y, 0, PbPb_v22pt6_ye);
+	TGraphErrors * gr_HIN_13_002_PbPbv22pt5 = new TGraphErrors(9, pPb_v22pt_x, PbPb_v22pt5_y, 0, PbPb_v22pt5_ye);
+	TGraphErrors * gr_HIN_13_002_PbPbv24pt8 = new TGraphErrors(9, pPb_v22pt_x, PbPb_v24pt8_y, 0, PbPb_v24pt8_ye);
+	TGraphErrors * gr_HIN_13_002_PbPbv24pt7 = new TGraphErrors(9, pPb_v22pt_x, PbPb_v24pt7_y, 0, PbPb_v24pt7_ye);
+	TGraphErrors * gr_HIN_13_002_PbPbv24pt6 = new TGraphErrors(9, pPb_v22pt_x, PbPb_v24pt6_y, 0, PbPb_v24pt6_ye);
+	TGraphErrors * gr_HIN_13_002_PbPbv24pt5 = new TGraphErrors(9, pPb_v22pt_x, PbPb_v24pt5_y, 0, PbPb_v24pt5_ye);
+
 	double sysPtWidth[9] = {
 		0.15,
 		0.15,
@@ -1521,6 +1710,107 @@
 	TGraphErrors * gr_HIN_13_002_pPbv24pt6s = new TGraphErrors(9, pPb_v22pt_x, pPb_v24pt6_y, sysPtWidth, pPb_v24pt6_ye2);
 	TGraphErrors * gr_HIN_13_002_pPbv24pt5s = new TGraphErrors(9, pPb_v22pt_x, pPb_v24pt5_y, sysPtWidth, pPb_v24pt5_ye2);
 
+	double PbPb_v22pt8_ye2[9] = {
+		0.0018,
+		0.0035,
+		0.0054,
+		0.0064,
+		0.0069,
+		0.0069,
+		0.0067,
+		0.0063,
+		0.0059
+	};
+	double PbPb_v24pt8_ye2[9] = {
+		0.0017,
+		0.0031,
+		0.0046,
+		0.0054,
+		0.0057,
+		0.0054,
+		0.0054,
+		0.0048,
+		0.0039
+	};
+
+	double PbPb_v22pt7_ye2[9] = {
+		0.0019,
+		0.0036,
+		0.0056,
+		0.0067,
+		0.0071,
+		0.0072,
+		0.0068,
+		0.0062,
+		0.0056
+	};
+	double PbPb_v24pt7_ye2[9] = {
+		0.0018,
+		0.0032,
+		0.0048,
+		0.0056,
+		0.0056,
+		0.0053,
+		0.0052,
+		0.0044,
+		0.0042
+	};
+
+	double PbPb_v22pt6_ye2[9] = {
+		0.002  ,
+		0.0038,
+		0.0058,
+		0.0069,
+		0.0073,
+		0.0074,
+		0.0071,
+		0.0061,
+		0.0056
+	};
+	double PbPb_v24pt6_ye2[9] = {
+		0.0018,
+		0.0033,
+		0.0049,
+		0.0059,
+		0.0061,
+		0.006,
+		0.0056,
+		0.0047,
+		0.0045
+	};
+
+	double PbPb_v22pt5_ye2[9] = {
+		0.002  ,
+		0.0038,
+		0.0059,
+		0.0071,
+		0.0076,
+		0.0077,
+		0.0073,
+		0.0068,
+		0.006
+	};
+	double PbPb_v24pt5_ye2[9] = {
+		0.0019,
+		0.0034,
+		0.0051,
+		0.006,
+		0.0063,
+		0.0062,
+		0.0058,
+		0.0048,
+		0.0046
+	};
+
+	TGraphErrors * gr_HIN_13_002_PbPbv22pt8s = new TGraphErrors(9, pPb_v22pt_x, PbPb_v22pt8_y, sysPtWidth, PbPb_v22pt8_ye2);
+	TGraphErrors * gr_HIN_13_002_PbPbv22pt7s = new TGraphErrors(9, pPb_v22pt_x, PbPb_v22pt7_y, sysPtWidth, PbPb_v22pt7_ye2);
+	TGraphErrors * gr_HIN_13_002_PbPbv22pt6s = new TGraphErrors(9, pPb_v22pt_x, PbPb_v22pt6_y, sysPtWidth, PbPb_v22pt6_ye2);
+	TGraphErrors * gr_HIN_13_002_PbPbv22pt5s = new TGraphErrors(9, pPb_v22pt_x, PbPb_v22pt5_y, sysPtWidth, PbPb_v22pt5_ye2);
+	TGraphErrors * gr_HIN_13_002_PbPbv24pt8s = new TGraphErrors(9, pPb_v22pt_x, PbPb_v24pt8_y, sysPtWidth, PbPb_v24pt8_ye2);
+	TGraphErrors * gr_HIN_13_002_PbPbv24pt7s = new TGraphErrors(9, pPb_v22pt_x, PbPb_v24pt7_y, sysPtWidth, PbPb_v24pt7_ye2);
+	TGraphErrors * gr_HIN_13_002_PbPbv24pt6s = new TGraphErrors(9, pPb_v22pt_x, PbPb_v24pt6_y, sysPtWidth, PbPb_v24pt6_ye2);
+	TGraphErrors * gr_HIN_13_002_PbPbv24pt5s = new TGraphErrors(9, pPb_v22pt_x, PbPb_v24pt5_y, sysPtWidth, PbPb_v24pt5_ye2);
+
 
 	gr_HIN_13_002_pPbv22pt8->SetMarkerStyle(kOpenCircle);
 	gr_HIN_13_002_pPbv22pt7->SetMarkerStyle(kOpenCircle);
@@ -1539,6 +1829,24 @@
 	gr_HIN_13_002_pPbv22pt6->SetLineColor(kRed);
 	gr_HIN_13_002_pPbv22pt5->SetLineColor(kRed);
 
+	gr_HIN_13_002_PbPbv22pt8->SetMarkerStyle(kOpenCircle);
+	gr_HIN_13_002_PbPbv22pt7->SetMarkerStyle(kOpenCircle);
+	gr_HIN_13_002_PbPbv22pt6->SetMarkerStyle(kOpenCircle);
+	gr_HIN_13_002_PbPbv22pt5->SetMarkerStyle(kOpenCircle);
+	gr_HIN_13_002_PbPbv22pt8->SetMarkerColor(kRed);
+	gr_HIN_13_002_PbPbv22pt7->SetMarkerColor(kRed);
+	gr_HIN_13_002_PbPbv22pt6->SetMarkerColor(kRed);
+	gr_HIN_13_002_PbPbv22pt5->SetMarkerColor(kRed);
+	gr_HIN_13_002_PbPbv22pt8->SetMarkerSize(2);
+	gr_HIN_13_002_PbPbv22pt7->SetMarkerSize(2);
+	gr_HIN_13_002_PbPbv22pt6->SetMarkerSize(2);
+	gr_HIN_13_002_PbPbv22pt5->SetMarkerSize(2);
+	gr_HIN_13_002_PbPbv22pt8->SetLineColor(kRed);
+	gr_HIN_13_002_PbPbv22pt7->SetLineColor(kRed);
+	gr_HIN_13_002_PbPbv22pt6->SetLineColor(kRed);
+	gr_HIN_13_002_PbPbv22pt5->SetLineColor(kRed);
+
+
 	gr_HIN_13_002_pPbv24pt8->SetMarkerStyle(kOpenSquare);
 	gr_HIN_13_002_pPbv24pt7->SetMarkerStyle(kOpenSquare);
 	gr_HIN_13_002_pPbv24pt6->SetMarkerStyle(kOpenSquare);
@@ -1555,6 +1863,24 @@
 	gr_HIN_13_002_pPbv24pt7->SetLineColor(kBlue);
 	gr_HIN_13_002_pPbv24pt6->SetLineColor(kBlue);
 	gr_HIN_13_002_pPbv24pt5->SetLineColor(kBlue);
+
+	gr_HIN_13_002_PbPbv24pt8->SetMarkerStyle(kOpenSquare);
+	gr_HIN_13_002_PbPbv24pt7->SetMarkerStyle(kOpenSquare);
+	gr_HIN_13_002_PbPbv24pt6->SetMarkerStyle(kOpenSquare);
+	gr_HIN_13_002_PbPbv24pt5->SetMarkerStyle(kOpenSquare);
+	gr_HIN_13_002_PbPbv24pt8->SetMarkerColor(kBlue);
+	gr_HIN_13_002_PbPbv24pt7->SetMarkerColor(kBlue);
+	gr_HIN_13_002_PbPbv24pt6->SetMarkerColor(kBlue);
+	gr_HIN_13_002_PbPbv24pt5->SetMarkerColor(kBlue);
+	gr_HIN_13_002_PbPbv24pt8->SetMarkerSize(2);
+	gr_HIN_13_002_PbPbv24pt7->SetMarkerSize(2);
+	gr_HIN_13_002_PbPbv24pt6->SetMarkerSize(2);
+	gr_HIN_13_002_PbPbv24pt5->SetMarkerSize(2);
+	gr_HIN_13_002_PbPbv24pt8->SetLineColor(kBlue);
+	gr_HIN_13_002_PbPbv24pt7->SetLineColor(kBlue);
+	gr_HIN_13_002_PbPbv24pt6->SetLineColor(kBlue);
+	gr_HIN_13_002_PbPbv24pt5->SetLineColor(kBlue);
+
 
 	gr_HIN_13_002_pPbv22pt8s->SetMarkerStyle(kOpenCircle);
 	gr_HIN_13_002_pPbv22pt7s->SetMarkerStyle(kOpenCircle);
@@ -1577,6 +1903,26 @@
 	gr_HIN_13_002_pPbv22pt6s->SetFillColor(kGray);
 	gr_HIN_13_002_pPbv22pt5s->SetFillColor(kGray);
 
+	gr_HIN_13_002_PbPbv22pt8s->SetMarkerStyle(kOpenCircle);
+	gr_HIN_13_002_PbPbv22pt7s->SetMarkerStyle(kOpenCircle);
+	gr_HIN_13_002_PbPbv22pt6s->SetMarkerStyle(kOpenCircle);
+	gr_HIN_13_002_PbPbv22pt5s->SetMarkerStyle(kOpenCircle);
+	gr_HIN_13_002_PbPbv22pt8s->SetMarkerColor(kRed);
+	gr_HIN_13_002_PbPbv22pt7s->SetMarkerColor(kRed);
+	gr_HIN_13_002_PbPbv22pt6s->SetMarkerColor(kRed);
+	gr_HIN_13_002_PbPbv22pt5s->SetMarkerColor(kRed);
+	gr_HIN_13_002_PbPbv22pt8s->SetMarkerSize(2);
+	gr_HIN_13_002_PbPbv22pt7s->SetMarkerSize(2);
+	gr_HIN_13_002_PbPbv22pt6s->SetMarkerSize(2);
+	gr_HIN_13_002_PbPbv22pt5s->SetMarkerSize(2);
+	gr_HIN_13_002_PbPbv22pt8s->SetLineColor(kRed);
+	gr_HIN_13_002_PbPbv22pt7s->SetLineColor(kRed);
+	gr_HIN_13_002_PbPbv22pt6s->SetLineColor(kRed);
+	gr_HIN_13_002_PbPbv22pt5s->SetLineColor(kRed);
+	gr_HIN_13_002_PbPbv22pt8s->SetFillColor(kGray);
+	gr_HIN_13_002_PbPbv22pt7s->SetFillColor(kGray);
+	gr_HIN_13_002_PbPbv22pt6s->SetFillColor(kGray);
+	gr_HIN_13_002_PbPbv22pt5s->SetFillColor(kGray);
 
 
 	gr_HIN_13_002_pPbv24pt8s->SetMarkerStyle(kOpenSquare);
@@ -1599,6 +1945,29 @@
 	gr_HIN_13_002_pPbv24pt7s->SetFillColor(kGray);
 	gr_HIN_13_002_pPbv24pt6s->SetFillColor(kGray);
 	gr_HIN_13_002_pPbv24pt5s->SetFillColor(kGray);
+
+	gr_HIN_13_002_PbPbv24pt8s->SetMarkerStyle(kOpenSquare);
+	gr_HIN_13_002_PbPbv24pt7s->SetMarkerStyle(kOpenSquare);
+	gr_HIN_13_002_PbPbv24pt6s->SetMarkerStyle(kOpenSquare);
+	gr_HIN_13_002_PbPbv24pt5s->SetMarkerStyle(kOpenSquare);
+	gr_HIN_13_002_PbPbv24pt8s->SetMarkerColor(kBlue);
+	gr_HIN_13_002_PbPbv24pt7s->SetMarkerColor(kBlue);
+	gr_HIN_13_002_PbPbv24pt6s->SetMarkerColor(kBlue);
+	gr_HIN_13_002_PbPbv24pt5s->SetMarkerColor(kBlue);
+	gr_HIN_13_002_PbPbv24pt8s->SetMarkerSize(2);
+	gr_HIN_13_002_PbPbv24pt7s->SetMarkerSize(2);
+	gr_HIN_13_002_PbPbv24pt6s->SetMarkerSize(2);
+	gr_HIN_13_002_PbPbv24pt5s->SetMarkerSize(2);
+	gr_HIN_13_002_PbPbv24pt8s->SetLineColor(kBlue);
+	gr_HIN_13_002_PbPbv24pt7s->SetLineColor(kBlue);
+	gr_HIN_13_002_PbPbv24pt6s->SetLineColor(kBlue);
+	gr_HIN_13_002_PbPbv24pt5s->SetLineColor(kBlue);
+	gr_HIN_13_002_PbPbv24pt8s->SetFillColor(kGray);
+	gr_HIN_13_002_PbPbv24pt7s->SetFillColor(kGray);
+	gr_HIN_13_002_PbPbv24pt6s->SetFillColor(kGray);
+	gr_HIN_13_002_PbPbv24pt5s->SetFillColor(kGray);
+
+
 
 	TMultiGraph * mgr_HIN_13_002_pPbv22pt8 = new TMultiGraph();
 	TMultiGraph * mgr_HIN_13_002_pPbv22pt7 = new TMultiGraph();
@@ -1639,5 +2008,48 @@
 	mgr_HIN13002_pPbPt[2][1][5] = mgr_HIN_13_002_pPbv24pt6;
 	mgr_HIN13002_pPbPt[2][1][6] = mgr_HIN_13_002_pPbv24pt7;
 	mgr_HIN13002_pPbPt[2][1][7] = mgr_HIN_13_002_pPbv24pt8;
+
+
+
+	TMultiGraph * mgr_HIN_13_002_PbPbv22pt8 = new TMultiGraph();
+	TMultiGraph * mgr_HIN_13_002_PbPbv22pt7 = new TMultiGraph();
+	TMultiGraph * mgr_HIN_13_002_PbPbv22pt6 = new TMultiGraph();
+	TMultiGraph * mgr_HIN_13_002_PbPbv22pt5 = new TMultiGraph();
+	TMultiGraph * mgr_HIN_13_002_PbPbv24pt8 = new TMultiGraph();
+	TMultiGraph * mgr_HIN_13_002_PbPbv24pt7 = new TMultiGraph();
+	TMultiGraph * mgr_HIN_13_002_PbPbv24pt6 = new TMultiGraph();
+	TMultiGraph * mgr_HIN_13_002_PbPbv24pt5 = new TMultiGraph();
+
+	mgr_HIN_13_002_PbPbv22pt8->Add(gr_HIN_13_002_PbPbv22pt8s, "[]2");
+	mgr_HIN_13_002_PbPbv22pt8->Add(gr_HIN_13_002_PbPbv22pt8, "p");
+	mgr_HIN_13_002_PbPbv22pt7->Add(gr_HIN_13_002_PbPbv22pt7s, "[]2");
+	mgr_HIN_13_002_PbPbv22pt7->Add(gr_HIN_13_002_PbPbv22pt7, "p");
+	mgr_HIN_13_002_PbPbv22pt6->Add(gr_HIN_13_002_PbPbv22pt6s, "[]2");
+	mgr_HIN_13_002_PbPbv22pt6->Add(gr_HIN_13_002_PbPbv22pt6, "p");
+	mgr_HIN_13_002_PbPbv22pt5->Add(gr_HIN_13_002_PbPbv22pt5s, "[]2");
+	mgr_HIN_13_002_PbPbv22pt5->Add(gr_HIN_13_002_PbPbv22pt5, "p");
+
+	mgr_HIN_13_002_PbPbv24pt8->Add(gr_HIN_13_002_PbPbv24pt8s, "[]2");
+	mgr_HIN_13_002_PbPbv24pt8->Add(gr_HIN_13_002_PbPbv24pt8, "p");
+	mgr_HIN_13_002_PbPbv24pt7->Add(gr_HIN_13_002_PbPbv24pt7s, "[]2");
+	mgr_HIN_13_002_PbPbv24pt7->Add(gr_HIN_13_002_PbPbv24pt7, "p");
+	mgr_HIN_13_002_PbPbv24pt6->Add(gr_HIN_13_002_PbPbv24pt6s, "[]2");
+	mgr_HIN_13_002_PbPbv24pt6->Add(gr_HIN_13_002_PbPbv24pt6, "p");
+	mgr_HIN_13_002_PbPbv24pt5->Add(gr_HIN_13_002_PbPbv24pt5s, "[]2");
+	mgr_HIN_13_002_PbPbv24pt5->Add(gr_HIN_13_002_PbPbv24pt5, "p");
+
+
+	TMultiGraph * mgr_HIN13002_PbPbPt[7][4][20];
+	memset(mgr_HIN13002_PbPbPt, 0, sizeof(mgr_HIN13002_PbPbPt));
+
+	mgr_HIN13002_PbPbPt[2][0][4] = mgr_HIN_13_002_PbPbv22pt5;
+	mgr_HIN13002_PbPbPt[2][0][5] = mgr_HIN_13_002_PbPbv22pt6;
+	mgr_HIN13002_PbPbPt[2][0][6] = mgr_HIN_13_002_PbPbv22pt7;
+	mgr_HIN13002_PbPbPt[2][0][7] = mgr_HIN_13_002_PbPbv22pt8;
+
+	mgr_HIN13002_PbPbPt[2][1][4] = mgr_HIN_13_002_PbPbv24pt5;
+	mgr_HIN13002_PbPbPt[2][1][5] = mgr_HIN_13_002_PbPbv24pt6;
+	mgr_HIN13002_PbPbPt[2][1][6] = mgr_HIN_13_002_PbPbv24pt7;
+	mgr_HIN13002_PbPbPt[2][1][7] = mgr_HIN_13_002_PbPbv24pt8;
 
 }
