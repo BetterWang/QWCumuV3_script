@@ -12,3 +12,4 @@ test*.C
 batch*
 LSF*
 core.*
+*.mat

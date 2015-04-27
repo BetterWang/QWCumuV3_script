@@ -1,20 +1,20 @@
 
 {
 #include "label.h"
-//	int s1 = 12; // black
-	int s1 = 110; // black
+	int s1 = 12; // black
+//	int s1 = 109; // black
 	int s2 = 110; // green
 	int s3 = 110; // cyan
-	int s4 = 110; // red
-	int s5 = 110; // blue
+	int s4 = 114; // red
+	int s5 = 118; // blue
 
 	bool b1 = 1;
 	bool b2 = 0;
 	bool b3 = 0;
-	bool b4 = 0;
-	bool b5 = 0;
+	bool b4 = 1;
+	bool b5 = 1;
 
-	bool bfit = 1;
+	bool bfit = 0;
 	bool bfit2 = 0;
 
 	TF1 *finputv2 = new TF1("finputv2", "0.165646*exp(-( (x-2.64741)/1.36298 + exp( -(x-2.64741)/1.36298 ) )/2.)", 0.2, 15);
