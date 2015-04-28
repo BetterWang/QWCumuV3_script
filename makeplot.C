@@ -4,8 +4,8 @@
 #include "noff.h"
 #include "style.h"
 
-	int s1 = 109; // PbPb
-//	int s1 = 12; // pPb
+//	int s1 = 109; // PbPb
+	int s1 = 139; // pPb
 	int s2 = 1; // 1: C, 0:V
 
 	int bPbPb = 0;
