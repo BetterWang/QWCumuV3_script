@@ -140,6 +140,10 @@ char * fname[] = {
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_cm1_rereco_v18/",			// 137 pPb HLT std colsed rfp24 poi24, v18
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_cm1_reverse_v18/",			// 138 pPb HLT std colsed rfp24 poi24, v18
 	"NA",									// 139 pPb HLT std colsed rfp24 poi24, v18
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_Prompt_cm1/",			// 140 pPb HLT std colsed rfp24 poi24, Prompt
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_Prompt_cm1_rereco/",		// 141 pPb HLT std colsed rfp24 poi24, Prompt
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_Prompt_cm1_reverse/",		// 142 pPb HLT std colsed rfp24 poi24, Prompt
+	"NA",									// 143 pPb HLT std colsed rfp24 poi24, Prompt
 };
 
 char * ftxt[] = {
@@ -283,6 +287,10 @@ char * ftxt[] = {
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_cm1_rereco_v18/",			// 137
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_cm1_reverse_v18/",			// 138
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_cm1_v18_full/",			// 139
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_Prompt_cm1/",				// 140
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_Prompt_cm1_rereco/",			// 141
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_Prompt_cm1_reverse/",			// 142
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_Prompt_cm1_full/",			// 143
 };
 
 void addchain(int s1)
