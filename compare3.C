@@ -1,12 +1,37 @@
 
 {
 #include "label.h"
-	int s1 = 12; // black
-//	int s1 = 109; // black
-	int s2 = 110; // green
-	int s3 = 110; // cyan
-	int s4 = 114; // red
-	int s5 = 118; // blue
+//	int s1 = 12; // black
+//	int s2 = 12; // green
+//	int s3 = 12; // cyan
+//	int s4 = 114; // red
+//	int s5 = 118; // blue
+
+	int s1 = 109; // black
+	int s2 = 109; // green
+	int s3 = 109; // cyan
+	int s4 = 127; // red
+	int s5 = 128; // blue
+
+	int cent4 = 4;
+	// 7 = 120 - 150;
+	// 6 = 150 - 185;
+	// 5 = 185 - 220;
+	// 4 = 220 - 260;
+	int cent6 = 6;
+	int cent8 = 5;
+	if ( cent4 == 6 ) {
+		cent6 = 5;
+		cent8 = 4;
+	}
+	if ( cent4 == 5 ) {
+		cent6 = 4;
+		cent8 = 3;
+	}
+	if ( cent4 == 4 ) {
+		cent6 = 3;
+		cent8 = 2;
+	}
 
 	bool b1 = 1;
 	bool b2 = 0;
@@ -33,56 +58,56 @@
 //	string v22pt2, v24pt2, v26pt2, v28pt2, v22eta2, v24eta2, v26wta2, v28eta2;
 //	string v22pt3, v24pt3, v26pt3, v28pt3, v22eta3, v24eta3, v26wta3, v28eta3;
 
-	TGraphErrors * gr_v22_1 = (TGraphErrors*) f1->Get("gr_vnPtC_2_0_6");
-	TGraphErrors * gr_v24_1 = (TGraphErrors*) f1->Get("gr_vnPtC_2_1_6");
-	TGraphErrors * gr_v26_1 = (TGraphErrors*) f1->Get("gr_vnPtC_2_2_5");
-	TGraphErrors * gr_v28_1 = (TGraphErrors*) f1->Get("gr_vnPtC_2_3_3");
+	TGraphErrors * gr_v22_1 = (TGraphErrors*) f1->Get(Form("gr_vnPtC_2_0_%i", cent4));
+	TGraphErrors * gr_v24_1 = (TGraphErrors*) f1->Get(Form("gr_vnPtC_2_1_%i", cent4));
+	TGraphErrors * gr_v26_1 = (TGraphErrors*) f1->Get(Form("gr_vnPtC_2_2_%i", cent6));
+	TGraphErrors * gr_v28_1 = (TGraphErrors*) f1->Get(Form("gr_vnPtC_2_3_%i", cent8));
 
-	TGraphErrors * gr_v22_2 = (TGraphErrors*) f2->Get("gr_vnPtC_2_0_6");
-	TGraphErrors * gr_v24_2 = (TGraphErrors*) f2->Get("gr_vnPtC_2_1_6");
-	TGraphErrors * gr_v26_2 = (TGraphErrors*) f2->Get("gr_vnPtC_2_2_5");
-	TGraphErrors * gr_v28_2 = (TGraphErrors*) f2->Get("gr_vnPtC_2_3_3");
+	TGraphErrors * gr_v22_2 = (TGraphErrors*) f2->Get(Form("gr_vnPtC_2_0_%i", cent4));
+	TGraphErrors * gr_v24_2 = (TGraphErrors*) f2->Get(Form("gr_vnPtC_2_1_%i", cent4));
+	TGraphErrors * gr_v26_2 = (TGraphErrors*) f2->Get(Form("gr_vnPtC_2_2_%i", cent6));
+	TGraphErrors * gr_v28_2 = (TGraphErrors*) f2->Get(Form("gr_vnPtC_2_3_%i", cent8));
 
-	TGraphErrors * gr_v22_3 = (TGraphErrors*) f3->Get("gr_vnPtC_2_0_6");
-	TGraphErrors * gr_v24_3 = (TGraphErrors*) f3->Get("gr_vnPtC_2_1_6");
-	TGraphErrors * gr_v26_3 = (TGraphErrors*) f3->Get("gr_vnPtC_2_2_5");
-	TGraphErrors * gr_v28_3 = (TGraphErrors*) f3->Get("gr_vnPtC_2_3_3");
+	TGraphErrors * gr_v22_3 = (TGraphErrors*) f3->Get(Form("gr_vnPtC_2_0_%i", cent4));
+	TGraphErrors * gr_v24_3 = (TGraphErrors*) f3->Get(Form("gr_vnPtC_2_1_%i", cent4));
+	TGraphErrors * gr_v26_3 = (TGraphErrors*) f3->Get(Form("gr_vnPtC_2_2_%i", cent6));
+	TGraphErrors * gr_v28_3 = (TGraphErrors*) f3->Get(Form("gr_vnPtC_2_3_%i", cent8));
 
-	TGraphErrors * gr_v22_4 = (TGraphErrors*) f4->Get("gr_vnPtC_2_0_6");
-	TGraphErrors * gr_v24_4 = (TGraphErrors*) f4->Get("gr_vnPtC_2_1_6");
-	TGraphErrors * gr_v26_4 = (TGraphErrors*) f4->Get("gr_vnPtC_2_2_5");
-	TGraphErrors * gr_v28_4 = (TGraphErrors*) f4->Get("gr_vnPtC_2_3_3");
+	TGraphErrors * gr_v22_4 = (TGraphErrors*) f4->Get(Form("gr_vnPtC_2_0_%i", cent4));
+	TGraphErrors * gr_v24_4 = (TGraphErrors*) f4->Get(Form("gr_vnPtC_2_1_%i", cent4));
+	TGraphErrors * gr_v26_4 = (TGraphErrors*) f4->Get(Form("gr_vnPtC_2_2_%i", cent6));
+	TGraphErrors * gr_v28_4 = (TGraphErrors*) f4->Get(Form("gr_vnPtC_2_3_%i", cent8));
 
-	TGraphErrors * gr_v22_5 = (TGraphErrors*) f5->Get("gr_vnPtC_2_0_6");
-	TGraphErrors * gr_v24_5 = (TGraphErrors*) f5->Get("gr_vnPtC_2_1_6");
-	TGraphErrors * gr_v26_5 = (TGraphErrors*) f5->Get("gr_vnPtC_2_2_5");
-	TGraphErrors * gr_v28_5 = (TGraphErrors*) f5->Get("gr_vnPtC_2_3_3");
+	TGraphErrors * gr_v22_5 = (TGraphErrors*) f5->Get(Form("gr_vnPtC_2_0_%i", cent4));
+	TGraphErrors * gr_v24_5 = (TGraphErrors*) f5->Get(Form("gr_vnPtC_2_1_%i", cent4));
+	TGraphErrors * gr_v26_5 = (TGraphErrors*) f5->Get(Form("gr_vnPtC_2_2_%i", cent6));
+	TGraphErrors * gr_v28_5 = (TGraphErrors*) f5->Get(Form("gr_vnPtC_2_3_%i", cent8));
 
 
-	TGraphErrors * gr_v22eta_1 = (TGraphErrors*) f1->Get("gr_vnEtaC_2_0_6");
-	TGraphErrors * gr_v24eta_1 = (TGraphErrors*) f1->Get("gr_vnEtaC_2_1_6");
-	TGraphErrors * gr_v26eta_1 = (TGraphErrors*) f1->Get("gr_vnEtaC_2_2_5");
-	TGraphErrors * gr_v28eta_1 = (TGraphErrors*) f1->Get("gr_vnEtaC_2_3_3");
+	TGraphErrors * gr_v22eta_1 = (TGraphErrors*) f1->Get(Form("gr_vnEtaC_2_0_%i", cent4));
+	TGraphErrors * gr_v24eta_1 = (TGraphErrors*) f1->Get(Form("gr_vnEtaC_2_1_%i", cent4));
+	TGraphErrors * gr_v26eta_1 = (TGraphErrors*) f1->Get(Form("gr_vnEtaC_2_2_%i", cent6));
+	TGraphErrors * gr_v28eta_1 = (TGraphErrors*) f1->Get(Form("gr_vnEtaC_2_3_%i", cent8));
 
-	TGraphErrors * gr_v22eta_2 = (TGraphErrors*) f2->Get("gr_vnEtaC_2_0_6");
-	TGraphErrors * gr_v24eta_2 = (TGraphErrors*) f2->Get("gr_vnEtaC_2_1_6");
-	TGraphErrors * gr_v26eta_2 = (TGraphErrors*) f2->Get("gr_vnEtaC_2_2_5");
-	TGraphErrors * gr_v28eta_2 = (TGraphErrors*) f2->Get("gr_vnEtaC_2_3_3");
+	TGraphErrors * gr_v22eta_2 = (TGraphErrors*) f2->Get(Form("gr_vnEtaC_2_0_%i", cent4));
+	TGraphErrors * gr_v24eta_2 = (TGraphErrors*) f2->Get(Form("gr_vnEtaC_2_1_%i", cent4));
+	TGraphErrors * gr_v26eta_2 = (TGraphErrors*) f2->Get(Form("gr_vnEtaC_2_2_%i", cent6));
+	TGraphErrors * gr_v28eta_2 = (TGraphErrors*) f2->Get(Form("gr_vnEtaC_2_3_%i", cent8));
 
-	TGraphErrors * gr_v22eta_3 = (TGraphErrors*) f3->Get("gr_vnEtaC_2_0_6");
-	TGraphErrors * gr_v24eta_3 = (TGraphErrors*) f3->Get("gr_vnEtaC_2_1_6");
-	TGraphErrors * gr_v26eta_3 = (TGraphErrors*) f3->Get("gr_vnEtaC_2_2_5");
-	TGraphErrors * gr_v28eta_3 = (TGraphErrors*) f3->Get("gr_vnEtaC_2_3_3");
+	TGraphErrors * gr_v22eta_3 = (TGraphErrors*) f3->Get(Form("gr_vnEtaC_2_0_%i", cent4));
+	TGraphErrors * gr_v24eta_3 = (TGraphErrors*) f3->Get(Form("gr_vnEtaC_2_1_%i", cent4));
+	TGraphErrors * gr_v26eta_3 = (TGraphErrors*) f3->Get(Form("gr_vnEtaC_2_2_%i", cent6));
+	TGraphErrors * gr_v28eta_3 = (TGraphErrors*) f3->Get(Form("gr_vnEtaC_2_3_%i", cent8));
 
-	TGraphErrors * gr_v22eta_4 = (TGraphErrors*) f4->Get("gr_vnEtaC_2_0_6");
-	TGraphErrors * gr_v24eta_4 = (TGraphErrors*) f4->Get("gr_vnEtaC_2_1_6");
-	TGraphErrors * gr_v26eta_4 = (TGraphErrors*) f4->Get("gr_vnEtaC_2_2_5");
-	TGraphErrors * gr_v28eta_4 = (TGraphErrors*) f4->Get("gr_vnEtaC_2_3_3");
+	TGraphErrors * gr_v22eta_4 = (TGraphErrors*) f4->Get(Form("gr_vnEtaC_2_0_%i", cent4));
+	TGraphErrors * gr_v24eta_4 = (TGraphErrors*) f4->Get(Form("gr_vnEtaC_2_1_%i", cent4));
+	TGraphErrors * gr_v26eta_4 = (TGraphErrors*) f4->Get(Form("gr_vnEtaC_2_2_%i", cent6));
+	TGraphErrors * gr_v28eta_4 = (TGraphErrors*) f4->Get(Form("gr_vnEtaC_2_3_%i", cent8));
 
-	TGraphErrors * gr_v22eta_5 = (TGraphErrors*) f5->Get("gr_vnEtaC_2_0_6");
-	TGraphErrors * gr_v24eta_5 = (TGraphErrors*) f5->Get("gr_vnEtaC_2_1_6");
-	TGraphErrors * gr_v26eta_5 = (TGraphErrors*) f5->Get("gr_vnEtaC_2_2_5");
-	TGraphErrors * gr_v28eta_5 = (TGraphErrors*) f5->Get("gr_vnEtaC_2_3_3");
+	TGraphErrors * gr_v22eta_5 = (TGraphErrors*) f5->Get(Form("gr_vnEtaC_2_0_%i", cent4));
+	TGraphErrors * gr_v24eta_5 = (TGraphErrors*) f5->Get(Form("gr_vnEtaC_2_1_%i", cent4));
+	TGraphErrors * gr_v26eta_5 = (TGraphErrors*) f5->Get(Form("gr_vnEtaC_2_2_%i", cent6));
+	TGraphErrors * gr_v28eta_5 = (TGraphErrors*) f5->Get(Form("gr_vnEtaC_2_3_%i", cent8));
 
 	gr_v22_1->SetMarkerStyle(kFullCircle);
 	gr_v22_1->SetMarkerColor(kBlack);
@@ -230,7 +255,7 @@
 	if ( bfit ) finputv2->Draw("same");
 	if ( bfit2 ) finputv2D2->Draw("same");
 	hframe_pt->GetYaxis()->SetTitle("v_{2}{2}");
-	cT->SaveAs(Form("compV22_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
+	cT->SaveAs(Form("compV22_%i_%i_%i_%i_%i_%i.pdf", cent4, s1, s2, s3, s4, s5));
 
 	hframe_pt->Draw();
 	if ( b1 ) gr_v24_1->Draw("Psame");
@@ -241,7 +266,7 @@
 	if ( bfit ) finputv2->Draw("same");
 	if ( bfit2 ) finputv2D2->Draw("same");
 	hframe_pt->GetYaxis()->SetTitle("v_{2}{4}");
-	cT->SaveAs(Form("compV24_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
+	cT->SaveAs(Form("compV24_%i_%i_%i_%i_%i_%i.pdf", cent4, s1, s2, s3, s4, s5));
 
 	hframe_pt->Draw();
 	if ( b1 ) gr_v26_1->Draw("Psame");
@@ -252,7 +277,7 @@
 	if ( bfit ) finputv2->Draw("same");
 	if ( bfit2 ) finputv2D2->Draw("same");
 	hframe_pt->GetYaxis()->SetTitle("v_{2}{6}");
-	cT->SaveAs(Form("compV26_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
+	cT->SaveAs(Form("compV26_%i_%i_%i_%i_%i_%i.pdf", cent4, s1, s2, s3, s4, s5));
 
 	hframe_pt->Draw();
 	if ( b1 ) gr_v28_1->Draw("Psame");
@@ -263,7 +288,7 @@
 	if ( bfit ) finputv2->Draw("same");
 	if ( bfit2 ) finputv2D2->Draw("same");
 	hframe_pt->GetYaxis()->SetTitle("v_{2}{8}");
-	cT->SaveAs(Form("compV28_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
+	cT->SaveAs(Form("compV28_%i_%i_%i_%i_%i_%i.pdf", cent4, s1, s2, s3, s4, s5));
 
 
 	TH2D * hframe_eta = new TH2D("hframe_eta", "", 1, -2.5, 2.5, 1, 0, 0.15);
@@ -276,7 +301,7 @@
 	if ( b4 ) gr_v22eta_4->Draw("Psame");
 	if ( b5 ) gr_v22eta_5->Draw("Psame");
 	hframe_eta->GetYaxis()->SetTitle("v_{2}{2}");
-	cT->SaveAs(Form("compV22eta_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
+	cT->SaveAs(Form("compV22eta_%i_%i_%i_%i_%i_%i.pdf", cent4, s1, s2, s3, s4, s5));
 
 	hframe_eta->Draw();
 	if ( b1 ) gr_v24eta_1->Draw("Psame");
@@ -285,7 +310,7 @@
 	if ( b4 ) gr_v24eta_4->Draw("Psame");
 	if ( b5 ) gr_v24eta_5->Draw("Psame");
 	hframe_eta->GetYaxis()->SetTitle("v_{2}{4}");
-	cT->SaveAs(Form("compV24eta_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
+	cT->SaveAs(Form("compV24eta_%i_%i_%i_%i_%i_%i.pdf", cent4, s1, s2, s3, s4, s5));
 
 	hframe_eta->Draw();
 	if ( b1 ) gr_v26eta_1->Draw("Psame");
@@ -294,7 +319,7 @@
 	if ( b4 ) gr_v26eta_4->Draw("Psame");
 	if ( b5 ) gr_v26eta_5->Draw("Psame");
 	hframe_eta->GetYaxis()->SetTitle("v_{2}{6}");
-	cT->SaveAs(Form("compV26eta_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
+	cT->SaveAs(Form("compV26eta_%i_%i_%i_%i_%i_%i.pdf", cent4, s1, s2, s3, s4, s5));
 
 	hframe_eta->Draw();
 	if ( b1 ) gr_v28eta_1->Draw("Psame");
@@ -303,7 +328,7 @@
 	if ( b4 ) gr_v28eta_4->Draw("Psame");
 	if ( b5 ) gr_v28eta_5->Draw("Psame");
 	hframe_eta->GetYaxis()->SetTitle("v_{2}{8}");
-	cT->SaveAs(Form("compV28eta_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
+	cT->SaveAs(Form("compV28eta_%i_%i_%i_%i_%i_%i.pdf", cent4, s1, s2, s3, s4, s5));
 
 
 	double x[24], y[24], ey[24];
@@ -344,74 +369,74 @@
 
 	hframe_etaratio->Draw();
 	gr_v24eta_4r->Draw("Psame");
-	cT->SaveAs(Form("compV24etar_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
+	cT->SaveAs(Form("compV24etar_%i_%i_%i_%i_%i_%i.pdf", cent4, s1, s2, s3, s4, s5));
 
 	hframe_etaratio->Draw();
 	gr_v26eta_4r->Draw("Psame");
-	cT->SaveAs(Form("compV26etar_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
+	cT->SaveAs(Form("compV26etar_%i_%i_%i_%i_%i_%i.pdf", cent4, s1, s2, s3, s4, s5));
 
 	hframe_etaratio->Draw();
 	gr_v28eta_4r->Draw("Psame");
-	cT->SaveAs(Form("compV28etar_%i_%i_%i_%i_%i.pdf", s1, s2, s3, s4, s5));
+	cT->SaveAs(Form("compV28etar_%i_%i_%i_%i_%i_%i.pdf", cent4, s1, s2, s3, s4, s5));
 
-	TFile * fsave = new TFile("graph.root","recreate");
-	gr_v22_1->SetName("gr_v22_1");
-	gr_v24_1->SetName("gr_v24_1");
-	gr_v26_1->SetName("gr_v26_1");
-	gr_v28_1->SetName("gr_v28_1");
-
-	gr_v22_4->SetName("gr_v22_4");
-	gr_v24_4->SetName("gr_v24_4");
-	gr_v26_4->SetName("gr_v26_4");
-	gr_v28_4->SetName("gr_v28_4");
-
-	gr_v22_5->SetName("gr_v22_5");
-	gr_v24_5->SetName("gr_v24_5");
-	gr_v26_5->SetName("gr_v26_5");
-	gr_v28_5->SetName("gr_v28_5");
-
-	gr_v22eta_1->SetName("gr_v22eta_1");
-	gr_v24eta_1->SetName("gr_v24eta_1");
-	gr_v26eta_1->SetName("gr_v26eta_1");
-	gr_v28eta_1->SetName("gr_v28eta_1");
-
-	gr_v22eta_4->SetName("gr_v22eta_4");
-	gr_v24eta_4->SetName("gr_v24eta_4");
-	gr_v26eta_4->SetName("gr_v26eta_4");
-	gr_v28eta_4->SetName("gr_v28eta_4");
-
-	gr_v22eta_5->SetName("gr_v22eta_5");
-	gr_v24eta_5->SetName("gr_v24eta_5");
-	gr_v26eta_5->SetName("gr_v26eta_5");
-	gr_v28eta_5->SetName("gr_v28eta_5");
-
-	gr_v22_1->Write();
-	gr_v24_1->Write();
-	gr_v26_1->Write();
-	gr_v28_1->Write();
-
-	gr_v22_4->Write();
-	gr_v24_4->Write();
-	gr_v26_4->Write();
-	gr_v28_4->Write();
-
-	gr_v22_5->Write();
-	gr_v24_5->Write();
-	gr_v26_5->Write();
-	gr_v28_5->Write();
-
-	gr_v22eta_1->Write();
-	gr_v24eta_1->Write();
-	gr_v26eta_1->Write();
-	gr_v28eta_1->Write();
-
-	gr_v22eta_4->Write();
-	gr_v24eta_4->Write();
-	gr_v26eta_4->Write();
-	gr_v28eta_4->Write();
-
-	gr_v22eta_5->Write();
-	gr_v24eta_5->Write();
-	gr_v26eta_5->Write();
-	gr_v28eta_5->Write();
+//	TFile * fsave = new TFile("graph.root","recreate");
+//	gr_v22_1->SetName("gr_v22_1");
+//	gr_v24_1->SetName("gr_v24_1");
+//	gr_v26_1->SetName("gr_v26_1");
+//	gr_v28_1->SetName("gr_v28_1");
+//
+//	gr_v22_4->SetName("gr_v22_4");
+//	gr_v24_4->SetName("gr_v24_4");
+//	gr_v26_4->SetName("gr_v26_4");
+//	gr_v28_4->SetName("gr_v28_4");
+//
+//	gr_v22_5->SetName("gr_v22_5");
+//	gr_v24_5->SetName("gr_v24_5");
+//	gr_v26_5->SetName("gr_v26_5");
+//	gr_v28_5->SetName("gr_v28_5");
+//
+//	gr_v22eta_1->SetName("gr_v22eta_1");
+//	gr_v24eta_1->SetName("gr_v24eta_1");
+//	gr_v26eta_1->SetName("gr_v26eta_1");
+//	gr_v28eta_1->SetName("gr_v28eta_1");
+//
+//	gr_v22eta_4->SetName("gr_v22eta_4");
+//	gr_v24eta_4->SetName("gr_v24eta_4");
+//	gr_v26eta_4->SetName("gr_v26eta_4");
+//	gr_v28eta_4->SetName("gr_v28eta_4");
+//
+//	gr_v22eta_5->SetName("gr_v22eta_5");
+//	gr_v24eta_5->SetName("gr_v24eta_5");
+//	gr_v26eta_5->SetName("gr_v26eta_5");
+//	gr_v28eta_5->SetName("gr_v28eta_5");
+//
+//	gr_v22_1->Write();
+//	gr_v24_1->Write();
+//	gr_v26_1->Write();
+//	gr_v28_1->Write();
+//
+//	gr_v22_4->Write();
+//	gr_v24_4->Write();
+//	gr_v26_4->Write();
+//	gr_v28_4->Write();
+//
+//	gr_v22_5->Write();
+//	gr_v24_5->Write();
+//	gr_v26_5->Write();
+//	gr_v28_5->Write();
+//
+//	gr_v22eta_1->Write();
+//	gr_v24eta_1->Write();
+//	gr_v26eta_1->Write();
+//	gr_v28eta_1->Write();
+//
+//	gr_v22eta_4->Write();
+//	gr_v24eta_4->Write();
+//	gr_v26eta_4->Write();
+//	gr_v28eta_4->Write();
+//
+//	gr_v22eta_5->Write();
+//	gr_v24eta_5->Write();
+//	gr_v26eta_5->Write();
+//	gr_v28eta_5->Write();
 }
