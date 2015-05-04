@@ -243,7 +243,7 @@
 	SetStyle();
 	TCanvas * cT = MakeCanvas("cT", "cT", 600, 500);
 
-	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 12, 1, 0, 0.35);
+	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 5.9, 1, 0, 0.35);
 	InitHist(hframe_pt, "p_{T} (GeV/c)", "v_{2}");
 
 	hframe_pt->Draw();

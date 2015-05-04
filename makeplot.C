@@ -5,7 +5,9 @@
 #include "style.h"
 
 //	int s1 = 109; // PbPb
-	int s1 = 139; // pPb
+//	int s1 = 139; // pPb
+//	int s1 = 143; // pPb
+	int s1 = 12; // pPb
 	int s2 = 1; // 1: C, 0:V
 
 	int bPbPb = 0;
@@ -180,5 +182,89 @@
 
 
 	cT->SaveAs(Form("eta_%i.pdf", s1));
+
+	TFile *fsave = new TFile("fsave.root","recreate");
+	gr_vnPt[2][0][7]->SetName("v2Pt_2_120");
+	gr_vnPt[2][1][7]->SetName("v2Pt_4_120");
+	gr_vnPt[2][2][6]->SetName("v2Pt_6_120");
+	gr_vnPt[2][3][5]->SetName("v2Pt_8_120");
+
+	gr_vnPt[2][0][6]->SetName("v2Pt_2_150");
+	gr_vnPt[2][1][6]->SetName("v2Pt_4_150");
+	gr_vnPt[2][2][5]->SetName("v2Pt_6_150");
+	gr_vnPt[2][3][4]->SetName("v2Pt_8_150");
+
+	gr_vnPt[2][0][5]->SetName("v2Pt_2_185");
+	gr_vnPt[2][1][5]->SetName("v2Pt_4_185");
+	gr_vnPt[2][2][4]->SetName("v2Pt_6_185");
+	gr_vnPt[2][3][3]->SetName("v2Pt_8_185");
+
+	gr_vnPt[2][0][4]->SetName("v2Pt_2_220");
+	gr_vnPt[2][1][4]->SetName("v2Pt_4_220");
+	gr_vnPt[2][2][3]->SetName("v2Pt_6_220");
+	gr_vnPt[2][3][2]->SetName("v2Pt_8_220");
+
+
+	gr_vnPt[2][0][7]->Write();
+	gr_vnPt[2][1][7]->Write();
+	gr_vnPt[2][2][6]->Write();
+	gr_vnPt[2][3][5]->Write();
+
+	gr_vnPt[2][0][6]->Write();
+	gr_vnPt[2][1][6]->Write();
+	gr_vnPt[2][2][5]->Write();
+	gr_vnPt[2][3][4]->Write();
+
+	gr_vnPt[2][0][5]->Write();
+	gr_vnPt[2][1][5]->Write();
+	gr_vnPt[2][2][4]->Write();
+	gr_vnPt[2][3][3]->Write();
+
+	gr_vnPt[2][0][4]->Write();
+	gr_vnPt[2][1][4]->Write();
+	gr_vnPt[2][2][3]->Write();
+	gr_vnPt[2][3][2]->Write();
+
+
+	gr_vnEta[2][0][7]->SetName("v2Eta_2_120");
+	gr_vnEta[2][1][7]->SetName("v2Eta_4_120");
+	gr_vnEta[2][2][6]->SetName("v2Eta_6_120");
+	gr_vnEta[2][3][5]->SetName("v2Eta_8_120");
+
+	gr_vnEta[2][0][6]->SetName("v2Eta_2_150");
+	gr_vnEta[2][1][6]->SetName("v2Eta_4_150");
+	gr_vnEta[2][2][5]->SetName("v2Eta_6_150");
+	gr_vnEta[2][3][4]->SetName("v2Eta_8_150");
+
+	gr_vnEta[2][0][5]->SetName("v2Eta_2_185");
+	gr_vnEta[2][1][5]->SetName("v2Eta_4_185");
+	gr_vnEta[2][2][4]->SetName("v2Eta_6_185");
+	gr_vnEta[2][3][3]->SetName("v2Eta_8_185");
+
+	gr_vnEta[2][0][4]->SetName("v2Eta_2_220");
+	gr_vnEta[2][1][4]->SetName("v2Eta_4_220");
+	gr_vnEta[2][2][3]->SetName("v2Eta_6_220");
+	gr_vnEta[2][3][2]->SetName("v2Eta_8_220");
+
+	gr_vnEta[2][0][7]->Write();
+	gr_vnEta[2][1][7]->Write();
+	gr_vnEta[2][2][6]->Write();
+	gr_vnEta[2][3][5]->Write();
+
+	gr_vnEta[2][0][6]->Write();
+	gr_vnEta[2][1][6]->Write();
+	gr_vnEta[2][2][5]->Write();
+	gr_vnEta[2][3][4]->Write();
+
+	gr_vnEta[2][0][5]->Write();
+	gr_vnEta[2][1][5]->Write();
+	gr_vnEta[2][2][4]->Write();
+	gr_vnEta[2][3][3]->Write();
+
+	gr_vnEta[2][0][4]->Write();
+	gr_vnEta[2][1][4]->Write();
+	gr_vnEta[2][2][3]->Write();
+	gr_vnEta[2][3][2]->Write();
+
 
 }
