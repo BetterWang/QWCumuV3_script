@@ -168,6 +168,11 @@
 		addchain(141);
 		addchain(142);
 	} else
+	if ( s1 == 147 ) {
+		addchain(144);
+		addchain(145);
+		addchain(146);
+	} else
 	{
 		addchain(s1);
 	}

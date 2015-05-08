@@ -49,10 +49,17 @@ for i = 1:size(str,1)
 			fprintf(fid, "\t%f\t", mx(rol, col));
 			if col != size(mx, 2)
 				fprintf(fid, "&");
+			else
+				fprintf(fid, "\\\\ \\hline");
 			end
 		end
 		fprintf(fid, "\n");
 	end
+	fprintf(fid, "avg\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t%f", mean(mx(:,6)));
+	if size(mx, 2) ==9
+		fprintf(fid, "\t\t\t\t\t\t\t\t%f", mean(mx(:,9)));
+	end
+	fprintf(fid, "\n");
 	fprintf(fid, "\n");
 end
 fclose(fid);

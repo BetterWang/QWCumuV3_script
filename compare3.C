@@ -1,11 +1,6 @@
 
 {
 #include "label.h"
-//	int s1 = 12; // black
-//	int s2 = 12; // green
-//	int s3 = 12; // cyan
-//	int s4 = 114; // red
-//	int s5 = 118; // blue
 
 	int s1 = 109; // black
 	int s2 = 109; // green

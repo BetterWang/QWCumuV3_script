@@ -144,6 +144,10 @@ char * fname[] = {
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_Prompt_cm1_rereco/",		// 141 pPb HLT std colsed rfp24 poi24, Prompt
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_Prompt_cm1_reverse/",		// 142 pPb HLT std colsed rfp24 poi24, Prompt
 	"NA",									// 143 pPb HLT std colsed rfp24 poi24, Prompt
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_sysHLT/",				// 144 pPb HLT std colsed rfp24 poi24, HLT trigger
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_sysHLT_rereco/",			// 145 pPb HLT std colsed rfp24 poi24, HLT trigger
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_sysHLT_reverse/",			// 146 pPb HLT std colsed rfp24 poi24, HLT trigger
+	"NA",									// 147 pPb HLT std colsed rfp24 poi24, HLT trigger
 };
 
 char * ftxt[] = {
@@ -291,6 +295,10 @@ char * ftxt[] = {
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_Prompt_cm1_rereco/",			// 141
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_Prompt_cm1_reverse/",			// 142
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_Prompt_cm1_full/",			// 143
+	"txt/pPb/pPb_HLT_rfp24_Noff_noacc_eff_sysHLT/",				// 144
+	"txt/pPb/pPb_HLT_rfp24_Noff_noacc_eff_sysHLT_rereco/",			// 145
+	"txt/pPb/pPb_HLT_rfp24_Noff_noacc_eff_sysHLT_reverse/",			// 146
+	"txt/pPb/pPb_HLT_rfp24_Noff_noacc_eff_sysHLT_full/",			// 147
 };
 
 void addchain(int s1)
