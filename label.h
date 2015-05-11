@@ -148,6 +148,14 @@ char * fname[] = {
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_sysHLT_rereco/",			// 145 pPb HLT std colsed rfp24 poi24, HLT trigger
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_sysHLT_reverse/",			// 146 pPb HLT std colsed rfp24 poi24, HLT trigger
 	"NA",									// 147 pPb HLT std colsed rfp24 poi24, HLT trigger
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_sysPU/",				// 148 pPb HLT std colsed rfp24 poi24, PU rejection, single vtx
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_sysPU_rereco/",			// 149 pPb HLT std colsed rfp24 poi24, PU rejection, single vtx
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_sysPU_reverse/",			// 150 pPb HLT std colsed rfp24 poi24, PU rejection, single vtx
+	"NA",									// 151 pPb HLT std colsed rfp24 poi24,
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_sysGT/",				// 152 pPb HLT std colsed rfp24 poi24, GR_P_V43D::All
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_sysGT_rereco/",			// 153 pPb HLT std colsed rfp24 poi24, GR_P_V43D::All
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_sysGT_reverse/",			// 154 pPb HLT std colsed rfp24 poi24, GR_P_V43D::All
+	"NA",									// 155 pPb HLT std colsed rfp24 poi24,
 };
 
 char * ftxt[] = {
@@ -295,10 +303,18 @@ char * ftxt[] = {
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_Prompt_cm1_rereco/",			// 141
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_Prompt_cm1_reverse/",			// 142
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_Prompt_cm1_full/",			// 143
-	"txt/pPb/pPb_HLT_rfp24_Noff_noacc_eff_sysHLT/",				// 144
-	"txt/pPb/pPb_HLT_rfp24_Noff_noacc_eff_sysHLT_rereco/",			// 145
-	"txt/pPb/pPb_HLT_rfp24_Noff_noacc_eff_sysHLT_reverse/",			// 146
-	"txt/pPb/pPb_HLT_rfp24_Noff_noacc_eff_sysHLT_full/",			// 147
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_sysHLT/",				// 144
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_sysHLT_rereco/",			// 145
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_sysHLT_reverse/",			// 146
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_sysHLT_full/",			// 147
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_sysPU/",				// 148
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_sysPU_rereco/",			// 149
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_sysPU_reverse/",			// 150
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_sysPU_full/",				// 151
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_sysGT/",				// 152
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_sysGT_rereco/",			// 153
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_sysGT_reverse/",			// 154
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_sysGT_full/",				// 155
 };
 
 void addchain(int s1)

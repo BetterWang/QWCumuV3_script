@@ -173,6 +173,16 @@
 		addchain(145);
 		addchain(146);
 	} else
+	if ( s1 == 151 ) {
+		addchain(148);
+		addchain(149);
+		addchain(150);
+	} else
+	if ( s1 == 155 ) {
+		addchain(152);
+		addchain(153);
+		addchain(154);
+	} else
 	{
 		addchain(s1);
 	}
