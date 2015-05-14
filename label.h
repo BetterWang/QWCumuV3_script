@@ -152,9 +152,9 @@ char * fname[] = {
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_sysPU_rereco/",			// 149 pPb HLT std colsed rfp24 poi24, PU rejection, single vtx
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_sysPU_reverse/",			// 150 pPb HLT std colsed rfp24 poi24, PU rejection, single vtx
 	"NA",									// 151 pPb HLT std colsed rfp24 poi24,
-	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_sysGT/",				// 152 pPb HLT std colsed rfp24 poi24, GR_P_V43D::All
-	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_sysGT_rereco/",			// 153 pPb HLT std colsed rfp24 poi24, GR_P_V43D::All
-	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_sysGT_reverse/",			// 154 pPb HLT std colsed rfp24 poi24, GR_P_V43D::All
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_GT/",				// 152 pPb HLT std colsed rfp24 poi24, GR_P_V43D::All
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_GT_rereco/",			// 153 pPb HLT std colsed rfp24 poi24, GR_P_V43D::All
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_GT_reverse/",			// 154 pPb HLT std colsed rfp24 poi24, GR_P_V43D::All
 	"NA",									// 155 pPb HLT std colsed rfp24 poi24,
 };
 
@@ -311,10 +311,10 @@ char * ftxt[] = {
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_sysPU_rereco/",			// 149
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_sysPU_reverse/",			// 150
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_sysPU_full/",				// 151
-	"txt/pPb_HLT_rfp24_Noff_noacc_eff_sysGT/",				// 152
-	"txt/pPb_HLT_rfp24_Noff_noacc_eff_sysGT_rereco/",			// 153
-	"txt/pPb_HLT_rfp24_Noff_noacc_eff_sysGT_reverse/",			// 154
-	"txt/pPb_HLT_rfp24_Noff_noacc_eff_sysGT_full/",				// 155
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_GT/",					// 152
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_GT_rereco/",				// 153
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_GT_reverse/",				// 154
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_GT_full/",				// 155
 };
 
 void addchain(int s1)
