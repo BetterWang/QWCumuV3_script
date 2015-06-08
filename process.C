@@ -183,29 +183,64 @@
 		addchain(153);
 		addchain(154);
 	} else
+	if ( s1 == 159 ) {
+		addchain(156);
+		addchain(157);
+		addchain(158);
+	} else
+	if ( s1 == 163 ) {
+		addchain(160);
+		addchain(161);
+		addchain(162);
+	} else
+	if ( s1 == 167 ) {
+		addchain(164);
+		addchain(165);
+		addchain(166);
+	} else
+	if ( s1 == 171 ) {
+		addchain(168);
+		addchain(169);
+		addchain(170);
+	} else
+	if ( s1 == 175 ) {
+		addchain(172);
+		addchain(173);
+		addchain(174);
+	} else
+	if ( s1 == 179 ) {
+		addchain(176);
+		addchain(177);
+		addchain(178);
+	} else
+	if ( s1 == 183 ) {
+		addchain(180);
+		addchain(181);
+		addchain(182);
+	} else
 	{
 		addchain(s1);
 	}
 
 	int gNoff;
 	int gMult;
-	
+
 	double rQ[7][4];
 	double iQ[7][4];
 	double wQ[7][4];
-	
+
 	double rX[7][4];
 	double iX[7][4];
 	double wX[7][4];
-	
+
 	double rQp[7][4][24];
 	double iQp[7][4][24];
 	double wQp[7][4][24];
-	
+
 	double rQeta[7][4][24];
 	double iQeta[7][4][24];
 	double wQeta[7][4][24];
-	
+
 	double rQc[7][4][2];
 	double iQc[7][4][2];
 	double wQc[7][4][2];

@@ -156,6 +156,38 @@ char * fname[] = {
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_GT_rereco/",			// 153 pPb HLT std colsed rfp24 poi24, GR_P_V43D::All
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_GT_reverse/",			// 154 pPb HLT std colsed rfp24 poi24, GR_P_V43D::All
 	"NA",									// 155 pPb HLT std colsed rfp24 poi24,
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta0/",				// 156 pPb HLT std colsed rfp eta, -2.4, -1.8
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta0_rereco/",			// 157 pPb HLT std colsed rfp eta, -2.4, -1.8
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta0_reverse/",			// 158 pPb HLT std colsed rfp eta, -2.4, -1.8
+	"NA",									// 159 pPb HLT std colsed rfp eta, -2.4, -1.8
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta1/",				// 160 pPb HLT std colsed rfp eta, -1.8, -1.2
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta1_rereco/",			// 161 pPb HLT std colsed rfp eta, -1.8, -1.2
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta1_reverse/",			// 162 pPb HLT std colsed rfp eta, -1.8, -1.2
+	"NA",									// 163 pPb HLT std colsed rfp eta, -1.8, -1.2
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta2/",				// 164 pPb HLT std colsed rfp eta, -1.2, -0.6
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta2_rereco/",			// 165 pPb HLT std colsed rfp eta, -1.2, -0.6
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta2_reverse/",			// 166 pPb HLT std colsed rfp eta, -1.2, -0.6
+	"NA",									// 167 pPb HLT std colsed rfp eta, -1.2, -0.6
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta3/",				// 168 pPb HLT std colsed rfp eta, -0.6, -0.0
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta3_rereco/",			// 169 pPb HLT std colsed rfp eta, -0.6, -0.0
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta3_reverse/",			// 170 pPb HLT std colsed rfp eta, -0.6, -0.0
+	"NA",									// 171 pPb HLT std colsed rfp eta, -0.6, -0.0
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta4/",				// 172 pPb HLT std colsed rfp eta, -0.0, 0.6
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta4_rereco/",			// 173 pPb HLT std colsed rfp eta, -0.0, 0.6
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta4_reverse/",			// 174 pPb HLT std colsed rfp eta, -0.0, 0.6
+	"NA",									// 175 pPb HLT std colsed rfp eta, -0.0, 0.6
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta5/",				// 176 pPb HLT std colsed rfp eta, 0.6, 1.2
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta5_rereco/",			// 177 pPb HLT std colsed rfp eta, 0.6, 1.2
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta5_reverse/",			// 178 pPb HLT std colsed rfp eta, 0.6, 1.2
+	"NA",									// 179 pPb HLT std colsed rfp eta, 0.6, 1.2
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta6/",				// 180 pPb HLT std colsed rfp eta, 1.2, 1.8
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta6_rereco/",			// 181 pPb HLT std colsed rfp eta, 1.2, 1.8
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta6_reverse/",			// 182 pPb HLT std colsed rfp eta, 1.2, 1.8
+	"NA",									// 183 pPb HLT std colsed rfp eta, 1.2, 1.8
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta7/",				// 184 pPb HLT std colsed rfp eta, 1.8, 2.4
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta7_rereco/",			// 185 pPb HLT std colsed rfp eta, 1.8, 2.4
+	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta7_reverse/",			// 186 pPb HLT std colsed rfp eta, 1.8, 2.4
+	"NA",									// 187 pPb HLT std colsed rfp eta, 1.8, 2.4
 };
 
 char * ftxt[] = {
@@ -315,6 +347,38 @@ char * ftxt[] = {
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_GT_rereco/",				// 153
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_GT_reverse/",				// 154
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_GT_full/",				// 155
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta0/",				// 156
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta0_rereco/",			// 157
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta0_reverse/",			// 158
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta0_full/",				// 159
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta1/",				// 160
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta1_rereco/",			// 161
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta1_reverse/",			// 162
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta1_full/",				// 163
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta2/",				// 164
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta2_rereco/",			// 165
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta2_reverse/",			// 166
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta2_full/",				// 167
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta3/",				// 168
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta3_rereco/",			// 169
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta3_reverse/",			// 170
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta3_full/",				// 171
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta4/",				// 172
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta4_rereco/",			// 173
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta4_reverse/",			// 174
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta4_full/",				// 175
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta5/",				// 176
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta5_rereco/",			// 177
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta5_reverse/",			// 178
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta5_full/",				// 179
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta6/",				// 180
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta6_rereco/",			// 181
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta6_reverse/",			// 182
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta6_full/",				// 183
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta7/",				// 184
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta7_rereco/",			// 185
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta7_reverse/",			// 186
+	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta7_full/",				// 187
 };
 
 void addchain(int s1)
