@@ -188,6 +188,14 @@ char * fname[] = {
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta7_rereco/",			// 185 pPb HLT std colsed rfp eta, 1.8, 2.4
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_eta7_reverse/",			// 186 pPb HLT std colsed rfp eta, 1.8, 2.4
 	"NA",									// 187 pPb HLT std colsed rfp eta, 1.8, 2.4
+	"../pPb/PbPb_HLT_rfp24_Noff_noacc_eff_eta0/",				// 188 PbPb HLT std colsed rfp eta, -2.4, -1.8
+	"../pPb/PbPb_HLT_rfp24_Noff_noacc_eff_eta1/",				// 189 PbPb HLT std colsed rfp eta, -1.8, -1.2
+	"../pPb/PbPb_HLT_rfp24_Noff_noacc_eff_eta2/",				// 190 PbPb HLT std colsed rfp eta, -1.2, -0.6
+	"../pPb/PbPb_HLT_rfp24_Noff_noacc_eff_eta3/",				// 191 PbPb HLT std colsed rfp eta, -0.6, -0.0
+	"../pPb/PbPb_HLT_rfp24_Noff_noacc_eff_eta4/",				// 192 PbPb HLT std colsed rfp eta, 0.0, 0.6
+	"../pPb/PbPb_HLT_rfp24_Noff_noacc_eff_eta5/",				// 193 PbPb HLT std colsed rfp eta, 0.6, 1.2
+	"../pPb/PbPb_HLT_rfp24_Noff_noacc_eff_eta6/",				// 194 PbPb HLT std colsed rfp eta, 1.2, 1.8
+	"../pPb/PbPb_HLT_rfp24_Noff_noacc_eff_eta7/",				// 195 PbPb HLT std colsed rfp eta, 1.8, 2.4
 };
 
 char * ftxt[] = {
@@ -379,6 +387,14 @@ char * ftxt[] = {
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta7_rereco/",			// 185
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta7_reverse/",			// 186
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_eta7_full/",				// 187
+	"txt/PbPb_HLT_rfp24_Noff_noacc_eff_eta0/",				// 188
+	"txt/PbPb_HLT_rfp24_Noff_noacc_eff_eta1/",				// 189
+	"txt/PbPb_HLT_rfp24_Noff_noacc_eff_eta2/",				// 190
+	"txt/PbPb_HLT_rfp24_Noff_noacc_eff_eta3/",				// 191
+	"txt/PbPb_HLT_rfp24_Noff_noacc_eff_eta4/",				// 192
+	"txt/PbPb_HLT_rfp24_Noff_noacc_eff_eta5/",				// 193
+	"txt/PbPb_HLT_rfp24_Noff_noacc_eff_eta6/",				// 194
+	"txt/PbPb_HLT_rfp24_Noff_noacc_eff_eta7/",				// 195
 };
 
 void addchain(int s1)

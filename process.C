@@ -218,6 +218,11 @@
 		addchain(181);
 		addchain(182);
 	} else
+	if ( s1 == 187 ) {
+		addchain(184);
+		addchain(185);
+		addchain(186);
+	} else
 	{
 		addchain(s1);
 	}
