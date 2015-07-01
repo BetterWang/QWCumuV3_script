@@ -223,6 +223,36 @@
 		addchain(185);
 		addchain(186);
 	} else
+	if ( s1 == 205 ) {
+		addchain(202);
+		addchain(203);
+		addchain(204);
+	} else
+	if ( s1 == 209 ) {
+		addchain(206);
+		addchain(207);
+		addchain(208);
+	} else
+	if ( s1 == 213 ) {
+		addchain(210);
+		addchain(211);
+		addchain(212);
+	} else
+	if ( s1 == 217 ) {
+		addchain(214);
+		addchain(215);
+		addchain(216);
+	} else
+	if ( s1 == 221 ) {
+		addchain(218);
+		addchain(219);
+		addchain(220);
+	} else
+	if ( s1 == 225 ) {
+		addchain(222);
+		addchain(223);
+		addchain(224);
+	} else
 	{
 		addchain(s1);
 	}
