@@ -107,10 +107,10 @@
 				dV[fn][n][2][i] = V6;
 				dV[fn][n][3][i] = V8;
 	
-				C2 = dD[n][0][i];
-				C4 = dD[n][1][i];
-				C6 = dD[n][2][i];
-				C8 = dD[n][3][i];
+				C2 = dD[fn][n][0][i];
+				C4 = dD[fn][n][1][i];
+				C6 = dD[fn][n][2][i];
+				C8 = dD[fn][n][3][i];
 				if ( C2 > 0 ) V2 = pow(C2, 1./2); else V2 = -pow(-C2, 1./2);
 				if ( C4 > 0 ) V4 = -pow(C4, 1./4); else V4 = pow(-C4, 1./4);
 				if ( C6 > 0 ) V6 = pow(C6/4., 1./6); else V6 = -pow(-C6/4., 1./6);
