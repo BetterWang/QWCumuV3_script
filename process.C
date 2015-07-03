@@ -253,6 +253,16 @@
 		addchain(223);
 		addchain(224);
 	} else
+	if ( s1 == 229 ) {
+		addchain(226);
+		addchain(227);
+		addchain(228);
+	} else
+	if ( s1 == 233 ) {
+		addchain(230);
+		addchain(231);
+		addchain(232);
+	} else
 	{
 		addchain(s1);
 	}
