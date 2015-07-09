@@ -233,7 +233,7 @@ char * fname[] = {
 	"../pPb/pPb_HLT_rfpneg_Noff_noacc_eff_poi3/",				// 230 pPb HLT std colsed rfp eta, -2.4, 0., poi eta 1.2, 2.4
 	"../pPb/pPb_HLT_rfpneg_Noff_noacc_eff_poi3_rereco/",			// 231 pPb HLT std colsed rfp eta, -2.4, 0., poi eta 1.2, 2.4
 	"../pPb/pPb_HLT_rfpneg_Noff_noacc_eff_poi3_reverse/",			// 232 pPb HLT std colsed rfp eta, -2.4, 0., poi eta 1.2, 2.4
-	"../pPb/pPb_HLT_rfpneg_Noff_noacc_eff_poi3_full/",			// 233 pPb HLT std colsed rfp eta, -2.4, 0., poi eta 1.2, 2.4
+	"NA",									// 233 pPb HLT std colsed rfp eta, -2.4, 0., poi eta 1.2, 2.4
 };
 
 char * ftxt[] = {
