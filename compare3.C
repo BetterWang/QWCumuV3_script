@@ -2,13 +2,13 @@
 {
 #include "label.h"
 
-	int s1 = 109; // black
-	int s2 = 109; // green
+	int s1 = 58; // black
+	int s2 = 74; // green
 	int s3 = 109; // cyan
-	int s4 = 127; // red
-	int s5 = 128; // blue
+	int s4 = 70; // red
+	int s5 = 86; // blue
 
-	int cent4 = 4;
+	int cent4 = 5;
 	// 7 = 120 - 150;
 	// 6 = 150 - 185;
 	// 5 = 185 - 220;
@@ -29,7 +29,7 @@
 	}
 
 	bool b1 = 1;
-	bool b2 = 0;
+	bool b2 = 1;
 	bool b3 = 0;
 	bool b4 = 1;
 	bool b5 = 1;

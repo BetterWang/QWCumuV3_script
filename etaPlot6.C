@@ -1,25 +1,21 @@
 {
 #include "label.h"
-	int s0 = 159;
-	int s1 = 163;
-	int s2 = 167;
-	int s3 = 171;
-	int s4 = 175;
-	int s5 = 179;
-	int s6 = 183;
-	int s7 = 187;
+	int s0 = 196;
+	int s1 = 197;
+	int s2 = 198;
+	int s3 = 199;
+	int s4 = 200;
+	int s5 = 201;
 //	int s0 = 188;
 //	int s1 = 189;
 //	int s2 = 190;
 //	int s3 = 191;
 //	int s4 = 192;
 //	int s5 = 193;
-//	int s6 = 194;
-//	int s7 = 195;
 
 	int sn = 2;
 
-	int cent4 = 4;
+	int cent4 = 5;
 	// 7 = 120 - 150;
 	// 6 = 150 - 185;
 	// 5 = 185 - 220;
@@ -49,14 +45,12 @@
 	f[3] = new TFile(Form("%s/outputE.root", ftxt[s3]));
 	f[4] = new TFile(Form("%s/outputE.root", ftxt[s4]));
 	f[5] = new TFile(Form("%s/outputE.root", ftxt[s5]));
-	f[6] = new TFile(Form("%s/outputE.root", ftxt[s6]));
-	f[7] = new TFile(Form("%s/outputE.root", ftxt[s7]));
 
-	TH1D * hV[7][4][8] = {};
+	TH1D * hV[7][4][6] = {};
 
 	for ( int n = 1; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
-			for ( int eta = 0; eta < 8; eta++ ) {
+			for ( int eta = 0; eta < 6; eta++ ) {
 				hV[n][np][eta] = (TH1D*)f[eta]->Get(Form("hcV%i%i", n, 2+2*np));
 			}
 		}
@@ -66,7 +60,7 @@
 	double eVn[4][8][20];
 
 	for ( int np = 0; np < 4; np++ ) {
-		for ( int eta = 0; eta < 8; eta++ ) {
+		for ( int eta = 0; eta < 6; eta++ ) {
 			for ( int i = 0; i < 20; i++ ) {
 				dVn[np][eta][i] = hV[sn][np][eta]->GetBinContent(i+1);
 				eVn[np][eta][i] = hV[sn][np][eta]->GetBinError(i+1);
@@ -76,17 +70,17 @@
 
 	TGraphErrors * grVn[4][20] = {};
 
-	double Xeta[8] = {2.1, 1.5, 0.9, 0.3, -0.3, -0.9, -1.5, -2.1};
-	double Y[8];
-	double eY[8];
+	double Xeta[6] = {2.0, 1.2, 0.4, -0.4, -1.2, -2.0};
+	double Y[6];
+	double eY[6];
 
 	for ( int np = 0; np < 4; np++ ) {
 		for ( int c = 0; c < 20; c++ ) {
-			for ( int i = 0; i < 8; i++ ) {
+			for ( int i = 0; i < 6; i++ ) {
 				Y[i] = dVn[np][i][c];
 				eY[i] = eVn[np][i][c];
 			}
-			grVn[np][c] = new TGraphErrors(8, Xeta, Y, 0, eY);
+			grVn[np][c] = new TGraphErrors(6, Xeta, Y, 0, eY);
 		}
 	}
 	for ( int c = 0; c < 20; c++ ) {
