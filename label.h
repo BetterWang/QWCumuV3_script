@@ -196,12 +196,12 @@ char * fname[] = {
 	"../pPb/PbPb_HLT_rfp24_Noff_noacc_eff_eta5/",				// 193 PbPb HLT std colsed rfp eta, 0.6, 1.2
 	"../pPb/PbPb_HLT_rfp24_Noff_noacc_eff_eta6/",				// 194 PbPb HLT std colsed rfp eta, 1.2, 1.8
 	"../pPb/PbPb_HLT_rfp24_Noff_noacc_eff_eta7/",				// 195 PbPb HLT std colsed rfp eta, 1.8, 2.4
-	"../MC/PionFlatPt_ref_etaR0/",						// 196 flat pT pion rfp eta, -2.4, -1.6
-	"../MC/PionFlatPt_ref_etaR1/",						// 197 flat pT pion rfp eta, -1.6, -0.8
-	"../MC/PionFlatPt_ref_etaR2/",						// 198 flat pT pion rfp eta, -0.8, 0.
-	"../MC/PionFlatPt_ref_etaR3/",						// 199 flat pT pion rfp eta, 0.0, 0.8
-	"../MC/PionFlatPt_ref_etaR4/",						// 200 flat pT pion rfp eta, 0.8, 1.6
-	"../MC/PionFlatPt_ref_etaR5/",						// 201 flat pT pion rfp eta, 1.6, 2.4
+	"../MC/PionExpoPt_ref_etaR0/",						// 196 flat pT pion rfp eta, -2.4, -1.6
+	"../MC/PionExpoPt_ref_etaR1/",						// 197 flat pT pion rfp eta, -1.6, -0.8
+	"../MC/PionExpoPt_ref_etaR2/",						// 198 flat pT pion rfp eta, -0.8, 0.
+	"../MC/PionExpoPt_ref_etaR3/",						// 199 flat pT pion rfp eta, 0.0, 0.8
+	"../MC/PionExpoPt_ref_etaR4/",						// 200 flat pT pion rfp eta, 0.8, 1.6
+	"../MC/PionPt_ref_etaR5/",						// 201 flat pT pion rfp eta, 1.6, 2.4
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_etaR0/",				// 202 pPb HLT std colsed rfp eta, -2.4, -1.6
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_etaR0_rereco/",			// 203 pPb HLT std colsed rfp eta, -2.4, -1.6
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_etaR0_reverse/",			// 204 pPb HLT std colsed rfp eta, -2.4, -1.6
@@ -433,12 +433,12 @@ char * ftxt[] = {
 	"txt/PbPb_HLT_rfp24_Noff_noacc_eff_eta5/",				// 193
 	"txt/PbPb_HLT_rfp24_Noff_noacc_eff_eta6/",				// 194
 	"txt/PbPb_HLT_rfp24_Noff_noacc_eff_eta7/",				// 195
-	"txt/PionFlatPt_ref_etaR0/",						// 196
-	"txt/PionFlatPt_ref_etaR1/",						// 197
-	"txt/PionFlatPt_ref_etaR2/",						// 198
-	"txt/PionFlatPt_ref_etaR3/",						// 199
-	"txt/PionFlatPt_ref_etaR4/",						// 200
-	"txt/PionFlatPt_ref_etaR5/",						// 201
+	"txt/PionExpoPt_ref_etaR0/",						// 196
+	"txt/PionExpoPt_ref_etaR1/",						// 197
+	"txt/PionExpoPt_ref_etaR2/",						// 198
+	"txt/PionExpoPt_ref_etaR3/",						// 199
+	"txt/PionExpoPt_ref_etaR4/",						// 200
+	"txt/PionExpoPt_ref_etaR5/",						// 201
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_etaR0/",				// 202
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_etaR0_rereco/",			// 203
 	"txt/pPb_HLT_rfp24_Noff_noacc_eff_etaR0_reverse/",			// 204
