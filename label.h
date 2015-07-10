@@ -201,7 +201,7 @@ char * fname[] = {
 	"../MC/PionExpoPt_ref_etaR2/",						// 198 flat pT pion rfp eta, -0.8, 0.
 	"../MC/PionExpoPt_ref_etaR3/",						// 199 flat pT pion rfp eta, 0.0, 0.8
 	"../MC/PionExpoPt_ref_etaR4/",						// 200 flat pT pion rfp eta, 0.8, 1.6
-	"../MC/PionPt_ref_etaR5/",						// 201 flat pT pion rfp eta, 1.6, 2.4
+	"../MC/PionExpoPt_ref_etaR5/",						// 201 flat pT pion rfp eta, 1.6, 2.4
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_etaR0/",				// 202 pPb HLT std colsed rfp eta, -2.4, -1.6
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_etaR0_rereco/",			// 203 pPb HLT std colsed rfp eta, -2.4, -1.6
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_etaR0_reverse/",			// 204 pPb HLT std colsed rfp eta, -2.4, -1.6
