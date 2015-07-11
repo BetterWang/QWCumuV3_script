@@ -196,12 +196,12 @@ char * fname[] = {
 	"../pPb/PbPb_HLT_rfp24_Noff_noacc_eff_eta5/",				// 193 PbPb HLT std colsed rfp eta, 0.6, 1.2
 	"../pPb/PbPb_HLT_rfp24_Noff_noacc_eff_eta6/",				// 194 PbPb HLT std colsed rfp eta, 1.2, 1.8
 	"../pPb/PbPb_HLT_rfp24_Noff_noacc_eff_eta7/",				// 195 PbPb HLT std colsed rfp eta, 1.8, 2.4
-	"../MC/PionExpoPt_ref_etaR0/",						// 196 flat pT pion rfp eta, -2.4, -1.6
-	"../MC/PionExpoPt_ref_etaR1/",						// 197 flat pT pion rfp eta, -1.6, -0.8
-	"../MC/PionExpoPt_ref_etaR2/",						// 198 flat pT pion rfp eta, -0.8, 0.
-	"../MC/PionExpoPt_ref_etaR3/",						// 199 flat pT pion rfp eta, 0.0, 0.8
-	"../MC/PionExpoPt_ref_etaR4/",						// 200 flat pT pion rfp eta, 0.8, 1.6
-	"../MC/PionExpoPt_ref_etaR5/",						// 201 flat pT pion rfp eta, 1.6, 2.4
+	"../MC/PionExpoPt_ref_etaR0/",						// 196 Expo pT pion rfp eta, -2.4, -1.6
+	"../MC/PionExpoPt_ref_etaR1/",						// 197 Expo pT pion rfp eta, -1.6, -0.8
+	"../MC/PionExpoPt_ref_etaR2/",						// 198 Expo pT pion rfp eta, -0.8, 0.
+	"../MC/PionExpoPt_ref_etaR3/",						// 199 Expo pT pion rfp eta, 0.0, 0.8
+	"../MC/PionExpoPt_ref_etaR4/",						// 200 Expo pT pion rfp eta, 0.8, 1.6
+	"../MC/PionExpoPt_ref_etaR5/",						// 201 Expo pT pion rfp eta, 1.6, 2.4
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_etaR0/",				// 202 pPb HLT std colsed rfp eta, -2.4, -1.6
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_etaR0_rereco/",			// 203 pPb HLT std colsed rfp eta, -2.4, -1.6
 	"../pPb/pPb_HLT_rfp24_Noff_noacc_eff_etaR0_reverse/",			// 204 pPb HLT std colsed rfp eta, -2.4, -1.6
@@ -234,6 +234,10 @@ char * fname[] = {
 	"../pPb/pPb_HLT_rfpneg_Noff_noacc_eff_poi3_rereco/",			// 231 pPb HLT std colsed rfp eta, -2.4, 0., poi eta 1.2, 2.4
 	"../pPb/pPb_HLT_rfpneg_Noff_noacc_eff_poi3_reverse/",			// 232 pPb HLT std colsed rfp eta, -2.4, 0., poi eta 1.2, 2.4
 	"NA",									// 233 pPb HLT std colsed rfp eta, -2.4, 0., poi eta 1.2, 2.4
+	"../pPb/PbPb_HLT_rfppos_Noff_noacc_eff_poi0",				// 234 PbPb HLT std colsed rfp eta pos, poi eta -2.4, -1.2
+	"../pPb/PbPb_HLT_rfpneg_Noff_noacc_eff_poi3",				// 235 PbPb HLT std colsed rfp eta neg, poi eta 1.2, 2.4
+	"../MC/PionExpoPt_refpos_poi0/",					// 236 MC Expo pT std colsed rfp eta pos, poi eta -2.4, -1.2
+	"../MC/PionExpoPt_refneg_poi3/",					// 237 MC Expo pT std colsed rfp eta neg, poi eta 1.2, 2.4
 };
 
 char * ftxt[] = {
@@ -471,6 +475,10 @@ char * ftxt[] = {
 	"txt/pPb_HLT_rfpneg_Noff_noacc_eff_poi3_rereco/",			// 231
 	"txt/pPb_HLT_rfpneg_Noff_noacc_eff_poi3_reverse/",			// 232
 	"txt/pPb_HLT_rfpneg_Noff_noacc_eff_poi3_full/",				// 233
+	"txt/PbPb_HLT_rfppos_Noff_noacc_eff_poi0/",				// 234
+	"txt/PbPb_HLT_rfpneg_Noff_noacc_eff_poi3/",				// 235
+	"txt/PionExpoPt_refpos_poi0/",						// 236
+	"txt/PionExpoPt_refneg_poi3/",						// 237
 };
 
 void addchain(int s1)
