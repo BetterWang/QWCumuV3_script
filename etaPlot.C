@@ -19,7 +19,7 @@
 
 	int sn = 2;
 
-	int cent4 = 4;
+	int cent4 = 6;
 	// 7 = 120 - 150;
 	// 6 = 150 - 185;
 	// 5 = 185 - 220;
@@ -114,8 +114,8 @@
 	hframe_eta->Draw();
 	grVn[0][cent4]->Draw("Psame");
 	grVn[1][cent4]->Draw("Psame");
-	grVn[2][cent6]->Draw("Psame");
-	grVn[3][cent8]->Draw("Psame");
+//	grVn[2][cent6]->Draw("Psame");
+//	grVn[3][cent8]->Draw("Psame");
 
 	cT->SaveAs(Form("V2pA_rfp_eta_%i.pdf", cent4));
 }
