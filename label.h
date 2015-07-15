@@ -496,14 +496,14 @@ char * ftxt[] = {
 	"txt/PionExpoPt_refpos_poi3/",						// 239
 	"txt/PbPb_HLT_rfpneg_Noff_noacc_eff_poi0/",				// 240
 	"txt/PbPb_HLT_rfppos_Noff_noacc_eff_poi3/",				// 241
-	"txt/pPb/pPb_HLT_rfpneg_Noff_noacc_eff_poi0/",				// 242
-	"txt/pPb/pPb_HLT_rfpneg_Noff_noacc_eff_poi0_rereco/",			// 243
-	"txt/pPb/pPb_HLT_rfpneg_Noff_noacc_eff_poi0_reverse/",			// 244
-	"txt/pPb/pPb_HLT_rfpneg_Noff_noacc_eff_poi0_full/",			// 245
-	"txt/pPb/pPb_HLT_rfppos_Noff_noacc_eff_poi3/",				// 246
-	"txt/pPb/pPb_HLT_rfppos_Noff_noacc_eff_poi3_rereco/",			// 247
-	"txt/pPb/pPb_HLT_rfppos_Noff_noacc_eff_poi3_reverse/",			// 248
-	"txt/pPb/pPb_HLT_rfppos_Noff_noacc_eff_poi3_full/",			// 249
+	"txt/pPb_HLT_rfpneg_Noff_noacc_eff_poi0/",				// 242
+	"txt/pPb_HLT_rfpneg_Noff_noacc_eff_poi0_rereco/",			// 243
+	"txt/pPb_HLT_rfpneg_Noff_noacc_eff_poi0_reverse/",			// 244
+	"txt/pPb_HLT_rfpneg_Noff_noacc_eff_poi0_full/",				// 245
+	"txt/pPb_HLT_rfppos_Noff_noacc_eff_poi3/",				// 246
+	"txt/pPb_HLT_rfppos_Noff_noacc_eff_poi3_rereco/",			// 247
+	"txt/pPb_HLT_rfppos_Noff_noacc_eff_poi3_reverse/",			// 248
+	"txt/pPb_HLT_rfppos_Noff_noacc_eff_poi3_full/",				// 249
 
 
 };
