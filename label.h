@@ -250,6 +250,12 @@ char * fname[] = {
 	"../pPb/pPb_HLT_rfppos_Noff_noacc_eff_poi3_rereco/",			// 247 pPb HLT std colsed rfp eta, 0., 2.4, poi eta 1.2, 2.4
 	"../pPb/pPb_HLT_rfppos_Noff_noacc_eff_poi3_reverse/",			// 248 pPb HLT std colsed rfp eta, 0., 2.4, poi eta 1.2, 2.4
 	"NA",									// 249 pPb HLT std colsed rfp eta, 0., 2.4, poi eta 1.2, 2.4
+	"../MC/PionExpoPt_ref0_poi0_v2eta/",					// 250 Expo pT pion rfp eta v2, -2.4, -1.6
+	"../MC/PionExpoPt_ref1_poi1_v2eta/",					// 251 Expo pT pion rfp eta v2, -1.6, -0.8
+	"../MC/PionExpoPt_ref2_poi2_v2eta/",					// 252 Expo pT pion rfp eta v2, -0.8, -0.
+	"../MC/PionExpoPt_ref3_poi3_v2eta/",					// 253 Expo pT pion rfp eta v2, 0.0, 0.8
+	"../MC/PionExpoPt_ref4_poi4_v2eta/",					// 254 Expo pT pion rfp eta v2, 0.8, 1.6
+	"../MC/PionExpoPt_ref5_poi5_v2eta/",					// 255 Expo pT pion rfp eta v2, 1.6, 2.4
 
 };
 
@@ -504,7 +510,12 @@ char * ftxt[] = {
 	"txt/pPb_HLT_rfppos_Noff_noacc_eff_poi3_rereco/",			// 247
 	"txt/pPb_HLT_rfppos_Noff_noacc_eff_poi3_reverse/",			// 248
 	"txt/pPb_HLT_rfppos_Noff_noacc_eff_poi3_full/",				// 249
-
+	"txt/PionExpoPt_ref0_poi0_v2eta/",					// 250
+	"txt/PionExpoPt_ref1_poi1_v2eta/",					// 251
+	"txt/PionExpoPt_ref2_poi2_v2eta/",					// 252
+	"txt/PionExpoPt_ref3_poi3_v2eta/",					// 253
+	"txt/PionExpoPt_ref4_poi4_v2eta/",					// 254
+	"txt/PionExpoPt_ref5_poi5_v2eta/",					// 255
 
 };
 

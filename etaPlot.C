@@ -1,22 +1,22 @@
 {
 #include "label.h"
-//	int s0 = 188;
-//	int s1 = 189;
-//	int s2 = 190;
-//	int s3 = 191;
-//	int s4 = 192;
-//	int s5 = 193;
-//	int s6 = 194;
-//	int s7 = 195;
+	int s0 = 188;
+	int s1 = 189;
+	int s2 = 190;
+	int s3 = 191;
+	int s4 = 192;
+	int s5 = 193;
+	int s6 = 194;
+	int s7 = 195;
 
-	int s0 = 159;
-	int s1 = 163;
-	int s2 = 167;
-	int s3 = 171;
-	int s4 = 175;
-	int s5 = 179;
-	int s6 = 183;
-	int s7 = 187;
+//	int s0 = 159;
+//	int s1 = 163;
+//	int s2 = 167;
+//	int s3 = 171;
+//	int s4 = 175;
+//	int s5 = 179;
+//	int s6 = 183;
+//	int s7 = 187;
 
 	int sn = 2;
 
@@ -25,7 +25,7 @@
 	int b6 = 0;
 	int b8 = 0;
 
-	int cent4 = 3;
+	int cent4 = 7;
 	// 7 = 120 - 150;
 	// 6 = 150 - 185;
 	// 5 = 185 - 220;
@@ -50,6 +50,12 @@
 		cent8 = 1;
 	}
 
+	TString strNoff;
+	if (cent4 == 3) strNoff = "#bf{260 #leq N_{trk}^{offline} < 300}";
+	if (cent4 == 4) strNoff = "#bf{220 #leq N_{trk}^{offline} < 260}";
+	if (cent4 == 5) strNoff = "#bf{185 #leq N_{trk}^{offline} < 220}";
+	if (cent4 == 6) strNoff = "#bf{150 #leq N_{trk}^{offline} < 185}";
+	if (cent4 == 7) strNoff = "#bf{120 #leq N_{trk}^{offline} < 150}";
 
 #include "../../style.h"
 	SetStyle();
@@ -146,7 +152,13 @@
 		grCn[3][c]->SetLineColor(kRed);
 	}
 
+	TLatex latex;
+	latex.SetTextFont(43);
+	latex.SetTextSize(24);
+	latex.SetTextAlign(13);
+
 	TCanvas * cT = MakeCanvas("cT", "cT", 600, 500);
+	cT->SetTopMargin(0.04);
 
 	TH2D * hframe_eta = new TH2D("hframe_eta", "", 1, -2.5, 2.5, 1, 0, 0.15);
 	InitHist(hframe_eta, "#eta", "v_{2}");
@@ -157,10 +169,25 @@
 	if ( b6 ) grVn[2][cent6]->Draw("Psame");
 	if ( b8 ) grVn[3][cent8]->Draw("Psame");
 
-	TCanvas * cC = MakeCanvas("cC", "cC", 600, 500);
+	TLegend * legV2 = new TLegend(0.6, 0.2, 0.8, 0.35);
+	legV2->SetFillColor(kWhite);
+	legV2->SetTextFont(42);
+	legV2->SetTextSize(0.06);
+	legV2->SetBorderSize(0);
+	if ( b2 ) legV2->AddEntry(grVn[0][cent4], "v_{2}{2}", "p");
+	if ( b4 ) legV2->AddEntry(grVn[1][cent4], "v_{2}{4}", "p");
+	if ( b6 ) legV2->AddEntry(grVn[2][cent4], "v_{2}{6}", "p");
+	if ( b8 ) legV2->AddEntry(grVn[3][cent4], "v_{2}{8}", "p");
 
-	TH2D * hframe_etaC = new TH2D("hframe_etaC", "", 1, -2.5, 2.5, 1, -0.000058, 0.000058);
-	InitHist(hframe_etaC, "#eta", "c_{2}");
+	legV2->Draw();
+
+	latex.DrawLatexNDC(0.18, 0.27, strNoff);
+
+	TCanvas * cC = MakeCanvas("cC", "cC", 600, 500);
+	cT->SetTopMargin(0.04);
+
+	TH2D * hframe_etaC = new TH2D("hframe_etaC", "", 1, -2.5, 2.5, 1, -0.000068, 0.000058);
+	InitHist(hframe_etaC, "#eta", "c_{2}{4}");
 
 	TLine line(-2.5, 0, 2.5, 0);
 	line.SetLineStyle(kDashed);
@@ -172,8 +199,19 @@
 //	if ( b6 ) grCn[2][cent6]->Draw("Psame");
 //	if ( b8 ) grCn[3][cent8]->Draw("Psame");
 
-	cT->SaveAs(Form("V2pA_rfp_eta_%i.pdf", cent4));
-	cC->SaveAs(Form("C2pA_rfp_eta_%i.pdf", cent4));
+	TLegend * legC2 = new TLegend(0.2, 0.75, 0.5, 0.9);
+	legC2->SetFillColor(kWhite);
+	legC2->SetTextFont(42);
+	legC2->SetTextSize(0.06);
+	legC2->SetBorderSize(0);
+
+	legC2->AddEntry(grCn[1][cent4], "c_{2}{4}", "p");
+	legC2->Draw();
+
+	latex.DrawLatexNDC(0.58, 0.85, strNoff);
+
+	cT->SaveAs(Form("V2AA_rfp_eta_%i.pdf", cent4));
+	cC->SaveAs(Form("C2AA_rfp_eta_%i.pdf", cent4));
 
 //	grCn[1][3]->SetMarkerStyle(kOpenCircle);
 //	grCn[1][4]->SetMarkerStyle(kOpenSquare);
