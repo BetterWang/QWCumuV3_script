@@ -256,6 +256,7 @@ char * fname[] = {
 	"../MC/PionExpoPt_ref3_poi3_v2eta/",					// 253 Expo pT pion rfp eta v2, 0.0, 0.8
 	"../MC/PionExpoPt_ref4_poi4_v2eta/",					// 254 Expo pT pion rfp eta v2, 0.8, 1.6
 	"../MC/PionExpoPt_ref5_poi5_v2eta/",					// 255 Expo pT pion rfp eta v2, 1.6, 2.4
+	"../pPb/PbPb_HLT_rfp24_Noff_noacc_eff_sysPU/",				// 256 PbPb sysPU
 
 };
 
@@ -516,6 +517,7 @@ char * ftxt[] = {
 	"txt/PionExpoPt_ref3_poi3_v2eta/",					// 253
 	"txt/PionExpoPt_ref4_poi4_v2eta/",					// 254
 	"txt/PionExpoPt_ref5_poi5_v2eta/",					// 255
+	"txt/PbPb_HLT_rfp24_Noff_noacc_eff_sysPU/",				// 256
 
 };
 

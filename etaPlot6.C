@@ -1,18 +1,25 @@
 {
 #include "label.h"
-	int s0 = 196;
-	int s1 = 197;
-	int s2 = 198;
-	int s3 = 199;
-	int s4 = 200;
-	int s5 = 201;
+//	int s0 = 250;
+//	int s1 = 251;
+//	int s2 = 252;
+//	int s3 = 253;
+//	int s4 = 254;
+//	int s5 = 255;
 
-//	int s0 = 205;
-//	int s1 = 209;
-//	int s2 = 213;
-//	int s3 = 217;
-//	int s4 = 221;
-//	int s5 = 225;
+//	int s0 = 196;
+//	int s1 = 197;
+//	int s2 = 198;
+//	int s3 = 199;
+//	int s4 = 200;
+//	int s5 = 201;
+
+	int s0 = 205;
+	int s1 = 209;
+	int s2 = 213;
+	int s3 = 217;
+	int s4 = 221;
+	int s5 = 225;
 
 	int sn = 2;
 
@@ -21,7 +28,7 @@
 	int b6 = 0;
 	int b8 = 0;
 
-	int cent4 = 5;
+	int cent4 = 6;
 	// 7 = 120 - 150;
 	// 6 = 150 - 185;
 	// 5 = 185 - 220;
@@ -179,7 +186,7 @@
 	TCanvas * cC = MakeCanvas("cC", "cC", 600, 500);
 	cT->SetTopMargin(0.04);
 
-	TH2D * hframe_etaC = new TH2D("hframe_etaC", "", 1, -2.5, 2.5, 1, -0.000018, 0.000018);
+	TH2D * hframe_etaC = new TH2D("hframe_etaC", "", 1, -2.5, 2.5, 1, -0.000018, 0.000028);
 	InitHist(hframe_etaC, "#eta", "c_{2}{4}");
 
 	TLine line(-2.5, 0, 2.5, 0);
@@ -192,7 +199,7 @@
 //	if ( b6 ) grCn[2][cent6]->Draw("Psame");
 //	if ( b8 ) grCn[3][cent8]->Draw("Psame");
 
-	TLegend * legC2 = new TLegend(0.2, 0.75, 0.5, 0.9);
+	TLegend * legC2 = new TLegend(0.2, 0.8, 0.4, 0.9);
 	legC2->SetFillColor(kWhite);
 	legC2->SetTextFont(42);
 	legC2->SetTextSize(0.06);
@@ -232,4 +239,99 @@
 //	grCn[1][5]->Draw("Psame");
 //	grCn[1][6]->Draw("Psame");
 //	grCn[1][7]->Draw("Psame");
+
+
+	TCanvas* cN = MakeCanvas("cN", "cN", 1600, 500);
+	makeMultiPanelCanvas(cN, 4, 1, 0.0, 0., 0.15, 0.15, 0.01);
+	TH2D * hframe_etaN = new TH2D("hframe_etaN", "", 1, -2.5, 2.5, 1, 0, 0.19);
+	InitHist(hframe_etaN, "#eta", "v_{2}");
+	cN->cd(1);
+	hframe_etaN->Draw();
+	grVn[0][7]->Draw("Psame");
+	grVn[1][7]->Draw("Psame");
+
+	cN->cd(2);
+	hframe_etaN->Draw();
+	grVn[0][6]->Draw("Psame");
+	grVn[1][6]->Draw("Psame");
+
+	cN->cd(3);
+	hframe_etaN->Draw();
+	grVn[0][5]->Draw("Psame");
+	grVn[1][5]->Draw("Psame");
+
+	cN->cd(4);
+	hframe_etaN->Draw();
+	grVn[0][4]->Draw("Psame");
+	grVn[1][4]->Draw("Psame");
+
+	TLegend * legEta = new TLegend(0.05, 0.75, 0.3, 0.97);
+	legEta->SetFillColor(kWhite);
+	legEta->SetBorderSize(0);
+	legEta->AddEntry(grVn[0][4], "v_{2}{2}", "p");
+	legEta->AddEntry(grVn[1][4], "v_{2}{4}", "p");
+
+	TLatex latex;
+	latex.SetTextFont(43);
+	latex.SetTextSize(24);
+	latex.SetTextAlign(13);
+
+	cN->cd(1);
+	latex.DrawLatexNDC(0.20, 0.94, "#bf{CMS pPb #sqrt{s_{NN}} = 5.02 TeV}");
+	cN->cd(3);
+	legEta->Draw();
+
+	cN->cd(1);
+	latex.DrawLatexNDC(0.40, 0.24, "#bf{120 #leq N_{trk}^{offline} < 150}");
+	cN->cd(2);
+	latex.DrawLatexNDC(0.40, 0.24, "#bf{150 #leq N_{trk}^{offline} < 185}");
+	cN->cd(3);
+	latex.DrawLatexNDC(0.40, 0.24, "#bf{185 #leq N_{trk}^{offline} < 220}");
+	cN->cd(4);
+	latex.DrawLatexNDC(0.40, 0.24, "#bf{220 #leq N_{trk}^{offline} < 260}");
+
+	cN->SaveAs("eta_V2_pPb.pdf");
+
+	TCanvas* cNC = MakeCanvas("cNC", "cNC", 1600, 500);
+	makeMultiPanelCanvas(cNC, 4, 1, 0.0, 0., 0.15, 0.15, 0.05);
+	cNC->cd(1);
+	hframe_etaC->Draw();
+	line.Draw();
+	grCn[0][7]->Draw("Psame");
+	grCn[1][7]->Draw("Psame");
+
+	cNC->cd(2);
+	hframe_etaC->Draw();
+	line.Draw();
+	grCn[0][6]->Draw("Psame");
+	grCn[1][6]->Draw("Psame");
+
+	cNC->cd(3);
+	hframe_etaC->Draw();
+	line.Draw();
+	grCn[0][5]->Draw("Psame");
+	grCn[1][5]->Draw("Psame");
+
+	cNC->cd(4);
+	hframe_etaC->Draw();
+	line.Draw();
+	grCn[0][4]->Draw("Psame");
+	grCn[1][4]->Draw("Psame");
+
+	cNC->cd(1);
+	latex.DrawLatexNDC(0.20, 0.9, "#bf{CMS pPb #sqrt{s_{NN}} = 5.02 TeV}");
+
+	cNC->cd(3);
+	legC2->Draw();
+
+	cNC->cd(1);
+	latex.DrawLatexNDC(0.40, 0.24, "#bf{120 #leq N_{trk}^{offline} < 150}");
+	cNC->cd(2);
+	latex.DrawLatexNDC(0.40, 0.24, "#bf{150 #leq N_{trk}^{offline} < 185}");
+	cNC->cd(3);
+	latex.DrawLatexNDC(0.40, 0.24, "#bf{185 #leq N_{trk}^{offline} < 220}");
+	cNC->cd(4);
+	latex.DrawLatexNDC(0.40, 0.24, "#bf{220 #leq N_{trk}^{offline} < 260}");
+
+	cNC->SaveAs("eta_C2_pPb.pdf");
 }

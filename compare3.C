@@ -1,13 +1,13 @@
 {
 #include "label.h"
 
-	int s1 = 234; // black
-	int s2 = 235; // green
-	int s3 = 109; // cyan
-	int s4 = 240; // red
-	int s5 = 241; // blue
+	int s1 = 229; // black
+	int s2 = 245; // green
+	int s3 = 139; // cyan
+	int s4 = 249; // red
+	int s5 = 233; // blue
 
-	int cent4 = 5;
+	int cent4 = 7;
 	// 7 = 120 - 150;
 	// 6 = 150 - 185;
 	// 5 = 185 - 220;
@@ -28,10 +28,17 @@
 	}
 
 	bool b1 = 1;
-	bool b2 = 1;
-	bool b3 = 0;
-	bool b4 = 1;
+	bool b2 = 0;
+	bool b3 = 1;
+	bool b4 = 0;
 	bool b5 = 1;
+
+	bool bHIN = 1;
+	if (bHIN) {
+		gROOT->Macro("HIN-13-002.C");
+	}
+
+	bool bPbPb = 0;
 
 	bool bfit = 0;
 	bool bfit2 = 0;
@@ -102,6 +109,13 @@
 	TGraphErrors * gr_v24eta_5 = (TGraphErrors*) f5->Get(Form("gr_vnEtaC_2_1_%i", cent4));
 	TGraphErrors * gr_v26eta_5 = (TGraphErrors*) f5->Get(Form("gr_vnEtaC_2_2_%i", cent6));
 	TGraphErrors * gr_v28eta_5 = (TGraphErrors*) f5->Get(Form("gr_vnEtaC_2_3_%i", cent8));
+
+	TMultiGraph * mgr_v22_HIN = mgr_HIN13002_pPbPt[2][0][cent4];
+	TMultiGraph * mgr_v24_HIN = mgr_HIN13002_pPbPt[2][1][cent4];
+	if ( bPbPb ) {
+		mgr_v22_HIN = mgr_HIN13002_PbPbPt[2][0][cent4];
+		mgr_v24_HIN = mgr_HIN13002_PbPbPt[2][1][cent4];
+	}
 
 	gr_v22_1->SetMarkerStyle(kFullCircle);
 	gr_v22_1->SetMarkerColor(kBlack);
@@ -237,7 +251,7 @@
 	SetStyle();
 	TCanvas * cT = MakeCanvas("cT", "cT", 600, 500);
 
-	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 5.9, 1, 0, 0.35);
+	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 5.9, 1, 0, 0.15);
 	InitHist(hframe_pt, "p_{T} (GeV/c)", "v_{2}");
 
 	hframe_pt->Draw();
@@ -246,6 +260,7 @@
 	if ( b3 ) gr_v22_3->Draw("Psame");
 	if ( b4 ) gr_v22_4->Draw("Psame");
 	if ( b5 ) gr_v22_5->Draw("Psame");
+	if ( bHIN ) mgr_v22_HIN->Draw();
 	if ( bfit ) finputv2->Draw("same");
 	if ( bfit2 ) finputv2D2->Draw("same");
 	hframe_pt->GetYaxis()->SetTitle("v_{2}{2}");
@@ -257,6 +272,7 @@
 	if ( b3 ) gr_v24_3->Draw("Psame");
 	if ( b4 ) gr_v24_4->Draw("Psame");
 	if ( b5 ) gr_v24_5->Draw("Psame");
+	if ( bHIN ) mgr_v24_HIN->Draw();
 	if ( bfit ) finputv2->Draw("same");
 	if ( bfit2 ) finputv2D2->Draw("same");
 	hframe_pt->GetYaxis()->SetTitle("v_{2}{4}");

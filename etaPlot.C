@@ -239,4 +239,99 @@
 //	grCn[1][5]->Draw("Psame");
 //	grCn[1][6]->Draw("Psame");
 //	grCn[1][7]->Draw("Psame");
+
+	TCanvas* cN = MakeCanvas("cN", "cN", 1600, 500);
+	makeMultiPanelCanvas(cN, 4, 1, 0.0, 0., 0.15, 0.15, 0.01);
+	TH2D * hframe_etaN = new TH2D("hframe_etaN", "", 1, -2.5, 2.5, 1, 0, 0.19);
+	InitHist(hframe_etaN, "#eta", "v_{2}");
+	cN->cd(1);
+	hframe_etaN->Draw();
+	grVn[0][7]->Draw("Psame");
+	grVn[1][7]->Draw("Psame");
+
+	cN->cd(2);
+	hframe_etaN->Draw();
+	grVn[0][6]->Draw("Psame");
+	grVn[1][6]->Draw("Psame");
+
+	cN->cd(3);
+	hframe_etaN->Draw();
+	grVn[0][5]->Draw("Psame");
+	grVn[1][5]->Draw("Psame");
+
+	cN->cd(4);
+	hframe_etaN->Draw();
+	grVn[0][4]->Draw("Psame");
+	grVn[1][4]->Draw("Psame");
+
+	TLegend * legEta = new TLegend(0.05, 0.75, 0.3, 0.97);
+	legEta->SetFillColor(kWhite);
+	legEta->SetBorderSize(0);
+	legEta->AddEntry(grVn[0][4], "v_{2}{2}", "p");
+	legEta->AddEntry(grVn[1][4], "v_{2}{4}", "p");
+
+	TLatex latex;
+	latex.SetTextFont(43);
+	latex.SetTextSize(24);
+	latex.SetTextAlign(13);
+
+	cN->cd(1);
+	latex.DrawLatexNDC(0.20, 0.94, "#bf{CMS PbPb #sqrt{s_{NN}} = 2.76 TeV}");
+	cN->cd(3);
+	legEta->Draw();
+
+	cN->cd(1);
+	latex.DrawLatexNDC(0.40, 0.24, "#bf{120 #leq N_{trk}^{offline} < 150}");
+	cN->cd(2);
+	latex.DrawLatexNDC(0.40, 0.24, "#bf{150 #leq N_{trk}^{offline} < 185}");
+	cN->cd(3);
+	latex.DrawLatexNDC(0.40, 0.24, "#bf{185 #leq N_{trk}^{offline} < 220}");
+	cN->cd(4);
+	latex.DrawLatexNDC(0.40, 0.24, "#bf{220 #leq N_{trk}^{offline} < 260}");
+
+	cN->SaveAs("eta_V2_PbPb.pdf");
+
+	TCanvas* cNC = MakeCanvas("cNC", "cNC", 1600, 500);
+	makeMultiPanelCanvas(cNC, 4, 1, 0.0, 0., 0.15, 0.15, 0.05);
+	cNC->cd(1);
+	hframe_etaC->Draw();
+	line.Draw();
+	grCn[0][7]->Draw("Psame");
+	grCn[1][7]->Draw("Psame");
+
+	cNC->cd(2);
+	hframe_etaC->Draw();
+	line.Draw();
+	grCn[0][6]->Draw("Psame");
+	grCn[1][6]->Draw("Psame");
+
+	cNC->cd(3);
+	hframe_etaC->Draw();
+	line.Draw();
+	grCn[0][5]->Draw("Psame");
+	grCn[1][5]->Draw("Psame");
+
+	cNC->cd(4);
+	hframe_etaC->Draw();
+	line.Draw();
+	grCn[0][4]->Draw("Psame");
+	grCn[1][4]->Draw("Psame");
+
+	cNC->cd(1);
+	latex.DrawLatexNDC(0.20, 0.9, "#bf{CMS PbPb #sqrt{s_{NN}} = 2.76 TeV}");
+
+	cNC->cd(3);
+	legC2->Draw();
+
+	cNC->cd(1);
+	latex.DrawLatexNDC(0.40, 0.24, "#bf{120 #leq N_{trk}^{offline} < 150}");
+	cNC->cd(2);
+	latex.DrawLatexNDC(0.40, 0.24, "#bf{150 #leq N_{trk}^{offline} < 185}");
+	cNC->cd(3);
+	latex.DrawLatexNDC(0.40, 0.24, "#bf{185 #leq N_{trk}^{offline} < 220}");
+	cNC->cd(4);
+	latex.DrawLatexNDC(0.40, 0.24, "#bf{220 #leq N_{trk}^{offline} < 260}");
+
+
+	cNC->SaveAs("eta_C2_PbPb.pdf");
 }
