@@ -257,6 +257,12 @@ char * fname[] = {
 	"../MC/PionExpoPt_ref4_poi4_v2eta/",					// 254 Expo pT pion rfp eta v2, 0.8, 1.6
 	"../MC/PionExpoPt_ref5_poi5_v2eta/",					// 255 Expo pT pion rfp eta v2, 1.6, 2.4
 	"../pPb/PbPb_HLT_rfp24_Noff_noacc_eff_sysPU/",				// 256 PbPb sysPU
+	"../MC/PionExpoPt_ref0_poi0_v2eta_fluct/",				// 257 Expo pT pion rfp eta v2, -2.4, -1.6 fluct 0.01
+	"../MC/PionExpoPt_ref1_poi1_v2eta_fluct/",				// 258 Expo pT pion rfp eta v2, -1.6, -0.8 fluct 0.01
+	"../MC/PionExpoPt_ref2_poi2_v2eta_fluct/",				// 259 Expo pT pion rfp eta v2, -0.8, -0. fluct 0.01
+	"../MC/PionExpoPt_ref3_poi3_v2eta_fluct/",				// 260 Expo pT pion rfp eta v2, 0.0, 0.8 fluct 0.01
+	"../MC/PionExpoPt_ref4_poi4_v2eta_fluct/",				// 261 Expo pT pion rfp eta v2, 0.8, 1.6 fluct 0.01
+	"../MC/PionExpoPt_ref5_poi5_v2eta_fluct/",				// 262 Expo pT pion rfp eta v2, 1.6, 2.4 fluct 0.01
 
 };
 
@@ -518,6 +524,12 @@ char * ftxt[] = {
 	"txt/PionExpoPt_ref4_poi4_v2eta/",					// 254
 	"txt/PionExpoPt_ref5_poi5_v2eta/",					// 255
 	"txt/PbPb_HLT_rfp24_Noff_noacc_eff_sysPU/",				// 256
+	"txt/PionExpoPt_ref0_poi0_v2eta_fluct/",				// 257
+	"txt/PionExpoPt_ref1_poi1_v2eta_fluct/",				// 258
+	"txt/PionExpoPt_ref2_poi2_v2eta_fluct/",				// 259
+	"txt/PionExpoPt_ref3_poi3_v2eta_fluct/",				// 260
+	"txt/PionExpoPt_ref4_poi4_v2eta_fluct/",				// 261
+	"txt/PionExpoPt_ref5_poi5_v2eta_fluct/",				// 262
 
 };
 
