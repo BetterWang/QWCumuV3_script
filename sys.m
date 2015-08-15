@@ -1,3 +1,8 @@
+orig = 'PbPb_ppreco_rfp24_Noff_noacc_eff'
+syst = 'PbPb_HLT_rfp24_Noff_noacc_eff_sysPU'
+fsave = 'PbPbPU.mat'
+sysmacro
+
 orig = 'pPb_HLT_rfp24_Noff_noacc_eff_cm1_v18_full'
 syst = 'pPb_HLT_rfp24_Noff_noacc_eff_sysPU_full'
 fsave = 'pPbPU.mat'
@@ -68,6 +73,9 @@ sysmerge(S1, S2, "pPbTrk.mat");
 S1 = load("PbPbTight.mat");
 S2 = load("PbPbLoose.mat");
 sysmerge(S1, S2, "PbPbTrk.mat");
+
+fname = "PbPbPU"
+sys2tex
 
 fname = "pPbPU"
 sys2tex

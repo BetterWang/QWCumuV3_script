@@ -1,13 +1,18 @@
 {
 #include "label.h"
 
-	int s1 = 229; // black
-	int s2 = 245; // green
-	int s3 = 139; // cyan
-	int s4 = 249; // red
-	int s5 = 233; // blue
+//	int s1 = 139; // black
+//	int s2 = 139; // green
+//	int s3 = 139; // cyan
+//	int s4 = 229; // red
+//	int s5 = 233; // blue
+	int s1 = 109; // black
+	int s2 = 109; // green
+	int s3 = 109; // cyan
+	int s4 = 234; // red
+	int s5 = 235; // blue
 
-	int cent4 = 7;
+	int cent4 = 5;
 	// 7 = 120 - 150;
 	// 6 = 150 - 185;
 	// 5 = 185 - 220;
@@ -29,16 +34,14 @@
 
 	bool b1 = 1;
 	bool b2 = 0;
-	bool b3 = 1;
-	bool b4 = 0;
+	bool b3 = 0;
+	bool b4 = 1;
 	bool b5 = 1;
 
 	bool bHIN = 1;
-	if (bHIN) {
-		gROOT->Macro("HIN-13-002.C");
-	}
+	gROOT->Macro("HIN-13-002.C");
 
-	bool bPbPb = 0;
+	bool bPbPb = 1;
 
 	bool bfit = 0;
 	bool bfit2 = 0;
@@ -251,7 +254,7 @@
 	SetStyle();
 	TCanvas * cT = MakeCanvas("cT", "cT", 600, 500);
 
-	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 5.9, 1, 0, 0.15);
+	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 5.9, 1, 0, 0.35);
 	InitHist(hframe_pt, "p_{T} (GeV/c)", "v_{2}");
 
 	hframe_pt->Draw();

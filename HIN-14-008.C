@@ -10,7 +10,7 @@
 	TGraphErrors * gr_norm_p_sub = (TGraphErrors*) fnormv2->Get("gr_ratio_p");
 	TGraphErrors * gr_norm_Pb_sub = (TGraphErrors*) fnormv2->Get("gr_ratio_Pb");
 
-	TGraphErrors * gr_ratio = (TGraphErrors*) fratiov2->Get("gr_ratio_Pb_half");
+	TGraphErrors * gr_ratioHIN = (TGraphErrors*) fratiov2->Get("gr_ratio_Pb_half");
 	TGraphErrors * gr_ratio_sys = (TGraphErrors*) fratiov2->Get("gr_ratio_Pb_half_sys");
 
 	TMultiGraph * mgr_norm = new TMultiGraph();
@@ -26,6 +26,7 @@
 
 	TMultiGraph * mgr_ratio = new TMultiGraph();
 
+	gr_ratioHIN->SetMarkerStyle(kOpenCircle);
 //	mgr_ratio->Add(gr_ratio_sys, "F");
-	mgr_ratio->Add(gr_ratio, "p");
+	mgr_ratio->Add(gr_ratioHIN, "p");
 }

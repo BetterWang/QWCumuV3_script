@@ -14,12 +14,20 @@
 //	int s4 = 200;
 //	int s5 = 201;
 
-	int s0 = 205;
-	int s1 = 209;
-	int s2 = 213;
-	int s3 = 217;
-	int s4 = 221;
-	int s5 = 225;
+	int s0 = 257;
+	int s1 = 258;
+	int s2 = 259;
+	int s3 = 260;
+	int s4 = 261;
+	int s5 = 262;
+
+
+//	int s0 = 205;
+//	int s1 = 209;
+//	int s2 = 213;
+//	int s3 = 217;
+//	int s4 = 221;
+//	int s5 = 225;
 
 	int sn = 2;
 
@@ -186,7 +194,7 @@
 	TCanvas * cC = MakeCanvas("cC", "cC", 600, 500);
 	cT->SetTopMargin(0.04);
 
-	TH2D * hframe_etaC = new TH2D("hframe_etaC", "", 1, -2.5, 2.5, 1, -0.000018, 0.000028);
+	TH2D * hframe_etaC = new TH2D("hframe_etaC", "", 1, -2.5, 2.5, 1, -0.000088, 0.000028);
 	InitHist(hframe_etaC, "#eta", "c_{2}{4}");
 
 	TLine line(-2.5, 0, 2.5, 0);
