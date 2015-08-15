@@ -263,6 +263,10 @@ char * fname[] = {
 	"../MC/PionExpoPt_ref3_poi3_v2eta_fluct/",				// 260 Expo pT pion rfp eta v2, 0.0, 0.8 fluct 0.01
 	"../MC/PionExpoPt_ref4_poi4_v2eta_fluct/",				// 261 Expo pT pion rfp eta v2, 0.8, 1.6 fluct 0.01
 	"../MC/PionExpoPt_ref5_poi5_v2eta_fluct/",				// 262 Expo pT pion rfp eta v2, 1.6, 2.4 fluct 0.01
+	"../pPb/PbPb_HLT_rfp24_Noff_noacc_eff_poi0/",				// 263 PbPb rfp full eta, -2.4 < eta < -1.2
+	"../pPb/PbPb_HLT_rfp24_Noff_noacc_eff_poi1/",				// 264 PbPb rfp full eta, -1.2 < eta < 0.
+	"../pPb/PbPb_HLT_rfp24_Noff_noacc_eff_poi2/",				// 265 PbPb rfp full eta, 0. < eta < 1.2
+	"../pPb/PbPb_HLT_rfp24_Noff_noacc_eff_poi3/",				// 266 PbPb rfp full eta, 1.2 < eta < 2.4
 
 };
 
@@ -530,6 +534,10 @@ char * ftxt[] = {
 	"txt/PionExpoPt_ref3_poi3_v2eta_fluct/",				// 260
 	"txt/PionExpoPt_ref4_poi4_v2eta_fluct/",				// 261
 	"txt/PionExpoPt_ref5_poi5_v2eta_fluct/",				// 262
+	"txt/PbPb_HLT_rfp24_Noff_noacc_eff_poi0/",				// 263
+	"txt/PbPb_HLT_rfp24_Noff_noacc_eff_poi1/",				// 264
+	"txt/PbPb_HLT_rfp24_Noff_noacc_eff_poi2/",				// 265
+	"txt/PbPb_HLT_rfp24_Noff_noacc_eff_poi3/",				// 266
 
 };
 
