@@ -6,8 +6,8 @@
 #include "noff.h"
 #include "style.h"
 #include "helper.h"
-	int s1 = 109; // PbPb
-//	int s1 = 139; // pPb
+//	int s1 = 109; // PbPb
+	int s1 = 139; // pPb
 	int s2 = 1; // 1: C, 0:V
 
 //	int bSys = 0;
@@ -217,10 +217,10 @@
 	hframe_eta->Draw();
 	if ( bPbPb ) gr_LYZ_PbPbEta[7]->Draw("Psame");
 	else gr_LYZ_pPbEta[7]->Draw("Psame");
-	gr_vnEta_sys[2][0][7]->Draw("[]2");
+//	gr_vnEta_sys[2][0][7]->Draw("[]2");
 	gr_vnEta_sys[2][1][7]->Draw("[]2");
 	gr_vnEta_sys[2][2][6]->Draw("[]2");
-	gr_vnEta[2][0][7]->Draw("Psame");
+//	gr_vnEta[2][0][7]->Draw("Psame");
 	gr_vnEta[2][1][7]->Draw("Psame");
 	gr_vnEta[2][2][6]->Draw("Psame");
 	if (bPbPb) gr_vnEta[2][3][5]->Draw("Psame");
@@ -229,10 +229,10 @@
 	hframe_eta->Draw();
 	if ( bPbPb ) gr_LYZ_PbPbEta[6]->Draw("Psame");
 	else gr_LYZ_pPbEta[6]->Draw("Psame");
-	gr_vnEta_sys[2][0][6]->Draw("[]2");
+//	gr_vnEta_sys[2][0][6]->Draw("[]2");
 	gr_vnEta_sys[2][1][6]->Draw("[]2");
 	gr_vnEta_sys[2][2][5]->Draw("[]2");
-	gr_vnEta[2][0][6]->Draw("Psame");
+//	gr_vnEta[2][0][6]->Draw("Psame");
 	gr_vnEta[2][1][6]->Draw("Psame");
 	gr_vnEta[2][2][5]->Draw("Psame");
 	if (bPbPb) gr_vnEta[2][3][4]->Draw("Psame");
@@ -241,10 +241,10 @@
 	hframe_eta->Draw();
 	if ( bPbPb ) gr_LYZ_PbPbEta[5]->Draw("Psame");
 	else gr_LYZ_pPbEta[5]->Draw("Psame");
-	gr_vnEta_sys[2][0][5]->Draw("[]2");
+//	gr_vnEta_sys[2][0][5]->Draw("[]2");
 	gr_vnEta_sys[2][1][5]->Draw("[]2");
 	gr_vnEta_sys[2][2][4]->Draw("[]2");
-	gr_vnEta[2][0][5]->Draw("Psame");
+//	gr_vnEta[2][0][5]->Draw("Psame");
 	gr_vnEta[2][1][5]->Draw("Psame");
 	gr_vnEta[2][2][4]->Draw("Psame");
 	if (bPbPb) gr_vnEta[2][3][3]->Draw("Psame");
@@ -253,10 +253,10 @@
 	hframe_eta->Draw();
 	if ( bPbPb ) gr_LYZ_PbPbEta[4]->Draw("Psame");
 	else gr_LYZ_pPbEta[4]->Draw("Psame");
-	gr_vnEta_sys[2][0][4]->Draw("[]2");
+//	gr_vnEta_sys[2][0][4]->Draw("[]2");
 	gr_vnEta_sys[2][1][4]->Draw("[]2");
 	gr_vnEta_sys[2][2][3]->Draw("[]2");
-	gr_vnEta[2][0][4]->Draw("Psame");
+//	gr_vnEta[2][0][4]->Draw("Psame");
 	gr_vnEta[2][1][4]->Draw("Psame");
 	gr_vnEta[2][2][3]->Draw("Psame");
 	if (bPbPb) gr_vnEta[2][3][2]->Draw("Psame");
@@ -271,7 +271,7 @@
 	TLegend * legEta = new TLegend(0.05, 0.75, 0.3, 0.97);
 	legEta->SetFillColor(kWhite);
 	legEta->SetBorderSize(0);
-	legEta->AddEntry(gr_vnEta[2][0][4], "v_{2}{2}", "p");
+//	legEta->AddEntry(gr_vnEta[2][0][4], "v_{2}{2}", "p");
 	legEta->AddEntry(gr_vnEta[2][1][4], "v_{2}{4}", "p");
 	legEta->AddEntry(gr_vnEta[2][2][4], "v_{2}{6}", "p");
 	if (bPbPb) legEta->AddEntry(gr_vnEta[2][3][4], "v_{2}{8}", "p");
@@ -291,7 +291,7 @@
 ///**************** 
 
 	TH2D * hframe_ratio = new TH2D("hframe_ratio", "", 1, 0, 2.4, 1, 0.61, 1.29);
-	InitHist(hframe_ratio, "#eta", "v_{2}^{#eta} / v_{2}^{-#eta}");
+	InitHist(hframe_ratio, "#eta_{CM}", "v_{2}^{#eta} / v_{2}^{-#eta}");
 
 	TGraphErrors * gr_ratio[7][4][20];
 	TLine *line = new TLine(0., 1., 2.4, 1.);
@@ -374,210 +374,240 @@
 	legRatio->Draw();
 
 	cT->SaveAs(Form("ratio_%i.pdf", s1));
+
+	if ( !bPbPb ) {
+		TCanvas * cNormEta = MakeCanvas("cNormEta", "cNormEta", 600, 500);
+
+		TH2D * hframe_etaNorm = new TH2D("hframe_etaNorm", "", 1, -2.4, 2.4, 1, 0, 1.49);
+		InitHist(hframe_etaNorm, "#eta", "v_{2}(#eta) / v_{2}(#eta=0)");
+
+		TGraphErrors * gr_Norm = gr_vnEta[2][1][4]->Clone("gr_Norm");
+		double v2norm = (gr_Norm->GetY()[11] + gr_Norm->GetY()[12])/2.;
+		double ev2norm = sqrt(gr_Norm->GetEY()[11]**2 + gr_Norm->GetEY()[12]**2)/2;
+		for ( int i = 0; i < 24; i++ ) {
+			gr_Norm->GetEY()[i] = sqrt( (gr_Norm->GetEY()[i]/gr_Norm->GetY()[i])**2 + (ev2norm/v2norm)**2 ) * gr_Norm->GetY()[i] / v2norm;
+			gr_Norm->GetY()[i] = gr_Norm->GetY()[i] / v2norm;
+		}
+		hframe_etaNorm->Draw();
+		gr_Norm->Draw("Psame");
+		gr_norm_p->Draw("Psame");
+		gr_norm_Pb->Draw("Psame");
+		latex.DrawLatexNDC(0.40, 0.24, "#bf{220 #leq N_{trk}^{offline} < 260}");
+		TLegend * legNorm = new TLegend(0.2, 0.3, 0.55, 0.5);
+		legNorm->SetFillColor(kWhite);
+		legNorm->SetBorderSize(0);
+		legNorm->AddEntry(gr_Norm, "v_{2}{4}", "p");
+		legNorm->AddEntry(gr_norm_p, "HIN-14-008 p-side", "p");
+		legNorm->AddEntry(gr_norm_Pb, "HIN-14-008 Pb-side", "p");
+		legNorm->Draw();
+
+		cNormEta->SaveAs("norm_pPb.pdf");
+	}
+
 //*******/
-	TFile *fsave = new TFile("fsave.root","recreate");
-	gr_vnPt[2][0][7]->SetName("v2Pt_2_120");
-	gr_vnPt[2][1][7]->SetName("v2Pt_4_120");
-	gr_vnPt[2][2][6]->SetName("v2Pt_6_120");
-	gr_vnPt[2][3][5]->SetName("v2Pt_8_120");
-
-	gr_vnPt[2][0][6]->SetName("v2Pt_2_150");
-	gr_vnPt[2][1][6]->SetName("v2Pt_4_150");
-	gr_vnPt[2][2][5]->SetName("v2Pt_6_150");
-	gr_vnPt[2][3][4]->SetName("v2Pt_8_150");
-
-	gr_vnPt[2][0][5]->SetName("v2Pt_2_185");
-	gr_vnPt[2][1][5]->SetName("v2Pt_4_185");
-	gr_vnPt[2][2][4]->SetName("v2Pt_6_185");
-	gr_vnPt[2][3][3]->SetName("v2Pt_8_185");
-
-	gr_vnPt[2][0][4]->SetName("v2Pt_2_220");
-	gr_vnPt[2][1][4]->SetName("v2Pt_4_220");
-	gr_vnPt[2][2][3]->SetName("v2Pt_6_220");
-	gr_vnPt[2][3][2]->SetName("v2Pt_8_220");
-
-	gr_vnPt_sys[2][0][7]->SetName("v2Pt_sys_2_120");
-	gr_vnPt_sys[2][1][7]->SetName("v2Pt_sys_4_120");
-	gr_vnPt_sys[2][2][6]->SetName("v2Pt_sys_6_120");
-	gr_vnPt_sys[2][3][5]->SetName("v2Pt_sys_8_120");
-
-	gr_vnPt_sys[2][0][6]->SetName("v2Pt_sys_2_150");
-	gr_vnPt_sys[2][1][6]->SetName("v2Pt_sys_4_150");
-	gr_vnPt_sys[2][2][5]->SetName("v2Pt_sys_6_150");
-	gr_vnPt_sys[2][3][4]->SetName("v2Pt_sys_8_150");
-
-	gr_vnPt_sys[2][0][5]->SetName("v2Pt_sys_2_185");
-	gr_vnPt_sys[2][1][5]->SetName("v2Pt_sys_4_185");
-	gr_vnPt_sys[2][2][4]->SetName("v2Pt_sys_6_185");
-	gr_vnPt_sys[2][3][3]->SetName("v2Pt_sys_8_185");
-
-	gr_vnPt_sys[2][0][4]->SetName("v2Pt_sys_2_220");
-	gr_vnPt_sys[2][1][4]->SetName("v2Pt_sys_4_220");
-	gr_vnPt_sys[2][2][3]->SetName("v2Pt_sys_6_220");
-	gr_vnPt_sys[2][3][2]->SetName("v2Pt_sys_8_220");
-
-
-	gr_vnPt[2][0][7]->Write();
-	gr_vnPt[2][1][7]->Write();
-	gr_vnPt[2][2][6]->Write();
-	gr_vnPt[2][3][5]->Write();
-
-	gr_vnPt[2][0][6]->Write();
-	gr_vnPt[2][1][6]->Write();
-	gr_vnPt[2][2][5]->Write();
-	gr_vnPt[2][3][4]->Write();
-
-	gr_vnPt[2][0][5]->Write();
-	gr_vnPt[2][1][5]->Write();
-	gr_vnPt[2][2][4]->Write();
-	gr_vnPt[2][3][3]->Write();
-
-	gr_vnPt[2][0][4]->Write();
-	gr_vnPt[2][1][4]->Write();
-	gr_vnPt[2][2][3]->Write();
-	gr_vnPt[2][3][2]->Write();
-
-	gr_vnPt_sys[2][0][7]->Write();
-	gr_vnPt_sys[2][1][7]->Write();
-	gr_vnPt_sys[2][2][6]->Write();
-	gr_vnPt_sys[2][3][5]->Write();
-
-	gr_vnPt_sys[2][0][6]->Write();
-	gr_vnPt_sys[2][1][6]->Write();
-	gr_vnPt_sys[2][2][5]->Write();
-	gr_vnPt_sys[2][3][4]->Write();
-
-	gr_vnPt_sys[2][0][5]->Write();
-	gr_vnPt_sys[2][1][5]->Write();
-	gr_vnPt_sys[2][2][4]->Write();
-	gr_vnPt_sys[2][3][3]->Write();
-
-	gr_vnPt_sys[2][0][4]->Write();
-	gr_vnPt_sys[2][1][4]->Write();
-	gr_vnPt_sys[2][2][3]->Write();
-	gr_vnPt_sys[2][3][2]->Write();
-
-	gr_vnEta[2][0][7]->SetName("v2Eta_2_120");
-	gr_vnEta[2][1][7]->SetName("v2Eta_4_120");
-	gr_vnEta[2][2][6]->SetName("v2Eta_6_120");
-	gr_vnEta[2][3][5]->SetName("v2Eta_8_120");
-
-	gr_vnEta[2][0][6]->SetName("v2Eta_2_150");
-	gr_vnEta[2][1][6]->SetName("v2Eta_4_150");
-	gr_vnEta[2][2][5]->SetName("v2Eta_6_150");
-	gr_vnEta[2][3][4]->SetName("v2Eta_8_150");
-
-	gr_vnEta[2][0][5]->SetName("v2Eta_2_185");
-	gr_vnEta[2][1][5]->SetName("v2Eta_4_185");
-	gr_vnEta[2][2][4]->SetName("v2Eta_6_185");
-	gr_vnEta[2][3][3]->SetName("v2Eta_8_185");
-
-	gr_vnEta[2][0][4]->SetName("v2Eta_2_220");
-	gr_vnEta[2][1][4]->SetName("v2Eta_4_220");
-	gr_vnEta[2][2][3]->SetName("v2Eta_6_220");
-	gr_vnEta[2][3][2]->SetName("v2Eta_8_220");
-
-	gr_vnEta[2][0][7]->Write();
-	gr_vnEta[2][1][7]->Write();
-	gr_vnEta[2][2][6]->Write();
-	gr_vnEta[2][3][5]->Write();
-
-	gr_vnEta[2][0][6]->Write();
-	gr_vnEta[2][1][6]->Write();
-	gr_vnEta[2][2][5]->Write();
-	gr_vnEta[2][3][4]->Write();
-
-	gr_vnEta[2][0][5]->Write();
-	gr_vnEta[2][1][5]->Write();
-	gr_vnEta[2][2][4]->Write();
-	gr_vnEta[2][3][3]->Write();
-
-	gr_vnEta[2][0][4]->Write();
-	gr_vnEta[2][1][4]->Write();
-	gr_vnEta[2][2][3]->Write();
-	gr_vnEta[2][3][2]->Write();
-
-
-
-	gr_vnEta_sys[2][0][7]->SetName("v2Eta_sys_2_120");
-	gr_vnEta_sys[2][1][7]->SetName("v2Eta_sys_4_120");
-	gr_vnEta_sys[2][2][6]->SetName("v2Eta_sys_6_120");
-	gr_vnEta_sys[2][3][5]->SetName("v2Eta_sys_8_120");
-
-	gr_vnEta_sys[2][0][6]->SetName("v2Eta_sys_2_150");
-	gr_vnEta_sys[2][1][6]->SetName("v2Eta_sys_4_150");
-	gr_vnEta_sys[2][2][5]->SetName("v2Eta_sys_6_150");
-	gr_vnEta_sys[2][3][4]->SetName("v2Eta_sys_8_150");
-
-	gr_vnEta_sys[2][0][5]->SetName("v2Eta_sys_2_185");
-	gr_vnEta_sys[2][1][5]->SetName("v2Eta_sys_4_185");
-	gr_vnEta_sys[2][2][4]->SetName("v2Eta_sys_6_185");
-	gr_vnEta_sys[2][3][3]->SetName("v2Eta_sys_8_185");
-
-	gr_vnEta_sys[2][0][4]->SetName("v2Eta_sys_2_220");
-	gr_vnEta_sys[2][1][4]->SetName("v2Eta_sys_4_220");
-	gr_vnEta_sys[2][2][3]->SetName("v2Eta_sys_6_220");
-	gr_vnEta_sys[2][3][2]->SetName("v2Eta_sys_8_220");
-
-	gr_vnEta_sys[2][0][7]->Write();
-	gr_vnEta_sys[2][1][7]->Write();
-	gr_vnEta_sys[2][2][6]->Write();
-	gr_vnEta_sys[2][3][5]->Write();
-
-	gr_vnEta_sys[2][0][6]->Write();
-	gr_vnEta_sys[2][1][6]->Write();
-	gr_vnEta_sys[2][2][5]->Write();
-	gr_vnEta_sys[2][3][4]->Write();
-
-	gr_vnEta_sys[2][0][5]->Write();
-	gr_vnEta_sys[2][1][5]->Write();
-	gr_vnEta_sys[2][2][4]->Write();
-	gr_vnEta_sys[2][3][3]->Write();
-
-	gr_vnEta_sys[2][0][4]->Write();
-	gr_vnEta_sys[2][1][4]->Write();
-	gr_vnEta_sys[2][2][3]->Write();
-	gr_vnEta_sys[2][3][2]->Write();
-
-	gr_ratio[2][0][7]->SetName("v2EtaRatio_2_120");
-	gr_ratio[2][1][7]->SetName("v2EtaRatio_4_120");
-	gr_ratio[2][2][6]->SetName("v2EtaRatio_6_120");
-	gr_ratio[2][3][5]->SetName("v2EtaRatio_8_120");
-
-	gr_ratio[2][0][6]->SetName("v2EtaRatio_2_150");
-	gr_ratio[2][1][6]->SetName("v2EtaRatio_4_150");
-	gr_ratio[2][2][5]->SetName("v2EtaRatio_6_150");
-	gr_ratio[2][3][4]->SetName("v2EtaRatio_8_150");
-
-	gr_ratio[2][0][5]->SetName("v2EtaRatio_2_185");
-	gr_ratio[2][1][5]->SetName("v2EtaRatio_4_185");
-	gr_ratio[2][2][4]->SetName("v2EtaRatio_6_185");
-	gr_ratio[2][3][3]->SetName("v2EtaRatio_8_185");
-
-	gr_ratio[2][0][4]->SetName("v2EtaRatio_2_220");
-	gr_ratio[2][1][4]->SetName("v2EtaRatio_4_220");
-	gr_ratio[2][2][3]->SetName("v2EtaRatio_6_220");
-	gr_ratio[2][3][2]->SetName("v2EtaRatio_8_220");
-
-	gr_ratio[2][0][7]->Write();
-	gr_ratio[2][1][7]->Write();
-	gr_ratio[2][2][6]->Write();
-	gr_ratio[2][3][5]->Write();
-
-	gr_ratio[2][0][6]->Write();
-	gr_ratio[2][1][6]->Write();
-	gr_ratio[2][2][5]->Write();
-	gr_ratio[2][3][4]->Write();
-
-	gr_ratio[2][0][5]->Write();
-	gr_ratio[2][1][5]->Write();
-	gr_ratio[2][2][4]->Write();
-	gr_ratio[2][3][3]->Write();
-
-	gr_ratio[2][0][4]->Write();
-	gr_ratio[2][1][4]->Write();
-	gr_ratio[2][2][3]->Write();
-	gr_ratio[2][3][2]->Write();
+//	TFile *fsave = new TFile("fsave.root","recreate");
+//	gr_vnPt[2][0][7]->SetName("v2Pt_2_120");
+//	gr_vnPt[2][1][7]->SetName("v2Pt_4_120");
+//	gr_vnPt[2][2][6]->SetName("v2Pt_6_120");
+//	gr_vnPt[2][3][5]->SetName("v2Pt_8_120");
+//
+//	gr_vnPt[2][0][6]->SetName("v2Pt_2_150");
+//	gr_vnPt[2][1][6]->SetName("v2Pt_4_150");
+//	gr_vnPt[2][2][5]->SetName("v2Pt_6_150");
+//	gr_vnPt[2][3][4]->SetName("v2Pt_8_150");
+//
+//	gr_vnPt[2][0][5]->SetName("v2Pt_2_185");
+//	gr_vnPt[2][1][5]->SetName("v2Pt_4_185");
+//	gr_vnPt[2][2][4]->SetName("v2Pt_6_185");
+//	gr_vnPt[2][3][3]->SetName("v2Pt_8_185");
+//
+//	gr_vnPt[2][0][4]->SetName("v2Pt_2_220");
+//	gr_vnPt[2][1][4]->SetName("v2Pt_4_220");
+//	gr_vnPt[2][2][3]->SetName("v2Pt_6_220");
+//	gr_vnPt[2][3][2]->SetName("v2Pt_8_220");
+//
+//	gr_vnPt_sys[2][0][7]->SetName("v2Pt_sys_2_120");
+//	gr_vnPt_sys[2][1][7]->SetName("v2Pt_sys_4_120");
+//	gr_vnPt_sys[2][2][6]->SetName("v2Pt_sys_6_120");
+//	gr_vnPt_sys[2][3][5]->SetName("v2Pt_sys_8_120");
+//
+//	gr_vnPt_sys[2][0][6]->SetName("v2Pt_sys_2_150");
+//	gr_vnPt_sys[2][1][6]->SetName("v2Pt_sys_4_150");
+//	gr_vnPt_sys[2][2][5]->SetName("v2Pt_sys_6_150");
+//	gr_vnPt_sys[2][3][4]->SetName("v2Pt_sys_8_150");
+//
+//	gr_vnPt_sys[2][0][5]->SetName("v2Pt_sys_2_185");
+//	gr_vnPt_sys[2][1][5]->SetName("v2Pt_sys_4_185");
+//	gr_vnPt_sys[2][2][4]->SetName("v2Pt_sys_6_185");
+//	gr_vnPt_sys[2][3][3]->SetName("v2Pt_sys_8_185");
+//
+//	gr_vnPt_sys[2][0][4]->SetName("v2Pt_sys_2_220");
+//	gr_vnPt_sys[2][1][4]->SetName("v2Pt_sys_4_220");
+//	gr_vnPt_sys[2][2][3]->SetName("v2Pt_sys_6_220");
+//	gr_vnPt_sys[2][3][2]->SetName("v2Pt_sys_8_220");
+//
+//
+//	gr_vnPt[2][0][7]->Write();
+//	gr_vnPt[2][1][7]->Write();
+//	gr_vnPt[2][2][6]->Write();
+//	gr_vnPt[2][3][5]->Write();
+//
+//	gr_vnPt[2][0][6]->Write();
+//	gr_vnPt[2][1][6]->Write();
+//	gr_vnPt[2][2][5]->Write();
+//	gr_vnPt[2][3][4]->Write();
+//
+//	gr_vnPt[2][0][5]->Write();
+//	gr_vnPt[2][1][5]->Write();
+//	gr_vnPt[2][2][4]->Write();
+//	gr_vnPt[2][3][3]->Write();
+//
+//	gr_vnPt[2][0][4]->Write();
+//	gr_vnPt[2][1][4]->Write();
+//	gr_vnPt[2][2][3]->Write();
+//	gr_vnPt[2][3][2]->Write();
+//
+//	gr_vnPt_sys[2][0][7]->Write();
+//	gr_vnPt_sys[2][1][7]->Write();
+//	gr_vnPt_sys[2][2][6]->Write();
+//	gr_vnPt_sys[2][3][5]->Write();
+//
+//	gr_vnPt_sys[2][0][6]->Write();
+//	gr_vnPt_sys[2][1][6]->Write();
+//	gr_vnPt_sys[2][2][5]->Write();
+//	gr_vnPt_sys[2][3][4]->Write();
+//
+//	gr_vnPt_sys[2][0][5]->Write();
+//	gr_vnPt_sys[2][1][5]->Write();
+//	gr_vnPt_sys[2][2][4]->Write();
+//	gr_vnPt_sys[2][3][3]->Write();
+//
+//	gr_vnPt_sys[2][0][4]->Write();
+//	gr_vnPt_sys[2][1][4]->Write();
+//	gr_vnPt_sys[2][2][3]->Write();
+//	gr_vnPt_sys[2][3][2]->Write();
+//
+//	gr_vnEta[2][0][7]->SetName("v2Eta_2_120");
+//	gr_vnEta[2][1][7]->SetName("v2Eta_4_120");
+//	gr_vnEta[2][2][6]->SetName("v2Eta_6_120");
+//	gr_vnEta[2][3][5]->SetName("v2Eta_8_120");
+//
+//	gr_vnEta[2][0][6]->SetName("v2Eta_2_150");
+//	gr_vnEta[2][1][6]->SetName("v2Eta_4_150");
+//	gr_vnEta[2][2][5]->SetName("v2Eta_6_150");
+//	gr_vnEta[2][3][4]->SetName("v2Eta_8_150");
+//
+//	gr_vnEta[2][0][5]->SetName("v2Eta_2_185");
+//	gr_vnEta[2][1][5]->SetName("v2Eta_4_185");
+//	gr_vnEta[2][2][4]->SetName("v2Eta_6_185");
+//	gr_vnEta[2][3][3]->SetName("v2Eta_8_185");
+//
+//	gr_vnEta[2][0][4]->SetName("v2Eta_2_220");
+//	gr_vnEta[2][1][4]->SetName("v2Eta_4_220");
+//	gr_vnEta[2][2][3]->SetName("v2Eta_6_220");
+//	gr_vnEta[2][3][2]->SetName("v2Eta_8_220");
+//
+//	gr_vnEta[2][0][7]->Write();
+//	gr_vnEta[2][1][7]->Write();
+//	gr_vnEta[2][2][6]->Write();
+//	gr_vnEta[2][3][5]->Write();
+//
+//	gr_vnEta[2][0][6]->Write();
+//	gr_vnEta[2][1][6]->Write();
+//	gr_vnEta[2][2][5]->Write();
+//	gr_vnEta[2][3][4]->Write();
+//
+//	gr_vnEta[2][0][5]->Write();
+//	gr_vnEta[2][1][5]->Write();
+//	gr_vnEta[2][2][4]->Write();
+//	gr_vnEta[2][3][3]->Write();
+//
+//	gr_vnEta[2][0][4]->Write();
+//	gr_vnEta[2][1][4]->Write();
+//	gr_vnEta[2][2][3]->Write();
+//	gr_vnEta[2][3][2]->Write();
+//
+//
+//
+//	gr_vnEta_sys[2][0][7]->SetName("v2Eta_sys_2_120");
+//	gr_vnEta_sys[2][1][7]->SetName("v2Eta_sys_4_120");
+//	gr_vnEta_sys[2][2][6]->SetName("v2Eta_sys_6_120");
+//	gr_vnEta_sys[2][3][5]->SetName("v2Eta_sys_8_120");
+//
+//	gr_vnEta_sys[2][0][6]->SetName("v2Eta_sys_2_150");
+//	gr_vnEta_sys[2][1][6]->SetName("v2Eta_sys_4_150");
+//	gr_vnEta_sys[2][2][5]->SetName("v2Eta_sys_6_150");
+//	gr_vnEta_sys[2][3][4]->SetName("v2Eta_sys_8_150");
+//
+//	gr_vnEta_sys[2][0][5]->SetName("v2Eta_sys_2_185");
+//	gr_vnEta_sys[2][1][5]->SetName("v2Eta_sys_4_185");
+//	gr_vnEta_sys[2][2][4]->SetName("v2Eta_sys_6_185");
+//	gr_vnEta_sys[2][3][3]->SetName("v2Eta_sys_8_185");
+//
+//	gr_vnEta_sys[2][0][4]->SetName("v2Eta_sys_2_220");
+//	gr_vnEta_sys[2][1][4]->SetName("v2Eta_sys_4_220");
+//	gr_vnEta_sys[2][2][3]->SetName("v2Eta_sys_6_220");
+//	gr_vnEta_sys[2][3][2]->SetName("v2Eta_sys_8_220");
+//
+//	gr_vnEta_sys[2][0][7]->Write();
+//	gr_vnEta_sys[2][1][7]->Write();
+//	gr_vnEta_sys[2][2][6]->Write();
+//	gr_vnEta_sys[2][3][5]->Write();
+//
+//	gr_vnEta_sys[2][0][6]->Write();
+//	gr_vnEta_sys[2][1][6]->Write();
+//	gr_vnEta_sys[2][2][5]->Write();
+//	gr_vnEta_sys[2][3][4]->Write();
+//
+//	gr_vnEta_sys[2][0][5]->Write();
+//	gr_vnEta_sys[2][1][5]->Write();
+//	gr_vnEta_sys[2][2][4]->Write();
+//	gr_vnEta_sys[2][3][3]->Write();
+//
+//	gr_vnEta_sys[2][0][4]->Write();
+//	gr_vnEta_sys[2][1][4]->Write();
+//	gr_vnEta_sys[2][2][3]->Write();
+//	gr_vnEta_sys[2][3][2]->Write();
+//
+//	gr_ratio[2][0][7]->SetName("v2EtaRatio_2_120");
+//	gr_ratio[2][1][7]->SetName("v2EtaRatio_4_120");
+//	gr_ratio[2][2][6]->SetName("v2EtaRatio_6_120");
+//	gr_ratio[2][3][5]->SetName("v2EtaRatio_8_120");
+//
+//	gr_ratio[2][0][6]->SetName("v2EtaRatio_2_150");
+//	gr_ratio[2][1][6]->SetName("v2EtaRatio_4_150");
+//	gr_ratio[2][2][5]->SetName("v2EtaRatio_6_150");
+//	gr_ratio[2][3][4]->SetName("v2EtaRatio_8_150");
+//
+//	gr_ratio[2][0][5]->SetName("v2EtaRatio_2_185");
+//	gr_ratio[2][1][5]->SetName("v2EtaRatio_4_185");
+//	gr_ratio[2][2][4]->SetName("v2EtaRatio_6_185");
+//	gr_ratio[2][3][3]->SetName("v2EtaRatio_8_185");
+//
+//	gr_ratio[2][0][4]->SetName("v2EtaRatio_2_220");
+//	gr_ratio[2][1][4]->SetName("v2EtaRatio_4_220");
+//	gr_ratio[2][2][3]->SetName("v2EtaRatio_6_220");
+//	gr_ratio[2][3][2]->SetName("v2EtaRatio_8_220");
+//
+//	gr_ratio[2][0][7]->Write();
+//	gr_ratio[2][1][7]->Write();
+//	gr_ratio[2][2][6]->Write();
+//	gr_ratio[2][3][5]->Write();
+//
+//	gr_ratio[2][0][6]->Write();
+//	gr_ratio[2][1][6]->Write();
+//	gr_ratio[2][2][5]->Write();
+//	gr_ratio[2][3][4]->Write();
+//
+//	gr_ratio[2][0][5]->Write();
+//	gr_ratio[2][1][5]->Write();
+//	gr_ratio[2][2][4]->Write();
+//	gr_ratio[2][3][3]->Write();
+//
+//	gr_ratio[2][0][4]->Write();
+//	gr_ratio[2][1][4]->Write();
+//	gr_ratio[2][2][3]->Write();
+//	gr_ratio[2][3][2]->Write();
 
 }
 

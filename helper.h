@@ -4,19 +4,29 @@ TGraphErrors* makeRatio(TGraphErrors* gr)
 	double ratio[12] = {};
 	double eratio[12] = {};
 	double x[12] = {};
-	for ( int i = 0; i < 12; i++ ) {
-		x[i] = gr->GetX()[i];
-		ratio[i] = gr->GetY()[i] / gr->GetY()[23-i];
-		eratio[i] = ratio[i]*sqrt((gr->GetEY()[23-i]/gr->GetY()[23-i])**2 + (gr->GetEY()[i]/gr->GetY()[i])**2);
+	if ( bPbPb ) {
+		for ( int i = 0; i < 12; i++ ) {
+			x[i] = gr->GetX()[i];
+			ratio[i] = gr->GetY()[i] / gr->GetY()[23-i];
+			eratio[i] = ratio[i]*sqrt((gr->GetEY()[23-i]/gr->GetY()[23-i])**2 + (gr->GetEY()[i]/gr->GetY()[i])**2);
+		}
+		TGraphErrors * ret = new TGraphErrors(12, x, ratio, 0, eratio);
+		ret->SetMarkerStyle(gr->GetMarkerStyle());
+		ret->SetMarkerColor(gr->GetMarkerColor());
+		ret->SetLineColor(gr->GetLineColor());
+		return ret;
+	} else {
+		for (int i = 0; i < 10; i++) {
+			x[i] = gr->GetX()[i] - 0.4;
+			ratio[i] = gr->GetY()[i] / gr->GetY()[19-i];
+			eratio[i] = ratio[i]*sqrt((gr->GetEY()[19-i]/gr->GetY()[19-i])**2 + (gr->GetEY()[i]/gr->GetY()[i])**2);
+		}
+		TGraphErrors * ret = new TGraphErrors(12, x, ratio, 0, eratio);
+		ret->SetMarkerStyle(gr->GetMarkerStyle());
+		ret->SetMarkerColor(gr->GetMarkerColor());
+		ret->SetLineColor(gr->GetLineColor());
+		return ret;
 	}
-//	for ( int i = 0; i < 12; i++ ) {
-//		cout << " x[" << i << "] = " << x[i] << "\t" << "ratio = " << ratio[i] << "\t\t" << "eratio = " << eratio[i] << endl;
-//	}
-	TGraphErrors * ret = new TGraphErrors(12, x, ratio, 0, eratio);
-	ret->SetMarkerStyle(gr->GetMarkerStyle());
-	ret->SetMarkerColor(gr->GetMarkerColor());
-	ret->SetLineColor(gr->GetLineColor());
-	return ret;
 }
 
 TGraphErrors* makeSys(TGraphErrors* gr, double sys)

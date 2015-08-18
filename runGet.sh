@@ -1,75 +1,75 @@
 #MC
-./runGet3.sh 257 0 10
-./runGet3.sh 257 1 10
-./runGet3.sh 257 2 10
-./runGet3.sh 257 3 10
-./runGet3.sh 257 4 10
-./runGet3.sh 257 5 10
-./runGet3.sh 257 6 10
-./runGet3.sh 257 7 10
-./runGet3.sh 257 8 10
-./runGet3.sh 257 9 10
-./runGet3.sh 257 10 10
-
-./runGet3.sh 258 0 10
-./runGet3.sh 258 1 10
-./runGet3.sh 258 2 10
-./runGet3.sh 258 3 10
-./runGet3.sh 258 4 10
-./runGet3.sh 258 5 10
-./runGet3.sh 258 6 10
-./runGet3.sh 258 7 10
-./runGet3.sh 258 8 10
-./runGet3.sh 258 9 10
-./runGet3.sh 258 10 10
-
-./runGet3.sh 259 0 10
-./runGet3.sh 259 1 10
-./runGet3.sh 259 2 10
-./runGet3.sh 259 3 10
-./runGet3.sh 259 4 10
-./runGet3.sh 259 5 10
-./runGet3.sh 259 6 10
-./runGet3.sh 259 7 10
-./runGet3.sh 259 8 10
-./runGet3.sh 259 9 10
-./runGet3.sh 259 10 10
-
-./runGet3.sh 260 0 10
-./runGet3.sh 260 1 10
-./runGet3.sh 260 2 10
-./runGet3.sh 260 3 10
-./runGet3.sh 260 4 10
-./runGet3.sh 260 5 10
-./runGet3.sh 260 6 10
-./runGet3.sh 260 7 10
-./runGet3.sh 260 8 10
-./runGet3.sh 260 9 10
-./runGet3.sh 260 10 10
-
-./runGet3.sh 261 0 10
-./runGet3.sh 261 1 10
-./runGet3.sh 261 2 10
-./runGet3.sh 261 3 10
-./runGet3.sh 261 4 10
-./runGet3.sh 261 5 10
-./runGet3.sh 261 6 10
-./runGet3.sh 261 7 10
-./runGet3.sh 261 8 10
-./runGet3.sh 261 9 10
-./runGet3.sh 261 10 10
-
-./runGet3.sh 262 0 10
-./runGet3.sh 262 1 10
-./runGet3.sh 262 2 10
-./runGet3.sh 262 3 10
-./runGet3.sh 262 4 10
-./runGet3.sh 262 5 10
-./runGet3.sh 262 6 10
-./runGet3.sh 262 7 10
-./runGet3.sh 262 8 10
-./runGet3.sh 262 9 10
-./runGet3.sh 262 10 10
+#####./runGet3.sh 257 0 10
+#####./runGet3.sh 257 1 10
+#####./runGet3.sh 257 2 10
+#####./runGet3.sh 257 3 10
+#####./runGet3.sh 257 4 10
+#####./runGet3.sh 257 5 10
+#####./runGet3.sh 257 6 10
+#####./runGet3.sh 257 7 10
+#####./runGet3.sh 257 8 10
+#####./runGet3.sh 257 9 10
+#####./runGet3.sh 257 10 10
+#####
+#####./runGet3.sh 258 0 10
+#####./runGet3.sh 258 1 10
+#####./runGet3.sh 258 2 10
+#####./runGet3.sh 258 3 10
+#####./runGet3.sh 258 4 10
+#####./runGet3.sh 258 5 10
+#####./runGet3.sh 258 6 10
+#####./runGet3.sh 258 7 10
+#####./runGet3.sh 258 8 10
+#####./runGet3.sh 258 9 10
+#####./runGet3.sh 258 10 10
+#####
+#####./runGet3.sh 259 0 10
+#####./runGet3.sh 259 1 10
+#####./runGet3.sh 259 2 10
+#####./runGet3.sh 259 3 10
+#####./runGet3.sh 259 4 10
+#####./runGet3.sh 259 5 10
+#####./runGet3.sh 259 6 10
+#####./runGet3.sh 259 7 10
+#####./runGet3.sh 259 8 10
+#####./runGet3.sh 259 9 10
+#####./runGet3.sh 259 10 10
+#####
+#####./runGet3.sh 260 0 10
+#####./runGet3.sh 260 1 10
+#####./runGet3.sh 260 2 10
+#####./runGet3.sh 260 3 10
+#####./runGet3.sh 260 4 10
+#####./runGet3.sh 260 5 10
+#####./runGet3.sh 260 6 10
+#####./runGet3.sh 260 7 10
+#####./runGet3.sh 260 8 10
+#####./runGet3.sh 260 9 10
+#####./runGet3.sh 260 10 10
+#####
+#####./runGet3.sh 261 0 10
+#####./runGet3.sh 261 1 10
+#####./runGet3.sh 261 2 10
+#####./runGet3.sh 261 3 10
+#####./runGet3.sh 261 4 10
+#####./runGet3.sh 261 5 10
+#####./runGet3.sh 261 6 10
+#####./runGet3.sh 261 7 10
+#####./runGet3.sh 261 8 10
+#####./runGet3.sh 261 9 10
+#####./runGet3.sh 261 10 10
+#####
+#####./runGet3.sh 262 0 10
+#####./runGet3.sh 262 1 10
+#####./runGet3.sh 262 2 10
+#####./runGet3.sh 262 3 10
+#####./runGet3.sh 262 4 10
+#####./runGet3.sh 262 5 10
+#####./runGet3.sh 262 6 10
+#####./runGet3.sh 262 7 10
+#####./runGet3.sh 262 8 10
+#####./runGet3.sh 262 9 10
+#####./runGet3.sh 262 10 10
 
 
 
@@ -241,6 +241,55 @@
 #####./runGet3.sh 241 8 10
 #####./runGet3.sh 241 9 10
 #####./runGet3.sh 241 10 10
+
+./runGet3.sh 263 0 10
+./runGet3.sh 263 1 10
+./runGet3.sh 263 2 10
+./runGet3.sh 263 3 10
+./runGet3.sh 263 4 10
+./runGet3.sh 263 5 10
+./runGet3.sh 263 6 10
+./runGet3.sh 263 7 10
+./runGet3.sh 263 8 10
+./runGet3.sh 263 9 10
+./runGet3.sh 263 10 10
+
+./runGet3.sh 264 0 10
+./runGet3.sh 264 1 10
+./runGet3.sh 264 2 10
+./runGet3.sh 264 3 10
+./runGet3.sh 264 4 10
+./runGet3.sh 264 5 10
+./runGet3.sh 264 6 10
+./runGet3.sh 264 7 10
+./runGet3.sh 264 8 10
+./runGet3.sh 264 9 10
+./runGet3.sh 264 10 10
+
+./runGet3.sh 265 0 10
+./runGet3.sh 265 1 10
+./runGet3.sh 265 2 10
+./runGet3.sh 265 3 10
+./runGet3.sh 265 4 10
+./runGet3.sh 265 5 10
+./runGet3.sh 265 6 10
+./runGet3.sh 265 7 10
+./runGet3.sh 265 8 10
+./runGet3.sh 265 9 10
+./runGet3.sh 265 10 10
+
+./runGet3.sh 266 0 10
+./runGet3.sh 266 1 10
+./runGet3.sh 266 2 10
+./runGet3.sh 266 3 10
+./runGet3.sh 266 4 10
+./runGet3.sh 266 5 10
+./runGet3.sh 266 6 10
+./runGet3.sh 266 7 10
+./runGet3.sh 266 8 10
+./runGet3.sh 266 9 10
+./runGet3.sh 266 10 10
+
 
 #pPb
 #####./runGet3.sh 229 0 10
