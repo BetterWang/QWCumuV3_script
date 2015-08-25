@@ -16,6 +16,11 @@
 	TMultiGraph * mgr_norm = new TMultiGraph();
 	TMultiGraph * mgr_norm_sub = new TMultiGraph();
 
+	gr_norm_p->SetMarkerColor(kBlue);
+	gr_norm_p->SetLineColor(kBlue);
+	gr_norm_Pb->SetMarkerColor(kBlue);
+	gr_norm_Pb->SetLineColor(kBlue);
+
 	mgr_norm->Add(gr_norm_sys_p, "[]2");
 	mgr_norm->Add(gr_norm_sys_Pb, "[]2");
 	mgr_norm->Add(gr_norm_p, "p");

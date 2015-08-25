@@ -219,6 +219,7 @@ void InitHist(TH1        *hist,
   hist->SetTitleOffset(1.10,"Z");
   hist->SetLabelOffset(0.008,"Y");
   hist->SetLabelSize  (0.050,"Y");
+  hist->SetLabelFont  (42   ,"X");
   hist->SetLabelFont  (42   ,"Y");
   hist->SetMarkerStyle(20);
   hist->SetMarkerColor(color);

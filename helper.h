@@ -1,3 +1,33 @@
+TGraphErrors* makeRatioEP(TGraphErrors* gr)
+{
+	double ratio[6] = {};
+	double eratio[6] = {};
+	double x[6] = {};
+	if ( bPbPb ) {
+		for ( int i = 0; i < 6; i++ ) {
+			x[i] = gr->GetX()[i+6];
+			ratio[i] = gr->GetY()[i+6] / gr->GetY()[5-i];
+			eratio[i] = ratio[i]*sqrt((gr->GetEY()[5-i]/gr->GetY()[5-i])**2 + (gr->GetEY()[i+6]/gr->GetY()[i+6])**2);
+		}
+		TGraphErrors * ret = new TGraphErrors(6, x, ratio, 0, eratio);
+		ret->SetMarkerStyle(gr->GetMarkerStyle());
+		ret->SetMarkerColor(gr->GetMarkerColor());
+		ret->SetLineColor(gr->GetLineColor());
+		return ret;
+	} else {
+		for (int i = 0; i < 5; i++) {
+			x[i] = gr->GetX()[i+7] - 0.4;
+			ratio[i] = gr->GetY()[i+7] / gr->GetY()[6-i];
+			eratio[i] = ratio[i]*sqrt((gr->GetEY()[6-i]/gr->GetY()[6-i])**2 + (gr->GetEY()[i+7]/gr->GetY()[i+7])**2);
+		}
+		TGraphErrors * ret = new TGraphErrors(5, x, ratio, 0, eratio);
+		ret->SetMarkerStyle(gr->GetMarkerStyle());
+		ret->SetMarkerColor(gr->GetMarkerColor());
+		ret->SetLineColor(gr->GetLineColor());
+		return ret;
+	}
+}
+
 
 TGraphErrors* makeRatio(TGraphErrors* gr)
 {
@@ -95,4 +125,47 @@ void trimGrPT2(TGraphErrors* gr)
 		}
 	}
 	return;
+}
+
+TGraphErrors * merge_EP_longrange(TGraphErrors* a, TGraphErrors* b, int markerStyle = kFullCircle, int color = kRed)
+{
+	TGraphErrors* ret = new TGraphErrors(12);
+	int idx = 0;
+	for ( int i = 0; i < 12; i++ ) {
+		if ( a->GetX()[i] > 0 ) continue;
+		ret->SetPoint(idx, a->GetX()[i], a->GetY()[i]);
+		ret->SetPointError(idx, 0, a->GetEY()[i]);
+		idx++;
+	}
+	for ( int i = 0; i < 12; i++ ) {
+		if ( b->GetX()[i] < 0 ) continue;
+		ret->SetPoint(idx, b->GetX()[i], b->GetY()[i]);
+		ret->SetPointError(idx, 0, b->GetEY()[i]);
+		idx++;
+	}
+	ret->Sort();
+	ret->SetMarkerStyle(markerStyle);
+	ret->SetMarkerColor(color);
+	ret->SetLineColor(color);
+	return ret;
+}
+
+
+TGraphErrors * rebin_eta(TGraphErrors* gr)
+{
+	if (!gr) return 0;
+	int Nbin = gr->GetN()/2;
+	TGraphErrors* ret = new TGraphErrors(Nbin);
+	for ( int i = 0; i < Nbin; i++ ) {
+		double x = ( gr->GetX()[2*i] + gr->GetX()[2*i+1] ) / 2.;
+		double y = ( gr->GetY()[2*i] + gr->GetY()[2*i+1] ) / 2.;
+		double ey = sqrt(gr->GetEY()[2*i]**2 + gr->GetEY()[2*i+1]**2) / 2.;
+		ret->SetPoint(i, x, y);
+		ret->SetPointError(i, 0, ey);
+	}
+	ret->SetMarkerStyle(gr->GetMarkerStyle());
+	ret->SetMarkerColor(gr->GetMarkerColor());
+	ret->SetLineColor(gr->GetLineColor());
+
+	return ret;
 }
