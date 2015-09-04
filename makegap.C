@@ -8,14 +8,14 @@
 //	int s2 = 229; // pPb p-side
 //	int s3 = 233; // pPb Pb-side
 
-//	int s1 = 139; // pPb std
-//	int s2 = 40; // pPb p-side
-//	int s3 = 52; // pPb Pb-side
-//
-	int s1 = 109; // PbPb std
-	int s2 = 234; // PbPb p-side
-	int s3 = 235; // PbPb Pb-side
+	int s1 = 139; // pPb std
+	int s2 = 40; // pPb p-side
+	int s3 = 52; // pPb Pb-side
 
+//	int s1 = 109; // PbPb std
+//	int s2 = 234; // PbPb p-side
+//	int s3 = 235; // PbPb Pb-side
+//
 
 	int bPbPb = 0;
 	if ( s1 == 109 ) bPbPb = 1;
@@ -298,40 +298,40 @@
 	legPt2->Draw();
 ****************/
 
-	for ( int i = 3; i < 8; i++ ) {
-		gr_v2pt_p_EP_Pb[i]->SetMarkerStyle(kOpenCircle);
-		gr_v2pt_p_EP_Pb[i]->SetMarkerColor(kRed);
-		gr_v2pt_p_EP_Pb[i]->SetLineColor(kRed);
+	if ( !bPbPb ) {
+		for ( int i = 3; i < 8; i++ ) {
+			gr_v2pt_p_EP_Pb[i]->SetMarkerStyle(kOpenCircle);
+			gr_v2pt_p_EP_Pb[i]->SetMarkerColor(kRed);
+			gr_v2pt_p_EP_Pb[i]->SetLineColor(kRed);
 
-		gr_v2pt_Pb_EP_p[i]->SetMarkerStyle(kOpenCircle);
-		gr_v2pt_Pb_EP_p[i]->SetMarkerColor(kBlue);
-		gr_v2pt_Pb_EP_p[i]->SetLineColor(kBlue);
+			gr_v2pt_Pb_EP_p[i]->SetMarkerStyle(kOpenCircle);
+			gr_v2pt_Pb_EP_p[i]->SetMarkerColor(kBlue);
+			gr_v2pt_Pb_EP_p[i]->SetLineColor(kBlue);
 
-		gr_v2pt_p_EPde_Pb[i]->SetMarkerStyle(kOpenCircle);
-		gr_v2pt_p_EPde_Pb[i]->SetMarkerColor(kRed);
-		gr_v2pt_p_EPde_Pb[i]->SetLineColor(kRed);
+			gr_v2pt_p_EPde_Pb[i]->SetMarkerStyle(kOpenCircle);
+			gr_v2pt_p_EPde_Pb[i]->SetMarkerColor(kRed);
+			gr_v2pt_p_EPde_Pb[i]->SetLineColor(kRed);
 
-		gr_v2pt_Pb_EPde_p[i]->SetMarkerStyle(kOpenCircle);
-		gr_v2pt_Pb_EPde_p[i]->SetMarkerColor(kBlue);
-		gr_v2pt_Pb_EPde_p[i]->SetLineColor(kBlue);
+			gr_v2pt_Pb_EPde_p[i]->SetMarkerStyle(kOpenCircle);
+			gr_v2pt_Pb_EPde_p[i]->SetMarkerColor(kBlue);
+			gr_v2pt_Pb_EPde_p[i]->SetLineColor(kBlue);
 
-		gr_v2pt_p_SP_Pb[i]->SetMarkerStyle(kOpenCircle);
-		gr_v2pt_p_SP_Pb[i]->SetMarkerColor(kRed);
-		gr_v2pt_p_SP_Pb[i]->SetLineColor(kRed);
+			gr_v2pt_p_SP_Pb[i]->SetMarkerStyle(kOpenCircle);
+			gr_v2pt_p_SP_Pb[i]->SetMarkerColor(kRed);
+			gr_v2pt_p_SP_Pb[i]->SetLineColor(kRed);
 
-		gr_v2pt_Pb_SP_p[i]->SetMarkerStyle(kOpenCircle);
-		gr_v2pt_Pb_SP_p[i]->SetMarkerColor(kBlue);
-		gr_v2pt_Pb_SP_p[i]->SetLineColor(kBlue);
+			gr_v2pt_Pb_SP_p[i]->SetMarkerStyle(kOpenCircle);
+			gr_v2pt_Pb_SP_p[i]->SetMarkerColor(kBlue);
+			gr_v2pt_Pb_SP_p[i]->SetLineColor(kBlue);
 
-		gr_v2pt_p_SPde_Pb[i]->SetMarkerStyle(kOpenCircle);
-		gr_v2pt_p_SPde_Pb[i]->SetMarkerColor(kRed);
-		gr_v2pt_p_SPde_Pb[i]->SetLineColor(kRed);
+			gr_v2pt_p_SPde_Pb[i]->SetMarkerStyle(kOpenCircle);
+			gr_v2pt_p_SPde_Pb[i]->SetMarkerColor(kRed);
+			gr_v2pt_p_SPde_Pb[i]->SetLineColor(kRed);
 
-		gr_v2pt_Pb_SPde_p[i]->SetMarkerStyle(kOpenCircle);
-		gr_v2pt_Pb_SPde_p[i]->SetMarkerColor(kBlue);
-		gr_v2pt_Pb_SPde_p[i]->SetLineColor(kBlue);
-
-
+			gr_v2pt_Pb_SPde_p[i]->SetMarkerStyle(kOpenCircle);
+			gr_v2pt_Pb_SPde_p[i]->SetMarkerColor(kBlue);
+			gr_v2pt_Pb_SPde_p[i]->SetLineColor(kBlue);
+		}
 	}
 /////////////////4////////////////////
 	TCanvas * cT1 = MakeCanvas("cT1", "cT1", 1600, 500);
@@ -339,6 +339,7 @@
 
 	TH2D * hframe_pt1 = new TH2D("hframe_pt1", "", 1, .1, 5.9, 1, 0, 0.35);
 	InitHist(hframe_pt1, "p_{T} (GeV/c)", "v_{2}");
+	hframe_pt1->SetTitleOffset(1.2);
 
 	cT1->cd(1);
 	hframe_pt1->Draw();
@@ -346,21 +347,23 @@
 		mgr_v24_HIN[0]->Draw();
 	}
 
-	if ( bEP ) {
-		if ( bDeco ) {
-			gr_v2pt_p_EP_Pb[7]->Draw("Psame");
-			gr_v2pt_Pb_EP_p[7]->Draw("Psame");
+	if ( !bPbPb ) {
+		if ( bEP ) {
+			if ( bDeco ) {
+				gr_v2pt_p_EP_Pb[7]->Draw("Psame");
+				gr_v2pt_Pb_EP_p[7]->Draw("Psame");
+			} else {
+				gr_v2pt_p_EPde_Pb[7]->Draw("Psame");
+				gr_v2pt_Pb_EPde_p[7]->Draw("Psame");
+			}
 		} else {
-			gr_v2pt_p_EPde_Pb[7]->Draw("Psame");
-			gr_v2pt_Pb_EPde_p[7]->Draw("Psame");
-		}
-	} else {
-		if ( bDeco ) {
-			gr_v2pt_p_SP_Pb[7]->Draw("Psame");
-			gr_v2pt_Pb_SP_p[7]->Draw("Psame");
-		} else {
-			gr_v2pt_p_SPde_Pb[7]->Draw("Psame");
-			gr_v2pt_Pb_SPde_p[7]->Draw("Psame");
+			if ( bDeco ) {
+				gr_v2pt_p_SP_Pb[7]->Draw("Psame");
+				gr_v2pt_Pb_SP_p[7]->Draw("Psame");
+			} else {
+				gr_v2pt_p_SPde_Pb[7]->Draw("Psame");
+				gr_v2pt_Pb_SPde_p[7]->Draw("Psame");
+			}
 		}
 	}
 
@@ -378,21 +381,23 @@
 		mgr_v24_HIN[1]->Draw();
 	}
 
-	if ( bEP ) {
-		if ( bDeco ) {
-			gr_v2pt_p_EP_Pb[6]->Draw("Psame");
-			gr_v2pt_Pb_EP_p[6]->Draw("Psame");
+	if ( !bPbPb ) {
+		if ( bEP ) {
+			if ( bDeco ) {
+				gr_v2pt_p_EP_Pb[6]->Draw("Psame");
+				gr_v2pt_Pb_EP_p[6]->Draw("Psame");
+			} else {
+				gr_v2pt_p_EPde_Pb[6]->Draw("Psame");
+				gr_v2pt_Pb_EPde_p[6]->Draw("Psame");
+			}
 		} else {
-			gr_v2pt_p_EPde_Pb[6]->Draw("Psame");
-			gr_v2pt_Pb_EPde_p[6]->Draw("Psame");
-		}
-	} else {
-		if ( bDeco ) {
-			gr_v2pt_p_SP_Pb[6]->Draw("Psame");
-			gr_v2pt_Pb_SP_p[6]->Draw("Psame");
-		} else {
-			gr_v2pt_p_SPde_Pb[6]->Draw("Psame");
-			gr_v2pt_Pb_SPde_p[6]->Draw("Psame");
+			if ( bDeco ) {
+				gr_v2pt_p_SP_Pb[6]->Draw("Psame");
+				gr_v2pt_Pb_SP_p[6]->Draw("Psame");
+			} else {
+				gr_v2pt_p_SPde_Pb[6]->Draw("Psame");
+				gr_v2pt_Pb_SPde_p[6]->Draw("Psame");
+			}
 		}
 	}
 
@@ -411,23 +416,26 @@
 		mgr_v24_HIN[2]->Draw();
 	}
 
-	if ( bEP ) {
-		if ( bDeco ) {
-			gr_v2pt_p_EP_Pb[5]->Draw("Psame");
-			gr_v2pt_Pb_EP_p[5]->Draw("Psame");
+	if ( !bPbPb ) {
+		if ( bEP ) {
+			if ( bDeco ) {
+				gr_v2pt_p_EP_Pb[5]->Draw("Psame");
+				gr_v2pt_Pb_EP_p[5]->Draw("Psame");
+			} else {
+				gr_v2pt_p_EPde_Pb[5]->Draw("Psame");
+				gr_v2pt_Pb_EPde_p[5]->Draw("Psame");
+			}
 		} else {
-			gr_v2pt_p_EPde_Pb[5]->Draw("Psame");
-			gr_v2pt_Pb_EPde_p[5]->Draw("Psame");
-		}
-	} else {
-		if ( bDeco ) {
-			gr_v2pt_p_SP_Pb[5]->Draw("Psame");
-			gr_v2pt_Pb_SP_p[5]->Draw("Psame");
-		} else {
-			gr_v2pt_p_SPde_Pb[5]->Draw("Psame");
-			gr_v2pt_Pb_SPde_p[5]->Draw("Psame");
+			if ( bDeco ) {
+				gr_v2pt_p_SP_Pb[5]->Draw("Psame");
+				gr_v2pt_Pb_SP_p[5]->Draw("Psame");
+			} else {
+				gr_v2pt_p_SPde_Pb[5]->Draw("Psame");
+				gr_v2pt_Pb_SPde_p[5]->Draw("Psame");
+			}
 		}
 	}
+
 
 //	gr_v24_1_sys[2]->Draw("[]2");
 	gr_v24_2_sys[2]->Draw("[]2");
@@ -443,24 +451,25 @@
 		mgr_v24_HIN[3]->Draw();
 	}
 
-	if ( bEP ) {
-		if ( bDeco ) {
-			gr_v2pt_p_EP_Pb[4]->Draw("Psame");
-			gr_v2pt_Pb_EP_p[4]->Draw("Psame");
+	if ( !bPbPb ) {
+		if ( bEP ) {
+			if ( bDeco ) {
+				gr_v2pt_p_EP_Pb[4]->Draw("Psame");
+				gr_v2pt_Pb_EP_p[4]->Draw("Psame");
+			} else {
+				gr_v2pt_p_EPde_Pb[4]->Draw("Psame");
+				gr_v2pt_Pb_EPde_p[4]->Draw("Psame");
+			}
 		} else {
-			gr_v2pt_p_EPde_Pb[4]->Draw("Psame");
-			gr_v2pt_Pb_EPde_p[4]->Draw("Psame");
-		}
-	} else {
-		if ( bDeco ) {
-			gr_v2pt_p_SP_Pb[4]->Draw("Psame");
-			gr_v2pt_Pb_SP_p[4]->Draw("Psame");
-		} else {
-			gr_v2pt_p_SPde_Pb[4]->Draw("Psame");
-			gr_v2pt_Pb_SPde_p[4]->Draw("Psame");
+			if ( bDeco ) {
+				gr_v2pt_p_SP_Pb[4]->Draw("Psame");
+				gr_v2pt_Pb_SP_p[4]->Draw("Psame");
+			} else {
+				gr_v2pt_p_SPde_Pb[4]->Draw("Psame");
+				gr_v2pt_Pb_SPde_p[4]->Draw("Psame");
+			}
 		}
 	}
-
 
 //	gr_v24_1_sys[3]->Draw("[]2");
 	gr_v24_2_sys[3]->Draw("[]2");
@@ -490,9 +499,11 @@
 	legPt1->SetBorderSize(0);
 	legPt1->SetTextFont(43);
 	legPt1->SetTextSize(18);
-	legPt1->AddEntry(gr_v2pt_p_SPde_Pb[7], Form("v_{2}^{p}{%s,%s}", bEP?"EP":"SP", bDeco?"#eta=#eta_{POI}":"#eta=0"), "p");
-	legPt1->AddEntry(gr_v2pt_Pb_SPde_p[7], Form("v_{2}^{Pb}{%s,%s}", bEP?"EP":"SP", bDeco?"#eta=#eta_{POI}":"#eta=0"), "p");
-	legPt1->Draw();
+	if ( !bPbPb ) {
+		legPt1->AddEntry(gr_v2pt_p_SPde_Pb[7], Form("v_{2}^{p}{%s,%s}", bEP?"EP":"SP", bDeco?"#eta=#eta_{POI}":"#eta=0"), "p");
+		legPt1->AddEntry(gr_v2pt_Pb_SPde_p[7], Form("v_{2}^{Pb}{%s,%s}", bEP?"EP":"SP", bDeco?"#eta=#eta_{POI}":"#eta=0"), "p");
+		legPt1->Draw();
+	}
 
 	cT1->cd(3);
 	TLegend * legPt2 = new TLegend(0.05, 0.75, 0.5, 0.97);
@@ -596,24 +607,23 @@
 	TGraphErrors * gr_r22[4] = {};
 	TGraphErrors * gr_r24[4] = {};
 	for ( int i = 0; i < 4; i++ ) {
-//		gr_r22[i] = makeRatioPt(gr_v22_2[i], gr_v22_3[i]);
-
-		if ( bEP ) {
-			if ( bDeco ) {
-				gr_r22[i] = makeRatioPt(gr_v2pt_p_EPde_Pb[7-i], gr_v2pt_Pb_EPde_p[7-i], 0, 15);
+		if ( !bPbPb ) {
+			if ( bEP ) {
+				if ( bDeco ) {
+					gr_r22[i] = makeRatioPt(gr_v2pt_p_EPde_Pb[7-i], gr_v2pt_Pb_EPde_p[7-i], 0, 15);
+				} else {
+					gr_r22[i] = makeRatioPt(gr_v2pt_p_EP_Pb[7-i], gr_v2pt_Pb_EP_p[7-i], 0, 15);
+				}
 			} else {
-				gr_r22[i] = makeRatioPt(gr_v2pt_p_EP_Pb[7-i], gr_v2pt_Pb_EP_p[7-i], 0, 15);
+				if ( bDeco ) {
+					gr_r22[i] = makeRatioPt(gr_v2pt_p_SPde_Pb[7-i], gr_v2pt_Pb_SPde_p[7-i], 0, 15);
+				} else {
+					gr_r22[i] = makeRatioPt(gr_v2pt_p_SP_Pb[7-i], gr_v2pt_Pb_SP_p[7-i], 0, 15);
+				}
 			}
-		} else {
-			if ( bDeco ) {
-				gr_r22[i] = makeRatioPt(gr_v2pt_p_SPde_Pb[7-i], gr_v2pt_Pb_SPde_p[7-i], 0, 15);
-			} else {
-				gr_r22[i] = makeRatioPt(gr_v2pt_p_SP_Pb[7-i], gr_v2pt_Pb_SP_p[7-i], 0, 15);
-			}
+			gr_r22[i]->SetMarkerColor(kRed);
+			gr_r22[i]->SetLineColor(kRed);
 		}
-		gr_r22[i]->SetMarkerColor(kRed);
-		gr_r22[i]->SetLineColor(kRed);
-
 		gr_r24[i] = makeRatioPt(gr_v24_2[i], gr_v24_3[i], 0, 7);
 		gr_r24[i]->SetMarkerColor(kBlue);
 		gr_r24[i]->SetLineColor(kBlue);
@@ -623,25 +633,25 @@
 	hframe_ptR->Draw();
 	line.Draw();
 
-	gr_r22[0]->Draw("Psame");
+	if ( !bPbPb ) gr_r22[0]->Draw("Psame");
 	gr_r24[0]->Draw("Psame");
 
 	cT0r->cd(2);
 	hframe_ptR->Draw();
 	line.Draw();
-	gr_r22[1]->Draw("Psame");
+	if ( !bPbPb ) gr_r22[1]->Draw("Psame");
 	gr_r24[1]->Draw("Psame");
 
 	cT0r->cd(3);
 	hframe_ptR->Draw();
 	line.Draw();
-	gr_r22[2]->Draw("Psame");
+	if ( !bPbPb ) gr_r22[2]->Draw("Psame");
 	gr_r24[2]->Draw("Psame");
 
 	cT0r->cd(4);
 	hframe_ptR->Draw();
 	line.Draw();
-	gr_r22[3]->Draw("Psame");
+	if ( !bPbPb ) gr_r22[3]->Draw("Psame");
 	gr_r24[3]->Draw("Psame");
 
 
@@ -664,17 +674,19 @@
 	legPt2->SetBorderSize(0);
 	legPt2->SetTextFont(43);
 	legPt2->SetTextSize(18);
-	if ( bEP ) {
-		if ( bDeco ) {
-			legPt2->AddEntry(gr_r22[0], "v_{2}^{p}{EP,#eta=#eta_{POI}} / v_{2}^{Pb}{EP,#eta=#eta_{POI}}", "p");
+	if ( !bPbPb ) {
+		if ( bEP ) {
+			if ( bDeco ) {
+				legPt2->AddEntry(gr_r22[0], "v_{2}^{p}{EP,#eta=#eta_{POI}} / v_{2}^{Pb}{EP,#eta=#eta_{POI}}", "p");
+			} else {
+				legPt2->AddEntry(gr_r22[0], "v_{2}^{p}{EP,#eta=0} / v_{2}^{Pb}{EP,#eta=0}", "p");
+			}
 		} else {
-			legPt2->AddEntry(gr_r22[0], "v_{2}^{p}{EP,#eta=0} / v_{2}^{Pb}{EP,#eta=0}", "p");
-		}
-	} else {
-		if ( bDeco ) {
-			legPt2->AddEntry(gr_r22[0], "v_{2}^{p}{SP,#eta=#eta_{POI}} / v_{2}^{Pb}{SP,#eta=#eta_{POI}}", "p");
-		} else {
-			legPt2->AddEntry(gr_r22[0], "v_{2}^{p}{SP,#eta=0} / v_{2}^{Pb}{SP,#eta=0}", "p");
+			if ( bDeco ) {
+				legPt2->AddEntry(gr_r22[0], "v_{2}^{p}{SP,#eta=#eta_{POI}} / v_{2}^{Pb}{SP,#eta=#eta_{POI}}", "p");
+			} else {
+				legPt2->AddEntry(gr_r22[0], "v_{2}^{p}{SP,#eta=0} / v_{2}^{Pb}{SP,#eta=0}", "p");
+			}
 		}
 	}
 	legPt2->AddEntry(gr_r24[0], "v_{2}^{p}{4} / v_{2}^{Pb}{4}", "p");

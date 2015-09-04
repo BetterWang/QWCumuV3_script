@@ -225,11 +225,16 @@ void InitHist(TH1        *hist,
   hist->SetMarkerColor(color);
   hist->SetMarkerSize (0.6);
   // Strangely enough this cannot be set anywhere else??
-  hist->GetXaxis()->SetLabelSize(0.05);
-  hist->GetYaxis()->SetTitleFont(42);
   hist->GetXaxis()->CenterTitle();
   hist->GetYaxis()->CenterTitle();
-  hist->SetTitle("");  
+  hist->SetTitle("");
+
+  hist->SetLabelFont(43);
+  hist->SetLabelSize(26);
+
+  hist->SetTitleFont(43);
+  hist->SetTitleSize(26);
+  hist->SetTitleOffset(2.00,"X");
   return;
 }
 

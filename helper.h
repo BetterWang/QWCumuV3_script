@@ -4,6 +4,7 @@ TGraphErrors* makeRatioEP(TGraphErrors* gr)
 	double eratio[6] = {};
 	double x[6] = {};
 	if ( bPbPb ) {
+		gr->Sort();
 		for ( int i = 0; i < 6; i++ ) {
 			x[i] = gr->GetX()[i+6];
 			ratio[i] = gr->GetY()[i+6] / gr->GetY()[5-i];
@@ -15,6 +16,7 @@ TGraphErrors* makeRatioEP(TGraphErrors* gr)
 		ret->SetLineColor(gr->GetLineColor());
 		return ret;
 	} else {
+		gr->Sort();
 		for (int i = 0; i < 5; i++) {
 			x[i] = gr->GetX()[i+7] - 0.4;
 			ratio[i] = gr->GetY()[i+7] / gr->GetY()[6-i];
@@ -63,12 +65,30 @@ TGraphErrors* makeSys(TGraphErrors* gr, double sys)
 {
 	if (!gr) return 0;
 	TGraphErrors * ret = gr->Clone();
-//	cout << "!! N = " << gr->GetN() << endl;
 	for ( int i = 0; i < gr->GetN(); i++ ) {
 		ret->GetEY()[i] = ret->GetY()[i] * sys;
+		ret->GetEX()[i] = 0.15;
 	}
+	ret->SetFillColor(kGray);
 	return ret;
 }
+
+TGraphErrors* makeSysLYZ(TGraphErrors* gr, double sys1, double sys2)
+{
+	if (!gr) return 0;
+	TGraphErrors * ret = gr->Clone();
+	for ( int i = 0; i < gr->GetN(); i++ ) {
+		if ( gr->GetX()[i] < 2 ) {
+			ret->GetEY()[i] = ret->GetY()[i] * sys1;
+		} else {
+			ret->GetEY()[i] = ret->GetY()[i] * sys2;
+		}
+		ret->GetEX()[i] = 0.15;
+	}
+	ret->SetFillColor(kGray);
+	return ret;
+}
+
 
 
 void trimGrPT(TGraphErrors* gr)
@@ -168,4 +188,10 @@ TGraphErrors * rebin_eta(TGraphErrors* gr)
 	ret->SetLineColor(gr->GetLineColor());
 
 	return ret;
+}
+
+void DrawSys(TGraphErrors* gr, double sys)
+{
+	TGraphErrors * gr_sys = makeSys(gr, sys);
+	gr_sys->Draw("[]2");
 }
