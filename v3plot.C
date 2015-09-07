@@ -21,7 +21,7 @@
 	makeMultiPanelCanvas(cT, 4, 1, 0.0, 0., 0.15, 0.15, 0.01);
 
 	TH2D * hframe_eta3 = new TH2D("hframe_eta3", "", 1, -2.4, 2.4, 1, 0, 0.16);
-	InitHist(hframe_eta3, "#eta", "v_{3}");
+	InitHist(hframe_eta3, "#eta", "v_{n}");
 	hframe_eta3->SetTitleOffset(1.2);
 
 	gr_pA_eta3[7] = (TGraphErrors*) fpPb->Get("gr_EP_eta3_7");
@@ -193,7 +193,7 @@
 	cT->cd(4);
 	latex.DrawLatexNDC(0.40, 0.44, "#bf{220 #leq N_{trk}^{offline} < 260}");
 
-	cT->cd(3);
+	cT->cd(2);
 	TLegend * legEtaEP2 = new TLegend(0.05, 0.8, 0.3, 0.97);
 	legEtaEP2->SetFillColor(kWhite);
 	legEtaEP2->SetBorderSize(0);
@@ -208,7 +208,7 @@
 	cT->cd(1);
 	latex.DrawLatexNDC(0.20, 0.94, "#splitline{#bf{CMS}}{Preliminary}");
 
-	cT->cd(4);
+	cT->cd(3);
 	TLegend * legEtaEP3 = new TLegend(0.05, 0.8, 0.3, 0.97);
 	legEtaEP3->SetFillColor(kWhite);
 	legEtaEP3->SetBorderSize(0);
@@ -220,8 +220,12 @@
 
 	legEtaEP3->Draw();
 
+	cT->cd(4);
+	latex.DrawLatexNDC(0.20, 0.94, "0.3 < p_{T} < 3.0 GeV/c");
+
 
 	cT->SaveAs("eta3.pdf");
+	cT->SaveAs("eta3_C.C");
 ////// Fluct
 	TGraphErrors * gr_pA_Fluct[20] = {};
 	TGraphErrors * gr_AA_Fluct[20] = {};
@@ -270,7 +274,7 @@
 	cT->cd(2);
 	latex.DrawLatexNDC(0.28, 0.91, "#sqrt{#frac{v_{2}#left{EP#right}^{2} - v_{2}#left{4#right}^{2}}{v_{2}#left{EP#right}^{2} + v_{2}#left{4#right}^{2}}}");
 
-	cT->cd(4);
+	cT->cd(3);
 	TLegend * legFluct = new TLegend(0.05, 0.8, 0.6, 0.97);
 	legFluct->SetFillColor(kWhite);
 	legFluct->SetBorderSize(0);
@@ -291,6 +295,124 @@
 	cT->cd(4);
 	latex.DrawLatexNDC(0.40, 0.3, "#bf{220 #leq N_{trk}^{offline} < 260}");
 
+	cT->cd(4);
+	latex.DrawLatexNDC(0.20, 0.94, "0.3 < p_{T} < 3.0 GeV/c");
+
+
 	cT->SaveAs("Fluct.pdf");
+	cT->SaveAs("Fluct_C.C");
+
+////// SP2EP eta
+	TGraphErrors * gr_pA_RatioEta_p[20] = {};
+	TGraphErrors * gr_pA_RatioEta_Pb[20] = {};
+	TGraphErrors * gr_AA_RatioEta_p[20] = {};
+	TGraphErrors * gr_AA_RatioEta_Pb[20] = {};
+
+	for ( int i = 3; i < 8; i++ ) {
+		gr_pA_RatioEta_p[i] = (TGraphErrors*) fpPb->Get(Form("gr_RatioEta_p_%i", i));
+		gr_pA_RatioEta_p[i]->SetMarkerStyle(kFullCircle);
+		gr_pA_RatioEta_p[i]->SetMarkerColor(kBlue);
+		gr_pA_RatioEta_p[i]->SetLineColor(kBlue);
+
+		gr_pA_RatioEta_Pb[i] = (TGraphErrors*) fpPb->Get(Form("gr_RatioEta_Pb_%i", i));
+		gr_pA_RatioEta_Pb[i]->SetMarkerStyle(kFullCircle);
+		gr_pA_RatioEta_Pb[i]->SetMarkerColor(kRed);
+		gr_pA_RatioEta_Pb[i]->SetLineColor(kRed);
+
+		gr_AA_RatioEta_p[i] = (TGraphErrors*) fPbPb->Get(Form("gr_RatioEta_p_%i", i));
+		gr_AA_RatioEta_p[i]->SetMarkerStyle(kOpenCircle);
+		gr_AA_RatioEta_p[i]->SetMarkerColor(kBlue);
+		gr_AA_RatioEta_p[i]->SetLineColor(kBlue);
+
+		gr_AA_RatioEta_Pb[i] = (TGraphErrors*) fPbPb->Get(Form("gr_RatioEta_Pb_%i", i));
+		gr_AA_RatioEta_Pb[i]->SetMarkerStyle(kOpenCircle);
+		gr_AA_RatioEta_Pb[i]->SetMarkerColor(kRed);
+		gr_AA_RatioEta_Pb[i]->SetLineColor(kRed);
+	}
+
+	cT = MakeCanvas("cT_RatioEtaSP2EP", "cT_RatioEtaSP2EP", 2100, 500);
+	makeMultiPanelCanvas(cT, 5, 1, 0.0, 0., 0.15, 0.15, 0.01);
+
+	TH2D * hframe_RatioEtaSP2EP = new TH2D("hframe_RatioEtaSP2EP", "", 1, -2.4, 2.4, 1, 0.91, 1.14);
+	InitHist(hframe_RatioEtaSP2EP, "#eta", "v_{2}{SP}/v_{2}{EP}");
+	hframe_RatioEtaSP2EP->SetTitleOffset(1.2, "X");
+
+	TLine *line = new TLine(-2.4,1,2.4,1);
+	cT->cd(1);
+	hframe_RatioEtaSP2EP->Draw();
+	line->Draw();
+	gr_pA_RatioEta_p[7]->Draw("Psame");
+	gr_pA_RatioEta_Pb[7]->Draw("Psame");
+	gr_AA_RatioEta_p[7]->Draw("Psame");
+	gr_AA_RatioEta_Pb[7]->Draw("Psame");
+
+	cT->cd(2);
+	hframe_RatioEtaSP2EP->Draw();
+	line->Draw();
+	gr_pA_RatioEta_p[6]->Draw("Psame");
+	gr_pA_RatioEta_Pb[6]->Draw("Psame");
+	gr_AA_RatioEta_p[6]->Draw("Psame");
+	gr_AA_RatioEta_Pb[6]->Draw("Psame");
+
+	cT->cd(3);
+	hframe_RatioEtaSP2EP->Draw();
+	line->Draw();
+	gr_pA_RatioEta_p[5]->Draw("Psame");
+	gr_pA_RatioEta_Pb[5]->Draw("Psame");
+	gr_AA_RatioEta_p[5]->Draw("Psame");
+	gr_AA_RatioEta_Pb[5]->Draw("Psame");
+
+	cT->cd(4);
+	hframe_RatioEtaSP2EP->Draw();
+	line->Draw();
+	gr_pA_RatioEta_p[4]->Draw("Psame");
+	gr_pA_RatioEta_Pb[4]->Draw("Psame");
+	gr_AA_RatioEta_p[4]->Draw("Psame");
+	gr_AA_RatioEta_Pb[4]->Draw("Psame");
+
+	cT->cd(5);
+	hframe_RatioEtaSP2EP->Draw();
+	line->Draw();
+	gr_pA_RatioEta_p[3]->Draw("Psame");
+	gr_pA_RatioEta_Pb[3]->Draw("Psame");
+	gr_AA_RatioEta_p[3]->Draw("Psame");
+	gr_AA_RatioEta_Pb[3]->Draw("Psame");
+
+	cT->cd(1);
+	latex.DrawLatexNDC(0.40, 0.3, "#bf{120 #leq N_{trk}^{offline} < 150}");
+	cT->cd(2);
+	latex.DrawLatexNDC(0.40, 0.3, "#bf{150 #leq N_{trk}^{offline} < 185}");
+	cT->cd(3);
+	latex.DrawLatexNDC(0.40, 0.3, "#bf{185 #leq N_{trk}^{offline} < 220}");
+	cT->cd(4);
+	latex.DrawLatexNDC(0.40, 0.3, "#bf{220 #leq N_{trk}^{offline} < 260}");
+	cT->cd(5);
+	latex.DrawLatexNDC(0.40, 0.3, "#bf{260 #leq N_{trk}^{offline} < 300}");
+
+	cT->cd(1);
+	latex.DrawLatexNDC(0.20, 0.94, "#splitline{#bf{CMS}}{Preliminary}");
+
+	cT->cd(3);
+	latex.DrawLatexNDC(0.20, 0.9, "0.3 < p_{T} < 3.0 GeV/c");
+
+	cT->cd(4);
+	TLegend * legSP2EPeta = new TLegend(0.05, 0.7, 0.6, 0.97);
+	legSP2EPeta->SetFillColor(kWhite);
+	legSP2EPeta->SetBorderSize(0);
+	legSP2EPeta->SetTextFont(43);
+	legSP2EPeta->SetTextSize(24);
+
+	legSP2EPeta->AddEntry(gr_pA_RatioEta_p[3], "pPb v_{2}{SP}/v_{2}{EP} p-going EP", "p");
+	legSP2EPeta->AddEntry(gr_pA_RatioEta_Pb[3], "pPb v_{2}{SP}/v_{2}{EP} Pb-going EP", "p");
+	legSP2EPeta->AddEntry(gr_AA_RatioEta_p[3], "PbPb v_{2}{SP}/v_{2}{EP} HF+ EP", "p");
+	legSP2EPeta->AddEntry(gr_AA_RatioEta_Pb[3], "PbPb v_{2}{SP}/v_{2}{EP} HF- EP", "p");
+	legSP2EPeta->Draw();
+
+
+
+	cT->SaveAs("EP2SP_eta.pdf");
+	cT->SaveAs("EP2SP_eta_C.C");
+
+
 
 }

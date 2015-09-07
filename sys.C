@@ -15,7 +15,6 @@
 
 	double sys_LYZ_eta_pPb = 0.115;
 	double sys_LYZ_eta_PbPb = 0.03;
-	double sys_LYZ_pt_pPb1 = 0.072;
-	double sys_LYZ_pt_pPb2 = 0.114;
-	double sys_LYZ_pt_PbPb = 0.031;
+	double sys_LYZ_pt_pPb = 0.111;
+	double sys_LYZ_pt_PbPb = 0.025;
 }

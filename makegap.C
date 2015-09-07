@@ -500,8 +500,8 @@
 	legPt1->SetTextFont(43);
 	legPt1->SetTextSize(18);
 	if ( !bPbPb ) {
-		legPt1->AddEntry(gr_v2pt_p_SPde_Pb[7], Form("v_{2}^{p}{%s,%s}", bEP?"EP":"SP", bDeco?"#eta=#eta_{POI}":"#eta=0"), "p");
-		legPt1->AddEntry(gr_v2pt_Pb_SPde_p[7], Form("v_{2}^{Pb}{%s,%s}", bEP?"EP":"SP", bDeco?"#eta=#eta_{POI}":"#eta=0"), "p");
+		legPt1->AddEntry(gr_v2pt_p_SPde_Pb[7], Form("v_{2}^{p}{%s,%s} 2.0<#eta<2.4", bEP?"EP":"SP", bDeco?"#eta_{C}=#eta_{POI}":"#eta_{C}=0"), "p");
+		legPt1->AddEntry(gr_v2pt_Pb_SPde_p[7], Form("v_{2}^{Pb}{%s,%s} -2.4<#eta<-2.0", bEP?"EP":"SP", bDeco?"#eta_{C}=#eta_{POI}":"#eta_{C}=0"), "p");
 		legPt1->Draw();
 	}
 
@@ -512,9 +512,9 @@
 	legPt2->SetTextFont(43);
 	legPt2->SetTextSize(18);
 //	legPt2->AddEntry(gr_v24_1[0], "v_{2}{4} |#eta|<2.4", "p");
-	legPt2->AddEntry(gr_HIN_13_002_PbPbv24pt5, "v_{2}{4} HIN-13-002", "p");
-	legPt2->AddEntry(gr_v24_2[0], "v_{2}^{p}{4}", "p");
-	legPt2->AddEntry(gr_v24_3[0], "v_{2}^{Pb}{4}", "p");
+	legPt2->AddEntry(gr_HIN_13_002_PbPbv24pt5, "v_{2}{4} HIN-13-002 |#eta|<2.4", "p");
+	legPt2->AddEntry(gr_v24_2[0], "v_{2}^{p}{4} 1.2<#eta<2.4", "p");
+	legPt2->AddEntry(gr_v24_3[0], "v_{2}^{Pb}{4} -2.4<#eta<-1.2", "p");
 
 	legPt2->Draw();
 
@@ -694,15 +694,21 @@
 	legPt2->Draw();
 
 	if (bPbPb) {
-//		cT0->SaveAs(Form("v22_pT_diff_PbPb_%i_%i.pdf", bEP, bDeco));
 		cT1->SaveAs(Form("v24_pT_diff_PbPb_%i_%i.pdf", bEP, bDeco));
 		cT2->SaveAs(Form("v26_pT_diff_PbPb_%i_%i.pdf", bEP, bDeco));
 		cT0r->SaveAs(Form("v2_pT_diffRatio_PbPb_%i_%i.pdf", bEP, bDeco));
+
+		cT1->SaveAs(Form("v24_pT_diff_PbPb_%i_%i_C.C", bEP, bDeco));
+		cT2->SaveAs(Form("v26_pT_diff_PbPb_%i_%i_C.C", bEP, bDeco));
+		cT0r->SaveAs(Form("v2_pT_diffRatio_PbPb_%i_%i_C.C", bEP, bDeco));
 	} else {
-//		cT0->SaveAs(Form("v22_pT_diff_pPb_%i_%i.pdf", bEP, bDeco));
 		cT1->SaveAs(Form("v24_pT_diff_pPb_%i_%i.pdf", bEP, bDeco));
 		cT2->SaveAs(Form("v26_pT_diff_pPb_%i_%i.pdf", bEP, bDeco));
 		cT0r->SaveAs(Form("v2_pT_diffRatio_pPb_%i_%i.pdf", bEP, bDeco));
+
+		cT1->SaveAs(Form("v24_pT_diff_pPb_%i_%i_C.C", bEP, bDeco));
+		cT2->SaveAs(Form("v26_pT_diff_pPb_%i_%i_C.C", bEP, bDeco));
+		cT0r->SaveAs(Form("v2_pT_diffRatio_pPb_%i_%i_C.C", bEP, bDeco));
 	}
 
 

@@ -6,8 +6,8 @@
 #include "noff.h"
 #include "style.h"
 #include "helper.h"
-//	int s1 = 109; // PbPb
-	int s1 = 139; // pPb
+	int s1 = 109; // PbPb
+//	int s1 = 139; // pPb
 	int s2 = 1; // 1: C, 0:V
 
 	int bPbPb = 0;
@@ -283,8 +283,8 @@
 	legPt1->SetBorderSize(0);
 	legPt1->SetTextFont(43);
 	legPt1->SetTextSize(24);
-	legPt1->AddEntry(gr_HIN_13_002_PbPbv22pt5, "HIN-13-002 v_{2}{2}", "p");
-	legPt1->AddEntry(gr_HIN_13_002_PbPbv24pt5, "HIN-13-002 v_{2}{4}", "p");
+	legPt1->AddEntry(gr_HIN_13_002_PbPbv22pt5, "HIN-13-002 v_{2}{2} |#eta|<2.4", "p");
+	legPt1->AddEntry(gr_HIN_13_002_PbPbv24pt5, "HIN-13-002 v_{2}{4} |#eta|<2.4", "p");
 
 	TLegend * legPt2 = new TLegend(0.05, 0.7, 0.6, 0.97);
 	legPt2->SetFillColor(kWhite);
@@ -294,20 +294,20 @@
 //	legPt2->AddEntry(gr_vnPt[2][0][4], "v_{2}{2}", "p");
 //	legPt2->AddEntry(gr_vnPt[2][1][4], "v_{2}{4}", "p");
 	if (bPbPb) {
-		if ( bEP ) legPt2->AddEntry(gr_v2pt_m_EPde_Pb[4], "v_{2}{EP}", "p");
-		else legPt2->AddEntry(gr_v2pt_m_SPde_Pb[4], "v_{2}{SP}", "p");
+		if ( bEP ) legPt2->AddEntry(gr_v2pt_m_EPde_Pb[4], "v_{2}{EP} |#eta|<0.8", "p");
+		else legPt2->AddEntry(gr_v2pt_m_SPde_Pb[4], "v_{2}{SP} |#eta|<0.8", "p");
 	} else {
 		if ( bEP ) {
-			legPt2->AddEntry(gr_v2pt_m_EPde_Pb[4], "v_{2}{EP} Pb-going EP", "p");
-			legPt2->AddEntry(gr_v2pt_m_EPde_p[4], "v_{2}{EP} p-going EP", "p");
+			legPt2->AddEntry(gr_v2pt_m_EPde_p[4], "v_{2}{EP} |#eta|<0.8 p-going EP", "p");
+			legPt2->AddEntry(gr_v2pt_m_EPde_Pb[4], "v_{2}{EP} |#eta|<0.8 Pb-going EP", "p");
 		} else {
-			legPt2->AddEntry(gr_v2pt_m_SPde_Pb[4], "v_{2}{SP} Pb-going EP", "p");
-			legPt2->AddEntry(gr_v2pt_m_SPde_p[4], "v_{2}{SP} p-going EP", "p");
+			legPt2->AddEntry(gr_v2pt_m_SPde_p[4], "v_{2}{SP} |#eta|<0.8 p-going EP", "p");
+			legPt2->AddEntry(gr_v2pt_m_SPde_Pb[4], "v_{2}{SP} |#eta|<0.8 Pb-going EP", "p");
 		}
 	}
-	legPt2->AddEntry(gr_vnPt[2][2][4], "v_{2}{6}", "p");
-	legPt2->AddEntry(gr_vnPt[2][3][4], "v_{2}{8}", "p");
-	legPt2->AddEntry(gr_LYZ_pPbPt[4], "v_{2}{LYZ}", "p");
+	legPt2->AddEntry(gr_vnPt[2][2][4], "v_{2}{6} |#eta|<2.4", "p");
+	legPt2->AddEntry(gr_vnPt[2][3][4], "v_{2}{8} |#eta|<2.4", "p");
+	legPt2->AddEntry(gr_LYZ_pPbPt[4], "v_{2}{LYZ} |#eta|<2.4", "p");
 
 	TLatex latex;
 	latex.SetTextFont(43);
@@ -334,6 +334,7 @@
 	latex.DrawLatexNDC(0.40, 0.24, "#bf{220 #leq N_{trk}^{offline} < 260}");
 
 	cT->SaveAs(Form("pT_%i_%i.pdf", s1, bEP));
+	cT->SaveAs(Form("pT_%i_%i_C.C", s1, bEP));
 
 ///////////////////////////////////////
 	cT = MakeCanvas("cTeta", "cTeta", 1600, 500);
@@ -553,6 +554,9 @@
 	legEta->AddEntry(gr_LYZ_pPbEta[4], "v_{2}{LYZ}", "p");
 	legEta->Draw();
 
+	cT->cd(4);
+	latex.DrawLatexNDC(0.20, 0.94, "0.3 < p_{T} < 3.0 GeV/c");
+
 	cT->cd(1);
 	latex.DrawLatexNDC(0.40, 0.24, "#bf{120 #leq N_{trk}^{offline} < 150}");
 	cT->cd(2);
@@ -563,6 +567,7 @@
 	latex.DrawLatexNDC(0.40, 0.24, "#bf{220 #leq N_{trk}^{offline} < 260}");
 
 	cT->SaveAs(Form("eta_%i_%i.pdf", s1, bEP));
+	cT->SaveAs(Form("eta_%i_%i_C.C", s1, bEP));
 ///**************** 
 	cT = MakeCanvas("cTratio", "cTratio", 1600, 500);
 	makeMultiPanelCanvas(cT, 4, 1, 0.0, 0., 0.15, 0.15, 0.01);
@@ -706,6 +711,7 @@
 	legRatio->Draw();
 
 	cT->SaveAs(Form("ratio_%i_%i.pdf", s1, bEP));
+	cT->SaveAs(Form("ratio_%i_%i_C.C", s1, bEP));
 
 ///////////////////////////////
 	if ( !bPbPb ) {
@@ -763,7 +769,7 @@
 		legNorm->SetFillColor(kWhite);
 		legNorm->SetBorderSize(0);
 		legNorm->SetTextFont(43);
-		legNorm->SetTextSize(24);
+		legNorm->SetTextSize(20);
 		legNorm->AddEntry(gr_Norm, "v_{2}{4}", "p");
 		if ( bEP ) {
 			legNorm->AddEntry(gr_Norm_EP, "v_{2}{EP,#eta_{C}=0}", "p");
@@ -779,6 +785,7 @@
 		latex.DrawLatexNDC(0.20, 0.94, "#splitline{#bf{CMS pPb #sqrt{s_{NN}} = 5.02 TeV}}{Preliminary}");
 
 		cNormEta->SaveAs("norm_pPb.pdf");
+		cNormEta->SaveAs("norm_pPb_C.C");
 	}
 
 	if ( bEtaRebin ) {
@@ -853,6 +860,7 @@
 		latex.DrawLatexNDC(0.28, 0.91, "#sqrt{#frac{v_{2}#left{EP#right}^{2} - v_{2}#left{4#right}^{2}}{v_{2}#left{EP#right}^{2} + v_{2}#left{4#right}^{2}}}");
 
 		cT->SaveAs(Form("fluct_%i_%i.pdf", s1, bEP));
+		cT->SaveAs(Form("fluct_%i_%i_C.C", s1, bEP));
 
 		fsave->cd();
 		gr_Fluct[7]->SetName("gr_Fluct_7");
@@ -1029,25 +1037,34 @@
 		cT->cd(5);
 		latex.DrawLatexNDC(0.40, 0.2, "#bf{260 #leq N_{trk}^{offline} < 300}");
 
-		TLegend * legEPpT = new TLegend(0.05, 0.65, 0.5, 0.95);
-		legEPpT->SetFillColor(kWhite);
-		legEPpT->SetBorderSize(0);
-		legEPpT->SetTextFont(43);
-		legEPpT->SetTextSize(26);
+		TLegend * legEPpT1 = new TLegend(0.05, 0.7, 0.5, 0.95);
+		legEPpT1->SetFillColor(kWhite);
+		legEPpT1->SetBorderSize(0);
+		legEPpT1->SetTextFont(43);
+		legEPpT1->SetTextSize(26);
+
+		TLegend * legEPpT2 = new TLegend(0.05, 0.7, 0.5, 0.95);
+		legEPpT2->SetFillColor(kWhite);
+		legEPpT2->SetBorderSize(0);
+		legEPpT2->SetTextFont(43);
+		legEPpT2->SetTextSize(26);
+
 		if ( bEP ) {
-			legEPpT->AddEntry(gr_v2pt_p_EP_Pb[3], "v_{2}^{p}{EP, #eta_{C}=0}", "p");
-			legEPpT->AddEntry(gr_v2pt_Pb_EP_p[3], "v_{2}^{Pb}{EP, #eta_{C}=0}", "p");
-			legEPpT->AddEntry(gr_v2pt_p_EPde_Pb[3], "v_{2}^{p}{EP, #eta_{C}=#eta_{POI}}", "p");
-			legEPpT->AddEntry(gr_v2pt_Pb_EPde_p[3], "v_{2}^{Pb}{EP, #eta_{C}=#eta_{POI}}", "p");
+			legEPpT1->AddEntry(gr_v2pt_p_EP_Pb[3], "v_{2}^{p}{EP, #eta_{C}=0} 2.0<#eta<2.4", "p");
+			legEPpT1->AddEntry(gr_v2pt_Pb_EP_p[3], "v_{2}^{Pb}{EP, #eta_{C}=0} -2.4<#eta<-2.0", "p");
+			legEPpT2->AddEntry(gr_v2pt_p_EPde_Pb[3], "v_{2}^{p}{EP, #eta_{C}=#eta_{POI}} 2.0<#eta<2.4", "p");
+			legEPpT2->AddEntry(gr_v2pt_Pb_EPde_p[3], "v_{2}^{Pb}{EP, #eta_{C}=#eta_{POI}} -2.4<#eta<-2.0", "p");
 		} else {
-			legEPpT->AddEntry(gr_v2pt_p_SP_Pb[3], "v_{2}^{p}{SP, #eta_{C}=0}", "p");
-			legEPpT->AddEntry(gr_v2pt_Pb_SP_p[3], "v_{2}^{Pb}{SP, #eta_{C}=0}", "p");
-			legEPpT->AddEntry(gr_v2pt_p_SPde_Pb[3], "v_{2}^{p}{SP, #eta_{C}=#eta_{POI}}", "p");
-			legEPpT->AddEntry(gr_v2pt_Pb_SPde_p[3], "v_{2}^{Pb}{SP, #eta_{C}=#eta_{POI}}", "p");
+			legEPpT1->AddEntry(gr_v2pt_p_SP_Pb[3], "v_{2}^{p}{SP, #eta_{C}=0} 2.0<#eta<2.4", "p");
+			legEPpT1->AddEntry(gr_v2pt_Pb_SP_p[3], "v_{2}^{Pb}{SP, #eta_{C}=0} -2.4<#eta<-2.0", "p");
+			legEPpT2->AddEntry(gr_v2pt_p_SPde_Pb[3], "v_{2}^{p}{SP, #eta_{C}=#eta_{POI}} 2.0<#eta<2.4", "p");
+			legEPpT2->AddEntry(gr_v2pt_Pb_SPde_p[3], "v_{2}^{Pb}{SP, #eta_{C}=#eta_{POI}} -2.4<#eta<-2.0", "p");
 		}
 
+		cT->cd(5);
+		legEPpT1->Draw();
 		cT->cd(10);
-		legEPpT->Draw();
+		legEPpT2->Draw();
 
 		cT->cd(1);
 		if (bPbPb) latex.DrawLatexNDC(0.20, 0.94, "#splitline{#bf{CMS PbPb #sqrt{s_{NN}} = 2.76 TeV}}{Preliminary}");
@@ -1055,6 +1072,7 @@
 
 
 		cT->SaveAs(Form("EPpT_%i_%i.pdf", s1, bEP));
+		cT->SaveAs(Form("EPpT_%i_%i_C.C", s1, bEP));
 	}
 
 ///////////////////////////////////////
@@ -1183,6 +1201,8 @@
 		cT->cd(4);
 		latex.DrawLatexNDC(0.40, 0.24, "#bf{220 #leq N_{trk}^{offline} < 260}");
 
+		cT->cd(4);
+		latex.DrawLatexNDC(0.20, 0.94, "0.3 < p_{T} < 3.0 GeV/c");
 
 		gr_EP_eta3[7]->SetName("gr_EP_eta3_7");
 		gr_EP_eta3[6]->SetName("gr_EP_eta3_6");
@@ -1231,6 +1251,7 @@
 		gr_EP_eta_de[3]->Write();
 
 		cT->SaveAs(Form("eta3_%i_%i.pdf", s1, bEP));
+		cT->SaveAs(Form("eta3_%i_%i_C.C", s1, bEP));
 	}
 //////////////////////
 	if ( 1 ) {
@@ -1430,6 +1451,9 @@
 			latex.DrawLatexNDC(0.20, 0.94, "#splitline{#bf{CMS pPb #sqrt{s_{NN}} = 5.02 TeV}}{Preliminary}");
 		}
 
+		cT->cd(5);
+		latex.DrawLatexNDC(0.20, 0.94, "0.3 < p_{T} < 3.0 GeV/c");
+
 		cT->cd(1);
 		latex.DrawLatexNDC(0.40, 0.15, "#bf{120 #leq N_{trk}^{offline} < 150}");
 		cT->cd(2);
@@ -1442,6 +1466,7 @@
 		latex.DrawLatexNDC(0.40, 0.15, "#bf{260 #leq N_{trk}^{offline} < 300}");
 
 		cT->SaveAs(Form("eta3all_%i_%i.pdf", s1, bEP));
+		cT->SaveAs(Form("eta3all_%i_%i_C.C", s1, bEP));
 	}
 ////////////////////////////////
 //	if ( !bPbPb ) {
@@ -1653,7 +1678,11 @@
 		cT->cd(5);
 		latex.DrawLatexNDC(0.40, 0.15, "#bf{260 #leq N_{trk}^{offline} < 300}");
 
+		cT->cd(5);
+		latex.DrawLatexNDC(0.20, 0.94, "0.3 < p_{T} < 3.0 GeV/c");
+
 		cT->SaveAs(Form("eta2all_%i_%i.pdf", s1, bEP));
+		cT->SaveAs(Form("eta2all_%i_%i_C.C", s1, bEP));
 	}
 
 ///////SP/EP ratio vs pT////////////////////////
@@ -1788,8 +1817,113 @@
 	}
 	legPtSP2EP->Draw();
 
+	cT->cd(3);
+	latex.DrawLatexNDC(0.20, 0.94, "|#eta| < 0.8");
+
 
 	cT->SaveAs(Form("SP2EP_ratioPt_%i.pdf", s1));
+	cT->SaveAs(Form("SP2EP_ratioPt_%i_C.C", s1));
+
+///////SP/EP ratio vs eta////////////////////////
+	cT = MakeCanvas("cT_RatioEtaSP2EP", "cT_RatioEtaSP2EP", 2100, 500);
+	makeMultiPanelCanvas(cT, 5, 1, 0.0, 0., 0.15, 0.15, 0.01);
+
+	TH2D * hframe_RatioEtaSP2EP = new TH2D("hframe_RatioEtaSP2EP", "", 1, -2.4, 2.4, 1, 0.91, 1.14);
+	InitHist(hframe_RatioEtaSP2EP, "#eta", "v_{2}{SP}/v_{2}{EP}");
+	hframe_RatioEtaSP2EP->SetTitleOffset(1.2, "X");
+
+	TGraphErrors * gr_RatioEta_p[20] = {};
+	TGraphErrors * gr_RatioEta_Pb[20] = {};
+
+	fsave->cd();
+	for ( int i = 3; i < 8; i++ ) {
+		gr_RatioEta_p[i] = makeRatioPt(gr_v2p_SP_de[i], gr_v2p_EP_de[i], 0, 12);
+		gr_RatioEta_p[i]->SetMarkerStyle(kFullSquare);
+		gr_RatioEta_p[i]->SetMarkerColor(kBlue);
+		gr_RatioEta_p[i]->SetLineColor(kBlue);
+
+		gr_RatioEta_Pb[i] = makeRatioPt(gr_v2Pb_SP_de[i], gr_v2Pb_EP_de[i], 0, 12);
+		gr_RatioEta_Pb[i]->SetMarkerStyle(kFullSquare);
+		gr_RatioEta_Pb[i]->SetMarkerColor(kRed);
+		gr_RatioEta_Pb[i]->SetLineColor(kRed);
+
+		gr_RatioEta_p[i]->SetName(Form("gr_RatioEta_p_%i", i));
+		gr_RatioEta_p[i]->Write();
+		gr_RatioEta_Pb[i]->SetName(Form("gr_RatioEta_Pb_%i", i));
+		gr_RatioEta_Pb[i]->Write();
+	}
+
+        TLine *line = new TLine(-2.4,1,2.4,1);
+	cT->cd(1);
+	hframe_RatioEtaSP2EP->Draw();
+	line->Draw();
+	gr_RatioEta_p[7]->Draw("Psame");
+	gr_RatioEta_Pb[7]->Draw("Psame");
+
+	cT->cd(2);
+	hframe_RatioEtaSP2EP->Draw();
+	line->Draw();
+	gr_RatioEta_p[6]->Draw("Psame");
+	gr_RatioEta_Pb[6]->Draw("Psame");
+
+	cT->cd(3);
+	hframe_RatioEtaSP2EP->Draw();
+	line->Draw();
+	gr_RatioEta_p[5]->Draw("Psame");
+	gr_RatioEta_Pb[5]->Draw("Psame");
+
+	cT->cd(4);
+	hframe_RatioEtaSP2EP->Draw();
+	line->Draw();
+	gr_RatioEta_p[4]->Draw("Psame");
+	gr_RatioEta_Pb[4]->Draw("Psame");
+
+	cT->cd(5);
+	hframe_RatioEtaSP2EP->Draw();
+	line->Draw();
+	gr_RatioEta_p[3]->Draw("Psame");
+	gr_RatioEta_Pb[3]->Draw("Psame");
+
+	cT->cd(1);
+	latex.DrawLatexNDC(0.40, 0.3, "#bf{120 #leq N_{trk}^{offline} < 150}");
+	cT->cd(2);
+	latex.DrawLatexNDC(0.40, 0.3, "#bf{150 #leq N_{trk}^{offline} < 185}");
+	cT->cd(3);
+	latex.DrawLatexNDC(0.40, 0.3, "#bf{185 #leq N_{trk}^{offline} < 220}");
+	cT->cd(4);
+	latex.DrawLatexNDC(0.40, 0.3, "#bf{220 #leq N_{trk}^{offline} < 260}");
+	cT->cd(5);
+	latex.DrawLatexNDC(0.40, 0.3, "#bf{260 #leq N_{trk}^{offline} < 300}");
+
+	cT->cd(1);
+	if ( bPbPb ) {
+		latex.DrawLatexNDC(0.20, 0.94, "#splitline{#bf{CMS PbPb #sqrt{s_{NN}} = 2.76 TeV}}{Preliminary}");
+	} else {
+		latex.DrawLatexNDC(0.20, 0.94, "#splitline{#bf{CMS pPb #sqrt{s_{NN}} = 5.02 TeV}}{Preliminary}");
+	}
+
+
+	cT->cd(4);
+	TLegend * legEtaSP2EP = new TLegend(0.05, 0.8, 0.7, 0.95);
+	legEtaSP2EP->SetFillColor(kWhite);
+	legEtaSP2EP->SetBorderSize(0);
+	legEtaSP2EP->SetTextFont(43);
+	legEtaSP2EP->SetTextSize(24);
+	if ( bPbPb ) {
+		legEtaSP2EP->AddEntry(gr_RatioEta_p[3], "v_{2}{SP}/v_{2}{EP} HF+ EP", "p");
+		legEtaSP2EP->AddEntry(gr_RatioEta_Pb[3], "v_{2}{SP}/v_{2}{EP} HF- EP", "p");
+	} else {
+		legEtaSP2EP->AddEntry(gr_RatioEta_p[3], "v_{2}{SP}/v_{2}{EP} p-going EP", "p");
+		legEtaSP2EP->AddEntry(gr_RatioEta_Pb[3], "v_{2}{SP}/v_{2}{EP} Pb-going EP", "p");
+	}
+	legEtaSP2EP->Draw();
+
+	cT->cd(3);
+	latex.DrawLatexNDC(0.20, 0.94, "0.3 < p_{T} < 3.0 GeV/c");
+
+	cT->SaveAs(Form("SP2EP_ratioEta_%i.pdf", s1));
+	cT->SaveAs(Form("SP2EP_ratioEta_%i_C.C", s1));
+
 	fsave->Close();
 }
 

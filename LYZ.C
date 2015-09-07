@@ -52,7 +52,7 @@
 		gr_LYZ_pPbPt[i]->SetMarkerColor(kBlack);
 		gr_LYZ_pPbPt[i]->SetLineColor(kBlack);
 
-		gr_LYZ_sys_pPbPt[i] = makeSysLYZ(gr_LYZ_pPbPt[i], sys_LYZ_pt_pPb1, sys_LYZ_pt_pPb2);
+		gr_LYZ_sys_pPbPt[i] = makeSys(gr_LYZ_pPbPt[i], sys_LYZ_pt_pPb);
 		for ( int j = 0; j < gr_LYZ_sys_pPbPt[i]->GetN(); j++ ) {
 			gr_LYZ_sys_pPbPt[i]->GetEX()[j] = 0.15;
 		}

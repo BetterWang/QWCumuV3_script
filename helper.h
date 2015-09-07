@@ -73,22 +73,6 @@ TGraphErrors* makeSys(TGraphErrors* gr, double sys)
 	return ret;
 }
 
-TGraphErrors* makeSysLYZ(TGraphErrors* gr, double sys1, double sys2)
-{
-	if (!gr) return 0;
-	TGraphErrors * ret = gr->Clone();
-	for ( int i = 0; i < gr->GetN(); i++ ) {
-		if ( gr->GetX()[i] < 2 ) {
-			ret->GetEY()[i] = ret->GetY()[i] * sys1;
-		} else {
-			ret->GetEY()[i] = ret->GetY()[i] * sys2;
-		}
-		ret->GetEX()[i] = 0.15;
-	}
-	ret->SetFillColor(kGray);
-	return ret;
-}
-
 
 
 void trimGrPT(TGraphErrors* gr)
