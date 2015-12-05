@@ -1,281 +1,17 @@
-/*
- * =====================================================================================
- *
- *       Filename:  process.C
- *
- *    Description:  Histree process
- *
- *        Version:  1.0
- *        Created:  06/30/14 17:20:14
- *       Revision:  none
- *       Compiler:  gcc
- *
- *         Author:  YOUR NAME (), 
- *   Organization:  
- *
- * =====================================================================================
- */
-
-{
 #include "label.h"
+#include "TChain.h"
+#include "TH1.h"
+#include "TTree.h"
+#include "TMath.h"
+#include "TFile.h"
+
+void process(int s1 = 1, int s2 = 10, int s3 = 10)
+{
 //	int s1 = 4;
 //	int s2 = 10;
 //	int s3 = 10;
 
-	TChain * chV = new TChain("trV");
-	if ( s1 == 4 ) {
-		addchain(1);
-		addchain(2);
-		addchain(3);
-	} else 
-	if ( s1 == 8 ) {
-		addchain(1);
-		addchain(2);
-		addchain(7);
-	} else 
-	if ( s1 == 12 ) {
-		addchain(9);
-		addchain(10);
-		addchain(11);
-	} else 
-	if ( s1 == 16 ) {
-		addchain(13);
-		addchain(14);
-		addchain(15);
-	} else 
-	if ( s1 == 20 ) {
-		addchain(17);
-		addchain(18);
-		addchain(19);
-	} else 
-	if ( s1 == 24 ) {
-		addchain(21);
-		addchain(22);
-		addchain(23);
-	} else 
-	if ( s1 == 28 ) {
-		addchain(25);
-		addchain(26);
-		addchain(27);
-	} else 
-	if ( s1 == 32 ) {
-		addchain(29);
-		addchain(30);
-		addchain(31);
-	} else 
-	if ( s1 == 36 ) {
-		addchain(33);
-		addchain(34);
-		addchain(35);
-	} else 
-	if ( s1 == 40 ) {
-		addchain(37);
-		addchain(38);
-		addchain(39);
-	} else 
-	if ( s1 == 44 ) {
-		addchain(41);
-		addchain(42);
-		addchain(43);
-	} else 
-	if ( s1 == 48 ) {
-		addchain(45);
-		addchain(46);
-		addchain(47);
-	} else 
-	if ( s1 == 52 ) {
-		addchain(49);
-		addchain(50);
-		addchain(51);
-	} else 
-	if ( s1 == 58 ) {
-		addchain(55);
-		addchain(56);
-		addchain(57);
-	} else 
-	if ( s1 == 62 ) {
-		addchain(59);
-		addchain(60);
-		addchain(61);
-	} else 
-	if ( s1 == 66 ) {
-		addchain(63);
-		addchain(64);
-		addchain(65);
-	} else 
-	if ( s1 == 70 ) {
-		addchain(67);
-		addchain(68);
-		addchain(69);
-	} else 
-	if ( s1 == 74 ) {
-		addchain(71);
-		addchain(72);
-		addchain(73);
-	} else 
-	if ( s1 == 78 ) {
-		addchain(75);
-		addchain(76);
-		addchain(77);
-	} else 
-	if ( s1 == 82 ) {
-		addchain(79);
-		addchain(80);
-		addchain(81);
-	} else 
-	if ( s1 == 86 ) {
-		addchain(83);
-		addchain(84);
-		addchain(85);
-	} else 
-	if ( s1 == 108 ) {
-		addchain(105);
-		addchain(106);
-		addchain(107);
-	} else 
-	if ( s1 == 114 ) {
-		addchain(111);
-		addchain(112);
-		addchain(113);
-	} else 
-	if ( s1 == 118 ) {
-		addchain(115);
-		addchain(116);
-		addchain(117);
-	} else 
-	if ( s1 == 122 ) {
-		addchain(119);
-		addchain(121);
-		addchain(121);
-	} else 
-	if ( s1 == 126 ) {
-		addchain(123);
-		addchain(124);
-		addchain(125);
-	} else
-	if ( s1 == 135 ) {
-		addchain(132);
-		addchain(133);
-		addchain(134);
-	} else
-	if ( s1 == 139 ) {
-		addchain(136);
-		addchain(137);
-		addchain(138);
-	} else
-	if ( s1 == 143 ) {
-		addchain(140);
-		addchain(141);
-		addchain(142);
-	} else
-	if ( s1 == 147 ) {
-		addchain(144);
-		addchain(145);
-		addchain(146);
-	} else
-	if ( s1 == 151 ) {
-		addchain(148);
-		addchain(149);
-		addchain(150);
-	} else
-	if ( s1 == 155 ) {
-		addchain(152);
-		addchain(153);
-		addchain(154);
-	} else
-	if ( s1 == 159 ) {
-		addchain(156);
-		addchain(157);
-		addchain(158);
-	} else
-	if ( s1 == 163 ) {
-		addchain(160);
-		addchain(161);
-		addchain(162);
-	} else
-	if ( s1 == 167 ) {
-		addchain(164);
-		addchain(165);
-		addchain(166);
-	} else
-	if ( s1 == 171 ) {
-		addchain(168);
-		addchain(169);
-		addchain(170);
-	} else
-	if ( s1 == 175 ) {
-		addchain(172);
-		addchain(173);
-		addchain(174);
-	} else
-	if ( s1 == 179 ) {
-		addchain(176);
-		addchain(177);
-		addchain(178);
-	} else
-	if ( s1 == 183 ) {
-		addchain(180);
-		addchain(181);
-		addchain(182);
-	} else
-	if ( s1 == 187 ) {
-		addchain(184);
-		addchain(185);
-		addchain(186);
-	} else
-	if ( s1 == 205 ) {
-		addchain(202);
-		addchain(203);
-		addchain(204);
-	} else
-	if ( s1 == 209 ) {
-		addchain(206);
-		addchain(207);
-		addchain(208);
-	} else
-	if ( s1 == 213 ) {
-		addchain(210);
-		addchain(211);
-		addchain(212);
-	} else
-	if ( s1 == 217 ) {
-		addchain(214);
-		addchain(215);
-		addchain(216);
-	} else
-	if ( s1 == 221 ) {
-		addchain(218);
-		addchain(219);
-		addchain(220);
-	} else
-	if ( s1 == 225 ) {
-		addchain(222);
-		addchain(223);
-		addchain(224);
-	} else
-	if ( s1 == 229 ) {
-		addchain(226);
-		addchain(227);
-		addchain(228);
-	} else
-	if ( s1 == 233 ) {
-		addchain(230);
-		addchain(231);
-		addchain(232);
-	} else
-	if ( s1 == 245 ) {
-		addchain(242);
-		addchain(243);
-		addchain(244);
-	} else
-	if ( s1 == 249 ) {
-		addchain(246);
-		addchain(247);
-		addchain(248);
-	} else
-	{
-		addchain(s1);
-	}
+	addchain(s1);
 
 	int gNoff;
 	int gMult;
@@ -331,8 +67,8 @@
 
 //	TH1::SetDefaultSumw2();
 
-	TH1D * hMult = new TH1D("hMult", "hMult", 500, 0.5, 500.5);
-	TH1D * hNoff = new TH1D("hNoff", "hNoff", 500, 0.5, 500.5);
+	TH1D * hMult = new TH1D("hMult", "hMult", 3000, -0.5, 2999.5);
+	TH1D * hNoff = new TH1D("hNoff", "hNoff", 200, -0.5, 199.5);
 
 	TH1D * hQ[7][4];
 	TH1D * hX[7][4];
@@ -346,6 +82,7 @@
 	TH1D * hWeta[7][4][24];
 	TH1D * hWc[7][4][24];
 
+	// book histo
 	for ( int n = 1; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			hQ[n][np] = new TH1D(Form("hQ%i%i", n, 2+2*np), "", 500, 0.5, 500.5);
@@ -370,17 +107,17 @@
 		}
 	}
 
-	double dQ[7][4][500];
-	double dX[7][4][500];
-	double dQp[7][4][24][500];
-	double dQeta[7][4][24][500];
-	double dQc[7][4][24][500];
+	double dQ[7][4][500] = {};
+	double dX[7][4][500] = {};
+	double dQp[7][4][24][500] = {};
+	double dQeta[7][4][24][500] = {};
+	double dQc[7][4][24][500] = {};
 
-	double yQ[7][4][500];
-	double yX[7][4][500];
-	double yQp[7][4][24][500];
-	double yQeta[7][4][24][500];
-	double yQc[7][4][24][500];
+	double yQ[7][4][500] = {};
+	double yX[7][4][500] = {};
+	double yQp[7][4][24][500] = {};
+	double yQeta[7][4][24][500] = {};
+	double yQc[7][4][24][500] = {};
 
 	int ievt = 0;
 	while ( chV->GetEntry(ievt) ) {

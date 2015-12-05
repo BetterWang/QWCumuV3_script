@@ -14,3 +14,6 @@ LSF*
 core.*
 *.mat
 *.txt
+*.so
+*.d
+*.pcm
