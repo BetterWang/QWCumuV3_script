@@ -1,8 +1,10 @@
-
-{
 #include "label.h"
 #include "noff.h"
-	int s1 = 1;
+#include "../../style.h"
+#include "HIN-10-002.h"
+
+void genPlot(int s1 =1)
+{
 
 	int sC = 1;
 	int sSimV2 = 0;
@@ -10,10 +12,11 @@
 	bool SAVE = true;
 
 	TFile *f = new TFile(Form("%s/outputE.root", ftxt[s1]));
-//	gROOT->Macro("HIN-13-002.C");
+//	gROOT->Macro("HIN-10-002.C");
+	HIN_10_002();
 
-#include "../../style.h"
 	SetStyle();
+	gStyle->SetMarkerSize(1);
 	////////////
 	//Get Histo
 
@@ -107,18 +110,18 @@
 	double eY[100];
 	double cY[100];
 
-        Int_t * pCent4 = CentPbPb4;
-        Int_t * pCent6 = CentPbPb6;
-        Int_t * pCent8 = CentPbPb8;
+        Int_t const * pCent4 = CentPbPb4;
+        Int_t const * pCent6 = CentPbPb6;
+        Int_t const * pCent8 = CentPbPb8;
 
-        Int_t * pCent[4] = { pCent4, pCent4, pCent6, pCent8 };
+        Int_t const * pCent[4] = { pCent4, pCent4, pCent6, pCent8 };
 
 	// pT
 	for ( int n = 1; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			for ( int i = 0; i < 20; i++ ) {
-				if ( pCent[np][i] == 0 ) break;
-				for ( int j = 0; j < 18; j++ ) {
+				//if ( pCent[np][i] == 0 ) break;
+				for ( int j = 0; j < 23; j++ ) {
 					dY[j] = dVp[n][np][j][i];
 					eY[j] = eVp[n][np][j][i];
 					cY[j] = cVp[n][np][j][i];
@@ -161,15 +164,13 @@
 	}
 
 	// eta
-	TGraphErrors * gr_vnEtaV[7][4][20];
-	TGraphErrors * gr_vnEtaC[7][4][20];
-	memset(gr_vnEtaV, 0, sizeof(gr_vnEtaV));
-	memset(gr_vnEtaC, 0, sizeof(gr_vnEtaC));
+	TGraphErrors * gr_vnEtaV[7][4][20] = {};
+	TGraphErrors * gr_vnEtaC[7][4][20] = {};
 
 	for ( int n = 1; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			for ( int i = 0; i < 20; i++ ) {
-				if ( pCent[np][i] == 0 ) break;
+				//if ( pCent[np][i] == 0 ) break;
 				for ( int j = 0; j < 24; j++ ) {
 					dY[j] = dVeta[n][np][j][i];
 					eY[j] = eVeta[n][np][j][i];
@@ -229,57 +230,42 @@
 
 	for ( int n = 2; n < 7; n++ ) {
 		for ( int i = 0; i < 20; i++ ) {
-			if (pCent[0][i] == 0) break;
-//			cout << " n = " << n << " i = " << i << endl;
+			//if (pCent[0][i] == 0) break;
 			cT->cd();
 			hframe_pt->GetYaxis()->SetTitle(Form("v_{%i}",n));
 			hframe_pt->Draw();
 
-
-			// plot current
-
-			int c2 = 0;
-			for ( int ii = 0; ii < 20; ii++ ) {
-				if ( pCent[0][i+1] >=  pCent[2][ii+1] && pCent[0][i+1] < pCent[2][ii] ) {
-					c2 = ii;
-					break;
-				}
-			}
-			int c3 = 0;
-			for ( int ii = 0; ii < 20; ii++ ) {
-				if ( pCent[0][i+1] >=  pCent[3][ii+1] && pCent[0][i+1] < pCent[3][ii] ) {
-					c3 = ii;
-					break;
-				}
-			}
-
-//			cout << " i = " << i << "\tc2 = " << c2 << "\tc3 = " << c3 << endl;
-			TLegend * legPt = new TLegend(0.2, 0.6, 0.55, 0.9);
+			TLegend * legPt = new TLegend(0.2, 0.7, 0.55, 0.9);
 			legPt->SetFillColor(kWhite);
 			legPt->SetTextFont(42);
 			legPt->SetTextSize(0.03);
 			legPt->SetBorderSize(0);
 
-			// plot HIN-13-002
-			if ( mgr_HIN13002_pPbPt[n][0][i] ) {
-				mgr_HIN13002_pPbPt[n][0][i]->Draw("P");
-				legPt->AddEntry(gr_HIN_13_002_pPbv22pt5, "v_{2}{2, |#Delta#eta|>2}", "p");
+			// plot HIN-10-002
+			if ( mgrHIN_vnEPpt[n][i] ) {
+				mgrHIN_vnEPpt[n][i]->Draw("P");
+				legPt->AddEntry(mgrHIN_vnEPpt[n][i]->GetListOfGraphs()->At(1), "v_{2}{EP} HIN-10-002", "p");
 			}
-			if ( mgr_HIN13002_pPbPt[n][1][i] ) {
-				mgr_HIN13002_pPbPt[n][1][i]->Draw("P");
-				legPt->AddEntry(gr_HIN_13_002_pPbv24pt5, "v_{2}{4}", "p");
+			if ( mgrHIN_vn2pt[n][i] ) {
+				mgrHIN_vn2pt[n][i]->Draw("P");
+				legPt->AddEntry(mgrHIN_vn2pt[n][i]->GetListOfGraphs()->At(1), "v_{2}{2} HIN-10-002", "p");
 			}
+			if ( mgrHIN_vn4pt[n][i] ) {
+				mgrHIN_vn4pt[n][i]->Draw("P");
+				legPt->AddEntry(mgrHIN_vn4pt[n][i]->GetListOfGraphs()->At(1), "v_{2}{4} HIN-10-002", "p");
+			}
+
 
 			if (sC) {
 				gr_vnPtC[n][0][i]->Draw("Psame");
 				gr_vnPtC[n][1][i]->Draw("Psame");
-				gr_vnPtC[n][2][c2]->Draw("Psame");
-				gr_vnPtC[n][3][c3]->Draw("Psame");
+				gr_vnPtC[n][2][i]->Draw("Psame");
+				gr_vnPtC[n][3][i]->Draw("Psame");
 			} else {
 				gr_vnPtV[n][0][i]->Draw("Psame");
 				gr_vnPtV[n][1][i]->Draw("Psame");
-				gr_vnPtV[n][2][c2]->Draw("Psame");
-				gr_vnPtV[n][3][c3]->Draw("Psame");
+				gr_vnPtV[n][2][i]->Draw("Psame");
+				gr_vnPtV[n][3][i]->Draw("Psame");
 			}
 
 			if ( sSimV2 ) {
@@ -288,13 +274,12 @@
 				}
 			}
 
-			legPt->AddEntry(gr_vnPtV[n][0][i], Form("v_{%i}{2} %i#leq N_{off} < %i", n, pCent[0][i+1], pCent[0][i]), "p");
-			legPt->AddEntry(gr_vnPtV[n][1][i], Form("v_{%i}{4} %i#leq N_{off} < %i", n, pCent[1][i+1], pCent[0][i]), "p");
-			legPt->AddEntry(gr_vnPtV[n][2][c2], Form("v_{%i}{6} %i#leq N_{off} < %i", n, pCent[2][c2+1], pCent[2][c2]), "p");
-			legPt->AddEntry(gr_vnPtV[n][3][c2], Form("v_{%i}{8} %i#leq N_{off} < %i", n, pCent[3][c3+1], pCent[3][c3]),"p");
+			legPt->AddEntry(gr_vnPtV[n][0][i], Form("v_{%i}{2} %i%% < Centrality < %i%%", n, pCent[0][i]/2, pCent[0][i+1]/2), "p");
+			legPt->AddEntry(gr_vnPtV[n][1][i], Form("v_{%i}{4} %i%% < Centrality < %i%%", n, pCent[1][i]/2, pCent[0][i+1]/2), "p");
+			legPt->AddEntry(gr_vnPtV[n][2][i], Form("v_{%i}{6} %i%% < Centrality < %i%%", n, pCent[2][i]/2, pCent[2][i+1]/2), "p");
+			legPt->AddEntry(gr_vnPtV[n][3][i], Form("v_{%i}{8} %i%% < Centrality < %i%%", n, pCent[3][i]/2, pCent[3][i+1]/2), "p");
 
 			legPt->Draw();
-			cout << " cPt n = " << n << " i = " << i << " c2 = " << c2 << " c3 = " << c3 << endl;
 			cT->SaveAs(Form("%s/cPt_%i_%i_%i.pdf", ftxt[s1], n, i, sC));
 			delete legPt;
 
@@ -307,13 +292,13 @@
 			if (sC) {
 				gr_vnEtaC[n][0][i]->Draw("Psame");
 				gr_vnEtaC[n][1][i]->Draw("Psame");
-				gr_vnEtaC[n][2][c2]->Draw("Psame");
-				gr_vnEtaC[n][3][c3]->Draw("Psame");
+				gr_vnEtaC[n][2][i]->Draw("Psame");
+				gr_vnEtaC[n][3][i]->Draw("Psame");
 			} else {
 				gr_vnEtaV[n][0][i]->Draw("Psame");
 				gr_vnEtaV[n][1][i]->Draw("Psame");
-				gr_vnEtaV[n][2][c2]->Draw("Psame");
-				gr_vnEtaV[n][3][c3]->Draw("Psame");
+				gr_vnEtaV[n][2][i]->Draw("Psame");
+				gr_vnEtaV[n][3][i]->Draw("Psame");
 			}
 			TLegend * legEta = new TLegend(0.2, 0.6, 0.55, 0.9);
 			legEta->SetFillColor(kWhite);
@@ -321,10 +306,10 @@
 			legEta->SetTextSize(0.03);
 			legEta->SetBorderSize(0);
 
-			legEta->AddEntry(gr_vnEtaV[n][0][i], Form("v_{%i}{2} %i#leq N_{off} < %i", n, pCent[0][i+1], pCent[0][i]), "p");
-			legEta->AddEntry(gr_vnEtaV[n][1][i], Form("v_{%i}{4} %i#leq N_{off} < %i", n, pCent[1][i+1], pCent[0][i]), "p");
-			legEta->AddEntry(gr_vnEtaV[n][2][c2], Form("v_{%i}{6} %i#leq N_{off} < %i", n, pCent[2][c2+1], pCent[2][c2]), "p");
-			legEta->AddEntry(gr_vnEtaV[n][3][c2], Form("v_{%i}{8} %i#leq N_{off} < %i", n, pCent[3][c3+1], pCent[3][c3]),"p");
+			legEta->AddEntry(gr_vnEtaV[n][0][i], Form("v_{%i}{2} %i#leq N_{off} < %i", n, pCent[0][i]/2, pCent[0][i+1]/2), "p");
+			legEta->AddEntry(gr_vnEtaV[n][1][i], Form("v_{%i}{4} %i#leq N_{off} < %i", n, pCent[1][i]/2, pCent[0][i+1]/2), "p");
+			legEta->AddEntry(gr_vnEtaV[n][2][i], Form("v_{%i}{6} %i#leq N_{off} < %i", n, pCent[2][i]/2, pCent[2][i+1]/2), "p");
+			legEta->AddEntry(gr_vnEtaV[n][3][i], Form("v_{%i}{8} %i#leq N_{off} < %i", n, pCent[3][i]/2, pCent[3][i+1]/2), "p");
 
 			legEta->Draw();
 			cT->SaveAs(Form("%s/cEta_%i_%i_%i.pdf", ftxt[s1], n, i, sC));
