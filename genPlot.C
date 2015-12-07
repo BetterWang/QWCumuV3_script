@@ -1,26 +1,8 @@
-/*
- * =====================================================================================
- *
- *       Filename:  genPlot.C
- *
- *    Description:  generate all plots
- *
- *        Version:  1.0
- *        Created:  09/11/2014 09:41:50
- *       Revision:  none
- *       Compiler:  gcc
- *
- *         Author:  YOUR NAME (), 
- *   Organization:  
- *
- * =====================================================================================
- */
-
 
 {
 #include "label.h"
 #include "noff.h"
-//	int s1 = 92;
+	int s1 = 1;
 
 	int sC = 1;
 	int sSimV2 = 0;
@@ -28,7 +10,7 @@
 	bool SAVE = true;
 
 	TFile *f = new TFile(Form("%s/outputE.root", ftxt[s1]));
-	gROOT->Macro("HIN-13-002.C");
+//	gROOT->Macro("HIN-13-002.C");
 
 #include "../../style.h"
 	SetStyle();
@@ -125,13 +107,9 @@
 	double eY[100];
 	double cY[100];
 
-        Int_t * pCent4;
-        Int_t * pCent6;
-        Int_t * pCent8;
-
-        pCent4 = CentNoffCutTest4;
-        pCent6 = CentNoffCutTest6;
-        pCent8 = CentNoffCutTest8;
+        Int_t * pCent4 = CentPbPb4;
+        Int_t * pCent6 = CentPbPb6;
+        Int_t * pCent8 = CentPbPb8;
 
         Int_t * pCent[4] = { pCent4, pCent4, pCent6, pCent8 };
 
@@ -147,8 +125,8 @@
 					if (eY[j] != eY[j]) eY[j] = 999;
 					if (cY[j] != cY[j]) cY[j] = 999;
 				}
-				gr_vnPtV[n][np][i] = new TGraphErrors(18, ptX, dY, 0, eY);
-				gr_vnPtC[n][np][i] = new TGraphErrors(18, ptX, dY, 0, cY);
+				gr_vnPtV[n][np][i] = new TGraphErrors(23, ptX, dY, 0, eY);
+				gr_vnPtC[n][np][i] = new TGraphErrors(23, ptX, dY, 0, cY);
 				if ( np == 0 ) {
 					gr_vnPtV[n][np][i]->SetMarkerStyle(kFullCircle);
 					gr_vnPtV[n][np][i]->SetMarkerColor(kGreen+2);

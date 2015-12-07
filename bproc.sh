@@ -1,11 +1,11 @@
-./bproc3.sh 8 10 10
-./bproc3.sh 8 0 10
-./bproc3.sh 8 1 10
-./bproc3.sh 8 2 10
-./bproc3.sh 8 3 10
-./bproc3.sh 8 4 10
-./bproc3.sh 8 5 10
-./bproc3.sh 8 6 10
-./bproc3.sh 8 7 10
-./bproc3.sh 8 8 10
-./bproc3.sh 8 9 10
+#time ./bproc3.sh 1 10 10
+#time ./bproc3.sh 1 0 10
+time ./bproc3.sh 1 1 10
+time ./bproc3.sh 1 2 10
+time ./bproc3.sh 1 3 10
+time ./bproc3.sh 1 4 10
+time ./bproc3.sh 1 5 10
+time ./bproc3.sh 1 6 10
+time ./bproc3.sh 1 7 10
+time ./bproc3.sh 1 8 10
+time ./bproc3.sh 1 9 10

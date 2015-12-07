@@ -1,14 +1,15 @@
-/*
- */
-
-
-{
 #include "label.h"
 #include "noff.h"
-//	int s1 = 92;
-	int s3 = 10;
+#include <iostream>
+#include <TFile.h>
+#include <TH1.h>
 
-	bool SAVE = true;
+void bGetError(int s1 = 1, int s3 = 10)
+{
+//	int s1 = 92;
+//	int s3 = 10;
+
+	std::cout << "s1 = " << s1 << "\ts3 = " << s3 << std::endl;
 
 	// Get TFile
 	TFile *fr[50];
@@ -73,7 +74,7 @@
 					delete h3;
 					delete h4;
 				}
-	
+
 				for ( int j = 0; j < 2; j++ ) {
 					h1 = (TH1D*) f->Get(Form("hCc%i%i_%i", n, 2+2*np, j));
 					h2 = (TH1D*) f->Get(Form("hWc%i%i_%i", n, 2+2*np, j));
@@ -94,19 +95,19 @@
 				double C4 = dC[fn][n][1][i];
 				double C6 = dC[fn][n][2][i];
 				double C8 = dC[fn][n][3][i];
-	
+
 				double V2, V4, V6, V8;
-	
+
 				if ( C2 > 0 ) V2 = pow(C2, 1./2); else V2 = -pow(-C2, 1./2);
 				if ( C4 > 0 ) V4 = -pow(C4, 1./4); else V4 = pow(-C4, 1./4);
 				if ( C6 > 0 ) V6 = pow(C6/4., 1./6); else V6 = -pow(-C6/4., 1./6);
 				if ( C8 > 0 ) V8 = -pow(C8/33., 1./8); else V8 = pow(-C8/33., 1./8);
-	
+
 				dV[fn][n][0][i] = V2;
 				dV[fn][n][1][i] = V4;
 				dV[fn][n][2][i] = V6;
 				dV[fn][n][3][i] = V8;
-	
+
 				C2 = dD[fn][n][0][i];
 				C4 = dD[fn][n][1][i];
 				C6 = dD[fn][n][2][i];
@@ -119,61 +120,60 @@
 				dX[fn][n][1][i] = V4;
 				dX[fn][n][2][i] = V6;
 				dX[fn][n][3][i] = V8;
-	
+
 				for ( int j = 0; j < 24; j++ ) {
 					C2 = dC[fn][n][0][i];
 					C4 = dC[fn][n][1][i];
 					C6 = dC[fn][n][2][i];
 					C8 = dC[fn][n][3][i];
-	
+
 					double C2p = dCp[fn][n][0][j][i];
 					double C4p = dCp[fn][n][1][j][i];
 					double C6p = dCp[fn][n][2][j][i];
 					double C8p = dCp[fn][n][3][j][i];
-	
+
 					if ( C2 > 0 ) V2 =       C2p/pow(C2, 1./2) ; else V2 = -fabs(C2p/pow(-C2, 1./2));
 					if ( C4 > 0 ) V4 = -fabs(C4p/pow(C4, 3./4)); else V4 =      -C4p/pow(-C4, 3./4);
 					if ( C6 > 0 ) V6 =       C6p/pow(C6/4., 5./6)/4. ; else V6 = -fabs(C6p/pow(-C6/4., 5./6))/4.;
 					if ( C8 > 0 ) V8 = -fabs(C8p/pow(C8/33., 7./8))/33.; else V8 =      -C8p/pow(-C8/33., 7./8)/33.;
-	
-///					if ( fn == s3 ) cout << " fn = " << fn << "\tn = " << n << "\tj = " << j << "\ti = " << i << "\t np = " << 0 << "\tV2 = " << V2 << "\tC2p = " << C2p << "\tC2 = " << C2 << endl;
+
 					dVp[fn][n][0][j][i] = V2;
 					dVp[fn][n][1][j][i] = V4;
 					dVp[fn][n][2][j][i] = V6;
 					dVp[fn][n][3][j][i] = V8;
-	
+
 					C2p = dCeta[fn][n][0][j][i];
 					C4p = dCeta[fn][n][1][j][i];
 					C6p = dCeta[fn][n][2][j][i];
 					C8p = dCeta[fn][n][3][j][i];
-	
+
 					if ( C2 > 0 ) V2 =       C2p/pow(C2, 1./2) ; else V2 = -fabs(C2p/pow(-C2, 1./2));
 					if ( C4 > 0 ) V4 = -fabs(C4p/pow(C4, 3./4)); else V4 =      -C4p/pow(-C4, 3./4);
 					if ( C6 > 0 ) V6 =       C6p/pow(C6/4., 5./6)/4. ; else V6 = -fabs(C6p/pow(-C6/4., 5./6))/4.;
 					if ( C8 > 0 ) V8 = -fabs(C8p/pow(C8/33., 7./8))/33.; else V8 =      -C8p/pow(-C8/33., 7./8)/33.;
-	
+
 					dVeta[fn][n][0][j][i] = V2;
 					dVeta[fn][n][1][j][i] = V4;
 					dVeta[fn][n][2][j][i] = V6;
 					dVeta[fn][n][3][j][i] = V8;
 				}
-	
+
 				for ( int j = 0; j < 2; j++ ) {
 					C2 = dC[fn][n][0][i];
 					C4 = dC[fn][n][1][i];
 					C6 = dC[fn][n][2][i];
 					C8 = dC[fn][n][3][i];
-	
+
 					double C2p = dCc[fn][n][0][j][i];
 					double C4p = dCc[fn][n][1][j][i];
 					double C6p = dCc[fn][n][2][j][i];
 					double C8p = dCc[fn][n][3][j][i];
-	
+
 					if ( C2 > 0 ) V2 =       C2p/pow(C2, 1./2) ; else V2 = -fabs(C2p/pow(-C2, 1./2));
 					if ( C4 > 0 ) V4 = -fabs(C4p/pow(C4, 3./4)); else V4 =      -C4p/pow(-C4, 3./4);
 					if ( C6 > 0 ) V6 =       C6p/pow(C6/4., 5./6) ; else V6 = -fabs(C6p/pow(-C6/4., 5./6));
 					if ( C8 > 0 ) V8 = -fabs(C8p/pow(C8/33., 7./8)); else V8 =      -C8p/pow(-C8/33., 7./8);
-	
+
 					dVc[fn][n][0][j][i] = V2;
 					dVc[fn][n][1][j][i] = V4;
 					dVc[fn][n][2][j][i] = V6;
@@ -320,7 +320,7 @@
 				}
 
 				///// pT eta
-				for ( j = 0; j < 24; j++ ) {
+				for ( int j = 0; j < 24; j++ ) {
 					double sumVp = 0;
 					double sumVeta = 0;
 					double sumCp = 0;
@@ -366,7 +366,7 @@
 					}
 				}
 				/////  charge
-				for ( j = 0; j < 2; j++ ) {
+				for ( int j = 0; j < 2; j++ ) {
 					double sumVc = 0;
 					double sumCc = 0;
 					for ( int fn = 0; fn < s3; fn++ ) {

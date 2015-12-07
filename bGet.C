@@ -1,90 +1,89 @@
-
-{
 #include "label.h"
 #include "noff.h"
+#include "TH1.h"
+#include "TFile.h"
+
+void bGet(int s1 = 1, int s2 = 0, int s3 =10){
 //	int s1 = 4;
 //	int s2 = 10;
 //	int s3 = 10;
 
-	cout << "s1 = " << s1 << endl << "s2 = " << s2 << "\ts3 = " << s3 << endl;
+	cout << "s1 = " << s1 << "\ts2 = " << s2 << "\ts3 = " << s3 << endl;
 	TFile *f;
 	if ( s2 == s3 ) f = new TFile(Form("%s/output.root", ftxt[s1]));
 	else f = new TFile(Form("%s/output_%i_%i.root", ftxt[s1], s2, s3));
 
-	double dQ[7][4][500];
-	double wQ[7][4][500];
-	double dX[7][4][500];
-	double wX[7][4][500];
+	double dQ[7][4][500] = {};
+	double wQ[7][4][500] = {};
+	double dX[7][4][500] = {};
+	double wX[7][4][500] = {};
 
-	double dQp[7][4][24][500];
-	double wQp[7][4][24][500];
-	double dQeta[7][4][24][500];
-	double wQeta[7][4][24][500];
-	double dQc[7][4][2][500];
-	double wQc[7][4][2][500];
+	double dQp[7][4][24][500] = {};
+	double wQp[7][4][24][500] = {};
+	double dQeta[7][4][24][500] = {};
+	double wQeta[7][4][24][500] = {};
+	double dQc[7][4][2][500] = {};
+	double wQc[7][4][2][500] = {};
 
-	double dC[7][4][500];
-	double dD[7][4][500];
+	double dC[7][4][500] = {};
+	double dD[7][4][500] = {};
 
-	double dCp[7][4][24][500];
-	double dCeta[7][4][24][500];
-	double dCc[7][4][2][500];
+	double dCp[7][4][24][500] = {};
+	double dCeta[7][4][24][500] = {};
+	double dCc[7][4][2][500] = {};
 
-	Int_t * pCent4;
-	Int_t * pCent6;
-	Int_t * pCent8;
+	Int_t const * pCent4 = CentPbPb4;
+	Int_t const * pCent6 = CentPbPb6;
+	Int_t const * pCent8 = CentPbPb8;
 
-	pCent4 = CentNoffCutTest4;
-	pCent6 = CentNoffCutTest6;
-	pCent8 = CentNoffCutTest8;
+	Int_t const * pCent[4] = { pCent4, pCent4, pCent6, pCent8 };
 
-	Int_t * pCent[4] = { pCent4, pCent4, pCent6, pCent8 };
+	double dCx[7][4][20] = {};
+	double wCx[7][4][20] = {};
+	double dDx[7][4][20] = {};
+	double wDx[7][4][20] = {};
 
-	double dCx[7][4][20];
-	double wCx[7][4][20];
-	double dDx[7][4][20];
-	double wDx[7][4][20];
+	double dCxp[7][4][24][20] = {};
+	double wCxp[7][4][24][20] = {};
+	double dCxeta[7][4][24][20] = {};
+	double wCxeta[7][4][24][20] = {};
+	double dCxc[7][4][2][20] = {};
+	double wCxc[7][4][2][20] = {};
 
-	double dCxp[7][4][24][20];
-	double wCxp[7][4][24][20];
-	double dCxeta[7][4][24][20];
-	double wCxeta[7][4][24][20];
-	double dCxc[7][4][2][20];
-	double wCxc[7][4][2][20];
-
-	for ( int n = 1; n < 7; n++ ) {
-		for ( int np = 0; np < 4; np++ ) {
-			for ( int c = 0; c < 20; c++ ) {
-				dCx[n][np][c] = 0;
-				wCx[n][np][c] = 0;
-				dDx[n][np][c] = 0;
-				wDx[n][np][c] = 0;
-				for ( int i = 0; i < 24; i++ ) {
-					dCxp[n][np][i][c] = 0;
-					wCxp[n][np][i][c] = 0;
-					dCxeta[n][np][i][c] = 0;
-					wCxeta[n][np][i][c] = 0;
-				}
-				for ( int i = 0; i < 2; i++ ) {
-					dCxc[n][np][i][c] = 0;
-					wCxc[n][np][i][c] = 0;
-				}
-			}
-		}
-	}
+//	for ( int n = 1; n < 7; n++ ) {
+//		for ( int np = 0; np < 4; np++ ) {
+//			for ( int c = 0; c < 20; c++ ) {
+//				dCx[n][np][c] = 0;
+//				wCx[n][np][c] = 0;
+//				dDx[n][np][c] = 0;
+//				wDx[n][np][c] = 0;
+//				for ( int i = 0; i < 24; i++ ) {
+//					dCxp[n][np][i][c] = 0;
+//					wCxp[n][np][i][c] = 0;
+//					dCxeta[n][np][i][c] = 0;
+//					wCxeta[n][np][i][c] = 0;
+//				}
+//				for ( int i = 0; i < 2; i++ ) {
+//					dCxc[n][np][i][c] = 0;
+//					wCxc[n][np][i][c] = 0;
+//				}
+//			}
+//		}
+//	}
 
 	TH1D * hNoff = (TH1D*) f->Get("hNoff");
 
+	TH1D * hNoffCent2 = new TH1D("hNoffCent2", "hNoffCent2", 20, 0, 20);
 	TH1D * hNoffCent4 = new TH1D("hNoffCent4", "hNoffCent4", 20, 0, 20);
 	TH1D * hNoffCent6 = new TH1D("hNoffCent6", "hNoffCent6", 20, 0, 20);
 	TH1D * hNoffCent8 = new TH1D("hNoffCent8", "hNoffCent8", 20, 0, 20);
 
+	TH1D * hNevtCent2 = new TH1D("hNevtCent2", "hNevtCent2", 20, 0, 20);
 	TH1D * hNevtCent4 = new TH1D("hNevtCent4", "hNevtCent4", 20, 0, 20);
 	TH1D * hNevtCent6 = new TH1D("hNevtCent6", "hNevtCent6", 20, 0, 20);
 	TH1D * hNevtCent8 = new TH1D("hNevtCent8", "hNevtCent8", 20, 0, 20);
 
-	TH1D * hNoffCent[4] = {hNoffCent4, hNoffCent4, hNoffCent6, hNoffCent8};
-	TH1D * hNevtCent[4] = {hNevtCent4, hNevtCent4, hNevtCent6, hNevtCent8};
+	TH1D * hNevtCent[4] = {hNevtCent2, hNevtCent4, hNevtCent6, hNevtCent8};
 
 	for ( int n = 1; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
@@ -93,10 +92,10 @@
 			TH1D * hX = (TH1D*) f->Get(Form("hX%i%i", n, 2+2*np));
 			TH1D * hY = (TH1D*) f->Get(Form("hY%i%i", n, 2+2*np));
 			for ( int i = 0; i < 500; i++ ) {
-				dQ[n][np][i] = hQ->GetBinContent(i);
-				wQ[n][np][i] = hW->GetBinContent(i);
-				dX[n][np][i] = hX->GetBinContent(i);
-				wX[n][np][i] = hY->GetBinContent(i);
+				dQ[n][np][i] = hQ->GetBinContent(i+1);
+				wQ[n][np][i] = hW->GetBinContent(i+1);
+				dX[n][np][i] = hX->GetBinContent(i+1);
+				wX[n][np][i] = hY->GetBinContent(i+1);
 
 				if (wQ[n][np][i] > 0) dQ[n][np][i] /= wQ[n][np][i];
 				if (wX[n][np][i] > 0) dX[n][np][i] /= wX[n][np][i];
@@ -112,10 +111,10 @@
 				TH1D * hQeta = (TH1D*) f->Get(Form("hQeta%i%i_%i", n, 2+2*np, c));
 				TH1D * hWeta = (TH1D*) f->Get(Form("hWeta%i%i_%i", n, 2+2*np, c));
 				for ( int i = 0; i < 500; i++ ) {
-					dQp[n][np][c][i] = hQp->GetBinContent(i);
-					wQp[n][np][c][i] = hWp->GetBinContent(i);
-					dQeta[n][np][c][i] = hQeta->GetBinContent(i);
-					wQeta[n][np][c][i] = hWeta->GetBinContent(i);
+					dQp[n][np][c][i] = hQp->GetBinContent(i+1);
+					wQp[n][np][c][i] = hWp->GetBinContent(i+1);
+					dQeta[n][np][c][i] = hQeta->GetBinContent(i+1);
+					wQeta[n][np][c][i] = hWeta->GetBinContent(i+1);
 
 //					cout << "n = " << n << "\tnp = " << np << "\tc = " << c << "\ti = " << i << "\tdQp = " << dQp[n][np][c][i] << "\t wQp = " << wQp[n][np][c][i] << endl;
 
@@ -133,8 +132,8 @@
 				TH1D * hQc = (TH1D*) f->Get(Form("hQc%i%i_%i", n, 2+2*np, c));
 				TH1D * hWc = (TH1D*) f->Get(Form("hWc%i%i_%i", n, 2+2*np, c));
 				for ( int i = 0; i < 500; i++ ) {
-					dQc[n][np][c][i] = hQc->GetBinContent(i);
-					wQc[n][np][c][i] = hWc->GetBinContent(i);
+					dQc[n][np][c][i] = hQc->GetBinContent(i+1);
+					wQc[n][np][c][i] = hWc->GetBinContent(i+1);
 
 					if ( wQc[n][np][c][i] != 0 ) dQc[n][np][c][i] /= wQc[n][np][c][i];
 				}
@@ -145,7 +144,7 @@
 	}
 
 	for ( int n = 1; n < 7; n++ ) {
-		for ( int m = 1; m < 500; m++ ) {
+		for ( int m = 0; m < 500; m++ ) {
 			double Q2 = dQ[n][0][m];
 			double Q4 = dQ[n][1][m];
 			double Q6 = dQ[n][2][m];
@@ -155,8 +154,6 @@
 			dC[n][1][m] = Q4 - 2*Q2*Q2;
 			dC[n][2][m] = Q6 - 9*Q2*Q4 + 12*Q2*Q2*Q2;
 			dC[n][3][m] = Q8 - 16*Q6*Q2 - 18*Q4*Q4 + 144*Q4*Q2*Q2 -144*Q2*Q2*Q2*Q2;
-
-//			cout << " n = " << n << "\t m = " << m << "\t Q2 = " << Q2 << "\t Q4 = " << Q4 << "\t Q6 = " << Q6 << "\t Q8 = " << Q8 << endl;
 
 			Q2 = dX[n][0][m];
 			Q4 = dX[n][1][m];
@@ -170,7 +167,7 @@
 		}
 
 		for ( int i = 0; i < 24; i++ ) {
-			for ( int m = 1; m < 500; m++ ) {
+			for ( int m = 0; m < 500; m++ ) {
 				double Q2p = dQp[n][0][i][m];
 				double Q4p = dQp[n][1][i][m];
 				double Q6p = dQp[n][2][i][m];
@@ -199,7 +196,7 @@
 		}
 
 		for ( int i = 0; i < 2; i++ ) {
-			for ( int m = 1; m < 500; m++ ) {
+			for ( int m = 0; m < 500; m++ ) {
 				double Q2p = dQc[n][0][i][m];
 				double Q4p = dQc[n][1][i][m];
 				double Q6p = dQc[n][2][i][m];
@@ -220,14 +217,11 @@
 	// rebin
 	for ( int np = 0; np < 4; np++ ) {
 		for ( int i = 0; i < NCent[np]; i++ ) {
-			double noff = 0;
 			double nevt = 0;
-			for (int m = pCent[np][i] -1; m >= pCent[np][i+1]; m-- ) {
-				if ( m >= 500 ) continue;
-				noff += hNoff->GetBinContent(m)*m;
+			for (int m = pCent[np][i]; m < pCent[np][i+1]; m++ ) {
+				if ( m >= 200 ) continue;
 				nevt += hNoff->GetBinContent(m);
 			}
-			hNoffCent[np]->SetBinContent(i+1, noff/nevt);
 			hNevtCent[np]->SetBinContent(i+1, nevt);
 		}
 	}
@@ -239,14 +233,13 @@
 				double weight = 0;
 				double weightX = 0;
 
-				for ( int m = pCent[np][i]-1; m >= pCent[np][i+1]; m-- ) {
+				for ( int m = pCent[np][i]; m < pCent[np][i+1]; m++ ) {
 					if ( m >= 500 ) continue;
 					double w = wQ[n][np][m];
 					double wXc = wX[n][np][m];
 					double C = dC[n][np][m];
 					double D = dD[n][np][m];
 
-//					cout << " n = " << n << "\t np = " << np << "\t m = " << m << "\t C = " << C << "\t w = " << w << endl;
 					sum += C*w;
 					weight += w;
 					sumX += D*wXc;
@@ -270,7 +263,7 @@
 					double sumeta = 0;
 					double weighteta = 0;
 
-					for ( int m = pCent[np][i]-1; m >= pCent[np][i+1]; m-- ) {
+					for ( int m = pCent[np][i]; m < pCent[np][i+1]; m++ ) {
 						if ( m >= 500 ) continue;
 						double w = wQp[n][np][j][m];
 						double C = dCp[n][np][j][m];
@@ -287,7 +280,6 @@
 					if ( weighteta > 0 ) sumeta /= weighteta;
 					else sumeta = 0;
 
-//					cout << "n = " << n << "\tnp = " << np << "\tj = " << j << "\ti = " << i << "\tsump = " << sump << "\tweightp = " << weightp << endl;
 					dCxp[n][np][j][i] = sump;
 					wCxp[n][np][j][i] = weightp;
 					dCxeta[n][np][j][i] = sumeta;
@@ -299,7 +291,7 @@
 					double sump = 0;
 					double weightp = 0;
 
-					for ( int m = pCent[np][i]-1; m >= pCent[np][i+1]; m-- ) {
+					for ( int m = pCent[np][i]; m < pCent[np][i+1]; m++ ) {
 						if ( m >= 500 ) continue;
 						double w = wQc[n][np][j][m];
 						double C = dCc[n][np][j][m];
@@ -359,10 +351,10 @@
 				fX[n][np]->SetBinContent(i+1, wDx[n][np][i]);
 			}
 			for ( int i = 1; i < 500; i++ ) {
-				fCraw[n][np]->SetBinContent(i, dC[n][np][i]);
-				fDraw[n][np]->SetBinContent(i, dD[n][np][i]);
-				fWraw[n][np]->SetBinContent(i, wQ[n][np][i]);
-				fXraw[n][np]->SetBinContent(i, wX[n][np][i]);
+				fCraw[n][np]->SetBinContent(i+1, dC[n][np][i]);
+				fDraw[n][np]->SetBinContent(i+1, dD[n][np][i]);
+				fWraw[n][np]->SetBinContent(i+1, wQ[n][np][i]);
+				fXraw[n][np]->SetBinContent(i+1, wX[n][np][i]);
 			}
 
 			for ( int j = 0; j < 24; j++ ) {

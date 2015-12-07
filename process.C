@@ -1,40 +1,40 @@
 #include "label.h"
-#include "TChain.h"
-#include "TH1.h"
-#include "TTree.h"
-#include "TMath.h"
-#include "TFile.h"
-
+#include <TFile.h>
+#include <TTree.h>
+#include <TH1.h>
+#include <TMath.h>
+using namespace std;
 void process(int s1 = 1, int s2 = 10, int s3 = 10)
 {
 //	int s1 = 4;
 //	int s2 = 10;
 //	int s3 = 10;
 
+	cout << " s1 = " << s1 << " s2 = " << s2 << " s3 = " << s3 << endl;
 	addchain(s1);
 
 	int gNoff;
 	int gMult;
 
-	double rQ[7][4];
-	double iQ[7][4];
-	double wQ[7][4];
+	double rQ[7][4] = {};
+	double iQ[7][4] = {};
+	double wQ[7][4] = {};
 
-	double rX[7][4];
-	double iX[7][4];
-	double wX[7][4];
+	double rX[7][4] = {};
+	double iX[7][4] = {};
+	double wX[7][4] = {};
 
-	double rQp[7][4][24];
-	double iQp[7][4][24];
-	double wQp[7][4][24];
+	double rQp[7][4][24] = {};
+	double iQp[7][4][24] = {};
+	double wQp[7][4][24] = {};
 
-	double rQeta[7][4][24];
-	double iQeta[7][4][24];
-	double wQeta[7][4][24];
+	double rQeta[7][4][24] = {};
+	double iQeta[7][4][24] = {};
+	double wQeta[7][4][24] = {};
 
-	double rQc[7][4][2];
-	double iQc[7][4][2];
-	double wQc[7][4][2];
+	double rQc[7][4][2] = {};
+	double iQc[7][4][2] = {};
+	double wQc[7][4][2] = {};
 
 	chV->SetBranchAddress("Noff", &gNoff);
 	chV->SetBranchAddress("Mult", &gMult);
@@ -62,47 +62,45 @@ void process(int s1 = 1, int s2 = 10, int s3 = 10)
 		}
 	}
 
-	int Nevt[500];
-	for ( int i = 0; i < 500; i++ ) Nevt[i] = 0;
+	int Nevt[500] = {};
 
-//	TH1::SetDefaultSumw2();
 
 	TH1D * hMult = new TH1D("hMult", "hMult", 3000, -0.5, 2999.5);
 	TH1D * hNoff = new TH1D("hNoff", "hNoff", 200, -0.5, 199.5);
 
-	TH1D * hQ[7][4];
-	TH1D * hX[7][4];
-	TH1D * hQp[7][4][24];
-	TH1D * hQeta[7][4][24];
-	TH1D * hQc[7][4][24];
+	TH1D * hQ[7][4] = {};
+	TH1D * hX[7][4] = {};
+	TH1D * hQp[7][4][24] = {};
+	TH1D * hQeta[7][4][24] = {};
+	TH1D * hQc[7][4][24] = {};
 
-	TH1D * hW[7][4];
-	TH1D * hY[7][4];
-	TH1D * hWp[7][4][24];
-	TH1D * hWeta[7][4][24];
-	TH1D * hWc[7][4][24];
+	TH1D * hW[7][4] = {};
+	TH1D * hY[7][4] = {};
+	TH1D * hWp[7][4][24] = {};
+	TH1D * hWeta[7][4][24] = {};
+	TH1D * hWc[7][4][24] = {};
 
 	// book histo
 	for ( int n = 1; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
-			hQ[n][np] = new TH1D(Form("hQ%i%i", n, 2+2*np), "", 500, 0.5, 500.5);
-			hX[n][np] = new TH1D(Form("hX%i%i", n, 2+2*np), "", 500, 0.5, 500.5);
+			hQ[n][np] = new TH1D(Form("hQ%i%i", n, 2+2*np), "", 500, -0.5, 499.5);
+			hX[n][np] = new TH1D(Form("hX%i%i", n, 2+2*np), "", 500, -0.5, 499.5);
 			for ( int i = 0; i < 24; i++ ) {
-				hQp[n][np][i] = new TH1D(Form("hQp%i%i_%i", n, 2+2*np, i), "", 500, 0.5, 500.5);
-				hQeta[n][np][i] = new TH1D(Form("hQeta%i%i_%i", n, 2+2*np, i), "", 500, 0.5, 500.5);
+				hQp[n][np][i] = new TH1D(Form("hQp%i%i_%i", n, 2+2*np, i), "", 500, -0.5, 499.5);
+				hQeta[n][np][i] = new TH1D(Form("hQeta%i%i_%i", n, 2+2*np, i), "", 500, -0.5, 499.5);
 			}
 			for ( int i = 0; i < 2; i++ ) {
-				hQc[n][np][i] = new TH1D(Form("hQc%i%i_%i", n, 2+2*np, i), "", 500, 0.5, 500.5);
+				hQc[n][np][i] = new TH1D(Form("hQc%i%i_%i", n, 2+2*np, i), "", 500, -0.5, 499.5);
 			}
 
-			hW[n][np] = new TH1D(Form("hW%i%i", n, 2+2*np), "", 500, 0.5, 500.5);
-			hY[n][np] = new TH1D(Form("hY%i%i", n, 2+2*np), "", 500, 0.5, 500.5);
+			hW[n][np] = new TH1D(Form("hW%i%i", n, 2+2*np), "", 500, -0.5, 499.5);
+			hY[n][np] = new TH1D(Form("hY%i%i", n, 2+2*np), "", 500, -0.5, 499.5);
 			for ( int i = 0; i < 24; i++ ) {
-				hWp[n][np][i] = new TH1D(Form("hWp%i%i_%i", n, 2+2*np, i), "", 500, 0.5, 500.5);
-				hWeta[n][np][i] = new TH1D(Form("hWeta%i%i_%i", n, 2+2*np, i), "", 500, 0.5, 500.5);
+				hWp[n][np][i] = new TH1D(Form("hWp%i%i_%i", n, 2+2*np, i), "", 500, -0.5, 499.5);
+				hWeta[n][np][i] = new TH1D(Form("hWeta%i%i_%i", n, 2+2*np, i), "", 500, -0.5, 499.5);
 			}
 			for ( int i = 0; i < 2; i++ ) {
-				hWc[n][np][i] = new TH1D(Form("hWc%i%i_%i", n, 2+2*np, i), "", 500, 0.5, 500.5);
+				hWc[n][np][i] = new TH1D(Form("hWc%i%i_%i", n, 2+2*np, i), "", 500, -0.5, 499.5);
 			}
 		}
 	}
@@ -151,22 +149,23 @@ void process(int s1 = 1, int s2 = 10, int s3 = 10)
 		hNoff->Fill(gNoff);
 		hMult->Fill(gMult);
 	}
+
 	for ( int n = 1; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
-			for ( int c = 1; c < 500; c++ ) {
-				hQ[n][np]->SetBinContent(c, dQ[n][np][c]);
-				hW[n][np]->SetBinContent(c, yQ[n][np][c]);
-				hX[n][np]->SetBinContent(c, dX[n][np][c]);
-				hY[n][np]->SetBinContent(c, yX[n][np][c]);
+			for ( int c = 0; c < 500; c++ ) {
+				hQ[n][np]->SetBinContent(c+1, dQ[n][np][c]);
+				hW[n][np]->SetBinContent(c+1, yQ[n][np][c]);
+				hX[n][np]->SetBinContent(c+1, dX[n][np][c]);
+				hY[n][np]->SetBinContent(c+1, yX[n][np][c]);
 				for ( int i = 0; i < 24; i++ ) {
-					hQp[n][np][i]->SetBinContent(c, dQp[n][np][i][c]);
-					hWp[n][np][i]->SetBinContent(c, yQp[n][np][i][c]);
-					hQeta[n][np][i]->SetBinContent(c, dQeta[n][np][i][c]);
-					hWeta[n][np][i]->SetBinContent(c, yQeta[n][np][i][c]);
+					hQp[n][np][i]->SetBinContent(c+1, dQp[n][np][i][c]);
+					hWp[n][np][i]->SetBinContent(c+1, yQp[n][np][i][c]);
+					hQeta[n][np][i]->SetBinContent(c+1, dQeta[n][np][i][c]);
+					hWeta[n][np][i]->SetBinContent(c+1, yQeta[n][np][i][c]);
 				}
 				for ( int i = 0; i < 2; i++ ) {
-					hQc[n][np][i]->SetBinContent(c, dQc[n][np][i][c]);
-					hWc[n][np][i]->SetBinContent(c, yQc[n][np][i][c]);
+					hQc[n][np][i]->SetBinContent(c+1, dQc[n][np][i][c]);
+					hWc[n][np][i]->SetBinContent(c+1, yQc[n][np][i][c]);
 				}
 			}
 		}
@@ -198,4 +197,6 @@ void process(int s1 = 1, int s2 = 10, int s3 = 10)
 	}
 	hNoff->Write();
 	hMult->Write();
+
+	return;
 }
