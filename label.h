@@ -1,13 +1,15 @@
 
 char const * fname[] = {
 	"test/",			// 0
-	"../PbPb2015/HIExpressPhysics/crab_HIExpressPhysics_MB_Cumu_v2/151205_123559/0000/",		// PbPb express MB
+	"../PbPb2015/HIExpressPhysics/crab_HIExpressPhysics_MB_Cumu_v2/151205_123559/0000/",		// 1 PbPb express MB
+	"../PbPb2015/HIExpressPhysics/crab_HIExpressPhysics_MB_Cumu_v3/151208_113312/0000/",		// 2 PbPb express MB |eta|<1.
 
 };
 
 char const * ftxt[] = {
 	"txt/test/",							// 0
 	"txt/HIExpressPhysics_MB_Cumu_v2/",				// 1
+	"txt/HIExpressPhysics_MB_Cumu_v3/",				// 2
 };
 
 #include <TChain.h>
