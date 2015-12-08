@@ -1,5 +1,5 @@
-time ./bproc3.sh 2 10 10
-time ./bproc3.sh 2 0 10
+#time ./bproc3.sh 2 10 10
+#time ./bproc3.sh 2 0 10
 time ./bproc3.sh 2 1 10
 time ./bproc3.sh 2 2 10
 time ./bproc3.sh 2 3 10
