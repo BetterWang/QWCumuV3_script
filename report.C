@@ -1,5 +1,5 @@
 {
-	char s1[] = "/afs/cern.ch/work/q/qwang/cleanroomRun2/Ana/CMSSW_7_5_7_patch2/src/QWAna/QWCumuV3/PbPb2015/HIExpressPhysics/crab_HIExpressPhysics_MB_Cumu_v3/151208_113312/0000/merged.root";
+	char s1[] = "../tmp/merged.root";
 	TFile * f = new TFile(s1);
 	TCanvas c;
 	TH1D * h;

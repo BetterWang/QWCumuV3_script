@@ -1,6 +1,6 @@
-
-{
 #include "label.h"
+
+void verify(int s1 = 1){
 //	int s1 = 1;
 	int s3 = 10;
 
