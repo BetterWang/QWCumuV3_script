@@ -3,7 +3,9 @@
 #include "../../style.h"
 #include "HIN-10-002.h"
 
-void genPlot(int s1 =1)
+	double cV[7][4][20];
+	double eV[7][4][20];
+void genPlot(int s1 =2)
 {
 
 	int sC = 1;
@@ -21,8 +23,8 @@ void genPlot(int s1 =1)
 	//Get Histo
 
 	double dV[7][4][20];
-	double eV[7][4][20];
-	double cV[7][4][20];
+//	double eV[7][4][20];
+//	double cV[7][4][20];
 
 	double dX[7][4][20];
 	double eX[7][4][20];
@@ -49,12 +51,11 @@ void genPlot(int s1 =1)
 			for ( int i = 0; i < 20; i++ ) {
 				dV[n][np][i] = h1->GetBinContent(i+1);
 				eV[n][np][i] = h1->GetBinError(i+1);
-				cV[n][np][i] = h3->GetBinError(i+1);
-				if ( dV[n][np][i] != h3->GetBinContent(i+1) ) cout << "!! dV[" << n << "][" << np << "][" << i << "] = " << dV[n][np][i] << "\tdcV = " << h3->GetBinContent(i+1) << endl;
+				cV[n][np][i] = h3->GetBinContent(i+1);
 
 				dX[n][np][i] = h2->GetBinContent(i+1);
 				eX[n][np][i] = h2->GetBinError(i+1);
-				cX[n][np][i] = h4->GetBinError(i+1);
+				cX[n][np][i] = h4->GetBinContent(i+1);
 				if ( dX[n][np][i] != h4->GetBinContent(i+1) ) cout << "!! dX[" << n << "][" << np << "][" << i << "] = " << dX[n][np][i] << "\tdcX = " << h4->GetBinContent(i+1) << endl;
 			}
 			delete h1;
@@ -71,13 +72,10 @@ void genPlot(int s1 =1)
 					dVp[n][np][j][i] = h1->GetBinContent(i+1);
 					eVp[n][np][j][i] = h1->GetBinError(i+1);
 					cVp[n][np][j][i] = h3->GetBinError(i+1);
-//					cout << "!! eVp[" << n << "][" << np << "][" << j << "][" << i << "] = " << eVp[n][np][j][i] << "\tcVp = " << cVp[n][np][j][i] << endl;
-//					if ( dVp[n][np][j][i] != h3->GetBinContent(i+1) ) cout << "!! dVp[" << n << "][" << np << "][" << j << "][" << i << "] = " << dVp[n][np][j][i] << "\tdcVp = " << h3->GetBinContent(i+1) << endl;
 
 					dVeta[n][np][j][i] = h2->GetBinContent(i+1);
 					eVeta[n][np][j][i] = h2->GetBinError(i+1);
 					cVeta[n][np][j][i] = h4->GetBinError(i+1);
-//					if ( dVeta[n][np][j][i] != h4->GetBinContent(i+1) ) cout << "!! dVeta[" << n << "][" << np << "][" << j << "][" << i << "] = " << dVeta[n][np][j][i] << "\tdcVeta = " << h4->GetBinContent(i+1) << endl;
 				}
 				delete h1;
 				delete h2;
@@ -92,7 +90,6 @@ void genPlot(int s1 =1)
 					eVc[n][np][j][i] = h1->GetBinError(i+1);
 					cVc[n][np][j][i] = h2->GetBinError(i+1);
 
-//					if ( dVc[n][np][j][i] != h2->GetBinContent(i+1) ) cout << "!! dVc[" << n << "][" << np << "][" << j << "][" << i << "] = " << dVc[n][np][j][i] << "\tdcVc = " << h2->GetBinContent(i+1) << endl;
 				}
 				delete h1;
 				delete h2;
@@ -101,10 +98,10 @@ void genPlot(int s1 =1)
 	}
 
 	// TGraphErrors
-	TGraphErrors * gr_vnPtV[7][4][20];
-	TGraphErrors * gr_vnPtC[7][4][20];
-	memset(gr_vnPtV, 0, sizeof(gr_vnPtV));
-	memset(gr_vnPtC, 0, sizeof(gr_vnPtC));
+	TGraphErrors * gr_vnPtV[7][4][20] = {};
+	TGraphErrors * gr_vnPtC[7][4][20] = {};
+	TGraphErrors * gr_vnCentV[7][4] = {};
+	TGraphErrors * gr_vnCentC[7][4] = {};
 
 	double dY[100];
 	double eY[100];
@@ -119,6 +116,46 @@ void genPlot(int s1 =1)
 	// pT
 	for ( int n = 1; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
+			for ( int i = 0; i < 14; i++ ) {
+				dY[i] = dV[n][np][i];
+				cY[i] = cV[n][np][i];
+				eY[i] = eV[n][np][i];
+				if (eY[i] != eY[i]) eY[i] = 999;
+				if (cY[i] != cY[i]) cY[i] = 999;
+				if (dY[i] != dY[i]) dY[i] = 999;
+			}
+			gr_vnCentV[n][np] = new TGraphErrors(14, CentPbPbX, dY, 0, eY);
+			gr_vnCentC[n][np] = new TGraphErrors(14, CentPbPbX, cY, 0, eY);
+			if ( np == 0 ) {
+				gr_vnCentV[n][np]->SetMarkerStyle(kFullCircle);
+				gr_vnCentV[n][np]->SetMarkerColor(kGreen+2);
+				gr_vnCentV[n][np]->SetLineColor(kGreen+2);
+				gr_vnCentC[n][np]->SetMarkerStyle(kFullCircle);
+				gr_vnCentC[n][np]->SetMarkerColor(kGreen+2);
+				gr_vnCentC[n][np]->SetLineColor(kGreen+2);
+			} else if ( np == 1 ) {
+				gr_vnCentV[n][np]->SetMarkerStyle(kFullSquare);
+				gr_vnCentV[n][np]->SetMarkerColor(kGreen+2);
+				gr_vnCentV[n][np]->SetLineColor(kGreen+2);
+				gr_vnCentC[n][np]->SetMarkerStyle(kFullSquare);
+				gr_vnCentC[n][np]->SetMarkerColor(kGreen+2);
+				gr_vnCentC[n][np]->SetLineColor(kGreen+2);
+			} else if ( np == 2 ) {
+				gr_vnCentV[n][np]->SetMarkerStyle(kFullCross);
+				gr_vnCentV[n][np]->SetMarkerColor(kBlue);
+				gr_vnCentV[n][np]->SetLineColor(kBlue);
+				gr_vnCentC[n][np]->SetMarkerStyle(kFullCross);
+				gr_vnCentC[n][np]->SetMarkerColor(kBlue);
+				gr_vnCentC[n][np]->SetLineColor(kBlue);
+			} else if ( np == 3 ) {
+				gr_vnCentV[n][np]->SetMarkerStyle(kFullDiamond);
+				gr_vnCentV[n][np]->SetMarkerColor(kRed);
+				gr_vnCentV[n][np]->SetLineColor(kRed);
+				gr_vnCentC[n][np]->SetMarkerStyle(kFullDiamond);
+				gr_vnCentC[n][np]->SetMarkerColor(kRed);
+				gr_vnCentC[n][np]->SetLineColor(kRed);
+			}
+
 			for ( int i = 0; i < 20; i++ ) {
 				//if ( pCent[np][i] == 0 ) break;
 				for ( int j = 0; j < 23; j++ ) {
@@ -221,15 +258,33 @@ void genPlot(int s1 =1)
 
 	TF1 *finputv2 = new TF1("finputv2", "0.165646*exp(-( (x-2.64741)/1.36298 + exp( -(x-2.64741)/1.36298 ) )/2.)", 0.2, 15);
 
+//	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 12, 1, 0, 0.35);
 	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 12, 1, 0, 0.35);
 	InitHist(hframe_pt, "p_{T} (GeV/c)", "v_{2}");
 	TH2D * hframe_eta = new TH2D("hframe_eta", "", 1, -2.5, 2.5, 1, 0, 0.35);
 	InitHist(hframe_eta, "#eta", "v_{2}");
+	TH2D * hframe_cent = new TH2D("hframe_cent", "", 1, 0, 100, 1, 0, 0.35);
+	InitHist(hframe_cent, "Centrality", "v_{2}");
 
 	TCanvas * cT = MakeCanvas("cT", "cT", 600, 500);
 
 	for ( int n = 2; n < 7; n++ ) {
-		for ( int i = 0; i < 20; i++ ) {
+		cT->cd();
+		hframe_cent->GetYaxis()->SetTitle(Form("v_{%i}",n));
+		hframe_cent->Draw();
+		if (sC) {
+			gr_vnCentC[n][0]->Draw("Psame");
+			gr_vnCentC[n][1]->Draw("Psame");
+			gr_vnCentC[n][2]->Draw("Psame");
+			gr_vnCentC[n][3]->Draw("Psame");
+		} else {
+			gr_vnCentV[n][0]->Draw("Psame");
+			gr_vnCentV[n][1]->Draw("Psame");
+			gr_vnCentV[n][2]->Draw("Psame");
+			gr_vnCentV[n][3]->Draw("Psame");
+		}
+		cT->SaveAs(Form("%s/cCent_%i_%i.pdf", ftxt[s1], n, sC));
+		for ( int i = 0; i < 14; i++ ) {
 			//if (pCent[0][i] == 0) break;
 			cT->cd();
 			hframe_pt->GetYaxis()->SetTitle(Form("v_{%i}",n));
@@ -306,17 +361,17 @@ void genPlot(int s1 =1)
 			legEta->SetTextSize(0.03);
 			legEta->SetBorderSize(0);
 
-			legEta->AddEntry(gr_vnEtaV[n][0][i], Form("v_{%i}{2} %i#leq N_{off} < %i", n, pCent[0][i]/2, pCent[0][i+1]/2), "p");
-			legEta->AddEntry(gr_vnEtaV[n][1][i], Form("v_{%i}{4} %i#leq N_{off} < %i", n, pCent[1][i]/2, pCent[0][i+1]/2), "p");
-			legEta->AddEntry(gr_vnEtaV[n][2][i], Form("v_{%i}{6} %i#leq N_{off} < %i", n, pCent[2][i]/2, pCent[2][i+1]/2), "p");
-			legEta->AddEntry(gr_vnEtaV[n][3][i], Form("v_{%i}{8} %i#leq N_{off} < %i", n, pCent[3][i]/2, pCent[3][i+1]/2), "p");
+			legEta->AddEntry(gr_vnEtaV[n][0][i], Form("v_{%i}{2} %i%% < Centrality < %i%%", n, pCent[0][i]/2, pCent[0][i+1]/2), "p");
+			legEta->AddEntry(gr_vnEtaV[n][1][i], Form("v_{%i}{4} %i%% < Centrality < %i%%", n, pCent[1][i]/2, pCent[0][i+1]/2), "p");
+			legEta->AddEntry(gr_vnEtaV[n][2][i], Form("v_{%i}{6} %i%% < Centrality < %i%%", n, pCent[2][i]/2, pCent[2][i+1]/2), "p");
+			legEta->AddEntry(gr_vnEtaV[n][3][i], Form("v_{%i}{8} %i%% < Centrality < %i%%", n, pCent[3][i]/2, pCent[3][i+1]/2), "p");
 
 			legEta->Draw();
 			cT->SaveAs(Form("%s/cEta_%i_%i_%i.pdf", ftxt[s1], n, i, sC));
 			delete legEta;
-
 		}
 	}
+
 
 	TFile * fsave = new TFile(Form("%s/outGraph.root", ftxt[s1]),"recreate");
 	ofstream txtout;

@@ -50,27 +50,6 @@ void bGet(int s1 = 1, int s2 = 0, int s3 =10){
 	double dCxc[7][4][2][20] = {};
 	double wCxc[7][4][2][20] = {};
 
-//	for ( int n = 1; n < 7; n++ ) {
-//		for ( int np = 0; np < 4; np++ ) {
-//			for ( int c = 0; c < 20; c++ ) {
-//				dCx[n][np][c] = 0;
-//				wCx[n][np][c] = 0;
-//				dDx[n][np][c] = 0;
-//				wDx[n][np][c] = 0;
-//				for ( int i = 0; i < 24; i++ ) {
-//					dCxp[n][np][i][c] = 0;
-//					wCxp[n][np][i][c] = 0;
-//					dCxeta[n][np][i][c] = 0;
-//					wCxeta[n][np][i][c] = 0;
-//				}
-//				for ( int i = 0; i < 2; i++ ) {
-//					dCxc[n][np][i][c] = 0;
-//					wCxc[n][np][i][c] = 0;
-//				}
-//			}
-//		}
-//	}
-
 	TH1D * hNoff = (TH1D*) f->Get("hNoff");
 
 	TH1D * hNoffCent2 = new TH1D("hNoffCent2", "hNoffCent2", 20, 0, 20);

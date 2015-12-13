@@ -1,5 +1,4 @@
 root -l -b <<EOF
-int s1 = $1;
-.x bGetError.C
+.x bGetError.C+($1)
 .q
 EOF
