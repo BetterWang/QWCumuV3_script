@@ -174,8 +174,65 @@ TGraphErrors * rebin_eta(TGraphErrors* gr)
 	return ret;
 }
 
-void DrawSys(TGraphErrors* gr, double sys)
+TGraphErrors* DrawSys(TGraphErrors* gr, double sys)
 {
 	TGraphErrors * gr_sys = makeSys(gr, sys);
 	gr_sys->Draw("[]2");
+	return gr_sys;
+}
+
+double gr_std(TGraphErrors* gr)
+{
+	double std = 0;
+	int N = gr->GetN();
+	double mean = 0;
+	double y2 = 0;
+	for ( int i = 0; i < N; i++ ) {
+		mean += gr->GetY()[i];
+	}
+	mean /= N;
+	for ( int i = 0; i < N; i++ ) {
+		y2 += (gr->GetY()[i] - mean)**2;
+	}
+	y2 /= (N-1);
+	y2 = sqrt(y2);
+	for ( int i = 0; i < N; i++ ) {
+		gr->GetEY()[i] = y2;
+	}
+	return y2;
+}
+
+double gr_std_line(TGraphErrors* gr)
+{
+	TF1 * fit = new TF1("line", "pol1", -2.4, 2.4);
+	gr->Fit(fit, "QN");
+	int N = gr->GetN();
+	double y2 = 0;
+	for ( int i = 0; i < N; i++ ) {
+		y2 += (gr->GetY()[i] - fit->Eval(gr->GetX()[i]))**2;
+	}
+	y2 /= (N-1);
+	y2 = sqrt(y2);
+	for ( int i = 0; i < N; i++ ) {
+		gr->GetEY()[i] = y2;
+	}
+
+	return y2;
+	delete fit;
+
+}
+
+void gr_ratio_err()
+{
+	TFile * fstat = new TFile(Form("ratioStat2_%i.root", bPbPb));
+	TGraphErrors * gr_p[20] = {};
+	TGraphErrors * gr_Pb[20] = {};
+	for ( int i = 3; i < 8; i++ ) {
+		gr_p[i] = (TGraphErrors*) fstat->Get(Form("gr_SavedRatioErr_p_%i", i));
+		gr_Pb[i] = (TGraphErrors*) fstat->Get(Form("gr_SavedRatioErr_Pb_%i", i));
+		for ( int bin = 0; bin < 12; bin++ ) {
+			gr_RatioEta_p[i]->GetEY()[bin] = gr_p[i]->GetEY()[bin];
+			gr_RatioEta_Pb[i]->GetEY()[bin] = gr_Pb[i]->GetEY()[bin];
+		}
+	}
 }

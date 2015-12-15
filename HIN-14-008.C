@@ -17,8 +17,10 @@
 	TMultiGraph * mgr_norm_sub = new TMultiGraph();
 
 	gr_norm_p->SetMarkerColor(kBlue);
+	gr_norm_p->SetMarkerSize(2);
 	gr_norm_p->SetLineColor(kBlue);
 	gr_norm_Pb->SetMarkerColor(kBlue);
+	gr_norm_Pb->SetMarkerSize(2);
 	gr_norm_Pb->SetLineColor(kBlue);
 
 	mgr_norm->Add(gr_norm_sys_p, "[]2");
@@ -32,6 +34,9 @@
 	TMultiGraph * mgr_ratio = new TMultiGraph();
 
 	gr_ratioHIN->SetMarkerStyle(kOpenCircle);
+	gr_ratioHIN->SetMarkerSize(2);
+	gr_ratioHIN->SetMarkerColor(kBlue);
+	gr_ratioHIN->SetLineColor(kBlue);
 //	mgr_ratio->Add(gr_ratio_sys, "F");
 	mgr_ratio->Add(gr_ratioHIN, "p");
 }

@@ -21,7 +21,8 @@
 	if ( s1 == 109 ) bPbPb = 1;
 
 	int bEP = 1;
-	int bDeco = 0;
+	int bDeco = 1;
+	int bExt = 1;
 
 	bool bHIN = 1;
 	gROOT->Macro("HIN-13-002.C");
@@ -349,7 +350,7 @@
 
 	if ( !bPbPb ) {
 		if ( bEP ) {
-			if ( bDeco ) {
+			if ( !bDeco ) {
 				gr_v2pt_p_EP_Pb[7]->Draw("Psame");
 				gr_v2pt_Pb_EP_p[7]->Draw("Psame");
 			} else {
@@ -357,7 +358,7 @@
 				gr_v2pt_Pb_EPde_p[7]->Draw("Psame");
 			}
 		} else {
-			if ( bDeco ) {
+			if ( !bDeco ) {
 				gr_v2pt_p_SP_Pb[7]->Draw("Psame");
 				gr_v2pt_Pb_SP_p[7]->Draw("Psame");
 			} else {
@@ -383,7 +384,7 @@
 
 	if ( !bPbPb ) {
 		if ( bEP ) {
-			if ( bDeco ) {
+			if ( !bDeco ) {
 				gr_v2pt_p_EP_Pb[6]->Draw("Psame");
 				gr_v2pt_Pb_EP_p[6]->Draw("Psame");
 			} else {
@@ -391,7 +392,7 @@
 				gr_v2pt_Pb_EPde_p[6]->Draw("Psame");
 			}
 		} else {
-			if ( bDeco ) {
+			if ( !bDeco ) {
 				gr_v2pt_p_SP_Pb[6]->Draw("Psame");
 				gr_v2pt_Pb_SP_p[6]->Draw("Psame");
 			} else {
@@ -418,7 +419,7 @@
 
 	if ( !bPbPb ) {
 		if ( bEP ) {
-			if ( bDeco ) {
+			if ( !bDeco ) {
 				gr_v2pt_p_EP_Pb[5]->Draw("Psame");
 				gr_v2pt_Pb_EP_p[5]->Draw("Psame");
 			} else {
@@ -426,7 +427,7 @@
 				gr_v2pt_Pb_EPde_p[5]->Draw("Psame");
 			}
 		} else {
-			if ( bDeco ) {
+			if ( !bDeco ) {
 				gr_v2pt_p_SP_Pb[5]->Draw("Psame");
 				gr_v2pt_Pb_SP_p[5]->Draw("Psame");
 			} else {
@@ -453,7 +454,7 @@
 
 	if ( !bPbPb ) {
 		if ( bEP ) {
-			if ( bDeco ) {
+			if ( !bDeco ) {
 				gr_v2pt_p_EP_Pb[4]->Draw("Psame");
 				gr_v2pt_Pb_EP_p[4]->Draw("Psame");
 			} else {
@@ -461,7 +462,7 @@
 				gr_v2pt_Pb_EPde_p[4]->Draw("Psame");
 			}
 		} else {
-			if ( bDeco ) {
+			if ( !bDeco ) {
 				gr_v2pt_p_SP_Pb[4]->Draw("Psame");
 				gr_v2pt_Pb_SP_p[4]->Draw("Psame");
 			} else {
