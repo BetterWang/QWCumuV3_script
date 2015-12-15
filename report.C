@@ -1,5 +1,5 @@
 {
-	char s1[] = "../tmp/merged.root";
+	char s1[] = "../PbPb2015/HIExpressPhysics/crab_HIExpressPhysics_All_Cumu_v1/mtemp_0.root";
 	TFile * f = new TFile(s1);
 	TCanvas c;
 	TH1D * h;

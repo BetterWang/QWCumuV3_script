@@ -3,8 +3,6 @@
 #include "../../style.h"
 #include "HIN-10-002.h"
 
-	double cV[7][4][20];
-	double eV[7][4][20];
 void genPlot(int s1 =2)
 {
 
@@ -23,8 +21,8 @@ void genPlot(int s1 =2)
 	//Get Histo
 
 	double dV[7][4][20];
-//	double eV[7][4][20];
-//	double cV[7][4][20];
+	double eV[7][4][20];
+	double cV[7][4][20];
 
 	double dX[7][4][20];
 	double eX[7][4][20];
