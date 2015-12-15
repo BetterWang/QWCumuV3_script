@@ -3,8 +3,6 @@
 #include "../../style.h"
 #include "HIN-10-002.h"
 
-	double cV[7][4][20];
-	double eV[7][4][20];
 void genPlot(int s1 =2)
 {
 
@@ -23,8 +21,8 @@ void genPlot(int s1 =2)
 	//Get Histo
 
 	double dV[7][4][20];
-//	double eV[7][4][20];
-//	double cV[7][4][20];
+	double eV[7][4][20];
+	double cV[7][4][20];
 
 	double dX[7][4][20];
 	double eX[7][4][20];
@@ -259,7 +257,7 @@ void genPlot(int s1 =2)
 	TF1 *finputv2 = new TF1("finputv2", "0.165646*exp(-( (x-2.64741)/1.36298 + exp( -(x-2.64741)/1.36298 ) )/2.)", 0.2, 15);
 
 //	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 12, 1, 0, 0.35);
-	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 12, 1, 0, 0.35);
+	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 120, 1, 0, 0.35);
 	InitHist(hframe_pt, "p_{T} (GeV/c)", "v_{2}");
 	TH2D * hframe_eta = new TH2D("hframe_eta", "", 1, -2.5, 2.5, 1, 0, 0.35);
 	InitHist(hframe_eta, "#eta", "v_{2}");
