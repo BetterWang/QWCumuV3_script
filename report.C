@@ -1,5 +1,5 @@
 {
-	char s1[] = "../PbPb2015/HIExpressPhysics/crab_HIExpressPhysics_All_Cumu_v1/mtemp_0.root";
+	char s1[] = "../PbPb2015/HIHardProbes/crab_HIHardProbes_PromptSkim_cumu_v2/merged.root";
 	TFile * f = new TFile(s1);
 	TCanvas c;
 	TH1D * h;
@@ -16,16 +16,20 @@
 	h2d->SetTitle("cumulantMB/Mult-Noff");
 	h2d->Draw("colz");
 	c.SaveAs("report.pdf");
+	c.SetLogy();
 	for ( int i = 0; i < 14; i++ ) {
 		h = (TH1D*) f->Get(Form("cumulantMB/hPt_%i", i));
 		h->SetTitle(Form("cumulantMB/hPt_%i", i));
+		h->GetXaxis()->SetRange(1, 23);
 		h->Draw();
 		c.SaveAs("report.pdf");
 	}
+	c.SetLogy(0);
 	TH2D * h2;
 	for ( int i = 0; i < 14; i++ ) {
 		h2 = (TH2D*) f->Get(Form("cumulantMB/hdNdPtdEta_%i", i));
 		h2->SetTitle(Form("cumulantMB/hdNdPtdEta_%i", i));
+		h2->GetYaxis()->SetRange(1, 10);
 		h2->Draw("colz");
 		c.SaveAs("report.pdf");
 	}
