@@ -312,13 +312,13 @@ void genPlot(int s1 =2)
 			if (sC) {
 				gr_vnPtC[n][0][i]->Draw("Psame");
 				gr_vnPtC[n][1][i]->Draw("Psame");
-				gr_vnPtC[n][2][i]->Draw("Psame");
-				gr_vnPtC[n][3][i]->Draw("Psame");
+//				gr_vnPtC[n][2][i]->Draw("Psame");
+//				gr_vnPtC[n][3][i]->Draw("Psame");
 			} else {
 				gr_vnPtV[n][0][i]->Draw("Psame");
 				gr_vnPtV[n][1][i]->Draw("Psame");
-				gr_vnPtV[n][2][i]->Draw("Psame");
-				gr_vnPtV[n][3][i]->Draw("Psame");
+//				gr_vnPtV[n][2][i]->Draw("Psame");
+//				gr_vnPtV[n][3][i]->Draw("Psame");
 			}
 
 			if ( sSimV2 ) {
