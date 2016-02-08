@@ -4,7 +4,7 @@
 #include <TH1.h>
 #include <TMath.h>
 using namespace std;
-void process(int s1 = 1, int s2 = 10, int s3 = 10)
+void process(int s1 = 7, int s2 = 10, int s3 = 10)
 {
 //	int s1 = 4;
 //	int s2 = 10;
@@ -17,52 +17,52 @@ void process(int s1 = 1, int s2 = 10, int s3 = 10)
 	int gMult;
 
 	double rQ[7][4] = {};
-	double iQ[7][4] = {};
+//	double iQ[7][4] = {};
 	double wQ[7][4] = {};
 
 	double rX[7][4] = {};
-	double iX[7][4] = {};
+//	double iX[7][4] = {};
 	double wX[7][4] = {};
 
 	double rQp[7][4][24] = {};
-	double iQp[7][4][24] = {};
+//	double iQp[7][4][24] = {};
 	double wQp[7][4][24] = {};
 
 	double rQeta[7][4][24] = {};
-	double iQeta[7][4][24] = {};
+//	double iQeta[7][4][24] = {};
 	double wQeta[7][4][24] = {};
 
 	double rQc[7][4][2] = {};
-	double iQc[7][4][2] = {};
+//	double iQc[7][4][2] = {};
 	double wQc[7][4][2] = {};
 
 	chV->SetBranchAddress("Noff", &gNoff);
 	chV->SetBranchAddress("Mult", &gMult);
-	for ( int n = 1; n < 7; n++ ) {
+	for ( int n = 2; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			chV->SetBranchAddress(Form("rQ%i%i", n, 2+2*np), &rQ[n][np]);
-			chV->SetBranchAddress(Form("iQ%i%i", n, 2+2*np), &iQ[n][np]);
+//			chV->SetBranchAddress(Form("iQ%i%i", n, 2+2*np), &iQ[n][np]);
 			chV->SetBranchAddress(Form("wQ%i%i", n, 2+2*np), &wQ[n][np]);
 
 			chV->SetBranchAddress(Form("rX%i%i", n, 2+2*np), &rX[n][np]);
-			chV->SetBranchAddress(Form("iX%i%i", n, 2+2*np), &iX[n][np]);
+//			chV->SetBranchAddress(Form("iX%i%i", n, 2+2*np), &iX[n][np]);
 			chV->SetBranchAddress(Form("wX%i%i", n, 2+2*np), &wX[n][np]);
 
 			chV->SetBranchAddress(Form("rQ%i%ip", n, 2+2*np), rQp[n][np]);
-			chV->SetBranchAddress(Form("iQ%i%ip", n, 2+2*np), iQp[n][np]);
+//			chV->SetBranchAddress(Form("iQ%i%ip", n, 2+2*np), iQp[n][np]);
 			chV->SetBranchAddress(Form("wQ%i%ip", n, 2+2*np), wQp[n][np]);
 
 			chV->SetBranchAddress(Form("rQ%i%ic", n, 2+2*np), rQc[n][np]);
-			chV->SetBranchAddress(Form("iQ%i%ic", n, 2+2*np), iQc[n][np]);
+//			chV->SetBranchAddress(Form("iQ%i%ic", n, 2+2*np), iQc[n][np]);
 			chV->SetBranchAddress(Form("wQ%i%ic", n, 2+2*np), wQc[n][np]);
 
 			chV->SetBranchAddress(Form("rQ%i%ieta", n, 2+2*np), rQeta[n][np]);
-			chV->SetBranchAddress(Form("iQ%i%ieta", n, 2+2*np), iQeta[n][np]);
+//			chV->SetBranchAddress(Form("iQ%i%ieta", n, 2+2*np), iQeta[n][np]);
 			chV->SetBranchAddress(Form("wQ%i%ieta", n, 2+2*np), wQeta[n][np]);
 		}
 	}
 
-	int Nevt[500] = {};
+//	int Nevt[500] = {};
 
 
 	TH1D * hMult = new TH1D("hMult", "hMult", 3000, -0.5, 2999.5);
@@ -81,7 +81,7 @@ void process(int s1 = 1, int s2 = 10, int s3 = 10)
 	TH1D * hWc[7][4][24] = {};
 
 	// book histo
-	for ( int n = 1; n < 7; n++ ) {
+	for ( int n = 2; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			hQ[n][np] = new TH1D(Form("hQ%i%i", n, 2+2*np), "", 500, -0.5, 499.5);
 			hX[n][np] = new TH1D(Form("hX%i%i", n, 2+2*np), "", 500, -0.5, 499.5);
@@ -126,7 +126,7 @@ void process(int s1 = 1, int s2 = 10, int s3 = 10)
 		//if ( (s2!=s3) && ((ievt%s3)!=s2) ) continue;
 		if (gNoff >=500) continue;
 
-		for ( int n = 1; n < 7; n++ ) {
+		for ( int n = 2; n < 7; n++ ) {
 			for ( int np = 0; np < 4; np++ ) {
 				if ( TMath::IsNaN(rQ[n][np]) ) continue;
 				dQ[n][np][gNoff] += rQ[n][np];
@@ -152,7 +152,7 @@ void process(int s1 = 1, int s2 = 10, int s3 = 10)
 		hMult->Fill(gMult);
 	}
 
-	for ( int n = 1; n < 7; n++ ) {
+	for ( int n = 2; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			for ( int c = 0; c < 500; c++ ) {
 				hQ[n][np]->SetBinContent(c+1, dQ[n][np][c]);
@@ -179,7 +179,7 @@ void process(int s1 = 1, int s2 = 10, int s3 = 10)
 	} else {
 		fwrite = new TFile(Form("%s/output_%i_%i.root", ftxt[s1], s2, s3), "recreate");
 	}
-	for ( int n = 1; n < 7; n++ ) {
+	for ( int 2 = 1; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			hQ[n][np]->Write();
 			hW[n][np]->Write();

@@ -3,7 +3,7 @@
 #include "TH1.h"
 #include "TFile.h"
 
-void bGet(int s1 = 1, int s2 = 0, int s3 =10){
+void bGet(int s1 = 7, int s2 = 0, int s3 =10){
 //	int s1 = 4;
 //	int s2 = 10;
 //	int s3 = 10;
@@ -64,7 +64,7 @@ void bGet(int s1 = 1, int s2 = 0, int s3 =10){
 
 	TH1D * hNevtCent[4] = {hNevtCent2, hNevtCent4, hNevtCent6, hNevtCent8};
 
-	for ( int n = 1; n < 7; n++ ) {
+	for ( int n = 2; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			TH1D * hQ = (TH1D*) f->Get(Form("hQ%i%i", n, 2+2*np));
 			TH1D * hW = (TH1D*) f->Get(Form("hW%i%i", n, 2+2*np));
@@ -122,7 +122,7 @@ void bGet(int s1 = 1, int s2 = 0, int s3 =10){
 		}
 	}
 
-	for ( int n = 1; n < 7; n++ ) {
+	for ( int n = 2; n < 7; n++ ) {
 		for ( int m = 0; m < 500; m++ ) {
 			double Q2 = dQ[n][0][m];
 			double Q4 = dQ[n][1][m];
@@ -204,7 +204,7 @@ void bGet(int s1 = 1, int s2 = 0, int s3 =10){
 			hNevtCent[np]->SetBinContent(i+1, nevt);
 		}
 	}
-	for ( int n = 1; n < 7; n++ ) {
+	for ( int n = 2; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			for ( int i = 0; i < NCent[np]; i++ ) {
 				double sum = 0;
@@ -311,7 +311,7 @@ void bGet(int s1 = 1, int s2 = 0, int s3 =10){
 	TH1D * fWrawp[7][4][24];
 	TH1D * fWraweta[7][4][24];
 	TH1D * fWrawc[7][4][2];
-	for ( int n = 1; n < 7; n++ ) {
+	for ( int n = 2; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			fC[n][np] = new TH1D(Form("hC%i%i", n, 2+2*np), "", 20, 0, 20);
 			fD[n][np] = new TH1D(Form("hD%i%i", n, 2+2*np), "", 20, 0, 20);
@@ -364,7 +364,7 @@ void bGet(int s1 = 1, int s2 = 0, int s3 =10){
 	TFile *fwrite;
 	if ( s2 == s3 ) fwrite = new TFile(Form("%s/outputC.root", ftxt[s1]), "recreate");
 	else fwrite = new TFile(Form("%s/outputC_%i_%i.root", ftxt[s1], s2, s3), "recreate");
-	for ( int n = 1; n < 7; n++ ) {
+	for ( int n = 2; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			fC[n][np]->Write();
 			fW[n][np]->Write();

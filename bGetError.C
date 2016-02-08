@@ -42,7 +42,7 @@ void bGetError(int s1 = 1, int s3 = 10)
 	// Get
 	for ( int fn = 0; fn <= s3; fn++ ) {
 		TFile * f = fr[fn];
-		for ( int n = 1; n < 7; n++ ) {
+		for ( int n = 2; n < 7; n++ ) {
 			for ( int np = 0; np < 4; np++ ) {
 				TH1D * h1 = (TH1D*) f->Get(Form("hC%i%i", n, 2+2*np));
 				TH1D * h2 = (TH1D*) f->Get(Form("hD%i%i", n, 2+2*np));

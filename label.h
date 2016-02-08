@@ -7,6 +7,7 @@ char const * fname[] = {
 	"../PbPb2015/HIExpressPhysics/crab_HIExpressPhysics_All_Cumu_v1/",				// 4 PbPb express all |eta|<1.
 	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_v1/151214_231033/0000/",			// 5 PbPb HIHardProbes_Skim |eta|<1.
 	"../PbPb2015/HIHardProbes/crab_HIHardProbes_PromptSkim_cumu_v2/",				// 6 PbPb Prompt Skim |eta|<1.
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_v5/160204_130827/0000/",			// 7 PbPb Skim |eta|<1.
 };
 
 char const * ftxt[] = {
@@ -17,6 +18,7 @@ char const * ftxt[] = {
 	"txt/HIExpressPhysics_All_Cumu_v1/",				// 4
 	"txt/HIHardProbes_Skim_cumu_v1/",				// 5
 	"txt/HIHardProbes_PromptSkim_cumu_v2/",				// 6
+	"txt/HIHardProbes_Skim_cumu_v5/",				// 7
 };
 
 #include <TChain.h>
