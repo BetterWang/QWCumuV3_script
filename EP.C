@@ -1,782 +1,160 @@
+#include "label.h"
+#include <TH1.h>
+#include <TH2.h>
+#include <TFile.h>
+
+const int NumEPNames = 29;
+void EP(int s1 = 6, int EP = 8, int N = 2)
 {
-	TFile * fv2_ep;
-	TFile * fv2_sp;
-	TFile * fv2_ep_de;
-	TFile * fv2_sp_de;
+	TFile * f = new TFile(Form("%smerged_hist.root", ftxt[s1]));
+//	TFile * f = new TFile(Form("%smerged_hist.root", "txt/HIHardProbes_PromptSkim_cumu_v2/"));
 
-	TFile * fv3_ep;
-	TFile * fv3_sp;
-	TFile * fv3_ep_de;
-	TFile * fv3_sp_de;
+	TH2D * hMult = (TH2D*) f->Get("cumulantMB/hMult");
 
-	if ( bPbPb ) {
-		fv2_ep = new TFile("txt/EP/Save_PbPb_v2_0_EP_HM100.root");
-		fv2_sp = new TFile("txt/EP/Save_PbPb_v2_1_SP_HM100.root");
-		fv2_ep_de = new TFile("txt/EP/Save_PbPb_v2_2_EP_HM100.root");
-		fv2_sp_de = new TFile("txt/EP/Save_PbPb_v2_3_SP_HM100.root");
+	const double * centbins = hMult->GetXaxis()->GetXbins()->GetArray();
+	int nCentBins = hMult->GetXaxis()->GetNbins();
+	const double * ptbins = hMult->GetYaxis()->GetXbins()->GetArray();
+	int nPtBins = hMult->GetYaxis()->GetNbins();
 
-		fv3_ep = new TFile("txt/EP/Save_PbPb_v3_0_EP_HM100.root");
-		fv3_sp = new TFile("txt/EP/Save_PbPb_v3_1_SP_HM100.root");
-		fv3_ep_de = new TFile("txt/EP/Save_PbPb_v3_2_EP_HM100.root");
-		fv3_sp_de = new TFile("txt/EP/Save_PbPb_v3_3_SP_HM100.root");
-	} else {
-		fv2_ep = new TFile("txt/EP/Save_v2_0_EP_HM100.root");
-		fv2_sp = new TFile("txt/EP/Save_v2_1_SP_HM100.root");
-		fv2_ep_de = new TFile("txt/EP/Save_v2_2_EP_HM100.root");
-		fv2_sp_de = new TFile("txt/EP/Save_v2_3_SP_HM100.root");
 
-		fv3_ep = new TFile("txt/EP/Save_v3_0_EP_HM100.root");
-		fv3_sp = new TFile("txt/EP/Save_v3_1_SP_HM100.root");
-		fv3_ep_de = new TFile("txt/EP/Save_v3_2_EP_HM100.root");
-		fv3_sp_de = new TFile("txt/EP/Save_v3_3_SP_HM100.root");
-	}
+	TH2D * hEP[nPtBins][7];
+	TH2D * hSP[nPtBins][7];
+	TH2D * iEP[nPtBins][7];
+	TH2D * iSP[nPtBins][7];
 
 
-	TGraphErrors * gr_v2p_EP[20] = {};
-	TGraphErrors * gr_v2p_SP[20] = {};
-	TGraphErrors * gr_v2p_EP_de[20] = {};
-	TGraphErrors * gr_v2p_SP_de[20] = {};
+	TH2D * hEPresAB = (TH2D*) f->Get("cumulantMB/hEPresAB");
+	TH2D * hEPresAC = (TH2D*) f->Get("cumulantMB/hEPresAC");
+	TH2D * hEPresBC = (TH2D*) f->Get("cumulantMB/hEPresBC");
 
-	TGraphErrors * gr_v2Pb_EP[20] = {};
-	TGraphErrors * gr_v2Pb_SP[20] = {};
-	TGraphErrors * gr_v2Pb_EP_de[20] = {};
-	TGraphErrors * gr_v2Pb_SP_de[20] = {};
+	TH2D * hSPresAB = (TH2D*) f->Get("cumulantMB/hSPresAB");
+	TH2D * hSPresAC = (TH2D*) f->Get("cumulantMB/hSPresAC");
+	TH2D * hSPresBC = (TH2D*) f->Get("cumulantMB/hSPresBC");
 
-	TGraphErrors * gr_v3p_EP[20] = {};
-	TGraphErrors * gr_v3p_SP[20] = {};
-	TGraphErrors * gr_v3p_EP_de[20] = {};
-	TGraphErrors * gr_v3p_SP_de[20] = {};
+	TH2D * hMultRes = (TH2D*) f->Get("cumulantMB/hMultRes");
 
-	TGraphErrors * gr_v3Pb_EP[20] = {};
-	TGraphErrors * gr_v3Pb_SP[20] = {};
-	TGraphErrors * gr_v3Pb_EP_de[20] = {};
-	TGraphErrors * gr_v3Pb_SP_de[20] = {};
 
-
-	if ( bPbPb ) {
-		gr_v2Pb_EP[7] = (TGraphErrors*) fv2_ep->Get("v2_0_PbPb_HM100_HFm2_m");
-		gr_v2Pb_EP[6] = (TGraphErrors*) fv2_ep->Get("v2_0_PbPb_HM130_HFm2_m");
-		gr_v2Pb_EP[5] = (TGraphErrors*) fv2_ep->Get("v2_0_PbPb_HM160_HFm2_m");
-		gr_v2Pb_EP[4] = (TGraphErrors*) fv2_ep->Get("v2_0_PbPb_HM190_HFm2_m");
-		gr_v2Pb_EP[3] = (TGraphErrors*) fv2_ep->Get("v2_0_PbPb_HM220_HFm2_m");
-
-		gr_v2Pb_SP[7] = (TGraphErrors*) fv2_sp->Get("v2_1_PbPb_HM100_HFm2_m");
-		gr_v2Pb_SP[6] = (TGraphErrors*) fv2_sp->Get("v2_1_PbPb_HM130_HFm2_m");
-		gr_v2Pb_SP[5] = (TGraphErrors*) fv2_sp->Get("v2_1_PbPb_HM160_HFm2_m");
-		gr_v2Pb_SP[4] = (TGraphErrors*) fv2_sp->Get("v2_1_PbPb_HM190_HFm2_m");
-		gr_v2Pb_SP[3] = (TGraphErrors*) fv2_sp->Get("v2_1_PbPb_HM220_HFm2_m");
-
-		gr_v2Pb_EP_de[7] = (TGraphErrors*) fv2_ep_de->Get("v2_2_PbPb_HM100_HFm2_m");
-		gr_v2Pb_EP_de[6] = (TGraphErrors*) fv2_ep_de->Get("v2_2_PbPb_HM130_HFm2_m");
-		gr_v2Pb_EP_de[5] = (TGraphErrors*) fv2_ep_de->Get("v2_2_PbPb_HM160_HFm2_m");
-		gr_v2Pb_EP_de[4] = (TGraphErrors*) fv2_ep_de->Get("v2_2_PbPb_HM190_HFm2_m");
-		gr_v2Pb_EP_de[3] = (TGraphErrors*) fv2_ep_de->Get("v2_2_PbPb_HM220_HFm2_m");
-
-		gr_v2Pb_SP_de[7] = (TGraphErrors*) fv2_sp_de->Get("v2_3_PbPb_HM100_HFm2_m");
-		gr_v2Pb_SP_de[6] = (TGraphErrors*) fv2_sp_de->Get("v2_3_PbPb_HM130_HFm2_m");
-		gr_v2Pb_SP_de[5] = (TGraphErrors*) fv2_sp_de->Get("v2_3_PbPb_HM160_HFm2_m");
-		gr_v2Pb_SP_de[4] = (TGraphErrors*) fv2_sp_de->Get("v2_3_PbPb_HM190_HFm2_m");
-		gr_v2Pb_SP_de[3] = (TGraphErrors*) fv2_sp_de->Get("v2_3_PbPb_HM220_HFm2_m");
-
-		gr_v3Pb_EP[7] = (TGraphErrors*) fv3_ep->Get("v3_0_PbPb_HM100_HFm3_m");
-		gr_v3Pb_EP[6] = (TGraphErrors*) fv3_ep->Get("v3_0_PbPb_HM130_HFm3_m");
-		gr_v3Pb_EP[5] = (TGraphErrors*) fv3_ep->Get("v3_0_PbPb_HM160_HFm3_m");
-		gr_v3Pb_EP[4] = (TGraphErrors*) fv3_ep->Get("v3_0_PbPb_HM190_HFm3_m");
-		gr_v3Pb_EP[3] = (TGraphErrors*) fv3_ep->Get("v3_0_PbPb_HM220_HFm3_m");
-
-		gr_v3Pb_EP_de[7] = (TGraphErrors*) fv3_ep_de->Get("v3_2_PbPb_HM100_HFm3_m");
-		gr_v3Pb_EP_de[6] = (TGraphErrors*) fv3_ep_de->Get("v3_2_PbPb_HM130_HFm3_m");
-		gr_v3Pb_EP_de[5] = (TGraphErrors*) fv3_ep_de->Get("v3_2_PbPb_HM160_HFm3_m");
-		gr_v3Pb_EP_de[4] = (TGraphErrors*) fv3_ep_de->Get("v3_2_PbPb_HM190_HFm3_m");
-		gr_v3Pb_EP_de[3] = (TGraphErrors*) fv3_ep_de->Get("v3_2_PbPb_HM220_HFm3_m");
-
-		gr_v3Pb_SP[7] = (TGraphErrors*) fv3_sp->Get("v3_1_PbPb_HM100_HFm3_m");
-		gr_v3Pb_SP[6] = (TGraphErrors*) fv3_sp->Get("v3_1_PbPb_HM130_HFm3_m");
-		gr_v3Pb_SP[5] = (TGraphErrors*) fv3_sp->Get("v3_1_PbPb_HM160_HFm3_m");
-		gr_v3Pb_SP[4] = (TGraphErrors*) fv3_sp->Get("v3_1_PbPb_HM190_HFm3_m");
-		gr_v3Pb_SP[3] = (TGraphErrors*) fv3_sp->Get("v3_1_PbPb_HM220_HFm3_m");
-
-		gr_v3Pb_SP_de[7] = (TGraphErrors*) fv3_sp_de->Get("v3_3_PbPb_HM100_HFm3_m");
-		gr_v3Pb_SP_de[6] = (TGraphErrors*) fv3_sp_de->Get("v3_3_PbPb_HM130_HFm3_m");
-		gr_v3Pb_SP_de[5] = (TGraphErrors*) fv3_sp_de->Get("v3_3_PbPb_HM160_HFm3_m");
-		gr_v3Pb_SP_de[4] = (TGraphErrors*) fv3_sp_de->Get("v3_3_PbPb_HM190_HFm3_m");
-		gr_v3Pb_SP_de[3] = (TGraphErrors*) fv3_sp_de->Get("v3_3_PbPb_HM220_HFm3_m");
-
-		gr_v2p_EP[7] = (TGraphErrors*) fv2_ep->Get("v2_0_PbPb_HM100_HFp2_p");
-		gr_v2p_EP[6] = (TGraphErrors*) fv2_ep->Get("v2_0_PbPb_HM130_HFp2_p");
-		gr_v2p_EP[5] = (TGraphErrors*) fv2_ep->Get("v2_0_PbPb_HM160_HFp2_p");
-		gr_v2p_EP[4] = (TGraphErrors*) fv2_ep->Get("v2_0_PbPb_HM190_HFp2_p");
-		gr_v2p_EP[3] = (TGraphErrors*) fv2_ep->Get("v2_0_PbPb_HM220_HFp2_p");
-
-		gr_v2p_SP[7] = (TGraphErrors*) fv2_sp->Get("v2_1_PbPb_HM100_HFp2_p");
-		gr_v2p_SP[6] = (TGraphErrors*) fv2_sp->Get("v2_1_PbPb_HM130_HFp2_p");
-		gr_v2p_SP[5] = (TGraphErrors*) fv2_sp->Get("v2_1_PbPb_HM160_HFp2_p");
-		gr_v2p_SP[4] = (TGraphErrors*) fv2_sp->Get("v2_1_PbPb_HM190_HFp2_p");
-		gr_v2p_SP[3] = (TGraphErrors*) fv2_sp->Get("v2_1_PbPb_HM220_HFp2_p");
-
-		gr_v2p_EP_de[7] = (TGraphErrors*) fv2_ep_de->Get("v2_2_PbPb_HM100_HFp2_p");
-		gr_v2p_EP_de[6] = (TGraphErrors*) fv2_ep_de->Get("v2_2_PbPb_HM130_HFp2_p");
-		gr_v2p_EP_de[5] = (TGraphErrors*) fv2_ep_de->Get("v2_2_PbPb_HM160_HFp2_p");
-		gr_v2p_EP_de[4] = (TGraphErrors*) fv2_ep_de->Get("v2_2_PbPb_HM190_HFp2_p");
-		gr_v2p_EP_de[3] = (TGraphErrors*) fv2_ep_de->Get("v2_2_PbPb_HM220_HFp2_p");
-
-		gr_v2p_SP_de[7] = (TGraphErrors*) fv2_sp_de->Get("v2_3_PbPb_HM100_HFp2_p");
-		gr_v2p_SP_de[6] = (TGraphErrors*) fv2_sp_de->Get("v2_3_PbPb_HM130_HFp2_p");
-		gr_v2p_SP_de[5] = (TGraphErrors*) fv2_sp_de->Get("v2_3_PbPb_HM160_HFp2_p");
-		gr_v2p_SP_de[4] = (TGraphErrors*) fv2_sp_de->Get("v2_3_PbPb_HM190_HFp2_p");
-		gr_v2p_SP_de[3] = (TGraphErrors*) fv2_sp_de->Get("v2_3_PbPb_HM220_HFp2_p");
-
-		gr_v3p_EP[7] = (TGraphErrors*) fv3_ep->Get("v3_0_PbPb_HM100_HFp3_p");
-		gr_v3p_EP[6] = (TGraphErrors*) fv3_ep->Get("v3_0_PbPb_HM130_HFp3_p");
-		gr_v3p_EP[5] = (TGraphErrors*) fv3_ep->Get("v3_0_PbPb_HM160_HFp3_p");
-		gr_v3p_EP[4] = (TGraphErrors*) fv3_ep->Get("v3_0_PbPb_HM190_HFp3_p");
-		gr_v3p_EP[3] = (TGraphErrors*) fv3_ep->Get("v3_0_PbPb_HM220_HFp3_p");
-
-		gr_v3p_SP[7] = (TGraphErrors*) fv3_sp->Get("v3_1_PbPb_HM100_HFp3_p");
-		gr_v3p_SP[6] = (TGraphErrors*) fv3_sp->Get("v3_1_PbPb_HM130_HFp3_p");
-		gr_v3p_SP[5] = (TGraphErrors*) fv3_sp->Get("v3_1_PbPb_HM160_HFp3_p");
-		gr_v3p_SP[4] = (TGraphErrors*) fv3_sp->Get("v3_1_PbPb_HM190_HFp3_p");
-		gr_v3p_SP[3] = (TGraphErrors*) fv3_sp->Get("v3_1_PbPb_HM220_HFp3_p");
-
-		gr_v3p_EP_de[7] = (TGraphErrors*) fv3_ep_de->Get("v3_2_PbPb_HM100_HFp3_p");
-		gr_v3p_EP_de[6] = (TGraphErrors*) fv3_ep_de->Get("v3_2_PbPb_HM130_HFp3_p");
-		gr_v3p_EP_de[5] = (TGraphErrors*) fv3_ep_de->Get("v3_2_PbPb_HM160_HFp3_p");
-		gr_v3p_EP_de[4] = (TGraphErrors*) fv3_ep_de->Get("v3_2_PbPb_HM190_HFp3_p");
-		gr_v3p_EP_de[3] = (TGraphErrors*) fv3_ep_de->Get("v3_2_PbPb_HM220_HFp3_p");
-
-		gr_v3p_SP_de[7] = (TGraphErrors*) fv3_sp_de->Get("v3_3_PbPb_HM100_HFp3_p");
-		gr_v3p_SP_de[6] = (TGraphErrors*) fv3_sp_de->Get("v3_3_PbPb_HM130_HFp3_p");
-		gr_v3p_SP_de[5] = (TGraphErrors*) fv3_sp_de->Get("v3_3_PbPb_HM160_HFp3_p");
-		gr_v3p_SP_de[4] = (TGraphErrors*) fv3_sp_de->Get("v3_3_PbPb_HM190_HFp3_p");
-		gr_v3p_SP_de[3] = (TGraphErrors*) fv3_sp_de->Get("v3_3_PbPb_HM220_HFp3_p");
-
-	} else {
-		gr_v2Pb_EP[7] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM100_HFp2_Pb");
-		gr_v2Pb_EP[6] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM130_HFp2_Pb");
-		gr_v2Pb_EP[5] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM160_HFp2_Pb");
-		gr_v2Pb_EP[4] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM190_HFp2_Pb");
-		gr_v2Pb_EP[3] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM220_HFp2_Pb");
-
-		gr_v2Pb_SP[7] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM100_HFp2_Pb");
-		gr_v2Pb_SP[6] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM130_HFp2_Pb");
-		gr_v2Pb_SP[5] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM160_HFp2_Pb");
-		gr_v2Pb_SP[4] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM190_HFp2_Pb");
-		gr_v2Pb_SP[3] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM220_HFp2_Pb");
-
-		gr_v2Pb_EP_de[7] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM100_HFp2_Pb");
-		gr_v2Pb_EP_de[6] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM130_HFp2_Pb");
-		gr_v2Pb_EP_de[5] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM160_HFp2_Pb");
-		gr_v2Pb_EP_de[4] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM190_HFp2_Pb");
-		gr_v2Pb_EP_de[3] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM220_HFp2_Pb");
-
-		gr_v2Pb_SP_de[7] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM100_HFp2_Pb");
-		gr_v2Pb_SP_de[6] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM130_HFp2_Pb");
-		gr_v2Pb_SP_de[5] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM160_HFp2_Pb");
-		gr_v2Pb_SP_de[4] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM190_HFp2_Pb");
-		gr_v2Pb_SP_de[3] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM220_HFp2_Pb");
-
-		gr_v3Pb_EP[7] = (TGraphErrors*) fv3_ep->Get("v3_0_pPb_HM100_HFp3_Pb");
-		gr_v3Pb_EP[6] = (TGraphErrors*) fv3_ep->Get("v3_0_pPb_HM130_HFp3_Pb");
-		gr_v3Pb_EP[5] = (TGraphErrors*) fv3_ep->Get("v3_0_pPb_HM160_HFp3_Pb");
-		gr_v3Pb_EP[4] = (TGraphErrors*) fv3_ep->Get("v3_0_pPb_HM190_HFp3_Pb");
-		gr_v3Pb_EP[3] = (TGraphErrors*) fv3_ep->Get("v3_0_pPb_HM220_HFp3_Pb");
-
-		gr_v3Pb_EP_de[7] = (TGraphErrors*) fv3_ep_de->Get("v3_2_pPb_HM100_HFp3_Pb");
-		gr_v3Pb_EP_de[6] = (TGraphErrors*) fv3_ep_de->Get("v3_2_pPb_HM130_HFp3_Pb");
-		gr_v3Pb_EP_de[5] = (TGraphErrors*) fv3_ep_de->Get("v3_2_pPb_HM160_HFp3_Pb");
-		gr_v3Pb_EP_de[4] = (TGraphErrors*) fv3_ep_de->Get("v3_2_pPb_HM190_HFp3_Pb");
-		gr_v3Pb_EP_de[3] = (TGraphErrors*) fv3_ep_de->Get("v3_2_pPb_HM220_HFp3_Pb");
-
-		gr_v3Pb_SP[7] = (TGraphErrors*) fv3_sp->Get("v3_1_pPb_HM100_HFp3_Pb");
-		gr_v3Pb_SP[6] = (TGraphErrors*) fv3_sp->Get("v3_1_pPb_HM130_HFp3_Pb");
-		gr_v3Pb_SP[5] = (TGraphErrors*) fv3_sp->Get("v3_1_pPb_HM160_HFp3_Pb");
-		gr_v3Pb_SP[4] = (TGraphErrors*) fv3_sp->Get("v3_1_pPb_HM190_HFp3_Pb");
-		gr_v3Pb_SP[3] = (TGraphErrors*) fv3_sp->Get("v3_1_pPb_HM220_HFp3_Pb");
-
-		gr_v3Pb_SP_de[7] = (TGraphErrors*) fv3_sp_de->Get("v3_3_pPb_HM100_HFp3_Pb");
-		gr_v3Pb_SP_de[6] = (TGraphErrors*) fv3_sp_de->Get("v3_3_pPb_HM130_HFp3_Pb");
-		gr_v3Pb_SP_de[5] = (TGraphErrors*) fv3_sp_de->Get("v3_3_pPb_HM160_HFp3_Pb");
-		gr_v3Pb_SP_de[4] = (TGraphErrors*) fv3_sp_de->Get("v3_3_pPb_HM190_HFp3_Pb");
-		gr_v3Pb_SP_de[3] = (TGraphErrors*) fv3_sp_de->Get("v3_3_pPb_HM220_HFp3_Pb");
-
-		gr_v2p_EP[7] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM100_HFm2_p");
-		gr_v2p_EP[6] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM130_HFm2_p");
-		gr_v2p_EP[5] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM160_HFm2_p");
-		gr_v2p_EP[4] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM190_HFm2_p");
-		gr_v2p_EP[3] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM220_HFm2_p");
-
-		gr_v2p_SP[7] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM100_HFm2_p");
-		gr_v2p_SP[6] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM130_HFm2_p");
-		gr_v2p_SP[5] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM160_HFm2_p");
-		gr_v2p_SP[4] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM190_HFm2_p");
-		gr_v2p_SP[3] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM220_HFm2_p");
-
-		gr_v2p_EP_de[7] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM100_HFm2_p");
-		gr_v2p_EP_de[6] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM130_HFm2_p");
-		gr_v2p_EP_de[5] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM160_HFm2_p");
-		gr_v2p_EP_de[4] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM190_HFm2_p");
-		gr_v2p_EP_de[3] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM220_HFm2_p");
-
-		gr_v2p_SP_de[7] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM100_HFm2_p");
-		gr_v2p_SP_de[6] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM130_HFm2_p");
-		gr_v2p_SP_de[5] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM160_HFm2_p");
-		gr_v2p_SP_de[4] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM190_HFm2_p");
-		gr_v2p_SP_de[3] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM220_HFm2_p");
-
-		gr_v3p_EP[7] = (TGraphErrors*) fv3_ep->Get("v3_0_pPb_HM100_HFm3_p");
-		gr_v3p_EP[6] = (TGraphErrors*) fv3_ep->Get("v3_0_pPb_HM130_HFm3_p");
-		gr_v3p_EP[5] = (TGraphErrors*) fv3_ep->Get("v3_0_pPb_HM160_HFm3_p");
-		gr_v3p_EP[4] = (TGraphErrors*) fv3_ep->Get("v3_0_pPb_HM190_HFm3_p");
-		gr_v3p_EP[3] = (TGraphErrors*) fv3_ep->Get("v3_0_pPb_HM220_HFm3_p");
-
-		gr_v3p_SP[7] = (TGraphErrors*) fv3_sp->Get("v3_1_pPb_HM100_HFm3_p");
-		gr_v3p_SP[6] = (TGraphErrors*) fv3_sp->Get("v3_1_pPb_HM130_HFm3_p");
-		gr_v3p_SP[5] = (TGraphErrors*) fv3_sp->Get("v3_1_pPb_HM160_HFm3_p");
-		gr_v3p_SP[4] = (TGraphErrors*) fv3_sp->Get("v3_1_pPb_HM190_HFm3_p");
-		gr_v3p_SP[3] = (TGraphErrors*) fv3_sp->Get("v3_1_pPb_HM220_HFm3_p");
-
-		gr_v3p_EP_de[7] = (TGraphErrors*) fv3_ep_de->Get("v3_2_pPb_HM100_HFm3_p");
-		gr_v3p_EP_de[6] = (TGraphErrors*) fv3_ep_de->Get("v3_2_pPb_HM130_HFm3_p");
-		gr_v3p_EP_de[5] = (TGraphErrors*) fv3_ep_de->Get("v3_2_pPb_HM160_HFm3_p");
-		gr_v3p_EP_de[4] = (TGraphErrors*) fv3_ep_de->Get("v3_2_pPb_HM190_HFm3_p");
-		gr_v3p_EP_de[3] = (TGraphErrors*) fv3_ep_de->Get("v3_2_pPb_HM220_HFm3_p");
-
-		gr_v3p_SP_de[7] = (TGraphErrors*) fv3_sp_de->Get("v3_3_pPb_HM100_HFm3_p");
-		gr_v3p_SP_de[6] = (TGraphErrors*) fv3_sp_de->Get("v3_3_pPb_HM130_HFm3_p");
-		gr_v3p_SP_de[5] = (TGraphErrors*) fv3_sp_de->Get("v3_3_pPb_HM160_HFm3_p");
-		gr_v3p_SP_de[4] = (TGraphErrors*) fv3_sp_de->Get("v3_3_pPb_HM190_HFm3_p");
-		gr_v3p_SP_de[3] = (TGraphErrors*) fv3_sp_de->Get("v3_3_pPb_HM220_HFm3_p");
-	}
-
-	for ( int i = 3; i < 8; i++ ) {
-		gr_v2p_EP[i]->SetMarkerStyle(kFullSquare);
-		gr_v2p_EP[i]->SetMarkerColor(kBlue);
-		gr_v2p_EP[i]->SetLineColor(kBlue);
-		gr_v2p_EP[i]->SetMarkerSize(2);
-
-		gr_v2Pb_EP[i]->SetMarkerStyle(kFullSquare);
-		gr_v2Pb_EP[i]->SetMarkerColor(kRed);
-		gr_v2Pb_EP[i]->SetLineColor(kRed);
-		gr_v2Pb_EP[i]->SetMarkerSize(2);
-
-		gr_v2p_EP_de[i]->SetMarkerStyle(kOpenSquare);
-		gr_v2p_EP_de[i]->SetMarkerColor(kBlue);
-		gr_v2p_EP_de[i]->SetLineColor(kBlue);
-		gr_v2p_EP_de[i]->SetMarkerSize(2);
-
-		gr_v2Pb_EP_de[i]->SetMarkerStyle(kOpenSquare);
-		gr_v2Pb_EP_de[i]->SetMarkerColor(kRed);
-		gr_v2Pb_EP_de[i]->SetLineColor(kRed);
-		gr_v2Pb_EP_de[i]->SetMarkerSize(2);
-
-		gr_v2p_SP[i]->SetMarkerStyle(kFullSquare);
-		gr_v2p_SP[i]->SetMarkerColor(kBlue);
-		gr_v2p_SP[i]->SetLineColor(kBlue);
-		gr_v2p_SP[i]->SetMarkerSize(2);
-
-		gr_v2Pb_SP[i]->SetMarkerStyle(kFullSquare);
-		gr_v2Pb_SP[i]->SetMarkerColor(kRed);
-		gr_v2Pb_SP[i]->SetLineColor(kRed);
-		gr_v2Pb_SP[i]->SetMarkerSize(2);
-
-		gr_v2p_SP_de[i]->SetMarkerStyle(kOpenSquare);
-		gr_v2p_SP_de[i]->SetMarkerColor(kBlue);
-		gr_v2p_SP_de[i]->SetLineColor(kBlue);
-		gr_v2p_SP_de[i]->SetMarkerSize(2);
-
-		gr_v2Pb_SP_de[i]->SetMarkerStyle(kOpenSquare);
-		gr_v2Pb_SP_de[i]->SetMarkerColor(kRed);
-		gr_v2Pb_SP_de[i]->SetLineColor(kRed);
-		gr_v2Pb_SP_de[i]->SetMarkerSize(2);
-
-	}
-
-///////////////////////////////////////////
-
-	fv2_ep = new TFile("txt/EP/Save_pt_0_EP.root");
-	fv2_sp = new TFile("txt/EP/Save_pt_1_SP.root");
-	fv2_ep_de = new TFile("txt/EP/Save_pt_2_DecorEP.root");
-	fv2_sp_de = new TFile("txt/EP/Save_pt_3_DecorSP.root");
-
-	TGraphErrors* gr_v2pt_p_EP_p[20] = {};
-	TGraphErrors* gr_v2pt_p_EP_Pb[20] = {};
-	TGraphErrors* gr_v2pt_m_EP_p[20] = {};
-	TGraphErrors* gr_v2pt_m_EP_Pb[20] = {};
-	TGraphErrors* gr_v2pt_Pb_EP_p[20] = {};
-	TGraphErrors* gr_v2pt_Pb_EP_Pb[20] = {};
-
-	TGraphErrors* gr_v2pt_p_SP_p[20] = {};
-	TGraphErrors* gr_v2pt_p_SP_Pb[20] = {};
-	TGraphErrors* gr_v2pt_m_SP_p[20] = {};
-	TGraphErrors* gr_v2pt_m_SP_Pb[20] = {};
-	TGraphErrors* gr_v2pt_Pb_SP_p[20] = {};
-	TGraphErrors* gr_v2pt_Pb_SP_Pb[20] = {};
-
-	TGraphErrors* gr_v2pt_p_EPde_p[20] = {};
-	TGraphErrors* gr_v2pt_p_EPde_Pb[20] = {};
-	TGraphErrors* gr_v2pt_m_EPde_p[20] = {};
-	TGraphErrors* gr_v2pt_m_EPde_Pb[20] = {};
-	TGraphErrors* gr_v2pt_Pb_EPde_p[20] = {};
-	TGraphErrors* gr_v2pt_Pb_EPde_Pb[20] = {};
-
-	TGraphErrors* gr_v2pt_p_SPde_p[20] = {};
-	TGraphErrors* gr_v2pt_p_SPde_Pb[20] = {};
-	TGraphErrors* gr_v2pt_m_SPde_p[20] = {};
-	TGraphErrors* gr_v2pt_m_SPde_Pb[20] = {};
-	TGraphErrors* gr_v2pt_Pb_SPde_p[20] = {};
-	TGraphErrors* gr_v2pt_Pb_SPde_Pb[20] = {};
-
-
-	if ( bPbPb ) {
-		gr_v2pt_m_EP_p[7] = (TGraphErrors*) fv2_ep->Get("v2_0_PbPb_HM100_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_EP_p[6] = (TGraphErrors*) fv2_ep->Get("v2_0_PbPb_HM130_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_EP_p[5] = (TGraphErrors*) fv2_ep->Get("v2_0_PbPb_HM160_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_EP_p[4] = (TGraphErrors*) fv2_ep->Get("v2_0_PbPb_HM190_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_EP_p[3] = (TGraphErrors*) fv2_ep->Get("v2_0_PbPb_HM220_HFp2_-0.8_00.8_p");
-
-		gr_v2pt_m_EP_Pb[7] = (TGraphErrors*) fv2_ep->Get("v2_0_PbPb_HM100_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_EP_Pb[6] = (TGraphErrors*) fv2_ep->Get("v2_0_PbPb_HM130_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_EP_Pb[5] = (TGraphErrors*) fv2_ep->Get("v2_0_PbPb_HM160_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_EP_Pb[4] = (TGraphErrors*) fv2_ep->Get("v2_0_PbPb_HM190_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_EP_Pb[3] = (TGraphErrors*) fv2_ep->Get("v2_0_PbPb_HM220_HFp2_-0.8_00.8_p");
-
-///
-		gr_v2pt_m_SP_p[7] = (TGraphErrors*) fv2_sp->Get("v2_1_PbPb_HM100_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_SP_p[6] = (TGraphErrors*) fv2_sp->Get("v2_1_PbPb_HM130_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_SP_p[5] = (TGraphErrors*) fv2_sp->Get("v2_1_PbPb_HM160_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_SP_p[4] = (TGraphErrors*) fv2_sp->Get("v2_1_PbPb_HM190_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_SP_p[3] = (TGraphErrors*) fv2_sp->Get("v2_1_PbPb_HM220_HFp2_-0.8_00.8_p");
-
-		gr_v2pt_m_SP_Pb[7] = (TGraphErrors*) fv2_sp->Get("v2_1_PbPb_HM100_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_SP_Pb[6] = (TGraphErrors*) fv2_sp->Get("v2_1_PbPb_HM130_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_SP_Pb[5] = (TGraphErrors*) fv2_sp->Get("v2_1_PbPb_HM160_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_SP_Pb[4] = (TGraphErrors*) fv2_sp->Get("v2_1_PbPb_HM190_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_SP_Pb[3] = (TGraphErrors*) fv2_sp->Get("v2_1_PbPb_HM220_HFp2_-0.8_00.8_p");
-
-///
-		gr_v2pt_m_EPde_p[7] = (TGraphErrors*) fv2_ep_de->Get("v2_2_PbPb_HM100_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_EPde_p[6] = (TGraphErrors*) fv2_ep_de->Get("v2_2_PbPb_HM130_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_EPde_p[5] = (TGraphErrors*) fv2_ep_de->Get("v2_2_PbPb_HM160_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_EPde_p[4] = (TGraphErrors*) fv2_ep_de->Get("v2_2_PbPb_HM190_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_EPde_p[3] = (TGraphErrors*) fv2_ep_de->Get("v2_2_PbPb_HM220_HFp2_-0.8_00.8_p");
-
-		gr_v2pt_m_EPde_Pb[7] = (TGraphErrors*) fv2_ep_de->Get("v2_2_PbPb_HM100_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_EPde_Pb[6] = (TGraphErrors*) fv2_ep_de->Get("v2_2_PbPb_HM130_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_EPde_Pb[5] = (TGraphErrors*) fv2_ep_de->Get("v2_2_PbPb_HM160_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_EPde_Pb[4] = (TGraphErrors*) fv2_ep_de->Get("v2_2_PbPb_HM190_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_EPde_Pb[3] = (TGraphErrors*) fv2_ep_de->Get("v2_2_PbPb_HM220_HFp2_-0.8_00.8_p");
-
-///
-		gr_v2pt_m_SPde_p[7] = (TGraphErrors*) fv2_sp_de->Get("v2_3_PbPb_HM100_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_SPde_p[6] = (TGraphErrors*) fv2_sp_de->Get("v2_3_PbPb_HM130_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_SPde_p[5] = (TGraphErrors*) fv2_sp_de->Get("v2_3_PbPb_HM160_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_SPde_p[4] = (TGraphErrors*) fv2_sp_de->Get("v2_3_PbPb_HM190_HFp2_-0.8_00.8_p");
-		gr_v2pt_m_SPde_p[3] = (TGraphErrors*) fv2_sp_de->Get("v2_3_PbPb_HM220_HFp2_-0.8_00.8_p");
-
-		gr_v2pt_m_SPde_Pb[7] = (TGraphErrors*) fv2_sp_de->Get("v2_3_PbPb_HM100_HFm2_-0.8_00.8_m");
-		gr_v2pt_m_SPde_Pb[6] = (TGraphErrors*) fv2_sp_de->Get("v2_3_PbPb_HM130_HFm2_-0.8_00.8_m");
-		gr_v2pt_m_SPde_Pb[5] = (TGraphErrors*) fv2_sp_de->Get("v2_3_PbPb_HM160_HFm2_-0.8_00.8_m");
-		gr_v2pt_m_SPde_Pb[4] = (TGraphErrors*) fv2_sp_de->Get("v2_3_PbPb_HM190_HFm2_-0.8_00.8_m");
-		gr_v2pt_m_SPde_Pb[3] = (TGraphErrors*) fv2_sp_de->Get("v2_3_PbPb_HM220_HFm2_-0.8_00.8_m");
-
-
-	} else {
-		gr_v2pt_p_EP_p[7] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM100_02.0_02.4_p");
-		gr_v2pt_p_EP_p[6] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM130_02.0_02.4_p");
-		gr_v2pt_p_EP_p[5] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM160_02.0_02.4_p");
-		gr_v2pt_p_EP_p[4] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM190_02.0_02.4_p");
-		gr_v2pt_p_EP_p[3] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM220_02.0_02.4_p");
-
-		gr_v2pt_p_EP_Pb[7] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM100_02.0_02.4_Pb");
-		gr_v2pt_p_EP_Pb[6] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM130_02.0_02.4_Pb");
-		gr_v2pt_p_EP_Pb[5] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM160_02.0_02.4_Pb");
-		gr_v2pt_p_EP_Pb[4] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM190_02.0_02.4_Pb");
-		gr_v2pt_p_EP_Pb[3] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM220_02.0_02.4_Pb");
-
-		gr_v2pt_m_EP_p[7] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM100_-0.8_00.8_p");
-		gr_v2pt_m_EP_p[6] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM130_-0.8_00.8_p");
-		gr_v2pt_m_EP_p[5] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM160_-0.8_00.8_p");
-		gr_v2pt_m_EP_p[4] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM190_-0.8_00.8_p");
-		gr_v2pt_m_EP_p[3] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM220_-0.8_00.8_p");
-
-		gr_v2pt_m_EP_Pb[7] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM100_-0.8_00.8_Pb");
-		gr_v2pt_m_EP_Pb[6] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM130_-0.8_00.8_Pb");
-		gr_v2pt_m_EP_Pb[5] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM160_-0.8_00.8_Pb");
-		gr_v2pt_m_EP_Pb[4] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM190_-0.8_00.8_Pb");
-		gr_v2pt_m_EP_Pb[3] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM220_-0.8_00.8_Pb");
-
-		gr_v2pt_Pb_EP_p[7] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM100_-2.4_-2.0_p");
-		gr_v2pt_Pb_EP_p[6] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM130_-2.4_-2.0_p");
-		gr_v2pt_Pb_EP_p[5] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM160_-2.4_-2.0_p");
-		gr_v2pt_Pb_EP_p[4] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM190_-2.4_-2.0_p");
-		gr_v2pt_Pb_EP_p[3] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM220_-2.4_-2.0_p");
-
-		gr_v2pt_Pb_EP_Pb[7] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM100_-2.4_-2.0_Pb");
-		gr_v2pt_Pb_EP_Pb[6] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM130_-2.4_-2.0_Pb");
-		gr_v2pt_Pb_EP_Pb[5] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM160_-2.4_-2.0_Pb");
-		gr_v2pt_Pb_EP_Pb[4] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM190_-2.4_-2.0_Pb");
-		gr_v2pt_Pb_EP_Pb[3] = (TGraphErrors*) fv2_ep->Get("v2_0_pPb_HM220_-2.4_-2.0_Pb");
-
-///
-		gr_v2pt_p_SP_p[7] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM100_02.0_02.4_p");
-		gr_v2pt_p_SP_p[6] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM130_02.0_02.4_p");
-		gr_v2pt_p_SP_p[5] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM160_02.0_02.4_p");
-		gr_v2pt_p_SP_p[4] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM190_02.0_02.4_p");
-		gr_v2pt_p_SP_p[3] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM220_02.0_02.4_p");
-
-		gr_v2pt_p_SP_Pb[7] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM100_02.0_02.4_Pb");
-		gr_v2pt_p_SP_Pb[6] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM130_02.0_02.4_Pb");
-		gr_v2pt_p_SP_Pb[5] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM160_02.0_02.4_Pb");
-		gr_v2pt_p_SP_Pb[4] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM190_02.0_02.4_Pb");
-		gr_v2pt_p_SP_Pb[3] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM220_02.0_02.4_Pb");
-
-		gr_v2pt_m_SP_p[7] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM100_-0.8_00.8_p");
-		gr_v2pt_m_SP_p[6] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM130_-0.8_00.8_p");
-		gr_v2pt_m_SP_p[5] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM160_-0.8_00.8_p");
-		gr_v2pt_m_SP_p[4] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM190_-0.8_00.8_p");
-		gr_v2pt_m_SP_p[3] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM220_-0.8_00.8_p");
-
-		gr_v2pt_m_SP_Pb[7] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM100_-0.8_00.8_Pb");
-		gr_v2pt_m_SP_Pb[6] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM130_-0.8_00.8_Pb");
-		gr_v2pt_m_SP_Pb[5] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM160_-0.8_00.8_Pb");
-		gr_v2pt_m_SP_Pb[4] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM190_-0.8_00.8_Pb");
-		gr_v2pt_m_SP_Pb[3] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM220_-0.8_00.8_Pb");
-
-		gr_v2pt_Pb_SP_p[7] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM100_-2.4_-2.0_p");
-		gr_v2pt_Pb_SP_p[6] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM130_-2.4_-2.0_p");
-		gr_v2pt_Pb_SP_p[5] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM160_-2.4_-2.0_p");
-		gr_v2pt_Pb_SP_p[4] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM190_-2.4_-2.0_p");
-		gr_v2pt_Pb_SP_p[3] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM220_-2.4_-2.0_p");
-
-		gr_v2pt_Pb_SP_Pb[7] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM100_-2.4_-2.0_Pb");
-		gr_v2pt_Pb_SP_Pb[6] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM130_-2.4_-2.0_Pb");
-		gr_v2pt_Pb_SP_Pb[5] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM160_-2.4_-2.0_Pb");
-		gr_v2pt_Pb_SP_Pb[4] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM190_-2.4_-2.0_Pb");
-		gr_v2pt_Pb_SP_Pb[3] = (TGraphErrors*) fv2_sp->Get("v2_1_pPb_HM220_-2.4_-2.0_Pb");
-
-///
-		gr_v2pt_p_EPde_p[7] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM100_02.0_02.4_p");
-		gr_v2pt_p_EPde_p[6] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM130_02.0_02.4_p");
-		gr_v2pt_p_EPde_p[5] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM160_02.0_02.4_p");
-		gr_v2pt_p_EPde_p[4] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM190_02.0_02.4_p");
-		gr_v2pt_p_EPde_p[3] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM220_02.0_02.4_p");
-
-		gr_v2pt_p_EPde_Pb[7] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM100_02.0_02.4_Pb");
-		gr_v2pt_p_EPde_Pb[6] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM130_02.0_02.4_Pb");
-		gr_v2pt_p_EPde_Pb[5] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM160_02.0_02.4_Pb");
-		gr_v2pt_p_EPde_Pb[4] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM190_02.0_02.4_Pb");
-		gr_v2pt_p_EPde_Pb[3] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM220_02.0_02.4_Pb");
-
-		gr_v2pt_m_EPde_p[7] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM100_-0.8_00.8_p");
-		gr_v2pt_m_EPde_p[6] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM130_-0.8_00.8_p");
-		gr_v2pt_m_EPde_p[5] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM160_-0.8_00.8_p");
-		gr_v2pt_m_EPde_p[4] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM190_-0.8_00.8_p");
-		gr_v2pt_m_EPde_p[3] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM220_-0.8_00.8_p");
-
-		gr_v2pt_m_EPde_Pb[7] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM100_-0.8_00.8_Pb");
-		gr_v2pt_m_EPde_Pb[6] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM130_-0.8_00.8_Pb");
-		gr_v2pt_m_EPde_Pb[5] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM160_-0.8_00.8_Pb");
-		gr_v2pt_m_EPde_Pb[4] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM190_-0.8_00.8_Pb");
-		gr_v2pt_m_EPde_Pb[3] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM220_-0.8_00.8_Pb");
-
-		gr_v2pt_Pb_EPde_p[7] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM100_-2.4_-2.0_p");
-		gr_v2pt_Pb_EPde_p[6] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM130_-2.4_-2.0_p");
-		gr_v2pt_Pb_EPde_p[5] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM160_-2.4_-2.0_p");
-		gr_v2pt_Pb_EPde_p[4] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM190_-2.4_-2.0_p");
-		gr_v2pt_Pb_EPde_p[3] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM220_-2.4_-2.0_p");
-
-		gr_v2pt_Pb_EPde_Pb[7] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM100_-2.4_-2.0_Pb");
-		gr_v2pt_Pb_EPde_Pb[6] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM130_-2.4_-2.0_Pb");
-		gr_v2pt_Pb_EPde_Pb[5] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM160_-2.4_-2.0_Pb");
-		gr_v2pt_Pb_EPde_Pb[4] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM190_-2.4_-2.0_Pb");
-		gr_v2pt_Pb_EPde_Pb[3] = (TGraphErrors*) fv2_ep_de->Get("v2_2_pPb_HM220_-2.4_-2.0_Pb");
-
-///
-		gr_v2pt_p_SPde_p[7] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM100_02.0_02.4_p");
-		gr_v2pt_p_SPde_p[6] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM130_02.0_02.4_p");
-		gr_v2pt_p_SPde_p[5] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM160_02.0_02.4_p");
-		gr_v2pt_p_SPde_p[4] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM190_02.0_02.4_p");
-		gr_v2pt_p_SPde_p[3] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM220_02.0_02.4_p");
-
-		gr_v2pt_p_SPde_Pb[7] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM100_02.0_02.4_Pb");
-		gr_v2pt_p_SPde_Pb[6] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM130_02.0_02.4_Pb");
-		gr_v2pt_p_SPde_Pb[5] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM160_02.0_02.4_Pb");
-		gr_v2pt_p_SPde_Pb[4] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM190_02.0_02.4_Pb");
-		gr_v2pt_p_SPde_Pb[3] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM220_02.0_02.4_Pb");
-
-		gr_v2pt_m_SPde_p[7] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM100_-0.8_00.8_p");
-		gr_v2pt_m_SPde_p[6] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM130_-0.8_00.8_p");
-		gr_v2pt_m_SPde_p[5] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM160_-0.8_00.8_p");
-		gr_v2pt_m_SPde_p[4] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM190_-0.8_00.8_p");
-		gr_v2pt_m_SPde_p[3] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM220_-0.8_00.8_p");
-
-		gr_v2pt_m_SPde_Pb[7] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM100_-0.8_00.8_Pb");
-		gr_v2pt_m_SPde_Pb[6] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM130_-0.8_00.8_Pb");
-		gr_v2pt_m_SPde_Pb[5] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM160_-0.8_00.8_Pb");
-		gr_v2pt_m_SPde_Pb[4] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM190_-0.8_00.8_Pb");
-		gr_v2pt_m_SPde_Pb[3] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM220_-0.8_00.8_Pb");
-
-		gr_v2pt_Pb_SPde_p[7] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM100_-2.4_-2.0_p");
-		gr_v2pt_Pb_SPde_p[6] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM130_-2.4_-2.0_p");
-		gr_v2pt_Pb_SPde_p[5] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM160_-2.4_-2.0_p");
-		gr_v2pt_Pb_SPde_p[4] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM190_-2.4_-2.0_p");
-		gr_v2pt_Pb_SPde_p[3] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM220_-2.4_-2.0_p");
-
-		gr_v2pt_Pb_SPde_Pb[7] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM100_-2.4_-2.0_Pb");
-		gr_v2pt_Pb_SPde_Pb[6] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM130_-2.4_-2.0_Pb");
-		gr_v2pt_Pb_SPde_Pb[5] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM160_-2.4_-2.0_Pb");
-		gr_v2pt_Pb_SPde_Pb[4] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM190_-2.4_-2.0_Pb");
-		gr_v2pt_Pb_SPde_Pb[3] = (TGraphErrors*) fv2_sp_de->Get("v2_3_pPb_HM220_-2.4_-2.0_Pb");
-	}
-
-	for ( int i = 3; i < 8; i++ ) {
-		if ( bPbPb ) {
-			gr_v2pt_m_EP_p[i]->SetMarkerStyle(kFullSquare);
-			gr_v2pt_m_EP_p[i]->SetMarkerColor(kRed);
-			gr_v2pt_m_EP_p[i]->SetLineColor(kRed);
-			gr_v2pt_m_EP_p[i]->SetMarkerSize(2);
-
-			gr_v2pt_m_EP_Pb[i]->SetMarkerStyle(kFullSquare);
-			gr_v2pt_m_EP_Pb[i]->SetMarkerColor(kRed);
-			gr_v2pt_m_EP_Pb[i]->SetLineColor(kRed);
-			gr_v2pt_m_EP_Pb[i]->SetMarkerSize(2);
-
-			gr_v2pt_m_SP_p[i]->SetMarkerStyle(kFullSquare);
-			gr_v2pt_m_SP_p[i]->SetMarkerColor(kRed);
-			gr_v2pt_m_SP_p[i]->SetLineColor(kRed);
-			gr_v2pt_m_SP_p[i]->SetMarkerSize(2);
-
-			gr_v2pt_m_SP_Pb[i]->SetMarkerStyle(kFullSquare);
-			gr_v2pt_m_SP_Pb[i]->SetMarkerColor(kRed);
-			gr_v2pt_m_SP_Pb[i]->SetLineColor(kRed);
-			gr_v2pt_m_SP_Pb[i]->SetMarkerSize(2);
-
-			gr_v2pt_m_EPde_p[i]->SetMarkerStyle(kFullSquare);
-			gr_v2pt_m_EPde_p[i]->SetMarkerColor(kBlue);
-			gr_v2pt_m_EPde_p[i]->SetLineColor(kBlue);
-			gr_v2pt_m_EPde_p[i]->SetMarkerSize(2);
-
-			gr_v2pt_m_EPde_Pb[i]->SetMarkerStyle(kFullSquare);
-			gr_v2pt_m_EPde_Pb[i]->SetMarkerColor(kRed);
-			gr_v2pt_m_EPde_Pb[i]->SetLineColor(kRed);
-			gr_v2pt_m_EPde_Pb[i]->SetMarkerSize(2);
-
-			gr_v2pt_m_SPde_p[i]->SetMarkerStyle(kFullSquare);
-			gr_v2pt_m_SPde_p[i]->SetMarkerColor(kBlue);
-			gr_v2pt_m_SPde_p[i]->SetLineColor(kBlue);
-			gr_v2pt_m_SPde_p[i]->SetMarkerSize(2);
-
-			gr_v2pt_m_SPde_Pb[i]->SetMarkerStyle(kFullSquare);
-			gr_v2pt_m_SPde_Pb[i]->SetMarkerColor(kRed);
-			gr_v2pt_m_SPde_Pb[i]->SetLineColor(kRed);
-			gr_v2pt_m_SPde_Pb[i]->SetMarkerSize(2);
-
-			gr_v3p_EP[i]->SetMarkerStyle(kFullSquare);
-			gr_v3p_EP[i]->SetMarkerColor(kBlue);
-			gr_v3p_EP[i]->SetLineColor(kBlue);
-			gr_v3p_EP[i]->SetMarkerSize(2);
-
-			gr_v3Pb_EP[i]->SetMarkerStyle(kFullSquare);
-			gr_v3Pb_EP[i]->SetMarkerColor(kRed);
-			gr_v3Pb_EP[i]->SetLineColor(kRed);
-			gr_v3Pb_EP[i]->SetMarkerSize(2);
-
-			gr_v3p_EP_de[i]->SetMarkerStyle(kOpenSquare);
-			gr_v3p_EP_de[i]->SetMarkerColor(kBlue);
-			gr_v3p_EP_de[i]->SetLineColor(kBlue);
-			gr_v3p_EP_de[i]->SetMarkerSize(2);
-
-			gr_v3Pb_EP_de[i]->SetMarkerStyle(kOpenSquare);
-			gr_v3Pb_EP_de[i]->SetMarkerColor(kRed);
-			gr_v3Pb_EP_de[i]->SetLineColor(kRed);
-			gr_v3Pb_EP_de[i]->SetMarkerSize(2);
-
-			gr_v3p_SP[i]->SetMarkerStyle(kFullSquare);
-			gr_v3p_SP[i]->SetMarkerColor(kBlue);
-			gr_v3p_SP[i]->SetLineColor(kBlue);
-			gr_v3p_SP[i]->SetMarkerSize(2);
-
-			gr_v3Pb_SP[i]->SetMarkerStyle(kFullSquare);
-			gr_v3Pb_SP[i]->SetMarkerColor(kRed);
-			gr_v3Pb_SP[i]->SetLineColor(kRed);
-			gr_v3Pb_SP[i]->SetMarkerSize(2);
-
-			gr_v3p_SP_de[i]->SetMarkerStyle(kOpenSquare);
-			gr_v3p_SP_de[i]->SetMarkerColor(kBlue);
-			gr_v3p_SP_de[i]->SetLineColor(kBlue);
-			gr_v3p_SP_de[i]->SetMarkerSize(2);
-
-			gr_v3Pb_SP_de[i]->SetMarkerStyle(kOpenSquare);
-			gr_v3Pb_SP_de[i]->SetMarkerColor(kRed);
-			gr_v3Pb_SP_de[i]->SetLineColor(kRed);
-			gr_v3Pb_SP_de[i]->SetMarkerSize(2);
-
-			continue;
+	for ( int ipt = 0; ipt < nPtBins; ipt++ ) {
+		for ( int i = 1; i < 7; i++ ) {
+			hEP[ipt][i] = (TH2D*) f->Get(Form("cumulantMB/hEP_%i_%i", ipt, i));
+			hSP[ipt][i] = (TH2D*) f->Get(Form("cumulantMB/hSP_%i_%i", ipt, i));
+			iEP[ipt][i] = (TH2D*) f->Get(Form("cumulantMB/iEP_%i_%i", ipt, i));
+			iSP[ipt][i] = (TH2D*) f->Get(Form("cumulantMB/iSP_%i_%i", ipt, i));
 		}
-		gr_v2pt_p_EP_p[i]->SetMarkerStyle(kFullSquare);
-		gr_v2pt_p_EP_p[i]->SetMarkerColor(kRed);
-		gr_v2pt_p_EP_p[i]->SetLineColor(kRed);
-		gr_v2pt_p_EP_p[i]->SetMarkerSize(2);
-
-		gr_v2pt_p_EP_Pb[i]->SetMarkerStyle(kFullSquare);
-		gr_v2pt_p_EP_Pb[i]->SetMarkerColor(kRed);
-		gr_v2pt_p_EP_Pb[i]->SetLineColor(kRed);
-		gr_v2pt_p_EP_Pb[i]->SetMarkerSize(2);
-
-		gr_v2pt_m_EP_p[i]->SetMarkerStyle(kFullSquare);
-		gr_v2pt_m_EP_p[i]->SetMarkerColor(kRed);
-		gr_v2pt_m_EP_p[i]->SetLineColor(kRed);
-		gr_v2pt_m_EP_p[i]->SetMarkerSize(2);
-
-		gr_v2pt_m_EP_Pb[i]->SetMarkerStyle(kFullSquare);
-		gr_v2pt_m_EP_Pb[i]->SetMarkerColor(kRed);
-		gr_v2pt_m_EP_Pb[i]->SetLineColor(kRed);
-		gr_v2pt_m_EP_Pb[i]->SetMarkerSize(2);
-
-		gr_v2pt_Pb_EP_p[i]->SetMarkerStyle(kFullSquare);
-		gr_v2pt_Pb_EP_p[i]->SetMarkerColor(kBlue);
-		gr_v2pt_Pb_EP_p[i]->SetLineColor(kBlue);
-		gr_v2pt_Pb_EP_p[i]->SetMarkerSize(2);
-
-		gr_v2pt_Pb_EP_Pb[i]->SetMarkerStyle(kFullSquare);
-		gr_v2pt_Pb_EP_Pb[i]->SetMarkerColor(kRed);
-		gr_v2pt_Pb_EP_Pb[i]->SetLineColor(kRed);
-		gr_v2pt_Pb_EP_Pb[i]->SetMarkerSize(2);
-
-///
-		gr_v2pt_p_SP_p[i]->SetMarkerStyle(kFullSquare);
-		gr_v2pt_p_SP_p[i]->SetMarkerColor(kRed);
-		gr_v2pt_p_SP_p[i]->SetLineColor(kRed);
-		gr_v2pt_p_SP_p[i]->SetMarkerSize(2);
-
-		gr_v2pt_p_SP_Pb[i]->SetMarkerStyle(kFullSquare);
-		gr_v2pt_p_SP_Pb[i]->SetMarkerColor(kRed);
-		gr_v2pt_p_SP_Pb[i]->SetLineColor(kRed);
-		gr_v2pt_p_SP_Pb[i]->SetMarkerSize(2);
-
-		gr_v2pt_m_SP_p[i]->SetMarkerStyle(kFullSquare);
-		gr_v2pt_m_SP_p[i]->SetMarkerColor(kRed);
-		gr_v2pt_m_SP_p[i]->SetLineColor(kRed);
-		gr_v2pt_m_SP_p[i]->SetMarkerSize(2);
-
-		gr_v2pt_m_SP_Pb[i]->SetMarkerStyle(kFullSquare);
-		gr_v2pt_m_SP_Pb[i]->SetMarkerColor(kRed);
-		gr_v2pt_m_SP_Pb[i]->SetLineColor(kRed);
-		gr_v2pt_m_SP_Pb[i]->SetMarkerSize(2);
-
-		gr_v2pt_Pb_SP_p[i]->SetMarkerStyle(kFullSquare);
-		gr_v2pt_Pb_SP_p[i]->SetMarkerColor(kBlue);
-		gr_v2pt_Pb_SP_p[i]->SetLineColor(kBlue);
-		gr_v2pt_Pb_SP_p[i]->SetMarkerSize(2);
-
-		gr_v2pt_Pb_SP_Pb[i]->SetMarkerStyle(kFullSquare);
-		gr_v2pt_Pb_SP_Pb[i]->SetMarkerColor(kRed);
-		gr_v2pt_Pb_SP_Pb[i]->SetLineColor(kRed);
-		gr_v2pt_Pb_SP_Pb[i]->SetMarkerSize(2);
-
-///
-		gr_v2pt_p_EPde_p[i]->SetMarkerStyle(kFullSquare);
-		gr_v2pt_p_EPde_p[i]->SetMarkerColor(kRed);
-		gr_v2pt_p_EPde_p[i]->SetLineColor(kRed);
-		gr_v2pt_p_EPde_p[i]->SetMarkerSize(2);
-
-		gr_v2pt_p_EPde_Pb[i]->SetMarkerStyle(kOpenCircle);
-		gr_v2pt_p_EPde_Pb[i]->SetMarkerColor(kRed);
-		gr_v2pt_p_EPde_Pb[i]->SetLineColor(kRed);
-		gr_v2pt_p_EPde_Pb[i]->SetMarkerSize(2);
-
-		gr_v2pt_m_EPde_p[i]->SetMarkerStyle(kFullSquare);
-		gr_v2pt_m_EPde_p[i]->SetMarkerColor(kBlue);
-		gr_v2pt_m_EPde_p[i]->SetLineColor(kBlue);
-		gr_v2pt_m_EPde_p[i]->SetMarkerSize(2);
-
-		gr_v2pt_m_EPde_Pb[i]->SetMarkerStyle(kFullSquare);
-		gr_v2pt_m_EPde_Pb[i]->SetMarkerColor(kRed);
-		gr_v2pt_m_EPde_Pb[i]->SetLineColor(kRed);
-		gr_v2pt_m_EPde_Pb[i]->SetMarkerSize(2);
-
-		gr_v2pt_Pb_EPde_p[i]->SetMarkerStyle(kOpenCircle);
-		gr_v2pt_Pb_EPde_p[i]->SetMarkerColor(kBlue);
-		gr_v2pt_Pb_EPde_p[i]->SetLineColor(kBlue);
-		gr_v2pt_Pb_EPde_p[i]->SetMarkerSize(2);
-
-		gr_v2pt_Pb_EPde_Pb[i]->SetMarkerStyle(kFullSquare);
-		gr_v2pt_Pb_EPde_Pb[i]->SetMarkerColor(kRed);
-		gr_v2pt_Pb_EPde_Pb[i]->SetLineColor(kRed);
-		gr_v2pt_Pb_EPde_Pb[i]->SetMarkerSize(2);
-
-///
-		gr_v2pt_p_SPde_p[i]->SetMarkerStyle(kFullSquare);
-		gr_v2pt_p_SPde_p[i]->SetMarkerColor(kRed);
-		gr_v2pt_p_SPde_p[i]->SetLineColor(kRed);
-		gr_v2pt_p_SPde_p[i]->SetMarkerSize(2);
-
-		gr_v2pt_p_SPde_Pb[i]->SetMarkerStyle(kOpenCircle);
-		gr_v2pt_p_SPde_Pb[i]->SetMarkerColor(kRed);
-		gr_v2pt_p_SPde_Pb[i]->SetLineColor(kRed);
-		gr_v2pt_p_SPde_Pb[i]->SetMarkerSize(2);
-
-		gr_v2pt_m_SPde_p[i]->SetMarkerStyle(kFullSquare);
-		gr_v2pt_m_SPde_p[i]->SetMarkerColor(kBlue);
-		gr_v2pt_m_SPde_p[i]->SetLineColor(kBlue);
-		gr_v2pt_m_SPde_p[i]->SetMarkerSize(2);
-
-		gr_v2pt_m_SPde_Pb[i]->SetMarkerStyle(kFullSquare);
-		gr_v2pt_m_SPde_Pb[i]->SetMarkerColor(kRed);
-		gr_v2pt_m_SPde_Pb[i]->SetLineColor(kRed);
-		gr_v2pt_m_SPde_Pb[i]->SetMarkerSize(2);
-
-		gr_v2pt_Pb_SPde_p[i]->SetMarkerStyle(kOpenCircle);
-		gr_v2pt_Pb_SPde_p[i]->SetMarkerColor(kBlue);
-		gr_v2pt_Pb_SPde_p[i]->SetLineColor(kBlue);
-		gr_v2pt_Pb_SPde_p[i]->SetMarkerSize(2);
-
-		gr_v2pt_Pb_SPde_Pb[i]->SetMarkerStyle(kFullSquare);
-		gr_v2pt_Pb_SPde_Pb[i]->SetMarkerColor(kRed);
-		gr_v2pt_Pb_SPde_Pb[i]->SetLineColor(kRed);
-		gr_v2pt_Pb_SPde_Pb[i]->SetMarkerSize(2);
-
-		gr_v3p_EP[i]->SetMarkerStyle(kFullSquare);
-		gr_v3p_EP[i]->SetMarkerColor(kBlue);
-		gr_v3p_EP[i]->SetLineColor(kBlue);
-		gr_v3p_EP[i]->SetMarkerSize(2);
-
-		gr_v3Pb_EP[i]->SetMarkerStyle(kFullSquare);
-		gr_v3Pb_EP[i]->SetMarkerColor(kRed);
-		gr_v3Pb_EP[i]->SetLineColor(kRed);
-		gr_v3Pb_EP[i]->SetMarkerSize(2);
-
-		gr_v3p_EP_de[i]->SetMarkerStyle(kOpenSquare);
-		gr_v3p_EP_de[i]->SetMarkerColor(kBlue);
-		gr_v3p_EP_de[i]->SetLineColor(kBlue);
-		gr_v3p_EP_de[i]->SetMarkerSize(2);
-
-		gr_v3Pb_EP_de[i]->SetMarkerStyle(kOpenSquare);
-		gr_v3Pb_EP_de[i]->SetMarkerColor(kRed);
-		gr_v3Pb_EP_de[i]->SetLineColor(kRed);
-		gr_v3Pb_EP_de[i]->SetMarkerSize(2);
-
-		gr_v3p_SP[i]->SetMarkerStyle(kFullSquare);
-		gr_v3p_SP[i]->SetMarkerColor(kBlue);
-		gr_v3p_SP[i]->SetLineColor(kBlue);
-		gr_v3p_SP[i]->SetMarkerSize(2);
-
-		gr_v3Pb_SP[i]->SetMarkerStyle(kFullSquare);
-		gr_v3Pb_SP[i]->SetMarkerColor(kRed);
-		gr_v3Pb_SP[i]->SetLineColor(kRed);
-		gr_v3Pb_SP[i]->SetMarkerSize(2);
-
-		gr_v3p_SP_de[i]->SetMarkerStyle(kOpenSquare);
-		gr_v3p_SP_de[i]->SetMarkerColor(kBlue);
-		gr_v3p_SP_de[i]->SetLineColor(kBlue);
-		gr_v3p_SP_de[i]->SetMarkerSize(2);
-
-		gr_v3Pb_SP_de[i]->SetMarkerStyle(kOpenSquare);
-		gr_v3Pb_SP_de[i]->SetMarkerColor(kRed);
-		gr_v3Pb_SP_de[i]->SetLineColor(kRed);
-		gr_v3Pb_SP_de[i]->SetMarkerSize(2);
-
 	}
+
+
+	for ( int c = 0; c < nCentBins; c++ ) {
+		for ( int iep = 0; iep < NumEPNames; iep++ ) {
+			double val2 = hMultRes->GetBinContent(c+1, iep+1);
+			double err2 = hMultRes->GetBinError(c+1, iep+1);
+
+			double val, err;
+			val = hEPresAB->GetBinContent(c+1, iep+1);
+			err = hEPresAB->GetBinError(c+1, iep+1);
+			hEPresAB->SetBinContent(c+1, iep+1, val/val2);
+			hEPresAB->SetBinError(c+1, iep+1, sqrt(err2*err2/val2/val2 + err*err/val/val)*val/val2);
+
+			val = hEPresAC->GetBinContent(c+1, iep+1);
+			err = hEPresAC->GetBinError(c+1, iep+1);
+			hEPresAC->SetBinContent(c+1, iep+1, val/val2);
+			hEPresAC->SetBinError(c+1, iep+1, sqrt(err2*err2/val2/val2 + err*err/val/val)*val/val2);
+
+			val = hEPresBC->GetBinContent(c+1, iep+1);
+			err = hEPresBC->GetBinError(c+1, iep+1);
+			hEPresBC->SetBinContent(c+1, iep+1, val/val2);
+			hEPresBC->SetBinError(c+1, iep+1, sqrt(err2*err2/val2/val2 + err*err/val/val)*val/val2);
+
+			val = hSPresAB->GetBinContent(c+1, iep+1);
+			err = hSPresAB->GetBinError(c+1, iep+1);
+			hSPresAB->SetBinContent(c+1, iep+1, val/val2);
+			hSPresAB->SetBinError(c+1, iep+1, sqrt(err2*err2/val2/val2 + err*err/val/val)*val/val2);
+
+			val = hSPresAC->GetBinContent(c+1, iep+1);
+			err = hSPresAC->GetBinError(c+1, iep+1);
+			hSPresAC->SetBinContent(c+1, iep+1, val/val2);
+			hSPresAC->SetBinError(c+1, iep+1, sqrt(err2*err2/val2/val2 + err*err/val/val)*val/val2);
+
+			val = hSPresBC->GetBinContent(c+1, iep+1);
+			err = hSPresBC->GetBinError(c+1, iep+1);
+			hSPresBC->SetBinContent(c+1, iep+1, val/val2);
+			hSPresBC->SetBinError(c+1, iep+1, sqrt(err2*err2/val2/val2 + err*err/val/val)*val/val2);
+
+
+
+		}
+	}
+
+
+	TH2D * hEPres = new TH2D("hEPres", "hEPres", nCentBins, centbins, NumEPNames, 0, NumEPNames);
+	TH2D * hSPres = new TH2D("hSPres", "hSPres", nCentBins, centbins, NumEPNames, 0, NumEPNames);
+
+	for ( int c = 0; c < nCentBins; c++ ) {
+		for ( int iep = 0; iep < NumEPNames; iep++ ) {
+			double epAB = hEPresAB->GetBinContent(c+1, iep+1);
+			double epAC = hEPresAC->GetBinContent(c+1, iep+1);
+			double epBC = hEPresBC->GetBinContent(c+1, iep+1);
+			double spAB = hSPresAB->GetBinContent(c+1, iep+1);
+			double spAC = hSPresAC->GetBinContent(c+1, iep+1);
+			double spBC = hSPresBC->GetBinContent(c+1, iep+1);
+
+			double epABe = hEPresAB->GetBinError(c+1, iep+1);
+			double epACe = hEPresAC->GetBinError(c+1, iep+1);
+			double epBCe = hEPresBC->GetBinError(c+1, iep+1);
+			double spABe = hSPresAB->GetBinError(c+1, iep+1);
+			double spACe = hSPresAC->GetBinError(c+1, iep+1);
+			double spBCe = hSPresBC->GetBinError(c+1, iep+1);
+
+			double ep = epAB*epAC/epBC;
+			double sp = spAB*spAC/spBC;
+
+			double epe = ep*sqrt(epABe*epABe/epAB/epAB + epACe*epACe/epAC/epAC + epBCe*epBCe/epBC/epBC);
+			double spe = ep*sqrt(spABe*spABe/spAB/spAB + spACe*spACe/spAC/spAC + spBCe*spBCe/spBC/spBC);
+
+			hEPres->SetBinContent(c+1, iep+1, sqrt(ep));
+			hSPres->SetBinContent(c+1, iep+1, sqrt(sp));
+
+			hEPres->SetBinError(c+1, iep+1, epe/2/sqrt(ep));
+			hSPres->SetBinError(c+1, iep+1, spe/2/sqrt(sp));
+		}
+	}
+
+	for ( int ipt = 0; ipt < nPtBins; ipt++ ) {
+		for ( int n = 1; n < 7; n++ ) {
+			for ( int c = 0; c < nCentBins; c++ ) {
+				for ( int iep = 0; iep < NumEPNames; iep++ ) {
+					double vn = hEP[ipt][n]->GetBinContent(c+1, iep+1) / hMult->GetBinContent(c, ipt);
+					double evn = hEP[ipt][n]->GetBinError(c+1, iep+1) / hMult->GetBinContent(c, ipt);
+					double res = hEPres->GetBinContent(c+1, iep+1);
+					double rese = hEPres->GetBinError(c+1, iep+1);
+					hEP[ipt][n]->SetBinError(c+1, iep+1, sqrt(evn*evn/vn/vn + rese*rese/res/res) * vn/res );
+					hEP[ipt][n]->SetBinContent(c+1, iep+1, vn/res);
+
+					vn = hSP[ipt][n]->GetBinContent(c+1, iep+1) / hMult->GetBinContent(c, ipt);
+					evn = hSP[ipt][n]->GetBinError(c+1, iep+1) / hMult->GetBinContent(c, ipt);
+					res = hSPres->GetBinContent(c+1, iep+1);
+					rese = hSPres->GetBinError(c+1, iep+1);
+					hSP[ipt][n]->SetBinError(c+1, iep+1, sqrt(evn*evn/vn/vn + rese*rese/res/res) * vn/res );
+					hSP[ipt][n]->SetBinContent(c+1, iep+1, vn/res);
+				}
+			}
+		}
+	}
+
+	TFile * fsave = new TFile("save.root", "recreate");
+
+	for ( int iep = 0; iep < NumEPNames; iep++ ) {
+		for ( int n = 1; n < 7; n++ ) {
+			hEP[iep][n]->Write();
+			hSP[iep][n]->Write();
+		}
+	}
+	hEPres->Write();
+	hSPres->Write();
+	hEPresAB->Write();
+	hEPresAC->Write();
+	hEPresBC->Write();
+	hSPresAB->Write();
+	hSPresAC->Write();
+	hSPresBC->Write();
 }
-
-

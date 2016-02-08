@@ -2,3 +2,5 @@
 2) bGet.C to get derived C, rebin, runGet.sh
 3) bGetError.C to get stat. err, 
 4) genPlot.C to get final object
+
+A) EP.C
