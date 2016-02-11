@@ -32,9 +32,9 @@ void bGet(int s1 = 7, int s2 = 0, int s3 =10){
 	double dCeta[7][4][24][500] = {};
 	double dCc[7][4][2][500] = {};
 
-	Int_t const * pCent4 = CentPbPb4;
-	Int_t const * pCent6 = CentPbPb6;
-	Int_t const * pCent8 = CentPbPb8;
+	Int_t const * pCent4 = CentNoffCut;
+	Int_t const * pCent6 = CentNoffCut;
+	Int_t const * pCent8 = CentNoffCut;
 
 	Int_t const * pCent[4] = { pCent4, pCent4, pCent6, pCent8 };
 
