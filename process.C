@@ -117,10 +117,11 @@ void process(int s1 = 7, int s2 = 10, int s3 = 10)
 	double yQeta[7][4][24][500] = {};
 	double yQc[7][4][24][500] = {};
 
-	int ievt = 0;
+	unsigned int ievt = 0;
 	if (s2!=s3) ievt = s2;
 	while ( chV->GetEntry(ievt) ) {
 		if ( !((ievt-s2)%100000) ) cout << "!! ievt = " << ievt << endl;
+//		cout << "!! ievt = " << ievt << endl;
 		if ( s2 == s3 ) ievt++;
 		else ievt+= s3;
 		//if ( (s2!=s3) && ((ievt%s3)!=s2) ) continue;
@@ -179,7 +180,7 @@ void process(int s1 = 7, int s2 = 10, int s3 = 10)
 	} else {
 		fwrite = new TFile(Form("%s/output_%i_%i.root", ftxt[s1], s2, s3), "recreate");
 	}
-	for ( int n = 1; n < 7; n++ ) {
+	for ( int n = 2; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			hQ[n][np]->Write();
 			hW[n][np]->Write();
