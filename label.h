@@ -7,7 +7,7 @@ char const * fname[] = {
 	"../PbPb2015/HIExpressPhysics/crab_HIExpressPhysics_All_Cumu_v1/",				// 4 PbPb express all |eta|<1.
 	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_v1/151214_231033/0000/",			// 5 PbPb HIHardProbes_Skim |eta|<1.
 	"../PbPb2015/HIHardProbes/crab_HIHardProbes_PromptSkim_cumu_v2/",				// 6 PbPb Prompt Skim |eta|<1.
-	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_v7/160211_155304/0000/",			// 7 PbPb Skim |eta|<1.
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_v7/160211_155304/0000/",			// 7 PbPb Skim |eta|<1, calo, no eff, 0.3 < pt_ref < 3.0
 };
 
 char const * ftxt[] = {

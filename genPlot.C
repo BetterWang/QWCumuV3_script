@@ -1,7 +1,7 @@
 #include "label.h"
 #include "noff.h"
 #include "../../style.h"
-#include "HIN-10-002.h"
+#include "HIN-11-012.h"
 
 void genPlot(int s1 =2)
 {
@@ -12,8 +12,7 @@ void genPlot(int s1 =2)
 	bool SAVE = true;
 
 	TFile *f = new TFile(Form("%s/outputE.root", ftxt[s1]));
-//	gROOT->Macro("HIN-10-002.C");
-	HIN_10_002();
+	HIN_11_012();
 
 	SetStyle();
 	gStyle->SetMarkerSize(1);
@@ -40,7 +39,7 @@ void genPlot(int s1 =2)
 	double eVc[7][4][2][20];
 	double cVc[7][4][2][20];
 
-	for ( int n = 1; n < 7; n++ ) {
+	for ( int n = 2; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			TH1D * h1 = (TH1D*) f->Get(Form("hV%i%i", n, 2+2*np));
 			TH1D * h2 = (TH1D*) f->Get(Form("hX%i%i", n, 2+2*np));
@@ -112,7 +111,7 @@ void genPlot(int s1 =2)
         Int_t const * pCent[4] = { pCent4, pCent4, pCent6, pCent8 };
 
 	// pT
-	for ( int n = 1; n < 7; n++ ) {
+	for ( int n = 2; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			for ( int i = 0; i < 14; i++ ) {
 				dY[i] = dV[n][np][i];
@@ -122,8 +121,8 @@ void genPlot(int s1 =2)
 				if (cY[i] != cY[i]) cY[i] = 999;
 				if (dY[i] != dY[i]) dY[i] = 999;
 			}
-			gr_vnCentV[n][np] = new TGraphErrors(14, CentPbPbX, dY, 0, eY);
-			gr_vnCentC[n][np] = new TGraphErrors(14, CentPbPbX, cY, 0, eY);
+			gr_vnCentV[n][np] = new TGraphErrors(NCent[0], CentPbPbX, dY, 0, eY);
+			gr_vnCentC[n][np] = new TGraphErrors(NCent[0], CentPbPbX, cY, 0, eY);
 			if ( np == 0 ) {
 				gr_vnCentV[n][np]->SetMarkerStyle(kFullCircle);
 				gr_vnCentV[n][np]->SetMarkerColor(kGreen+2);
@@ -202,7 +201,7 @@ void genPlot(int s1 =2)
 	TGraphErrors * gr_vnEtaV[7][4][20] = {};
 	TGraphErrors * gr_vnEtaC[7][4][20] = {};
 
-	for ( int n = 1; n < 7; n++ ) {
+	for ( int n = 2; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			for ( int i = 0; i < 20; i++ ) {
 				//if ( pCent[np][i] == 0 ) break;
@@ -257,7 +256,7 @@ void genPlot(int s1 =2)
 	TF1 *finputv2 = new TF1("finputv2", "0.165646*exp(-( (x-2.64741)/1.36298 + exp( -(x-2.64741)/1.36298 ) )/2.)", 0.2, 15);
 
 //	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 12, 1, 0, 0.35);
-	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 120, 1, 0, 0.35);
+	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 100, 1, 0, 0.35);
 	InitHist(hframe_pt, "p_{T} (GeV/c)", "v_{2}");
 	TH2D * hframe_eta = new TH2D("hframe_eta", "", 1, -2.5, 2.5, 1, 0, 0.35);
 	InitHist(hframe_eta, "#eta", "v_{2}");
@@ -295,30 +294,35 @@ void genPlot(int s1 =2)
 			legPt->SetBorderSize(0);
 
 			// plot HIN-10-002
-			if ( mgrHIN_vnEPpt[n][i] ) {
-				mgrHIN_vnEPpt[n][i]->Draw("P");
-				legPt->AddEntry(mgrHIN_vnEPpt[n][i]->GetListOfGraphs()->At(1), "v_{2}{EP} HIN-10-002", "p");
-			}
-			if ( mgrHIN_vn2pt[n][i] ) {
-				mgrHIN_vn2pt[n][i]->Draw("P");
-				legPt->AddEntry(mgrHIN_vn2pt[n][i]->GetListOfGraphs()->At(1), "v_{2}{2} HIN-10-002", "p");
-			}
-			if ( mgrHIN_vn4pt[n][i] ) {
-				mgrHIN_vn4pt[n][i]->Draw("P");
-				legPt->AddEntry(mgrHIN_vn4pt[n][i]->GetListOfGraphs()->At(1), "v_{2}{4} HIN-10-002", "p");
-			}
+//			if ( mgrHIN_vnEPpt[n][i] ) {
+//				mgrHIN_vnEPpt[n][i]->Draw("P");
+//				legPt->AddEntry(mgrHIN_vnEPpt[n][i]->GetListOfGraphs()->At(1), "v_{2}{EP} HIN-10-002", "p");
+//			}
+//			if ( mgrHIN_vn2pt[n][i] ) {
+//				mgrHIN_vn2pt[n][i]->Draw("P");
+//				legPt->AddEntry(mgrHIN_vn2pt[n][i]->GetListOfGraphs()->At(1), "v_{2}{2} HIN-10-002", "p");
+//			}
+//			if ( mgrHIN_vn4pt[n][i] ) {
+//				mgrHIN_vn4pt[n][i]->Draw("P");
+//				legPt->AddEntry(mgrHIN_vn4pt[n][i]->GetListOfGraphs()->At(1), "v_{2}{4} HIN-10-002", "p");
+//			}
 
+			// plot HIN-11-012
+			if ( n==2 && mgrHIN11012_v2[i] ) {
+				mgrHIN11012_v2[i]->Draw("P");
+				legPt->AddEntry(mgrHIN11012_v2[i]->GetListOfGraphs()->At(1), "v_{2}{EP} HIN-11-012", "p");
+			}
 
 			if (sC) {
 				gr_vnPtC[n][0][i]->Draw("Psame");
 				gr_vnPtC[n][1][i]->Draw("Psame");
-//				gr_vnPtC[n][2][i]->Draw("Psame");
-//				gr_vnPtC[n][3][i]->Draw("Psame");
+				gr_vnPtC[n][2][i]->Draw("Psame");
+				gr_vnPtC[n][3][i]->Draw("Psame");
 			} else {
 				gr_vnPtV[n][0][i]->Draw("Psame");
 				gr_vnPtV[n][1][i]->Draw("Psame");
-//				gr_vnPtV[n][2][i]->Draw("Psame");
-//				gr_vnPtV[n][3][i]->Draw("Psame");
+				gr_vnPtV[n][2][i]->Draw("Psame");
+				gr_vnPtV[n][3][i]->Draw("Psame");
 			}
 
 			if ( sSimV2 ) {
@@ -374,7 +378,7 @@ void genPlot(int s1 =2)
 	TFile * fsave = new TFile(Form("%s/outGraph.root", ftxt[s1]),"recreate");
 	ofstream txtout;
 	txtout.open(Form("%s/Graph.txt", ftxt[s1]));
-	for ( int n = 1; n < 7; n++ ) {
+	for ( int n = 2; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			for ( int c = 0; c < 20; c++ ) {
 				if (gr_vnPtV[n][np][c]) {

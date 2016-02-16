@@ -4,6 +4,12 @@
 #include <TFile.h>
 
 const int NumEPNames = 29;
+
+const double * centbins;
+int nCentBins;
+const double * ptbins;
+int nPtBins;
+
 void EP(int s1 = 6, int EP = 8, int N = 2)
 {
 	TFile * f = new TFile(Form("%smerged_hist.root", ftxt[s1]));
@@ -11,16 +17,16 @@ void EP(int s1 = 6, int EP = 8, int N = 2)
 
 	TH2D * hMult = (TH2D*) f->Get("cumulantMB/hMult");
 
-	const double * centbins = hMult->GetXaxis()->GetXbins()->GetArray();
-	int nCentBins = hMult->GetXaxis()->GetNbins();
-	const double * ptbins = hMult->GetYaxis()->GetXbins()->GetArray();
-	int nPtBins = hMult->GetYaxis()->GetNbins();
+	centbins = hMult->GetXaxis()->GetXbins()->GetArray();
+	nCentBins = hMult->GetXaxis()->GetNbins();
+	ptbins = hMult->GetYaxis()->GetXbins()->GetArray();
+	nPtBins = hMult->GetYaxis()->GetNbins();
 
 
-	TH2D * hEP[nPtBins][7];
-	TH2D * hSP[nPtBins][7];
-	TH2D * iEP[nPtBins][7];
-	TH2D * iSP[nPtBins][7];
+	TH2D * hEP[24][7];
+	TH2D * hSP[24][7];
+	TH2D * iEP[24][7];
+	TH2D * iSP[24][7];
 
 
 	TH2D * hEPresAB = (TH2D*) f->Get("cumulantMB/hEPresAB");
@@ -143,10 +149,10 @@ void EP(int s1 = 6, int EP = 8, int N = 2)
 
 	TFile * fsave = new TFile("save.root", "recreate");
 
-	for ( int iep = 0; iep < NumEPNames; iep++ ) {
+	for ( int ipt = 0; ipt < nPtBins; ipt++ ) {
 		for ( int n = 1; n < 7; n++ ) {
-			hEP[iep][n]->Write();
-			hSP[iep][n]->Write();
+			hEP[ipt][n]->Write();
+			hSP[ipt][n]->Write();
 		}
 	}
 	hEPres->Write();
