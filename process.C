@@ -11,7 +11,14 @@ void process(int s1 = 7, int s2 = 10, int s3 = 10)
 //	int s3 = 10;
 
 	cout << " s1 = " << s1 << " s2 = " << s2 << " s3 = " << s3 << endl;
-	addchain(s1);
+	if ( s1 == 12 ) {
+		addchain(8);
+		addchain(9);
+		addchain(10);
+		addchain(11);
+	} else {
+		addchain(s1);
+	}
 
 	int gNoff;
 	int gMult;
