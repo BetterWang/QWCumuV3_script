@@ -3,15 +3,20 @@
 #include "TH1.h"
 #include "TFile.h"
 
-void bGet(int s1 = 7, int s2 = 0, int s3 =10){
+void bGet(int s1 = 7, int s2 = 0, int s3 =10, int sx = 0){
 //	int s1 = 4;
 //	int s2 = 10;
 //	int s3 = 10;
 
 	cout << "s1 = " << s1 << "\ts2 = " << s2 << "\ts3 = " << s3 << endl;
 	TFile *f;
-	if ( s2 == s3 ) f = new TFile(Form("%s/output.root", ftxt[s1]));
-	else f = new TFile(Form("%s/output_%i_%i.root", ftxt[s1], s2, s3));
+	if ( sx == 0 ) {
+		if ( s2 == s3 ) f = new TFile(Form("%s/output.root", ftxt[s1]));
+		else f = new TFile(Form("%s/output_%i_%i.root", ftxt[s1], s2, s3));
+	} else {
+		if ( s2 == s3 ) f = new TFile(Form("%s/output__%i.root", ftxt[s1], sx));
+		else f = new TFile(Form("%s/output_%i_%i__%i.root", ftxt[s1], s2, s3, sx));
+	}
 
 	double dQ[7][4][500] = {};
 	double wQ[7][4][500] = {};
@@ -362,8 +367,13 @@ void bGet(int s1 = 7, int s2 = 0, int s3 =10){
 	}
 
 	TFile *fwrite;
-	if ( s2 == s3 ) fwrite = new TFile(Form("%s/outputC.root", ftxt[s1]), "recreate");
-	else fwrite = new TFile(Form("%s/outputC_%i_%i.root", ftxt[s1], s2, s3), "recreate");
+	if ( sx == 0 ) {
+		if ( s2 == s3 ) fwrite = new TFile(Form("%s/outputC.root", ftxt[s1]), "recreate");
+		else fwrite = new TFile(Form("%s/outputC_%i_%i.root", ftxt[s1], s2, s3), "recreate");
+	} else {
+		if ( s2 == s3 ) fwrite = new TFile(Form("%s/outputC__%i.root", ftxt[s1], sx), "recreate");
+		else fwrite = new TFile(Form("%s/outputC_%i_%i__%i.root", ftxt[s1], s2, s3, sx), "recreate");
+	}
 	for ( int n = 2; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			fC[n][np]->Write();

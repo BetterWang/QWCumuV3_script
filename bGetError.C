@@ -4,7 +4,7 @@
 #include <TFile.h>
 #include <TH1.h>
 
-void bGetError(int s1 = 1, int s3 = 10)
+void bGetError(int s1 = 1, int s3 = 10, int sx = 0)
 {
 //	int s1 = 92;
 //	int s3 = 10;
@@ -14,8 +14,13 @@ void bGetError(int s1 = 1, int s3 = 10)
 	// Get TFile
 	TFile *fr[50];
 	for ( int i = 0; i <= s3; i++ ) {
-		if ( i == s3 ) fr[i] = new TFile(Form("%s/outputC.root", ftxt[s1]));
-		else fr[i] = new TFile(Form("%s/outputC_%i_%i.root", ftxt[s1], i, s3));
+		if ( sx == 0 ) {
+			if ( i == s3 ) fr[i] = new TFile(Form("%s/outputC.root", ftxt[s1]));
+			else fr[i] = new TFile(Form("%s/outputC_%i_%i.root", ftxt[s1], i, s3));
+		} else {
+			if ( i == s3 ) fr[i] = new TFile(Form("%s/outputC__%i.root", ftxt[s1], sx));
+			else fr[i] = new TFile(Form("%s/outputC_%i_%i__%i.root", ftxt[s1], i, s3, sx));
+		}
 	}
 
 	double dV[50][7][4][20];
@@ -398,7 +403,12 @@ void bGetError(int s1 = 1, int s3 = 10)
 
 
 	// Write
-	TFile * fwrite = new TFile(Form("%s/outputE.root", ftxt[s1]), "recreate");
+	TFile * fwrite = 0;
+	if ( sx == 0 ) {
+		fwrite = new TFile(Form("%s/outputE.root", ftxt[s1]), "recreate");
+	} else {
+		fwrite = new TFile(Form("%s/outputE__%i.root", ftxt[s1], sx), "recreate");
+	}
 	for ( int n = 2; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			fC[n][np]->Write();
