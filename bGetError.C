@@ -37,7 +37,7 @@ void bGetError(int s1 = 1, int s3 = 10)
 	double dCc[50][7][4][2][20];
 	double wCc[50][7][4][2][20];
 
-
+	std::cout << __LINE__ << std::endl;
 
 	// Get
 	for ( int fn = 0; fn <= s3; fn++ ) {
@@ -183,6 +183,7 @@ void bGetError(int s1 = 1, int s3 = 10)
 		}
 	}
 
+	std::cout << __LINE__ << std::endl;
 	// Saved histo
 	TH1D * fC[7][4];
 	TH1D * fW[7][4];
@@ -201,7 +202,7 @@ void bGetError(int s1 = 1, int s3 = 10)
 	TH1D * fWeta[7][4][24];
 	TH1D * fWc[7][4][2];
 
-	for ( int n = 1; n < 7; n++ ) {
+	for ( int n = 2; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			fC[n][np] = (TH1D*)fr[s3]->Get(Form("hC%i%i", n, 2+2*np));
 			fD[n][np] = (TH1D*)fr[s3]->Get(Form("hD%i%i", n, 2+2*np));
@@ -239,7 +240,7 @@ void bGetError(int s1 = 1, int s3 = 10)
 	TH1D * fcVeta[7][4][24];
 	TH1D * fcVc[7][4][2];
 
-	for ( int n = 1; n < 7; n++ ) {
+	for ( int n = 2; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			fV[n][np] = new TH1D(Form("hV%i%i", n, 2+2*np), "", 20, 0, 20);
 			fcV[n][np] = new TH1D(Form("hcV%i%i", n, 2+2*np), "", 20, 0, 20);
@@ -275,7 +276,7 @@ void bGetError(int s1 = 1, int s3 = 10)
 
 
 	// Get Error
-	for ( int n = 1; n < 7; n++ ) {
+	for ( int n = 2; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			for ( int i = 0; i < 20; i++ ) {
 				double sumC = 0;
@@ -399,7 +400,7 @@ void bGetError(int s1 = 1, int s3 = 10)
 
 	// Write
 	TFile * fwrite = new TFile(Form("%s/outputE.root", ftxt[s1]), "recreate");
-	for ( int n = 1; n < 7; n++ ) {
+	for ( int n = 2; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			fC[n][np]->Write();
 			fW[n][np]->Write();

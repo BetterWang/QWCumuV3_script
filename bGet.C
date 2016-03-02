@@ -3,7 +3,7 @@
 #include "TH1.h"
 #include "TFile.h"
 
-void bGet(int s1 = 7, int s2 = 0, int s3 =10){
+void bGet(int s1 = 1, int s2 = 10, int s3 =10){
 //	int s1 = 4;
 //	int s2 = 10;
 //	int s3 = 10;
@@ -198,7 +198,7 @@ void bGet(int s1 = 7, int s2 = 0, int s3 =10){
 		for ( int i = 0; i < NCent[np]; i++ ) {
 			double nevt = 0;
 			for (int m = pCent[np][i]; m < pCent[np][i+1]; m++ ) {
-				if ( m >= 200 ) continue;
+				if ( m >= 500 ) continue;
 				nevt += hNoff->GetBinContent(m);
 			}
 			hNevtCent[np]->SetBinContent(i+1, nevt);
@@ -212,7 +212,7 @@ void bGet(int s1 = 7, int s2 = 0, int s3 =10){
 				double weight = 0;
 				double weightX = 0;
 
-				for ( int m = pCent[np][i]; m < pCent[np][i+1]; m++ ) {
+				for ( int m = pCent[np][i]-1; m >= pCent[np][i+1]; m-- ) {
 					if ( m >= 500 ) continue;
 					double w = wQ[n][np][m];
 					double wXc = wX[n][np][m];
@@ -227,7 +227,7 @@ void bGet(int s1 = 7, int s2 = 0, int s3 =10){
 				if ( weight > 0 ) sum /= weight;
 				else sum = 0;
 				if ( weightX > 0 ) sumX /= weightX;
-//				cout << " n = " << n << "\t np = " << np << "\t i = " << i << "\t sum = " << sum << "\t weight = " << weight << endl;;
+//				cout << " n = " << n << "\t np = " << np << "\t i = " << i << "\t sum = " << sum << "\t weight = " << weight << "\t" << pCent[np][i] << " -- " << pCent[np][i+1] << endl;
 				dCx[n][np][i] = sum;
 				wCx[n][np][i] = weight;
 
