@@ -2,11 +2,13 @@
 char const * fname[] = {
 	"test/",			// 0
 	"../pp13TeV/HighMultiplicity/crab_pp13TeV_Totem_cumu_v1/160209_185843/0000",		// 1 pp Totem HM
+	"../pp13TeV/HighMultiplicity/crab_pp13TeV_Totem_cumu_v2/160229_195954/0000/",		// 2 pp Totem HM noff fix, PU rejection
 };
 
 char const * ftxt[] = {
-	"txt/test/",							// 0
+	"txt/test/",					// 0
 	"txt/Totem_HM/",				// 1
+	"txt/Totem_HM_v2/",				// 2
 };
 
 #include <TChain.h>
