@@ -3,7 +3,7 @@
 #include "../../style.h"
 #include "HIN-11-012.h"
 
-void genPlot(int s1 =2)
+void genPlot(int s1 =2, int sx = 0)
 {
 
 	int sC = 1;
@@ -11,7 +11,12 @@ void genPlot(int s1 =2)
 
 	bool SAVE = true;
 
-	TFile *f = new TFile(Form("%s/outputE.root", ftxt[s1]));
+	TFile *f;
+	if ( sx == 0 ) {
+		f = new TFile(Form("%s/outputE.root", ftxt[s1]));
+	} else {
+		f = new TFile(Form("%s/outputE__%i.root", ftxt[s1], sx));
+	}
 	HIN_11_012();
 
 	SetStyle();
@@ -256,7 +261,7 @@ void genPlot(int s1 =2)
 	TF1 *finputv2 = new TF1("finputv2", "0.165646*exp(-( (x-2.64741)/1.36298 + exp( -(x-2.64741)/1.36298 ) )/2.)", 0.2, 15);
 
 //	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 12, 1, 0, 0.35);
-	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 20, 1, 0, 0.35);
+	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 100, 1, 0, 0.35);
 	InitHist(hframe_pt, "p_{T} (GeV/c)", "v_{2}");
 	TH2D * hframe_eta = new TH2D("hframe_eta", "", 1, -2.5, 2.5, 1, 0, 0.35);
 	InitHist(hframe_eta, "#eta", "v_{2}");
@@ -270,7 +275,7 @@ void genPlot(int s1 =2)
 		hframe_cent->GetYaxis()->SetTitle(Form("v_{%i}",n));
 		hframe_cent->Draw();
 		if (sC) {
-			gr_vnCentC[n][0]->Draw("Psame");
+//			gr_vnCentC[n][0]->Draw("Psame");
 			gr_vnCentC[n][1]->Draw("Psame");
 			gr_vnCentC[n][2]->Draw("Psame");
 			gr_vnCentC[n][3]->Draw("Psame");
@@ -314,7 +319,7 @@ void genPlot(int s1 =2)
 			}
 
 			if (sC) {
-				gr_vnPtC[n][0][i]->Draw("Psame");
+//				gr_vnPtC[n][0][i]->Draw("Psame");
 				gr_vnPtC[n][1][i]->Draw("Psame");
 				gr_vnPtC[n][2][i]->Draw("Psame");
 				gr_vnPtC[n][3][i]->Draw("Psame");
@@ -331,7 +336,7 @@ void genPlot(int s1 =2)
 				}
 			}
 
-			legPt->AddEntry(gr_vnPtV[n][0][i], Form("v_{%i}{2} %i%% < Centrality < %i%%", n, pCent[0][i]/2, pCent[0][i+1]/2), "p");
+//			legPt->AddEntry(gr_vnPtV[n][0][i], Form("v_{%i}{2} %i%% < Centrality < %i%%", n, pCent[0][i]/2, pCent[0][i+1]/2), "p");
 			legPt->AddEntry(gr_vnPtV[n][1][i], Form("v_{%i}{4} %i%% < Centrality < %i%%", n, pCent[1][i]/2, pCent[0][i+1]/2), "p");
 			legPt->AddEntry(gr_vnPtV[n][2][i], Form("v_{%i}{6} %i%% < Centrality < %i%%", n, pCent[2][i]/2, pCent[2][i+1]/2), "p");
 			legPt->AddEntry(gr_vnPtV[n][3][i], Form("v_{%i}{8} %i%% < Centrality < %i%%", n, pCent[3][i]/2, pCent[3][i+1]/2), "p");
@@ -347,7 +352,7 @@ void genPlot(int s1 =2)
 			hframe_eta->Draw();
 
 			if (sC) {
-				gr_vnEtaC[n][0][i]->Draw("Psame");
+//				gr_vnEtaC[n][0][i]->Draw("Psame");
 				gr_vnEtaC[n][1][i]->Draw("Psame");
 				gr_vnEtaC[n][2][i]->Draw("Psame");
 				gr_vnEtaC[n][3][i]->Draw("Psame");
@@ -363,7 +368,7 @@ void genPlot(int s1 =2)
 			legEta->SetTextSize(0.03);
 			legEta->SetBorderSize(0);
 
-			legEta->AddEntry(gr_vnEtaV[n][0][i], Form("v_{%i}{2} %i%% < Centrality < %i%%", n, pCent[0][i]/2, pCent[0][i+1]/2), "p");
+//			legEta->AddEntry(gr_vnEtaV[n][0][i], Form("v_{%i}{2} %i%% < Centrality < %i%%", n, pCent[0][i]/2, pCent[0][i+1]/2), "p");
 			legEta->AddEntry(gr_vnEtaV[n][1][i], Form("v_{%i}{4} %i%% < Centrality < %i%%", n, pCent[1][i]/2, pCent[0][i+1]/2), "p");
 			legEta->AddEntry(gr_vnEtaV[n][2][i], Form("v_{%i}{6} %i%% < Centrality < %i%%", n, pCent[2][i]/2, pCent[2][i+1]/2), "p");
 			legEta->AddEntry(gr_vnEtaV[n][3][i], Form("v_{%i}{8} %i%% < Centrality < %i%%", n, pCent[3][i]/2, pCent[3][i+1]/2), "p");
@@ -375,9 +380,15 @@ void genPlot(int s1 =2)
 	}
 
 
-	TFile * fsave = new TFile(Form("%s/outGraph.root", ftxt[s1]),"recreate");
+	TFile * fsave;
 	ofstream txtout;
-	txtout.open(Form("%s/Graph.txt", ftxt[s1]));
+	if ( sx == 0 ) {
+		fsave = new TFile(Form("%s/outGraph.root", ftxt[s1]),"recreate");
+		txtout.open(Form("%s/Graph.txt", ftxt[s1]));
+	} else {
+		fsave = new TFile(Form("%s/outGraph__%i.root", ftxt[s1], sx),"recreate");
+		txtout.open(Form("%s/Graph__%i.txt", ftxt[s1], sx));
+	}
 	for ( int n = 2; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			for ( int c = 0; c < 20; c++ ) {

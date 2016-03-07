@@ -295,8 +295,10 @@ void bGetError(int s1 = 1, int s3 = 10, int sx = 0)
 				}
 				double errC = sqrt( sumC )/s3;
 				double errD = sqrt( sumD )/s3;
-				double errV = sqrt( sumV )/s3;
-				double errX = sqrt( sumX )/s3;
+//				double errV = sqrt( sumV )/s3;
+//				double errX = sqrt( sumX )/s3;
+                                double errV = dV[s3][n][np][i] * fabs(errC / dC[s3][n][np][i]) / (2*np+2);
+                                double errX = dX[s3][n][np][i] * fabs(errD / dD[s3][n][np][i]) / (2*np+2);
 				fC[n][np]->SetBinError(i+1, errC);
 				fD[n][np]->SetBinError(i+1, errD);
 

@@ -16,8 +16,8 @@ char const * fname[] = {
 	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_v10/160225_134058/0000/",			// 13 PbPb HP  AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0, eff PbPb_dijet_TT_5TeV_v2.root
 	"../PbPb2015/HIMinimumBias1/crab_HIMB1_cal_noeff_v5/",						// 14 PbPb MB1 AOD   |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 
 	"../PbPb2015/HIMinimumBias2/crab_HIMB2_cal_noeff_v5/",						// 15 PbPb MB2 AOD   |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0
-	"../PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_v5/160226_110447/0000/",			// 16 PbPb MB3 Skim |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0
-	"../PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_v5/160226_121157/0000/",			// 17 PbPb MB4 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0
+	"../PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_v5/160226_110447/0000/",			// 16 PbPb MB3 Skim |eta|<1, calo, with eff, 1.0 < pt_ref < 5.0
+	"../PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_v5/160226_121157/0000/",			// 17 PbPb MB4 AOD  |eta|<1, calo, with eff, 1.0 < pt_ref < 5.0
 	"NA",												// 18 PbPb MB1,2,3,4 14+15+16+17 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0
 };
 
