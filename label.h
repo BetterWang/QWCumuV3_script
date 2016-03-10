@@ -25,6 +25,41 @@ char const * fname[] = {
 	"../PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_v6/160303_223848/0000/",			// 22 PbPb MB3 Skim |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0
 	"../PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_v6/160306_234511/0000/",			// 23 PbPb MB4 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0
 	"NA",												// 24 PbPb MB1,2,3,4 20+21+22+23 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0
+
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysCalo_v11/160309_212811/0000/",	// 25 PbPb HP  AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 no calo
+	"../PbPb2015/HIMinimumBias1//",									// 26 PbPb MB1 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 no calo
+	"../PbPb2015/HIMinimumBias2//",									// 27 PbPb MB2 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 no calo
+	"../PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_sysCalo_v6/",					// 28 PbPb MB3 Skim |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 no calo
+	"../PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_sysCalo_v6/",					// 29 PbPb MB4 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 no calo
+	"NA",												// 30 PbPb MB1,2,3,4 26+27+28+29 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 no calo
+
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysTight_v11/",			// 31 PbPb HP  AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 tight
+	"../PbPb2015/HIMinimumBias1//",									// 32 PbPb MB1 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 tight
+	"../PbPb2015/HIMinimumBias2//",									// 33 PbPb MB2 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 tight
+	"../PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_sysTight_v6/",					// 34 PbPb MB3 Skim |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 tight
+	"../PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_sysTight_v6/",					// 35 PbPb MB4 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 tight
+	"NA",												// 36 PbPb MB1,2,3,4 26+27+28+29 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 tight
+
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysLoose_v11/",			// 37 PbPb HP  AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 loose
+	"../PbPb2015/HIMinimumBias1//",									// 38 PbPb MB1 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 loose
+	"../PbPb2015/HIMinimumBias2//",									// 39 PbPb MB2 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 loose
+	"../PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_sysLoose_v6/",					// 40 PbPb MB3 Skim |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 loose
+	"../PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_sysLoose_v6/",					// 41 PbPb MB4 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 loose
+	"NA",												// 42 PbPb MB1,2,3,4 26+27+28+29 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 loose
+
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysVz0_v11/",			// 43 PbPb HP  AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz0
+	"../PbPb2015/HIMinimumBias1//",									// 44 PbPb MB1 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz0
+	"../PbPb2015/HIMinimumBias2//",									// 45 PbPb MB2 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz0
+	"../PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_sysVz0_v6/",					// 46 PbPb MB3 Skim |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz0
+	"../PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_sysVz0_v6/",					// 47 PbPb MB4 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz0
+	"NA",												// 48 PbPb MB1,2,3,4 26+27+28+29 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz0
+
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysVz1_v11/",			// 49 PbPb HP  AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz1
+	"../PbPb2015/HIMinimumBias1//",									// 50 PbPb MB1 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz1
+	"../PbPb2015/HIMinimumBias2//",									// 51 PbPb MB2 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz1
+	"../PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_sysVz1_v6/",					// 52 PbPb MB3 Skim |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz1
+	"../PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_sysVz1_v6/",					// 53 PbPb MB4 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz1
+	"NA",												// 54 PbPb MB1,2,3,4 26+27+28+29 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz1
 };
 
 char const * ftxt[] = {
@@ -53,6 +88,41 @@ char const * ftxt[] = {
 	"txt/HIMB3_noeff_v6/",						// 22
 	"txt/HIMB4_noeff_v6/",						// 23
 	"txt/HIMB_noeff_v3/",						// 24
+
+	"txt/HIHardProbe_noeff_sysCalo_v11/",				// 25
+	"txt/HIMB1_noeff_sysCalo_v6/",					// 26
+	"txt/HIMB2_noeff_sysCalo_v6/",					// 27
+	"txt/HIMB3_noeff_sysCalo_v6/",					// 28
+	"txt/HIMB4_noeff_sysCalo_v6/",					// 29
+	"txt/HIMB_noeff_sysCalo_v3/",					// 30
+
+	"txt/HIHardProbe_noeff_sysTight_v11/",				// 31
+	"txt/HIMB1_noeff_sysTight_v6/",					// 32
+	"txt/HIMB2_noeff_sysTight_v6/",					// 33
+	"txt/HIMB3_noeff_sysTight_v6/",					// 34
+	"txt/HIMB4_noeff_sysTight_v6/",					// 35
+	"txt/HIMB_noeff_sysTight_v3/",					// 36
+
+	"txt/HIHardProbe_noeff_sysLoose_v11/",				// 37
+	"txt/HIMB1_noeff_sysLoose_v6/",					// 38
+	"txt/HIMB2_noeff_sysLoose_v6/",					// 39
+	"txt/HIMB3_noeff_sysLoose_v6/",					// 40
+	"txt/HIMB4_noeff_sysLoose_v6/",					// 41
+	"txt/HIMB_noeff_sysLoose_v3/",					// 42
+
+	"txt/HIHardProbe_noeff_sysVz0_v11/",				// 43
+	"txt/HIMB1_noeff_sysVz0_v6/",					// 44
+	"txt/HIMB2_noeff_sysVz0_v6/",					// 45
+	"txt/HIMB3_noeff_sysVz0_v6/",					// 46
+	"txt/HIMB4_noeff_sysVz0_v6/",					// 47
+	"txt/HIMB_noeff_sysVz0_v3/",					// 48
+
+	"txt/HIHardProbe_noeff_sysVz1_v11/",				// 49
+	"txt/HIMB1_noeff_sysVz1_v6/",					// 50
+	"txt/HIMB2_noeff_sysVz1_v6/",					// 51
+	"txt/HIMB3_noeff_sysVz1_v6/",					// 52
+	"txt/HIMB4_noeff_sysVz1_v6/",					// 53
+	"txt/HIMB_noeff_sysVz1_v3/",					// 54
 };
 
 #include <TChain.h>
