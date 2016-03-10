@@ -1,455 +1,104 @@
-{
-#include "label.h"
-
-//	int s1 = 139; // black
-//	int s2 = 139; // green
-//	int s3 = 139; // cyan
-//	int s4 = 229; // red
-//	int s5 = 233; // blue
-	int s1 = 109; // black
-	int s2 = 109; // green
-	int s3 = 109; // cyan
-	int s4 = 234; // red
-	int s5 = 235; // blue
-
-	int cent4 = 5;
-	// 7 = 120 - 150;
-	// 6 = 150 - 185;
-	// 5 = 185 - 220;
-	// 4 = 220 - 260;
-	int cent6 = 6;
-	int cent8 = 5;
-	if ( cent4 == 6 ) {
-		cent6 = 5;
-		cent8 = 4;
-	}
-	if ( cent4 == 5 ) {
-		cent6 = 4;
-		cent8 = 3;
-	}
-	if ( cent4 == 4 ) {
-		cent6 = 3;
-		cent8 = 2;
-	}
-
-	bool b1 = 1;
-	bool b2 = 0;
-	bool b3 = 0;
-	bool b4 = 1;
-	bool b5 = 1;
-
-	bool bHIN = 1;
-	gROOT->Macro("HIN-13-002.C");
-
-	bool bPbPb = 1;
-
-	bool bfit = 0;
-	bool bfit2 = 0;
-
-	TF1 *finputv2 = new TF1("finputv2", "0.165646*exp(-( (x-2.64741)/1.36298 + exp( -(x-2.64741)/1.36298 ) )/2.)", 0.2, 15);
-	TF1 *finputv2D2 = new TF1("finputv2D2", "0.5*0.165646*exp(-( (x-2.64741)/1.36298 + exp( -(x-2.64741)/1.36298 ) )/2.)", 0.2, 15);
-	finputv2D2->SetLineStyle(kDashed);
-//	int s2 = 20; // red pos/Pb side
-//	int s3 = 16; // blue neg/p side
-
-	TFile *f1 = new TFile(Form("%s/outGraph.root", ftxt[s1]));
-	TFile *f2 = new TFile(Form("%s/outGraph.root", ftxt[s2]));
-	TFile *f3 = new TFile(Form("%s/outGraph.root", ftxt[s3]));
-	TFile *f4 = new TFile(Form("%s/outGraph.root", ftxt[s4]));
-	TFile *f5 = new TFile(Form("%s/outGraph.root", ftxt[s5]));
-
-//	string v22pt1, v24pt1, v26pt1, v28pt1, v22eta1, v24eta1, v26wta1, v28eta1;
-//	string v22pt2, v24pt2, v26pt2, v28pt2, v22eta2, v24eta2, v26wta2, v28eta2;
-//	string v22pt3, v24pt3, v26pt3, v28pt3, v22eta3, v24eta3, v26wta3, v28eta3;
-
-	TGraphErrors * gr_v22_1 = (TGraphErrors*) f1->Get(Form("gr_vnPtC_2_0_%i", cent4));
-	TGraphErrors * gr_v24_1 = (TGraphErrors*) f1->Get(Form("gr_vnPtC_2_1_%i", cent4));
-	TGraphErrors * gr_v26_1 = (TGraphErrors*) f1->Get(Form("gr_vnPtC_2_2_%i", cent6));
-	TGraphErrors * gr_v28_1 = (TGraphErrors*) f1->Get(Form("gr_vnPtC_2_3_%i", cent8));
-
-	TGraphErrors * gr_v22_2 = (TGraphErrors*) f2->Get(Form("gr_vnPtC_2_0_%i", cent4));
-	TGraphErrors * gr_v24_2 = (TGraphErrors*) f2->Get(Form("gr_vnPtC_2_1_%i", cent4));
-	TGraphErrors * gr_v26_2 = (TGraphErrors*) f2->Get(Form("gr_vnPtC_2_2_%i", cent6));
-	TGraphErrors * gr_v28_2 = (TGraphErrors*) f2->Get(Form("gr_vnPtC_2_3_%i", cent8));
-
-	TGraphErrors * gr_v22_3 = (TGraphErrors*) f3->Get(Form("gr_vnPtC_2_0_%i", cent4));
-	TGraphErrors * gr_v24_3 = (TGraphErrors*) f3->Get(Form("gr_vnPtC_2_1_%i", cent4));
-	TGraphErrors * gr_v26_3 = (TGraphErrors*) f3->Get(Form("gr_vnPtC_2_2_%i", cent6));
-	TGraphErrors * gr_v28_3 = (TGraphErrors*) f3->Get(Form("gr_vnPtC_2_3_%i", cent8));
-
-	TGraphErrors * gr_v22_4 = (TGraphErrors*) f4->Get(Form("gr_vnPtC_2_0_%i", cent4));
-	TGraphErrors * gr_v24_4 = (TGraphErrors*) f4->Get(Form("gr_vnPtC_2_1_%i", cent4));
-	TGraphErrors * gr_v26_4 = (TGraphErrors*) f4->Get(Form("gr_vnPtC_2_2_%i", cent6));
-	TGraphErrors * gr_v28_4 = (TGraphErrors*) f4->Get(Form("gr_vnPtC_2_3_%i", cent8));
-
-	TGraphErrors * gr_v22_5 = (TGraphErrors*) f5->Get(Form("gr_vnPtC_2_0_%i", cent4));
-	TGraphErrors * gr_v24_5 = (TGraphErrors*) f5->Get(Form("gr_vnPtC_2_1_%i", cent4));
-	TGraphErrors * gr_v26_5 = (TGraphErrors*) f5->Get(Form("gr_vnPtC_2_2_%i", cent6));
-	TGraphErrors * gr_v28_5 = (TGraphErrors*) f5->Get(Form("gr_vnPtC_2_3_%i", cent8));
-
-
-	TGraphErrors * gr_v22eta_1 = (TGraphErrors*) f1->Get(Form("gr_vnEtaC_2_0_%i", cent4));
-	TGraphErrors * gr_v24eta_1 = (TGraphErrors*) f1->Get(Form("gr_vnEtaC_2_1_%i", cent4));
-	TGraphErrors * gr_v26eta_1 = (TGraphErrors*) f1->Get(Form("gr_vnEtaC_2_2_%i", cent6));
-	TGraphErrors * gr_v28eta_1 = (TGraphErrors*) f1->Get(Form("gr_vnEtaC_2_3_%i", cent8));
-
-	TGraphErrors * gr_v22eta_2 = (TGraphErrors*) f2->Get(Form("gr_vnEtaC_2_0_%i", cent4));
-	TGraphErrors * gr_v24eta_2 = (TGraphErrors*) f2->Get(Form("gr_vnEtaC_2_1_%i", cent4));
-	TGraphErrors * gr_v26eta_2 = (TGraphErrors*) f2->Get(Form("gr_vnEtaC_2_2_%i", cent6));
-	TGraphErrors * gr_v28eta_2 = (TGraphErrors*) f2->Get(Form("gr_vnEtaC_2_3_%i", cent8));
-
-	TGraphErrors * gr_v22eta_3 = (TGraphErrors*) f3->Get(Form("gr_vnEtaC_2_0_%i", cent4));
-	TGraphErrors * gr_v24eta_3 = (TGraphErrors*) f3->Get(Form("gr_vnEtaC_2_1_%i", cent4));
-	TGraphErrors * gr_v26eta_3 = (TGraphErrors*) f3->Get(Form("gr_vnEtaC_2_2_%i", cent6));
-	TGraphErrors * gr_v28eta_3 = (TGraphErrors*) f3->Get(Form("gr_vnEtaC_2_3_%i", cent8));
-
-	TGraphErrors * gr_v22eta_4 = (TGraphErrors*) f4->Get(Form("gr_vnEtaC_2_0_%i", cent4));
-	TGraphErrors * gr_v24eta_4 = (TGraphErrors*) f4->Get(Form("gr_vnEtaC_2_1_%i", cent4));
-	TGraphErrors * gr_v26eta_4 = (TGraphErrors*) f4->Get(Form("gr_vnEtaC_2_2_%i", cent6));
-	TGraphErrors * gr_v28eta_4 = (TGraphErrors*) f4->Get(Form("gr_vnEtaC_2_3_%i", cent8));
-
-	TGraphErrors * gr_v22eta_5 = (TGraphErrors*) f5->Get(Form("gr_vnEtaC_2_0_%i", cent4));
-	TGraphErrors * gr_v24eta_5 = (TGraphErrors*) f5->Get(Form("gr_vnEtaC_2_1_%i", cent4));
-	TGraphErrors * gr_v26eta_5 = (TGraphErrors*) f5->Get(Form("gr_vnEtaC_2_2_%i", cent6));
-	TGraphErrors * gr_v28eta_5 = (TGraphErrors*) f5->Get(Form("gr_vnEtaC_2_3_%i", cent8));
-
-	TMultiGraph * mgr_v22_HIN = mgr_HIN13002_pPbPt[2][0][cent4];
-	TMultiGraph * mgr_v24_HIN = mgr_HIN13002_pPbPt[2][1][cent4];
-	if ( bPbPb ) {
-		mgr_v22_HIN = mgr_HIN13002_PbPbPt[2][0][cent4];
-		mgr_v24_HIN = mgr_HIN13002_PbPbPt[2][1][cent4];
-	}
-
-	gr_v22_1->SetMarkerStyle(kFullCircle);
-	gr_v22_1->SetMarkerColor(kBlack);
-	gr_v22_1->SetLineColor(kBlack);
-	gr_v22_2->SetMarkerStyle(kFullCircle);
-	gr_v22_2->SetMarkerColor(kGreen+1);
-	gr_v22_2->SetLineColor(kGreen+1);
-	gr_v22_3->SetMarkerStyle(kFullCircle);
-	gr_v22_3->SetMarkerColor(kCyan);
-	gr_v22_3->SetLineColor(kCyan);
-	gr_v22_4->SetMarkerStyle(kFullCircle);
-	gr_v22_4->SetMarkerColor(kRed);
-	gr_v22_4->SetLineColor(kRed);
-	gr_v22_5->SetMarkerStyle(kFullCircle);
-	gr_v22_5->SetMarkerColor(kBlue);
-	gr_v22_5->SetLineColor(kBlue);
-
-	gr_v24_1->SetMarkerStyle(kFullSquare);
-	gr_v24_1->SetMarkerColor(kBlack);
-	gr_v24_1->SetLineColor(kBlack);
-	gr_v24_2->SetMarkerStyle(kFullSquare);
-	gr_v24_2->SetMarkerColor(kGreen+1);
-	gr_v24_2->SetLineColor(kGreen+1);
-	gr_v24_3->SetMarkerStyle(kFullSquare);
-	gr_v24_3->SetMarkerColor(kCyan);
-	gr_v24_3->SetLineColor(kCyan);
-	gr_v24_4->SetMarkerStyle(kFullSquare);
-	gr_v24_4->SetMarkerColor(kRed);
-	gr_v24_4->SetLineColor(kRed);
-	gr_v24_5->SetMarkerStyle(kFullSquare);
-	gr_v24_5->SetMarkerColor(kBlue);
-	gr_v24_5->SetLineColor(kBlue);
-
-	gr_v26_1->SetMarkerStyle(kFullCross);
-	gr_v26_1->SetMarkerColor(kBlack);
-	gr_v26_1->SetLineColor(kBlack);
-	gr_v26_2->SetMarkerStyle(kFullCross);
-	gr_v26_2->SetMarkerColor(kGreen+1);
-	gr_v26_2->SetLineColor(kGreen+1);
-	gr_v26_3->SetMarkerStyle(kFullCross);
-	gr_v26_3->SetMarkerColor(kCyan);
-	gr_v26_3->SetLineColor(kCyan);
-	gr_v26_4->SetMarkerStyle(kFullCross);
-	gr_v26_4->SetMarkerColor(kRed);
-	gr_v26_4->SetLineColor(kRed);
-	gr_v26_5->SetMarkerStyle(kFullCross);
-	gr_v26_5->SetMarkerColor(kBlue);
-	gr_v26_5->SetLineColor(kBlue);
-
-	gr_v28_1->SetMarkerStyle(kFullDiamond);
-	gr_v28_1->SetMarkerColor(kBlack);
-	gr_v28_1->SetLineColor(kBlack);
-	gr_v28_2->SetMarkerStyle(kFullDiamond);
-	gr_v28_2->SetMarkerColor(kGreen+1);
-	gr_v28_2->SetLineColor(kGreen+1);
-	gr_v28_3->SetMarkerStyle(kFullDiamond);
-	gr_v28_3->SetMarkerColor(kCyan);
-	gr_v28_3->SetLineColor(kCyan);
-	gr_v28_4->SetMarkerStyle(kFullDiamond);
-	gr_v28_4->SetMarkerColor(kRed);
-	gr_v28_4->SetLineColor(kRed);
-	gr_v28_5->SetMarkerStyle(kFullDiamond);
-	gr_v28_5->SetMarkerColor(kBlue);
-	gr_v28_5->SetLineColor(kBlue);
-
-
-	gr_v22eta_1->SetMarkerStyle(kFullCircle);
-	gr_v22eta_1->SetMarkerColor(kBlack);
-	gr_v22eta_1->SetLineColor(kBlack);
-	gr_v22eta_2->SetMarkerStyle(kFullCircle);
-	gr_v22eta_2->SetMarkerColor(kGreen+1);
-	gr_v22eta_2->SetLineColor(kGreen+1);
-	gr_v22eta_3->SetMarkerStyle(kFullCircle);
-	gr_v22eta_3->SetMarkerColor(kCyan);
-	gr_v22eta_3->SetLineColor(kCyan);
-	gr_v22eta_4->SetMarkerStyle(kFullCircle);
-	gr_v22eta_4->SetMarkerColor(kRed);
-	gr_v22eta_4->SetLineColor(kRed);
-	gr_v22eta_5->SetMarkerStyle(kFullCircle);
-	gr_v22eta_5->SetMarkerColor(kBlue);
-	gr_v22eta_5->SetLineColor(kBlue);
-
-	gr_v24eta_1->SetMarkerStyle(kFullSquare);
-	gr_v24eta_1->SetMarkerColor(kBlack);
-	gr_v24eta_1->SetLineColor(kBlack);
-	gr_v24eta_2->SetMarkerStyle(kFullSquare);
-	gr_v24eta_2->SetMarkerColor(kGreen+1);
-	gr_v24eta_2->SetLineColor(kGreen+1);
-	gr_v24eta_3->SetMarkerStyle(kFullSquare);
-	gr_v24eta_3->SetMarkerColor(kCyan);
-	gr_v24eta_3->SetLineColor(kCyan);
-	gr_v24eta_4->SetMarkerStyle(kFullSquare);
-	gr_v24eta_4->SetMarkerColor(kRed);
-	gr_v24eta_4->SetLineColor(kRed);
-	gr_v24eta_5->SetMarkerStyle(kFullSquare);
-	gr_v24eta_5->SetMarkerColor(kBlue);
-	gr_v24eta_5->SetLineColor(kBlue);
-
-	gr_v26eta_1->SetMarkerStyle(kFullCross);
-	gr_v26eta_1->SetMarkerColor(kBlack);
-	gr_v26eta_1->SetLineColor(kBlack);
-	gr_v26eta_2->SetMarkerStyle(kFullCross);
-	gr_v26eta_2->SetMarkerColor(kGreen+1);
-	gr_v26eta_2->SetLineColor(kGreen+1);
-	gr_v26eta_3->SetMarkerStyle(kFullCross);
-	gr_v26eta_3->SetMarkerColor(kCyan);
-	gr_v26eta_3->SetLineColor(kCyan);
-	gr_v26eta_4->SetMarkerStyle(kFullCross);
-	gr_v26eta_4->SetMarkerColor(kRed);
-	gr_v26eta_4->SetLineColor(kRed);
-	gr_v26eta_5->SetMarkerStyle(kFullCross);
-	gr_v26eta_5->SetMarkerColor(kBlue);
-	gr_v26eta_5->SetLineColor(kBlue);
-
-	gr_v28eta_1->SetMarkerStyle(kFullDiamond);
-	gr_v28eta_1->SetMarkerColor(kBlack);
-	gr_v28eta_1->SetLineColor(kBlack);
-	gr_v28eta_2->SetMarkerStyle(kFullDiamond);
-	gr_v28eta_2->SetMarkerColor(kGreen+1);
-	gr_v28eta_2->SetLineColor(kGreen+1);
-	gr_v28eta_3->SetMarkerStyle(kFullDiamond);
-	gr_v28eta_3->SetMarkerColor(kCyan);
-	gr_v28eta_3->SetLineColor(kCyan);
-	gr_v28eta_4->SetMarkerStyle(kFullDiamond);
-	gr_v28eta_4->SetMarkerColor(kRed);
-	gr_v28eta_4->SetLineColor(kRed);
-	gr_v28eta_5->SetMarkerStyle(kFullDiamond);
-	gr_v28eta_5->SetMarkerColor(kBlue);
-	gr_v28eta_5->SetLineColor(kBlue);
-
-
 #include "../../style.h"
-	SetStyle();
-	TCanvas * cT = MakeCanvas("cT", "cT", 600, 500);
 
-	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 5.9, 1, 0, 0.35);
-	InitHist(hframe_pt, "p_{T} (GeV/c)", "v_{2}");
+void splitCanv(TCanvas * c);
+void initHist(TH2D* h);
 
+void compare3(TString s1, TString s2, TString str_gr, TString str_leg1 = "", TString str_leg2 = "")
+{
+
+	TFile * f1 = new TFile(s1.Data());
+	TFile * f2 = new TFile(s2.Data());
+
+	TGraphErrors * gr1 = (TGraphErrors*) f1->Get(str_gr.Data());
+	TGraphErrors * gr2 = (TGraphErrors*) f2->Get(str_gr.Data());
+
+	gr1->SetMarkerColor(kRed);
+	gr1->SetLineColor(kRed);
+	gr2->SetMarkerColor(kBlue);
+	gr2->SetLineColor(kBlue);
+
+	TCanvas * cT = MakeCanvas("cT", "cT", 600, 600);
+	splitCanv(cT);
+
+	TH2D * hframe_pt = new TH2D("hframe_pt", ";p_{T} (GeV/c);v_{2}", 1, 0, 100, 1, 0.01, 0.35);
+	initHist(hframe_pt);
+	TH2D * hframeR_pt = new TH2D("hframeR_pt", ";p_{T} (GeV/c);Ratio", 1, 0, 100, 1, 0.01, 1.99);
+	initHist(hframeR_pt);
+
+	TLegend * legPt = new TLegend(0.5, 0.7, 0.85, 0.9);
+	legPt->SetFillColor(kWhite);
+	legPt->SetTextFont(42);
+	legPt->SetTextSize(0.06);
+	legPt->SetBorderSize(0);
+
+	legPt->AddEntry(gr1, str_leg1.Data(), "p"); 
+	legPt->AddEntry(gr2, str_leg2.Data(), "p"); 
+
+	cT->cd(1);
 	hframe_pt->Draw();
-	if ( b1 ) gr_v22_1->Draw("Psame");
-	if ( b2 ) gr_v22_2->Draw("Psame");
-	if ( b3 ) gr_v22_3->Draw("Psame");
-	if ( b4 ) gr_v22_4->Draw("Psame");
-	if ( b5 ) gr_v22_5->Draw("Psame");
-	if ( bHIN ) mgr_v22_HIN->Draw();
-	if ( bfit ) finputv2->Draw("same");
-	if ( bfit2 ) finputv2D2->Draw("same");
-	hframe_pt->GetYaxis()->SetTitle("v_{2}{2}");
-	cT->SaveAs(Form("compV22_%i_%i_%i_%i_%i_%i.pdf", cent4, s1, s2, s3, s4, s5));
-
-	hframe_pt->Draw();
-	if ( b1 ) gr_v24_1->Draw("Psame");
-	if ( b2 ) gr_v24_2->Draw("Psame");
-	if ( b3 ) gr_v24_3->Draw("Psame");
-	if ( b4 ) gr_v24_4->Draw("Psame");
-	if ( b5 ) gr_v24_5->Draw("Psame");
-	if ( bHIN ) mgr_v24_HIN->Draw();
-	if ( bfit ) finputv2->Draw("same");
-	if ( bfit2 ) finputv2D2->Draw("same");
-	hframe_pt->GetYaxis()->SetTitle("v_{2}{4}");
-	cT->SaveAs(Form("compV24_%i_%i_%i_%i_%i_%i.pdf", cent4, s1, s2, s3, s4, s5));
-
-	hframe_pt->Draw();
-	if ( b1 ) gr_v26_1->Draw("Psame");
-	if ( b2 ) gr_v26_2->Draw("Psame");
-	if ( b3 ) gr_v26_3->Draw("Psame");
-	if ( b4 ) gr_v26_4->Draw("Psame");
-	if ( b5 ) gr_v26_5->Draw("Psame");
-	if ( bfit ) finputv2->Draw("same");
-	if ( bfit2 ) finputv2D2->Draw("same");
-	hframe_pt->GetYaxis()->SetTitle("v_{2}{6}");
-	cT->SaveAs(Form("compV26_%i_%i_%i_%i_%i_%i.pdf", cent4, s1, s2, s3, s4, s5));
-
-	hframe_pt->Draw();
-	if ( b1 ) gr_v28_1->Draw("Psame");
-	if ( b2 ) gr_v28_2->Draw("Psame");
-	if ( b3 ) gr_v28_3->Draw("Psame");
-	if ( b4 ) gr_v28_4->Draw("Psame");
-	if ( b5 ) gr_v28_5->Draw("Psame");
-	if ( bfit ) finputv2->Draw("same");
-	if ( bfit2 ) finputv2D2->Draw("same");
-	hframe_pt->GetYaxis()->SetTitle("v_{2}{8}");
-	cT->SaveAs(Form("compV28_%i_%i_%i_%i_%i_%i.pdf", cent4, s1, s2, s3, s4, s5));
-
-
-	TH2D * hframe_eta = new TH2D("hframe_eta", "", 1, -2.5, 2.5, 1, 0, 0.15);
-	InitHist(hframe_eta, "#eta", "v_{2}");
-
-	hframe_eta->Draw();
-	if ( b1 ) gr_v22eta_1->Draw("Psame");
-	if ( b2 ) gr_v22eta_2->Draw("Psame");
-	if ( b3 ) gr_v22eta_3->Draw("Psame");
-	if ( b4 ) gr_v22eta_4->Draw("Psame");
-	if ( b5 ) gr_v22eta_5->Draw("Psame");
-	hframe_eta->GetYaxis()->SetTitle("v_{2}{2}");
-	cT->SaveAs(Form("compV22eta_%i_%i_%i_%i_%i_%i.pdf", cent4, s1, s2, s3, s4, s5));
-
-	hframe_eta->Draw();
-	if ( b1 ) gr_v24eta_1->Draw("Psame");
-	if ( b2 ) gr_v24eta_2->Draw("Psame");
-	if ( b3 ) gr_v24eta_3->Draw("Psame");
-	if ( b4 ) gr_v24eta_4->Draw("Psame");
-	if ( b5 ) gr_v24eta_5->Draw("Psame");
-	hframe_eta->GetYaxis()->SetTitle("v_{2}{4}");
-	cT->SaveAs(Form("compV24eta_%i_%i_%i_%i_%i_%i.pdf", cent4, s1, s2, s3, s4, s5));
-
-	hframe_eta->Draw();
-	if ( b1 ) gr_v26eta_1->Draw("Psame");
-	if ( b2 ) gr_v26eta_2->Draw("Psame");
-	if ( b3 ) gr_v26eta_3->Draw("Psame");
-	if ( b4 ) gr_v26eta_4->Draw("Psame");
-	if ( b5 ) gr_v26eta_5->Draw("Psame");
-	hframe_eta->GetYaxis()->SetTitle("v_{2}{6}");
-	cT->SaveAs(Form("compV26eta_%i_%i_%i_%i_%i_%i.pdf", cent4, s1, s2, s3, s4, s5));
-
-	hframe_eta->Draw();
-	if ( b1 ) gr_v28eta_1->Draw("Psame");
-	if ( b2 ) gr_v28eta_2->Draw("Psame");
-	if ( b3 ) gr_v28eta_3->Draw("Psame");
-	if ( b4 ) gr_v28eta_4->Draw("Psame");
-	if ( b5 ) gr_v28eta_5->Draw("Psame");
-	hframe_eta->GetYaxis()->SetTitle("v_{2}{8}");
-	cT->SaveAs(Form("compV28eta_%i_%i_%i_%i_%i_%i.pdf", cent4, s1, s2, s3, s4, s5));
-
-
-	double x[24], y[24], ey[24];
-	for ( int i = 0; i < 24; ++i ) {
-		x[i] = gr_v24eta_4->GetX()[i];
-		y[i] = gr_v24eta_4->GetY()[i]/gr_v24eta_5->GetY()[i];
-		ey[i] = y[i]*sqrt( (gr_v24eta_4->GetEY()[i]*gr_v24eta_4->GetEY()[i]/gr_v24eta_4->GetY()[i]/gr_v24eta_4->GetY()[i]) + (gr_v24eta_5->GetEY()[i]*gr_v24eta_5->GetEY()[i]/gr_v24eta_5->GetY()[i]/gr_v24eta_5->GetY()[i]) );
+	gr1->Draw("Psame");
+	gr2->Draw("Psame");
+	legPt->Draw();
+	cT->cd(2);
+	TGraphErrors * grR = (TGraphErrors*) gr1->Clone("grR");
+	grR->SetMarkerColor(kBlack);
+	grR->SetLineColor(kBlack);
+	for ( int i = 0; i < grR->GetN(); i++ ) {
+		grR->GetY()[i] = gr1->GetY()[i] / gr2->GetY()[i];
+		grR->GetEY()[i] = fabs( grR->GetY()[i] * sqrt( (gr1->GetEY()[i]/gr1->GetY()[i])*(gr1->GetEY()[i]/gr1->GetY()[i]) + (gr2->GetEY()[i]/gr2->GetY()[i])*(gr2->GetEY()[i]/gr2->GetY()[i]) ) );
 	}
+	hframeR_pt->Draw();
+	grR->Draw("Psame");
 
-	TGraphErrors * gr_v24eta_4r = new TGraphErrors(24, x, y, 0, ey);
-	gr_v24eta_4r->SetMarkerStyle(kFullSquare);
-	gr_v24eta_4r->SetMarkerColor(kRed);
-	gr_v24eta_4r->SetLineColor(kRed);
+	TString fname = str_gr + "-" + s1 + "-" + s2 + ".pdf";
+	fname.ReplaceAll(".root", "");
+	fname.ReplaceAll("fresult", "");
 
-	for ( int i = 0; i < 24; ++i ) {
-		y[i] = gr_v26eta_4->GetY()[i]/gr_v26eta_5->GetY()[i];
-		ey[i] = y[i]*sqrt( (gr_v26eta_4->GetEY()[i]*gr_v26eta_4->GetEY()[i]/gr_v26eta_4->GetY()[i]/gr_v26eta_4->GetY()[i]) + (gr_v26eta_5->GetEY()[i]*gr_v26eta_5->GetEY()[i]/gr_v26eta_5->GetY()[i]/gr_v26eta_5->GetY()[i]) );
-	}
+	cT->SaveAs(fname.Data());
 
-	TGraphErrors * gr_v26eta_4r = new TGraphErrors(24, x, y, 0, ey);
-	gr_v26eta_4r->SetMarkerStyle(kFullCross);
-	gr_v26eta_4r->SetMarkerColor(kRed);
-	gr_v26eta_4r->SetLineColor(kRed);
+}
 
-	for ( int i = 0; i < 24; ++i ) {
-		y[i] = gr_v28eta_4->GetY()[i]/gr_v28eta_5->GetY()[i];
-		ey[i] = y[i]*sqrt( (gr_v28eta_4->GetEY()[i]*gr_v28eta_4->GetEY()[i]/gr_v28eta_4->GetY()[i]/gr_v28eta_4->GetY()[i]) + (gr_v28eta_5->GetEY()[i]*gr_v28eta_5->GetEY()[i]/gr_v28eta_5->GetY()[i]/gr_v28eta_5->GetY()[i]) );
-	}
+void splitCanv(TCanvas * c)
+{
+	if (!c) return;
 
-	TGraphErrors * gr_v28eta_4r = new TGraphErrors(24, x, y, 0, ey);
-	gr_v28eta_4r->SetMarkerStyle(kFullDiamond);
-	gr_v28eta_4r->SetMarkerColor(kRed);
-	gr_v28eta_4r->SetLineColor(kRed);
+	c->cd(0);
+	TPad * p1 = new TPad("pad1", "", 0., 0.4, 1., 1.);
+	p1->SetLeftMargin(0.15);
+	p1->SetRightMargin(0.05);
+	p1->SetBottomMargin(0.);
+	p1->SetTopMargin(0.05);
+	p1->Draw();
+	p1->SetNumber(1);
 
+	TPad * p2 = new TPad("pad2", "", 0., 0.0, 1., 0.4);
+	p2->SetLeftMargin(0.15);
+	p2->SetRightMargin(0.05);
+	p2->SetBottomMargin(0.25);
+	p2->SetTopMargin(0.);
+	p2->Draw();
+	p2->SetNumber(2);
+}
 
-	TH2D * hframe_etaratio = new TH2D("hframe_etaratio", "", 1, -2.5, 2.5, 1, 0, 1.);
-	InitHist(hframe_etaratio, "#eta", "v_{2,pPb}/v_{2,PbPb}");
+void initHist(TH2D * h)
+{
+	h->GetXaxis()->SetLabelFont(43);
+	h->GetXaxis()->SetLabelSize(20);
+	h->GetXaxis()->SetLabelOffset(0.02);
+	h->GetXaxis()->SetTitleFont(43);
+	h->GetXaxis()->SetTitleSize(22);
+	h->GetXaxis()->CenterTitle();
+	h->GetXaxis()->SetNdivisions(505);
+	h->GetXaxis()->SetTickLength(0.03);
+	h->GetXaxis()->SetTitleOffset(3);
 
-	hframe_etaratio->Draw();
-	gr_v24eta_4r->Draw("Psame");
-	cT->SaveAs(Form("compV24etar_%i_%i_%i_%i_%i_%i.pdf", cent4, s1, s2, s3, s4, s5));
-
-	hframe_etaratio->Draw();
-	gr_v26eta_4r->Draw("Psame");
-	cT->SaveAs(Form("compV26etar_%i_%i_%i_%i_%i_%i.pdf", cent4, s1, s2, s3, s4, s5));
-
-	hframe_etaratio->Draw();
-	gr_v28eta_4r->Draw("Psame");
-	cT->SaveAs(Form("compV28etar_%i_%i_%i_%i_%i_%i.pdf", cent4, s1, s2, s3, s4, s5));
-
-//	TFile * fsave = new TFile("graph.root","recreate");
-//	gr_v22_1->SetName("gr_v22_1");
-//	gr_v24_1->SetName("gr_v24_1");
-//	gr_v26_1->SetName("gr_v26_1");
-//	gr_v28_1->SetName("gr_v28_1");
-//
-//	gr_v22_4->SetName("gr_v22_4");
-//	gr_v24_4->SetName("gr_v24_4");
-//	gr_v26_4->SetName("gr_v26_4");
-//	gr_v28_4->SetName("gr_v28_4");
-//
-//	gr_v22_5->SetName("gr_v22_5");
-//	gr_v24_5->SetName("gr_v24_5");
-//	gr_v26_5->SetName("gr_v26_5");
-//	gr_v28_5->SetName("gr_v28_5");
-//
-//	gr_v22eta_1->SetName("gr_v22eta_1");
-//	gr_v24eta_1->SetName("gr_v24eta_1");
-//	gr_v26eta_1->SetName("gr_v26eta_1");
-//	gr_v28eta_1->SetName("gr_v28eta_1");
-//
-//	gr_v22eta_4->SetName("gr_v22eta_4");
-//	gr_v24eta_4->SetName("gr_v24eta_4");
-//	gr_v26eta_4->SetName("gr_v26eta_4");
-//	gr_v28eta_4->SetName("gr_v28eta_4");
-//
-//	gr_v22eta_5->SetName("gr_v22eta_5");
-//	gr_v24eta_5->SetName("gr_v24eta_5");
-//	gr_v26eta_5->SetName("gr_v26eta_5");
-//	gr_v28eta_5->SetName("gr_v28eta_5");
-//
-//	gr_v22_1->Write();
-//	gr_v24_1->Write();
-//	gr_v26_1->Write();
-//	gr_v28_1->Write();
-//
-//	gr_v22_4->Write();
-//	gr_v24_4->Write();
-//	gr_v26_4->Write();
-//	gr_v28_4->Write();
-//
-//	gr_v22_5->Write();
-//	gr_v24_5->Write();
-//	gr_v26_5->Write();
-//	gr_v28_5->Write();
-//
-//	gr_v22eta_1->Write();
-//	gr_v24eta_1->Write();
-//	gr_v26eta_1->Write();
-//	gr_v28eta_1->Write();
-//
-//	gr_v22eta_4->Write();
-//	gr_v24eta_4->Write();
-//	gr_v26eta_4->Write();
-//	gr_v28eta_4->Write();
-//
-//	gr_v22eta_5->Write();
-//	gr_v24eta_5->Write();
-//	gr_v26eta_5->Write();
-//	gr_v28eta_5->Write();
+	h->GetYaxis()->SetLabelFont(43);
+	h->GetYaxis()->SetLabelSize(20);
+	h->GetYaxis()->SetLabelOffset(0.02);
+	h->GetYaxis()->SetTitleFont(43);
+	h->GetYaxis()->SetTitleSize(26);
+	h->GetYaxis()->CenterTitle();
+	h->GetYaxis()->SetNdivisions(505);
+	h->GetYaxis()->SetTickLength(0.03);
+	h->GetYaxis()->SetTitleOffset(1.5);
 }

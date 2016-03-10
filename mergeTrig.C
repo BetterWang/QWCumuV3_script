@@ -110,7 +110,7 @@ void mergeTrig(int sMB = 18, int sHP = 13)
 		cT->SaveAs(Form("vn_%i.pdf", c));
 	}
 
-	TFile * fsave = new TFile("fresult.root", "recreate" );
+	TFile * fsave = new TFile(Form("fresult_%i_%i.root", sMB, sHP), "recreate" );
 	for ( int np = 0; np < 4; np++ ) {
 		for ( int c = 0; c < 7; c++ ) {
 			gr_V2[np][c]->SetName(Form("gr_V2%i_%i", 2+2*np, c));
@@ -118,5 +118,4 @@ void mergeTrig(int sMB = 18, int sHP = 13)
 		}
 	}
 	fsave->Write();
-
 }
