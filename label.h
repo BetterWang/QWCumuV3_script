@@ -1,64 +1,64 @@
 
 char const * fname[] = {
 	"test/",			// 0
-	"/PbPb2015/HIExpressPhysics/crab_HIExpressPhysics_MB_Cumu_v2/151205_123559/0000/",		// 1 PbPb express MB
-	"/PbPb2015/HIExpressPhysics/crab_HIExpressPhysics_MB_Cumu_v3/151208_113312/0000/",		// 2 PbPb express MB |eta|<1.
-	"/PbPb2015/PYTHIA_QCD_HighPt/",								// 3 MC high pT.
-	"/PbPb2015/HIExpressPhysics/crab_HIExpressPhysics_All_Cumu_v1/",				// 4 PbPb express all |eta|<1.
-	"/PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_v1/151214_231033/0000/",			// 5 PbPb HIHardProbes_Skim |eta|<1.
-	"/PbPb2015/HIHardProbes/crab_HIHardProbes_PromptSkim_cumu_v2/",				// 6 PbPb Prompt Skim |eta|<1.
-	"/PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_v7/160211_155304/0000/",			// 7 PbPb Skim |eta|<1, calo, no eff, 0.3 < pt_ref < 3.0
-	"/PbPb2015/HIMinimumBias1/crab_HIMB1_cal_noeff_v3/160217_111636/0000/",			// 8 PbPb MB1 AOD   |eta|<1, calo, no eff, 0.3 < pt_ref < 3.0
-	"/PbPb2015/HIMinimumBias2/crab_HIMB2_cal_noeff_v3/",			// 9 PbPb MB2 AOD   |eta|<1, calo, no eff, 0.3 < pt_ref < 3.0
-	"/PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_v2/160216_221440/0000/",			// 10 PbPb MB3 Skim |eta|<1, calo, no eff, 0.3 < pt_ref < 3.0
-	"/PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_v3/160217_111658/0000/",			// 11 PbPb MB4 AOD  |eta|<1, calo, no eff, 0.3 < pt_ref < 3.0
+	"../PbPb2015/HIExpressPhysics/crab_HIExpressPhysics_MB_Cumu_v2/151205_123559/0000/",		// 1 PbPb express MB
+	"../PbPb2015/HIExpressPhysics/crab_HIExpressPhysics_MB_Cumu_v3/151208_113312/0000/",		// 2 PbPb express MB |eta|<1.
+	"../PbPb2015/PYTHIA_QCD_HighPt/",								// 3 MC high pT.
+	"../PbPb2015/HIExpressPhysics/crab_HIExpressPhysics_All_Cumu_v1/",				// 4 PbPb express all |eta|<1.
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_v1/151214_231033/0000/",			// 5 PbPb HIHardProbes_Skim |eta|<1.
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_PromptSkim_cumu_v2/",				// 6 PbPb Prompt Skim |eta|<1.
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_v7/160211_155304/0000/",			// 7 PbPb Skim |eta|<1, calo, no eff, 0.3 < pt_ref < 3.0
+	"../PbPb2015/HIMinimumBias1/crab_HIMB1_cal_noeff_v3/160217_111636/0000/",			// 8 PbPb MB1 AOD   |eta|<1, calo, no eff, 0.3 < pt_ref < 3.0
+	"../PbPb2015/HIMinimumBias2/crab_HIMB2_cal_noeff_v3/",			// 9 PbPb MB2 AOD   |eta|<1, calo, no eff, 0.3 < pt_ref < 3.0
+	"../PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_v2/160216_221440/0000/",			// 10 PbPb MB3 Skim |eta|<1, calo, no eff, 0.3 < pt_ref < 3.0
+	"../PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_v3/160217_111658/0000/",			// 11 PbPb MB4 AOD  |eta|<1, calo, no eff, 0.3 < pt_ref < 3.0
 	"NA",												// 12 PbPb MB1,2,3,4 8+9+10+11 AOD  |eta|<1, calo, no eff, 0.3 < pt_ref < 3.0
-	"/PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_v10/160225_134058/0000/",			// 13 PbPb HP  AOD  |eta|<1, calo, with eff, 1.0 < pt_ref < 5.0, eff PbPb_dijet_TT_5TeV_v2.root
-	"/PbPb2015/HIMinimumBias1/crab_HIMB1_cal_noeff_v5/",						// 14 PbPb MB1 AOD  |eta|<1, calo, with eff, 1.0 < pt_ref < 5.0 
-	"/PbPb2015/HIMinimumBias2/crab_HIMB2_cal_noeff_v5/",						// 15 PbPb MB2 AOD  |eta|<1, calo, with eff, 1.0 < pt_ref < 5.0
-	"/PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_v5/160226_110447/0000/",			// 16 PbPb MB3 Skim |eta|<1, calo, with eff, 1.0 < pt_ref < 5.0
-	"/PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_v5/160226_121157/0000/",			// 17 PbPb MB4 AOD  |eta|<1, calo, with eff, 1.0 < pt_ref < 5.0
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_v10/160225_134058/0000/",			// 13 PbPb HP  AOD  |eta|<1, calo, with eff, 1.0 < pt_ref < 5.0, eff PbPb_dijet_TT_5TeV_v2.root
+	"../PbPb2015/HIMinimumBias1/crab_HIMB1_cal_noeff_v5/",						// 14 PbPb MB1 AOD  |eta|<1, calo, with eff, 1.0 < pt_ref < 5.0 
+	"../PbPb2015/HIMinimumBias2/crab_HIMB2_cal_noeff_v5/",						// 15 PbPb MB2 AOD  |eta|<1, calo, with eff, 1.0 < pt_ref < 5.0
+	"../PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_v5/160226_110447/0000/",			// 16 PbPb MB3 Skim |eta|<1, calo, with eff, 1.0 < pt_ref < 5.0
+	"../PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_v5/160226_121157/0000/",			// 17 PbPb MB4 AOD  |eta|<1, calo, with eff, 1.0 < pt_ref < 5.0
 	"NA",												// 18 PbPb MB1,2,3,4 14+15+16+17 AOD  |eta|<1, calo, with eff, 1.0 < pt_ref < 5.0
-	"/PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_v11/160303_151550/0000/",		// 19 PbPb HP  AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0
-	"/PbPb2015/HIMinimumBias1/crab_HIMB1_cal_noeff_v6/",						// 20 PbPb MB1 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 
-	"/PbPb2015/HIMinimumBias2/crab_HIMB2_cal_noeff_v6/",						// 21 PbPb MB2 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0
-	"/PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_v6/160303_223848/0000/",			// 22 PbPb MB3 Skim |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0
-	"/PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_v6/160306_234511/0000/",			// 23 PbPb MB4 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_v11/160303_151550/0000/",		// 19 PbPb HP  AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0
+	"../PbPb2015/HIMinimumBias1/crab_HIMB1_cal_noeff_v6/",						// 20 PbPb MB1 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 
+	"../PbPb2015/HIMinimumBias2/crab_HIMB2_cal_noeff_v6/",						// 21 PbPb MB2 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0
+	"../PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_v6/160303_223848/0000/",			// 22 PbPb MB3 Skim |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0
+	"../PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_v6/160306_234511/0000/",			// 23 PbPb MB4 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0
 	"NA",												// 24 PbPb MB1,2,3,4 20+21+22+23 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0
 
-	"/PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysCalo_v11/160309_212811/0000/",	// 25 PbPb HP  AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 no calo
-	"/PbPb2015/HIMinimumBias1//",									// 26 PbPb MB1 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 no calo
-	"/PbPb2015/HIMinimumBias2//",									// 27 PbPb MB2 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 no calo
-	"/PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_sysCalo_v6/160309_214954/0000/",		// 28 PbPb MB3 Skim |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 no calo
-	"/PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_sysCalo_v6/160310_140854/0000/",		// 29 PbPb MB4 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 no calo
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysCalo_v11/160309_212811/0000/",	// 25 PbPb HP  AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 no calo
+	"../PbPb2015/HIMinimumBias1//",									// 26 PbPb MB1 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 no calo
+	"../PbPb2015/HIMinimumBias2//",									// 27 PbPb MB2 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 no calo
+	"../PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_sysCalo_v6/160309_214954/0000/",		// 28 PbPb MB3 Skim |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 no calo
+	"../PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_sysCalo_v6/160310_140854/0000/",		// 29 PbPb MB4 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 no calo
 	"NA",												// 30 PbPb MB1,2,3,4 26+27+28+29 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 no calo
 
-	"/PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysTight_v11/160310_163332/0000/",	// 31 PbPb HP  AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 tight
-	"/PbPb2015/HIMinimumBias1//",									// 32 PbPb MB1 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 tight
-	"/PbPb2015/HIMinimumBias2//",									// 33 PbPb MB2 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 tight
-	"/PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_sysTight_v6/",					// 34 PbPb MB3 Skim |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 tight
-	"/PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_sysTight_v6/160310_194548/0000",			// 35 PbPb MB4 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 tight
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysTight_v11/160310_163332/0000/",	// 31 PbPb HP  AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 tight
+	"../PbPb2015/HIMinimumBias1//",									// 32 PbPb MB1 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 tight
+	"../PbPb2015/HIMinimumBias2//",									// 33 PbPb MB2 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 tight
+	"../PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_sysTight_v6/",					// 34 PbPb MB3 Skim |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 tight
+	"../PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_sysTight_v6/160310_194548/0000/",		// 35 PbPb MB4 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 tight
 	"NA",												// 36 PbPb MB1,2,3,4 26+27+28+29 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 tight
 
-	"/PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysLoose_v11/160310_163351/0000/",	// 37 PbPb HP  AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 loose
-	"/PbPb2015/HIMinimumBias1//",									// 38 PbPb MB1 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 loose
-	"/PbPb2015/HIMinimumBias2//",									// 39 PbPb MB2 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 loose
-	"/PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_sysLoose_v6/",					// 40 PbPb MB3 Skim |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 loose
-	"/PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_sysLoose_v6/160310_194600/0000/",		// 41 PbPb MB4 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 loose
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysLoose_v11/160310_163351/0000/",	// 37 PbPb HP  AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 loose
+	"../PbPb2015/HIMinimumBias1//",									// 38 PbPb MB1 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 loose
+	"../PbPb2015/HIMinimumBias2//",									// 39 PbPb MB2 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 loose
+	"../PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_sysLoose_v6/",					// 40 PbPb MB3 Skim |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 loose
+	"../PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_sysLoose_v6/160310_194600/0000/",		// 41 PbPb MB4 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 loose
 	"NA",												// 42 PbPb MB1,2,3,4 26+27+28+29 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 loose
 
-	"/PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysVz0_v11/160310_163402/0000/",	// 43 PbPb HP  AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz0
-	"/PbPb2015/HIMinimumBias1//",									// 44 PbPb MB1 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz0
-	"/PbPb2015/HIMinimumBias2//",									// 45 PbPb MB2 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz0
-	"/PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_sysVz0_v6/",					// 46 PbPb MB3 Skim |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz0
-	"/PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_sysVz0_v6/160310_194611/0000/",			// 47 PbPb MB4 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz0
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysVz0_v11/160310_163402/0000/",	// 43 PbPb HP  AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz0
+	"../PbPb2015/HIMinimumBias1//",									// 44 PbPb MB1 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz0
+	"../PbPb2015/HIMinimumBias2//",									// 45 PbPb MB2 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz0
+	"../PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_sysVz0_v6/",					// 46 PbPb MB3 Skim |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz0
+	"../PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_sysVz0_v6/160310_194611/0000/",		// 47 PbPb MB4 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz0
 	"NA",												// 48 PbPb MB1,2,3,4 26+27+28+29 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz0
 
-	"/PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysVz1_v11/160310_163415/0000/",	// 49 PbPb HP  AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz1
-	"/PbPb2015/HIMinimumBias1//",									// 50 PbPb MB1 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz1
-	"/PbPb2015/HIMinimumBias2//",									// 51 PbPb MB2 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz1
-	"/PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_sysVz1_v6/",					// 52 PbPb MB3 Skim |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz1
-	"/PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_sysVz1_v6/160310_194808/0000/",			// 53 PbPb MB4 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz1
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysVz1_v11/160310_163415/0000/",	// 49 PbPb HP  AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz1
+	"../PbPb2015/HIMinimumBias1//",									// 50 PbPb MB1 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz1
+	"../PbPb2015/HIMinimumBias2//",									// 51 PbPb MB2 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz1
+	"../PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_sysVz1_v6/",					// 52 PbPb MB3 Skim |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz1
+	"../PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_sysVz1_v6/160310_194808/0000/",		// 53 PbPb MB4 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz1
 	"NA",												// 54 PbPb MB1,2,3,4 26+27+28+29 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz1
 };
 
@@ -133,13 +133,13 @@ void addchain(int s1, int sx = 0)
 {
 	std::cout << fname[s1] << std::endl;
 	if ( sx == 0 )
-		chV->Add(Form("root://eoscms.cern.ch//eos/cms/store/group/phys_heavyions/qwang/%s/*.root/cumulantMB/trV", fname[s1]));
+		chV->Add(Form("%s/*.root/cumulantMB/trV", fname[s1]));
 	if ( sx == 1 )
-		chV->Add(Form("root://eoscms.cern.ch//eos/cms/store/group/phys_heavyions/qwang/%s/*.root/cumulant1420/trV", fname[s1]));
+		chV->Add(Form("%s/*.root/cumulant1420/trV", fname[s1]));
 	if ( sx == 2 )
-		chV->Add(Form("root://eoscms.cern.ch//eos/cms/store/group/phys_heavyions/qwang/%s/*.root/cumulant2026/trV", fname[s1]));
+		chV->Add(Form("%s/*.root/cumulant2026/trV", fname[s1]));
 	if ( sx == 3 )
-		chV->Add(Form("root://eoscms.cern.ch//eos/cms/store/group/phys_heavyions/qwang/%s/*.root/cumulant2635/trV", fname[s1]));
+		chV->Add(Form("%s/*.root/cumulant2635/trV", fname[s1]));
 	if ( sx == 4 )
-		chV->Add(Form("root://eoscms.cern.ch//eos/cms/store/group/phys_heavyions/qwang/%s/*.root/cumulant35/trV", fname[s1]));
+		chV->Add(Form("%s/*.root/cumulant35/trV", fname[s1]));
 }
