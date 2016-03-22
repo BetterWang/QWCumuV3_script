@@ -60,6 +60,8 @@ char const * fname[] = {
 	"../PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_sysVz1AOD_v6/160314_152532/0000/",		// 52 PbPb MB3 Skim |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz1
 	"../PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_sysVz1_v6/160310_194808/0000/",		// 53 PbPb MB4 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz1
 	"NA",												// 54 PbPb MB1,2,3,4 26+27+28+29 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz1
+
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysHLT_v11/160321_224347/0000/",	// 55 PbPb HP  AOD  |eta|<1, calo, no eff, L1MinBias HLT
 };
 
 char const * ftxt[] = {
@@ -123,6 +125,8 @@ char const * ftxt[] = {
 	"txt/HIMB3_noeff_sysVz1_v6/",					// 52
 	"txt/HIMB4_noeff_sysVz1_v6/",					// 53
 	"txt/HIMB_noeff_sysVz1_v3/",					// 54
+
+	"txt/HIHardProbe_noeff_sysHLT_v11/",				// 55
 };
 
 #include <TChain.h>

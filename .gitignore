@@ -18,3 +18,5 @@ core.*
 *.d
 *.pcm
 *.cxx_tmp
+.DS_Store
+pdf/
