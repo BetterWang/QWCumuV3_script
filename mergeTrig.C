@@ -1,11 +1,12 @@
 #include "label.h"
 #include "../../style.h"
 #include "noff.h"
-#include "HIN-11-012.h"
+#include "SteveSP.C"
 
 void mergeTrig(int sMB = 24, int sHP = 19, int n = 2)
 {
-	bool bHIN = true;
+	bool bEP = true;
+	SteveSP();
 	TGraphErrors * gr_V2[4][20] = {};
 
         Int_t const * pCent4 = CentPbPb4;
@@ -89,12 +90,11 @@ void mergeTrig(int sMB = 24, int sHP = 19, int n = 2)
 	SetStyle();
 	gStyle->SetMarkerSize(1);
 
-	HIN_11_012();
 
 	TCanvas * cT = MakeCanvas("cT", "cT", 600, 500);
 	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 100, 1, 0, 0.35);
 	InitHist(hframe_pt, "p_{T} (GeV/c)", Form("v_{%i}", n));
-	for ( int c = 0; c < 14; c++ ) {
+	for ( int c = 0; c < 7; c++ ) {
 		TLegend * legPt = new TLegend(0.2, 0.7, 0.55, 0.9);
 		legPt->SetFillColor(kWhite);
 		legPt->SetTextFont(42);
@@ -103,22 +103,26 @@ void mergeTrig(int sMB = 24, int sHP = 19, int n = 2)
 
 
 		hframe_pt->Draw();
-		if ( bHIN and mgrHIN11012_v2[c] and n == 2 ) {
-//			mgrHIN11012_v2[c]->Draw("P");
-//			legPt->AddEntry(mgrHIN11012_v2[c]->GetListOfGraphs()->At(1), "v_{2}{EP} HIN-11-012", "p");
+		if ( bEP and grSteveSPv2[c] ) {
+			grSteveSPv2[c]->Draw("P");
+			legPt->AddEntry(grSteveSPv2[c], Form("v_{2}{SP} %s", strSteveCent[c]), "p");
 		}
-		grMB_v2[1][c]->Draw("psame");
+//		grMB_v2[1][c]->Draw("psame");
 //		grMB_v2[2][c]->Draw("psame");
 //		grMB_v2[3][c]->Draw("psame");
 
 		gr_V2[1][c]->Draw("psame");
-//		gr_V2[2][c]->Draw("psame");
-//		gr_V2[3][c]->Draw("psame");
+		gr_V2[2][c]->Draw("psame");
+		gr_V2[3][c]->Draw("psame");
 
-		legPt->AddEntry(grMB_v2[1][c], Form("v_{%i}{4} MB %i%% < Centrality < %i%%", n, pCent[1][c]/2, pCent[0][c+1]/2), "p");
-		legPt->AddEntry(gr_V2[1][c], Form("v_{%i}{4} %i%% < Centrality < %i%%", n, pCent[1][c]/2, pCent[0][c+1]/2), "p");
-//		legPt->AddEntry(gr_V2[2][c], Form("v_{%i}{6} %i%% < Centrality < %i%%", n, pCent[1][c]/2, pCent[0][c+1]/2), "p");
-//		legPt->AddEntry(gr_V2[3][c], Form("v_{%i}{8} %i%% < Centrality < %i%%", n, pCent[1][c]/2, pCent[0][c+1]/2), "p");
+//		legPt->AddEntry(grMB_v2[1][c], Form("v_{%i}{4} MB", n), "p");
+		legPt->AddEntry(gr_V2[1][c], Form("v_{%i}{4}", n), "p");
+		legPt->AddEntry(gr_V2[2][c], Form("v_{%i}{6}", n), "p");
+		legPt->AddEntry(gr_V2[3][c], Form("v_{%i}{8}", n), "p");
+//		legPt->AddEntry(grMB_v2[1][c], Form("v_{%i}{4} MB %i - %i%%", n, pCent[1][c]/2, pCent[0][c+1]/2), "p");
+//		legPt->AddEntry(gr_V2[1][c], Form("v_{%i}{4} %i - %i%%", n, pCent[1][c]/2, pCent[0][c+1]/2), "p");
+//		legPt->AddEntry(gr_V2[2][c], Form("v_{%i}{6} %i - %i%%", n, pCent[1][c]/2, pCent[0][c+1]/2), "p");
+//		legPt->AddEntry(gr_V2[3][c], Form("v_{%i}{8} %i - %i%%", n, pCent[1][c]/2, pCent[0][c+1]/2), "p");
 
 		legPt->Draw();
 		cT->SaveAs(Form("v%i_%i.pdf", n, c));
