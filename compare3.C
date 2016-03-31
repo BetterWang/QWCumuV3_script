@@ -22,7 +22,7 @@ void compare3(TString s1, TString s2, TString str_gr, TString str_leg1 = "", TSt
 
 	TH2D * hframe_pt = new TH2D("hframe_pt", ";p_{T} (GeV/c);v_{2}", 1, 0, 100, 1, 0.01, 0.35);
 	initHist(hframe_pt);
-	TH2D * hframeR_pt = new TH2D("hframeR_pt", ";p_{T} (GeV/c);Ratio", 1, 0, 100, 1, 0.01, 1.99);
+	TH2D * hframeR_pt = new TH2D("hframeR_pt", ";p_{T} (GeV/c);Ratio", 1, 0, 100, 1, 0.8, 1.20);
 	initHist(hframeR_pt);
 
 	TLegend * legPt = new TLegend(0.5, 0.7, 0.85, 0.9);
@@ -76,6 +76,7 @@ void splitCanv(TCanvas * c)
 	p2->SetRightMargin(0.05);
 	p2->SetBottomMargin(0.25);
 	p2->SetTopMargin(0.);
+	p2->SetGrid();
 	p2->Draw();
 	p2->SetNumber(2);
 }

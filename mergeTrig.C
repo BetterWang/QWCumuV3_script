@@ -107,18 +107,18 @@ void mergeTrig(int sMB = 24, int sHP = 19, int n = 2)
 			grSteveSPv2[c]->Draw("P");
 			legPt->AddEntry(grSteveSPv2[c], Form("v_{2}{SP} %s", strSteveCent[c]), "p");
 		}
-//		grMB_v2[1][c]->Draw("psame");
+		grMB_v2[1][c]->Draw("psame");
 //		grMB_v2[2][c]->Draw("psame");
 //		grMB_v2[3][c]->Draw("psame");
 
 		gr_V2[1][c]->Draw("psame");
-		gr_V2[2][c]->Draw("psame");
-		gr_V2[3][c]->Draw("psame");
+//		gr_V2[2][c]->Draw("psame");
+//		gr_V2[3][c]->Draw("psame");
 
-//		legPt->AddEntry(grMB_v2[1][c], Form("v_{%i}{4} MB", n), "p");
+		legPt->AddEntry(grMB_v2[1][c], Form("v_{%i}{4} MB", n), "p");
 		legPt->AddEntry(gr_V2[1][c], Form("v_{%i}{4}", n), "p");
-		legPt->AddEntry(gr_V2[2][c], Form("v_{%i}{6}", n), "p");
-		legPt->AddEntry(gr_V2[3][c], Form("v_{%i}{8}", n), "p");
+//		legPt->AddEntry(gr_V2[2][c], Form("v_{%i}{6}", n), "p");
+//		legPt->AddEntry(gr_V2[3][c], Form("v_{%i}{8}", n), "p");
 //		legPt->AddEntry(grMB_v2[1][c], Form("v_{%i}{4} MB %i - %i%%", n, pCent[1][c]/2, pCent[0][c+1]/2), "p");
 //		legPt->AddEntry(gr_V2[1][c], Form("v_{%i}{4} %i - %i%%", n, pCent[1][c]/2, pCent[0][c+1]/2), "p");
 //		legPt->AddEntry(gr_V2[2][c], Form("v_{%i}{6} %i - %i%%", n, pCent[1][c]/2, pCent[0][c+1]/2), "p");
