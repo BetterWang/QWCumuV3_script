@@ -20,8 +20,8 @@ char const * fname[] = {
 	"../PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_v5/160226_121157/0000/",			// 17 PbPb MB4 AOD  |eta|<1, calo, with eff, 1.0 < pt_ref < 5.0
 	"NA",												// 18 PbPb MB1,2,3,4 14+15+16+17 AOD  |eta|<1, calo, with eff, 1.0 < pt_ref < 5.0
 	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_v11/160303_151550/0000/",		// 19 PbPb HP  AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0
-	"../PbPb2015/HIMinimumBias1/crab_HIMB1_cal_noeff_v6/",						// 20 PbPb MB1 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 
-	"../PbPb2015/HIMinimumBias2/crab_HIMB2_cal_noeff_v6/",						// 21 PbPb MB2 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0
+	"../PbPb2015/HIMinimumBias1/crab_HIMB1_cal_noeff_v6/160323_121132/0000/",			// 20 PbPb MB1 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 
+	"../PbPb2015/HIMinimumBias2/crab_HIMB2_cal_noeff_v6/160323_121140/0000/",			// 21 PbPb MB2 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0
 	"../PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_v6/160303_223848/0000/",			// 22 PbPb MB3 Skim |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0
 	"../PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_v6/160306_234511/0000/",			// 23 PbPb MB4 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0
 	"NA",												// 24 PbPb MB1,2,3,4 20+21+22+23 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0
@@ -62,6 +62,7 @@ char const * fname[] = {
 	"NA",												// 54 PbPb MB1,2,3,4 26+27+28+29 AOD  |eta|<1, calo, no eff, 1.0 < pt_ref < 5.0 Vz1
 
 	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysHLT_v11/160321_224347/0000/",	// 55 PbPb HP  AOD  |eta|<1, calo, no eff, L1MinBias HLT
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysHLT_v12/160330_184734/0000/",	// 56 PbPb HP  AOD  |eta|<1, calo, no eff, L1MinBias HLT
 };
 
 char const * ftxt[] = {
@@ -127,6 +128,7 @@ char const * ftxt[] = {
 	"txt/HIMB_noeff_sysVz1_v3/",					// 54
 
 	"txt/HIHardProbe_noeff_sysHLT_v11/",				// 55
+	"txt/HIHardProbe_noeff_sysHLT_v12/",				// 56
 };
 
 #include <TChain.h>
