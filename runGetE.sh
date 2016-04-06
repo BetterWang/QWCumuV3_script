@@ -47,8 +47,8 @@
 #./runGetE4.sh 49 10 4 
 
 ###### HLT
-./runGetE4.sh 55 10 1 
-./runGetE4.sh 55 10 2 
-./runGetE4.sh 55 10 3 
-./runGetE4.sh 55 10 4 
+./runGetE4.sh 56 10 1 
+./runGetE4.sh 56 10 2 
+./runGetE4.sh 56 10 3 
+./runGetE4.sh 56 10 4 
 

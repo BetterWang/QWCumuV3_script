@@ -3,5 +3,7 @@
 3) bGetError.C to get stat. err, 
 4) genPlot.C to get final object
 5) mergeTrig.C
+6) fplot.C
+7) plot.C final plot
 
 A) EP.C

@@ -19,5 +19,8 @@ SteveSP() {
 	for ( int i = 0; i < 8; i++ ) {
 		grSteveSPv2[i] = (TGraphErrors*) fSP->Get(Form("v2_%i", i));
 		grSteveSPv3[i] = (TGraphErrors*) fSP->Get(Form("v3_%i", i));
+
+		while (grSteveSPv2[i]->GetX()[0] < 1.) grSteveSPv2[i]->RemovePoint(0);
+		while (grSteveSPv3[i]->GetX()[0] < 1.) grSteveSPv3[i]->RemovePoint(0);
 	}
 }

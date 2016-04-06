@@ -16,10 +16,10 @@ TGraphErrors * grV2s[4][20];
 
 double pTlimit[4][20] = {
 	{0},
-	// 0   1    2    3    4   5
-	{100, 80, 100, 100, 100, 60},
-	{100, 80, 100,  80, 100, 60},
-	{100, 80, 100,  80, 100, 60},
+	// 0   1    2    3    4   5    6
+	{  0, 60, 100,  80,  80, 60, 0},
+	{  0, 60, 100,  80,  80, 60, 0},
+	{  0, 60, 100,  80,  80, 60, 0},
 };
 
 // < 14
@@ -59,7 +59,7 @@ double sys4[4][20] = {
 };
 
 
-void fplot(TString s1 = "fresult2_24_19.root")
+void fplot(TString s1 = "fresult2_24_56.root")
 {
 	TFile * f1 = new TFile(s1.Data());
 
@@ -111,13 +111,13 @@ void fplot(TString s1 = "fresult2_24_19.root")
 	latex.SetTextSize(24);
 	latex.SetTextAlign(13);
 
-	TCanvas * cT = MakeCanvas("cT", "cT", 600, 400);
-	makeMultiPanelCanvas(cT, 3, 2, 0.0, 0., 0.15, 0.15, 0.01);
+	TCanvas * cT = MakeCanvas("cT", "cT", 1000, 500);
+	makeMultiPanelCanvas(cT, 4, 2, 0.0, 0., 0.15, 0.15, 0.01);
 	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0.1, 99, 1, 0, 0.35);
 	InitHist(hframe_pt, "p_{T} (GeV/c)", "v_{2}");
 
-	for ( int c = 1; c < 6; c++ ) {
-		cT->cd(c);
+	for ( int c = 0; c < 7; c++ ) {
+		cT->cd(c+1);
 		hframe_pt->Draw();
 
 		grV2s[1][c]->Draw("[]3");
@@ -131,7 +131,7 @@ void fplot(TString s1 = "fresult2_24_19.root")
 		latex.DrawLatexNDC(0.4, 0.8, strSteveCent[c]);
 
 	}
-	cT->cd(6);
+	cT->cd(8);
 	hframe_pt->Draw();
 	TLegend *legPt = new TLegend(0.2, 0.5, 0.8, 0.9);
 	legPt->SetFillColor(kWhite);
@@ -144,6 +144,19 @@ void fplot(TString s1 = "fresult2_24_19.root")
 	legPt->Draw();
 
 	cT->SaveAs("cumu.pdf");
+
+	TFile f("fsave.root", "recreate");
+	for ( int np = 1; np < 4; np++ ) {
+		for ( int c = 1; c < 6; c++ ) {
+			grV2s[np][c]->SetName(Form("grV2%is_%i", np*2+2, c));
+			grV2s[np][c]->SetTitle(Form("V2%i systematic %s", np*2+2, strSteveCent[c]));
+			grV2s[np][c]->Write();
+
+			grV2[np][c]->SetName(Form("grV2%i_%i", np*2+2, c));
+			grV2[np][c]->SetTitle(Form("V2%i %s", np*2+2, strSteveCent[c]));
+			grV2[np][c]->Write();
+		}
+	}
 }
 
 
