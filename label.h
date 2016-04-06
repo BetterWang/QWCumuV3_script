@@ -63,6 +63,55 @@ char const * fname[] = {
 
 	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysHLT_v11/160321_224347/0000/",	// 55 PbPb HP  AOD  |eta|<1, calo, no eff, L1MinBias HLT
 	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysHLT_v12/160330_184734/0000/",	// 56 PbPb HP  AOD  |eta|<1, calo, no eff, L1MinBias HLT
+
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_v13/160405_110427/0000/",		// 57 PbPb HP AOD final cuts
+	"../PbPb2015/HIMinimumBias1/crab_HIMB1_cal_noeff_v13/160405_125056/0000/",			// 58 MB1
+	"../PbPb2015/HIMinimumBias2/crab_HIMB2_cal_noeff_v13/160405_125109/0000/",			// 59 MB2
+	"../PbPb2015//",										// 60 MB3
+	"../PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_v13/160405_125120/0000/",			// 61 MB4
+	"NA",												// 62 MB all
+
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysEff_v13/160405_114855/0000/",	// 63 PbPb HP AOD sysEff
+	"../PbPb2015/HIMinimumBias1//",									// 64 MB1
+	"../PbPb2015/HIMinimumBias2//",									// 65 MB2
+	"../PbPb2015/HIMinimumBias3//",									// 66 MB3
+	"../PbPb2015/HIMinimumBias4//",									// 67 MB4
+	"NA",												// 68 MB all
+
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysCalo_v13/160405_114810/0000/",	// 69 PbPb HP AOD sysCalo
+	"../PbPb2015/HIMinimumBias1//",									// 70 MB1
+	"../PbPb2015/HIMinimumBias2//",									// 71 MB2
+	"../PbPb2015/HIMinimumBias3//",									// 72 MB3
+	"../PbPb2015/HIMinimumBias4//",									// 73 MB4
+	"NA",												// 74 MB all
+
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysTight_v13/160405_114818/0000/",	// 75 PbPb HP AOD sysTight
+	"../PbPb2015/HIMinimumBias1//",									// 76 MB1
+	"../PbPb2015/HIMinimumBias2//",									// 77 MB2
+	"../PbPb2015/HIMinimumBias3//",									// 78 MB3
+	"../PbPb2015/HIMinimumBias4//",									// 79 MB4
+	"NA",												// 80 MB all
+
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysLoose_v13/160405_114827/0000/",	// 81 PbPb HP AOD sysLoose
+	"../PbPb2015/HIMinimumBias1//",									// 82 MB1
+	"../PbPb2015/HIMinimumBias2//",									// 83 MB2
+	"../PbPb2015/HIMinimumBias3//",									// 84 MB3
+	"../PbPb2015/HIMinimumBias4//",									// 85 MB4
+	"NA",												// 86 MB all
+
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysVz0_v13/160405_114839/0000/",	// 87 PbPb HP AOD sysVz0
+	"../PbPb2015/HIMinimumBias1//",									// 88 MB1
+	"../PbPb2015/HIMinimumBias2//",									// 89 MB2
+	"../PbPb2015/HIMinimumBias3//",									// 90 MB3
+	"../PbPb2015/HIMinimumBias4//",									// 91 MB4
+	"NA",												// 92 MB all
+
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysVz1_v13/160405_114847/0000/",	// 93 PbPb HP AOD sysVz1
+	"../PbPb2015/HIMinimumBias1//",									// 94 MB1
+	"../PbPb2015/HIMinimumBias2//",									// 95 MB2
+	"../PbPb2015/HIMinimumBias3//",									// 96 MB3
+	"../PbPb2015/HIMinimumBias4//",									// 97 MB4
+	"NA",												// 98 MB all
 };
 
 char const * ftxt[] = {
@@ -129,6 +178,55 @@ char const * ftxt[] = {
 
 	"txt/HIHardProbe_noeff_sysHLT_v11/",				// 55
 	"txt/HIHardProbe_noeff_sysHLT_v12/",				// 56
+
+	"txt/HIHardProbe_noeff_v13/",					// 57
+	"txt/HIMB1_noeff_v13/",						// 58
+	"txt/HIMB2_noeff_v13/",						// 59
+	"txt/HIMB3_noeff_v13/",						// 60
+	"txt/HIMB4_noeff_v13/",						// 61
+	"txt/HIMB_noeff_v13/",						// 62
+
+	"txt/HIHardProbe_eff_v13/",					// 63
+	"txt/HIMB1_eff_v13/",						// 64
+	"txt/HIMB2_eff_v13/",						// 65
+	"txt/HIMB3_eff_v13/",						// 66
+	"txt/HIMB4_eff_v13/",						// 67
+	"txt/HIMB_eff_v13/",						// 68
+
+	"txt/HIHardProbe_sysCalo_v13/",					// 69
+	"txt/HIMB1_sysCalo_v13/",					// 70
+	"txt/HIMB2_sysCalo_v13/",					// 71
+	"txt/HIMB3_sysCalo_v13/",					// 72
+	"txt/HIMB4_sysCalo_v13/",					// 73
+	"txt/HIMB_sysCalo_v13/",					// 74
+
+	"txt/HIHardProbe_sysTight_v13/",				// 75
+	"txt/HIMB1_sysTight_v13/",					// 76
+	"txt/HIMB2_sysTight_v13/",					// 77
+	"txt/HIMB3_sysTight_v13/",					// 78
+	"txt/HIMB4_sysTight_v13/",					// 79
+	"txt/HIMB_sysTight_v13/",					// 80
+
+	"txt/HIHardProbe_sysLoose_v13/",				// 81
+	"txt/HIMB1_sysLoose_v13/",					// 82
+	"txt/HIMB2_sysLoose_v13/",					// 83
+	"txt/HIMB3_sysLoose_v13/",					// 84
+	"txt/HIMB4_sysLoose_v13/",					// 85
+	"txt/HIMB_sysLoose_v13/",					// 86
+
+	"txt/HIHardProbe_sysVz0_v13/",					// 87
+	"txt/HIMB1_sysVz0_v13/",					// 88
+	"txt/HIMB2_sysVz0_v13/",					// 89
+	"txt/HIMB3_sysVz0_v13/",					// 90
+	"txt/HIMB4_sysVz0_v13/",					// 91
+	"txt/HIMB_sysVz0_v13/",						// 92
+
+	"txt/HIHardProbe_sysVz1_v13/",					// 93
+	"txt/HIMB1_sysVz1_v13/",					// 94
+	"txt/HIMB2_sysVz1_v13/",					// 95
+	"txt/HIMB3_sysVz1_v13/",					// 96
+	"txt/HIMB4_sysVz1_v13/",					// 97
+	"txt/HIMB_sysVz1_v13/",						// 98
 };
 
 #include <TChain.h>
