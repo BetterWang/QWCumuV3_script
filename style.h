@@ -94,6 +94,7 @@
    }
 }
 
+TStyle *tdrStyle = new TStyle("tdrStyle","Style for P-TDR");
 
 void SetStyle() {
 
@@ -201,7 +202,7 @@ void SetStyle() {
 //  MITStyle->SetErrorX(0);
 
   MITStyle->SetPalette    (1,0);
-  return();
+  return;
 }
 void InitHist(TH1        *hist,
 	      const char *xtit,
@@ -219,22 +220,16 @@ void InitHist(TH1        *hist,
   hist->SetTitleOffset(1.10,"Z");
   hist->SetLabelOffset(0.008,"Y");
   hist->SetLabelSize  (0.050,"Y");
-  hist->SetLabelFont  (42   ,"X");
   hist->SetLabelFont  (42   ,"Y");
   hist->SetMarkerStyle(20);
   hist->SetMarkerColor(color);
   hist->SetMarkerSize (0.6);
   // Strangely enough this cannot be set anywhere else??
+  hist->GetXaxis()->SetLabelSize(0.05);
+  hist->GetYaxis()->SetTitleFont(42);
   hist->GetXaxis()->CenterTitle();
   hist->GetYaxis()->CenterTitle();
-  hist->SetTitle("");
-
-  hist->SetLabelFont(43);
-  hist->SetLabelSize(26);
-
-  hist->SetTitleFont(43);
-  hist->SetTitleSize(26);
-  hist->SetTitleOffset(2.00,"X");
+  hist->SetTitle("");  
   return;
 }
 
@@ -360,7 +355,6 @@ void fixOverlay() {
 }
 
 void setTDRStyle() {
-  TStyle *tdrStyle = new TStyle("tdrStyle","Style for P-TDR");
 
 // For the canvas:
   tdrStyle->SetCanvasBorderMode(0);
@@ -500,4 +494,86 @@ void setTDRStyle() {
 
   tdrStyle->cd();
 
+}
+
+void CanvasPartition(TCanvas *C,const Int_t Nx,const Int_t Ny,
+                     Float_t lMargin, Float_t rMargin,
+                     Float_t bMargin, Float_t tMargin)
+{
+   if (!C) return;
+
+   // Setup Pad layout:
+   Float_t vSpacing = 0.0;
+   Float_t vStep  = (1.- bMargin - tMargin - (Ny-1) * vSpacing) / Ny;
+
+   Float_t hSpacing = 0.0;
+   Float_t hStep  = (1.- lMargin - rMargin - (Nx-1) * hSpacing) / Nx;
+
+   Float_t vposd,vposu,vmard,vmaru,vfactor;
+   Float_t hposl,hposr,hmarl,hmarr,hfactor;
+
+   for (Int_t i=0;i<Nx;i++) {
+
+      if (i==0) {
+         hposl = 0.0;
+         hposr = lMargin + hStep;
+         hfactor = hposr-hposl;
+         hmarl = lMargin / hfactor;
+         hmarr = 0.0;
+      } else if (i == Nx-1) {
+         hposl = hposr + hSpacing;
+         hposr = hposl + hStep + rMargin;
+         hfactor = hposr-hposl;
+         hmarl = 0.0;
+         hmarr = rMargin / (hposr-hposl);
+      } else {
+         hposl = hposr + hSpacing;
+         hposr = hposl + hStep;
+         hfactor = hposr-hposl;
+         hmarl = 0.0;
+         hmarr = 0.0;
+      }
+
+      for (Int_t j=0;j<Ny;j++) {
+
+         if (j==0) {
+            vposd = 0.0;
+            vposu = bMargin + vStep;
+            vfactor = vposu-vposd;
+            vmard = bMargin / vfactor;
+            vmaru = 0.0;
+         } else if (j == Ny-1) {
+            vposd = vposu + vSpacing;
+            vposu = vposd + vStep + tMargin;
+            vfactor = vposu-vposd;
+            vmard = 0.0;
+            vmaru = tMargin / (vposu-vposd);
+         } else {
+            vposd = vposu + vSpacing;
+            vposu = vposd + vStep;
+            vfactor = vposu-vposd;
+            vmard = 0.0;
+            vmaru = 0.0;
+         }
+
+         C->cd(0);
+
+         char name[16];
+         sprintf(name,"pad_%i_%i",i,j);
+         TPad *pad = (TPad*) gROOT->FindObject(name);
+         if (pad) delete pad;
+         pad = new TPad(name,"",hposl,vposd,hposr,vposu);
+         pad->SetLeftMargin(hmarl);
+         pad->SetRightMargin(hmarr);
+         pad->SetBottomMargin(vmard);
+         pad->SetTopMargin(vmaru);
+
+         pad->SetFrameBorderMode(0);
+         pad->SetBorderMode(0);
+         pad->SetBorderSize(0);
+
+         pad->Draw();
+	 pad->SetNumber(Ny*j+i+1);
+      }
+   }
 }

@@ -1,9 +1,9 @@
 1) process.C to get raw histo
 2) bGet.C to get derived C, rebin, runGet.sh
-3) bGetError.C to get stat. err, 
+3) bGetError.C to get stat. err,
 4) genPlot.C to get final object
-5) mergeTrig.C
-6) fplot.C
+5) mergeTrig.C merge MB+HP
+6) fplot.C clean up data points, generate syst.
 7) plot.C final plot
 
 A) EP.C

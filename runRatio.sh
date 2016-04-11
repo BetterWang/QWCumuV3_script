@@ -49,24 +49,24 @@
 #root -l -b -q "mergeTrig.C(24, 19)"
 ###### eff
 #root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V24_0", "v_{2}{4} with eff", "v_{2}{4} 0 - 5 %"   )' -b -q
-#root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V24_1", "v_{2}{4} with eff", "v_{2}{4} 5 - 10 %"  )' -b -q
-root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V24_2", "v_{2}{4} with eff", "v_{2}{4} 10 - 20 %"  )' -b -q
+root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V24_1", "v_{2}{4} with eff", "v_{2}{4} 5 - 10 %"  )' -b -q
+#root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V24_2", "v_{2}{4} with eff", "v_{2}{4} 10 - 20 %"  )' -b -q
 #root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V24_3", "v_{2}{4} with eff", "v_{2}{4} 20 - 30 %"  )' -b -q
 #root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V24_4", "v_{2}{4} with eff", "v_{2}{4} 30 - 40 %"  )' -b -q
 #root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V24_5", "v_{2}{4} with eff", "v_{2}{4} 40 - 50 %"  )' -b -q
 #root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V24_6", "v_{2}{4} with eff", "v_{2}{4} 50 - 60 %"  )' -b -q
 #
 #root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V26_0", "v_{2}{6} with eff", "v_{2}{6} 0 - 5 %"    )' -b -q
-#root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V26_1", "v_{2}{6} with eff", "v_{2}{6} 5 - 10 %"   )' -b -q
-root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V26_2", "v_{2}{6} with eff", "v_{2}{6} 10 - 20 %"  )' -b -q
+root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V26_1", "v_{2}{6} with eff", "v_{2}{6} 5 - 10 %"   )' -b -q
+#root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V26_2", "v_{2}{6} with eff", "v_{2}{6} 10 - 20 %"  )' -b -q
 #root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V26_3", "v_{2}{6} with eff", "v_{2}{6} 20 - 30 %"  )' -b -q
 #root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V26_4", "v_{2}{6} with eff", "v_{2}{6} 30 - 40 %"  )' -b -q
 #root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V26_5", "v_{2}{6} with eff", "v_{2}{6} 40 - 50 %"  )' -b -q
 #root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V26_6", "v_{2}{6} with eff", "v_{2}{6} 50 - 60 %"  )' -b -q
 #
 #root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V28_0", "v_{2}{8} with eff", "v_{2}{8} 0 - 5 %"    )' -b -q
-#root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V28_1", "v_{2}{8} with eff", "v_{2}{8} 5 - 10 %"   )' -b -q
-root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V28_2", "v_{2}{8} with eff", "v_{2}{8} 10 - 20 %"  )' -b -q
+root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V28_1", "v_{2}{8} with eff", "v_{2}{8} 5 - 10 %"   )' -b -q
+#root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V28_2", "v_{2}{8} with eff", "v_{2}{8} 10 - 20 %"  )' -b -q
 #root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V28_3", "v_{2}{8} with eff", "v_{2}{8} 20 - 30 %"  )' -b -q
 #root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V28_4", "v_{2}{8} with eff", "v_{2}{8} 30 - 40 %"  )' -b -q
 #root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V28_5", "v_{2}{8} with eff", "v_{2}{8} 40 - 50 %"  )' -b -q
@@ -74,24 +74,24 @@ root -l 'compare3.C("fresult2_18_13.root", "fresult2_24_19.root", "gr_V28_2", "v
 #
 #######  calo
 #root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V24_0", "v_{2}{4} without caloMatch", "v_{2}{4} 0 - 5 %"    )' -b -q
-#root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V24_1", "v_{2}{4} without caloMatch", "v_{2}{4} 5 - 10 %"   )' -b -q
-root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V24_2", "v_{2}{4} without caloMatch", "v_{2}{4} 10 - 20 %"  )' -b -q
+root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V24_1", "v_{2}{4} without caloMatch", "v_{2}{4} 5 - 10 %"   )' -b -q
+#root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V24_2", "v_{2}{4} without caloMatch", "v_{2}{4} 10 - 20 %"  )' -b -q
 #root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V24_3", "v_{2}{4} without caloMatch", "v_{2}{4} 20 - 30 %"  )' -b -q
 #root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V24_4", "v_{2}{4} without caloMatch", "v_{2}{4} 30 - 40 %"  )' -b -q
 #root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V24_5", "v_{2}{4} without caloMatch", "v_{2}{4} 40 - 50 %"  )' -b -q
 #root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V24_6", "v_{2}{4} without caloMatch", "v_{2}{4} 50 - 60 %"  )' -b -q
 #
 #root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V26_0", "v_{2}{6} without caloMatch", "v_{2}{6} 0 - 5 %"    )' -b -q
-#root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V26_1", "v_{2}{6} without caloMatch", "v_{2}{6} 5 - 10 %"   )' -b -q
-root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V26_2", "v_{2}{6} without caloMatch", "v_{2}{6} 10 - 20 %"  )' -b -q
+root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V26_1", "v_{2}{6} without caloMatch", "v_{2}{6} 5 - 10 %"   )' -b -q
+#root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V26_2", "v_{2}{6} without caloMatch", "v_{2}{6} 10 - 20 %"  )' -b -q
 #root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V26_3", "v_{2}{6} without caloMatch", "v_{2}{6} 20 - 30 %"  )' -b -q
 #root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V26_4", "v_{2}{6} without caloMatch", "v_{2}{6} 30 - 40 %"  )' -b -q
 #root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V26_5", "v_{2}{6} without caloMatch", "v_{2}{6} 40 - 50 %"  )' -b -q
 #root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V26_6", "v_{2}{6} without caloMatch", "v_{2}{6} 50 - 60 %"  )' -b -q
 #
 #root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V28_0", "v_{2}{8} without caloMatch", "v_{2}{8} 0 - 5 %"    )' -b -q
-#root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V28_1", "v_{2}{8} without caloMatch", "v_{2}{8} 5 - 10 %"   )' -b -q
-root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V28_2", "v_{2}{8} without caloMatch", "v_{2}{8} 10 - 20 %"  )' -b -q
+root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V28_1", "v_{2}{8} without caloMatch", "v_{2}{8} 5 - 10 %"   )' -b -q
+#root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V28_2", "v_{2}{8} without caloMatch", "v_{2}{8} 10 - 20 %"  )' -b -q
 #root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V28_3", "v_{2}{8} without caloMatch", "v_{2}{8} 20 - 30 %"  )' -b -q
 #root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V28_4", "v_{2}{8} without caloMatch", "v_{2}{8} 30 - 40 %"  )' -b -q
 #root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V28_5", "v_{2}{8} without caloMatch", "v_{2}{8} 40 - 50 %"  )' -b -q
@@ -99,24 +99,24 @@ root -l 'compare3.C("fresult2_30_25.root", "fresult2_24_19.root", "gr_V28_2", "v
 #
 ####### Tight
 #root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V24_0", "v_{2}{4} tight", "v_{2}{4} 0 - 5 %"    )' -b -q
-#root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V24_1", "v_{2}{4} tight", "v_{2}{4} 5 - 10 %"   )' -b -q
-root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V24_2", "v_{2}{4} tight", "v_{2}{4} 10 - 20 %"  )' -b -q
+root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V24_1", "v_{2}{4} tight", "v_{2}{4} 5 - 10 %"   )' -b -q
+#root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V24_2", "v_{2}{4} tight", "v_{2}{4} 10 - 20 %"  )' -b -q
 #root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V24_3", "v_{2}{4} tight", "v_{2}{4} 20 - 30 %"  )' -b -q
 #root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V24_4", "v_{2}{4} tight", "v_{2}{4} 30 - 40 %"  )' -b -q
 #root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V24_5", "v_{2}{4} tight", "v_{2}{4} 40 - 50 %"  )' -b -q
 #root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V24_6", "v_{2}{4} tight", "v_{2}{4} 50 - 60 %"  )' -b -q
 #
 #root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V26_0", "v_{2}{6} tight", "v_{2}{6} 0 - 5 %"    )' -b -q
-#root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V26_1", "v_{2}{6} tight", "v_{2}{6} 5 - 10 %"   )' -b -q
-root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V26_2", "v_{2}{6} tight", "v_{2}{6} 10 - 20 %"  )' -b -q
+root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V26_1", "v_{2}{6} tight", "v_{2}{6} 5 - 10 %"   )' -b -q
+#root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V26_2", "v_{2}{6} tight", "v_{2}{6} 10 - 20 %"  )' -b -q
 #root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V26_3", "v_{2}{6} tight", "v_{2}{6} 20 - 30 %"  )' -b -q
 #root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V26_4", "v_{2}{6} tight", "v_{2}{6} 30 - 40 %"  )' -b -q
 #root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V26_5", "v_{2}{6} tight", "v_{2}{6} 40 - 50 %"  )' -b -q
 #root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V26_6", "v_{2}{6} tight", "v_{2}{6} 50 - 60 %"  )' -b -q
 #
 #root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V28_0", "v_{2}{8} tight", "v_{2}{8} 0 - 5 %"    )' -b -q
-#root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V28_1", "v_{2}{8} tight", "v_{2}{8} 5 - 10 %"   )' -b -q
-root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V28_2", "v_{2}{8} tight", "v_{2}{8} 10 - 20 %"  )' -b -q
+root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V28_1", "v_{2}{8} tight", "v_{2}{8} 5 - 10 %"   )' -b -q
+#root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V28_2", "v_{2}{8} tight", "v_{2}{8} 10 - 20 %"  )' -b -q
 #root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V28_3", "v_{2}{8} tight", "v_{2}{8} 20 - 30 %"  )' -b -q
 #root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V28_4", "v_{2}{8} tight", "v_{2}{8} 30 - 40 %"  )' -b -q
 #root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V28_5", "v_{2}{8} tight", "v_{2}{8} 40 - 50 %"  )' -b -q
@@ -124,24 +124,24 @@ root -l 'compare3.C("fresult2_36_31.root", "fresult2_24_19.root", "gr_V28_2", "v
 #
 ####### Loose
 #root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V24_0", "v_{2}{4} loose", "v_{2}{4} 0 - 5 %"    )' -b -q
-#root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V24_1", "v_{2}{4} loose", "v_{2}{4} 5 - 10 %"   )' -b -q
-root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V24_2", "v_{2}{4} loose", "v_{2}{4} 10 - 20 %"  )' -b -q
+root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V24_1", "v_{2}{4} loose", "v_{2}{4} 5 - 10 %"   )' -b -q
+#root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V24_2", "v_{2}{4} loose", "v_{2}{4} 10 - 20 %"  )' -b -q
 #root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V24_3", "v_{2}{4} loose", "v_{2}{4} 20 - 30 %"  )' -b -q
 #root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V24_4", "v_{2}{4} loose", "v_{2}{4} 30 - 40 %"  )' -b -q
 #root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V24_5", "v_{2}{4} loose", "v_{2}{4} 40 - 50 %"  )' -b -q
 #root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V24_6", "v_{2}{4} loose", "v_{2}{4} 50 - 60 %"  )' -b -q
 #
 #root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V26_0", "v_{2}{6} loose", "v_{2}{6} 0 - 5 %"    )' -b -q
-#root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V26_1", "v_{2}{6} loose", "v_{2}{6} 5 - 10 %"   )' -b -q
-root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V26_2", "v_{2}{6} loose", "v_{2}{6} 10 - 20 %"  )' -b -q
+root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V26_1", "v_{2}{6} loose", "v_{2}{6} 5 - 10 %"   )' -b -q
+#root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V26_2", "v_{2}{6} loose", "v_{2}{6} 10 - 20 %"  )' -b -q
 #root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V26_3", "v_{2}{6} loose", "v_{2}{6} 20 - 30 %"  )' -b -q
 #root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V26_4", "v_{2}{6} loose", "v_{2}{6} 30 - 40 %"  )' -b -q
 #root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V26_5", "v_{2}{6} loose", "v_{2}{6} 40 - 50 %"  )' -b -q
 #root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V26_6", "v_{2}{6} loose", "v_{2}{6} 50 - 60 %"  )' -b -q
 #
 #root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V28_0", "v_{2}{8} loose", "v_{2}{8} 0 - 5 %"    )' -b -q
-#root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V28_1", "v_{2}{8} loose", "v_{2}{8} 5 - 10 %"   )' -b -q
-root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V28_2", "v_{2}{8} loose", "v_{2}{8} 10 - 20 %"  )' -b -q
+root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V28_1", "v_{2}{8} loose", "v_{2}{8} 5 - 10 %"   )' -b -q
+#root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V28_2", "v_{2}{8} loose", "v_{2}{8} 10 - 20 %"  )' -b -q
 #root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V28_3", "v_{2}{8} loose", "v_{2}{8} 20 - 30 %"  )' -b -q
 #root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V28_4", "v_{2}{8} loose", "v_{2}{8} 30 - 40 %"  )' -b -q
 #root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V28_5", "v_{2}{8} loose", "v_{2}{8} 40 - 50 %"  )' -b -q
@@ -149,24 +149,24 @@ root -l 'compare3.C("fresult2_42_37.root", "fresult2_24_19.root", "gr_V28_2", "v
 #
 ####### Vz0
 #root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V24_0", "v_{2}{4} |vz| < 3", "v_{2}{4} 0 - 5 %"    )' -b -q
-#root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V24_1", "v_{2}{4} |vz| < 3", "v_{2}{4} 5 - 10 %"   )' -b -q
-root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V24_2", "v_{2}{4} |vz| < 3", "v_{2}{4} 10 - 20 %"  )' -b -q
+root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V24_1", "v_{2}{4} |vz| < 3", "v_{2}{4} 5 - 10 %"   )' -b -q
+#root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V24_2", "v_{2}{4} |vz| < 3", "v_{2}{4} 10 - 20 %"  )' -b -q
 #root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V24_3", "v_{2}{4} |vz| < 3", "v_{2}{4} 20 - 30 %"  )' -b -q
 #root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V24_4", "v_{2}{4} |vz| < 3", "v_{2}{4} 30 - 40 %"  )' -b -q
 #root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V24_5", "v_{2}{4} |vz| < 3", "v_{2}{4} 40 - 50 %"  )' -b -q
 #root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V24_6", "v_{2}{4} |vz| < 3", "v_{2}{4} 50 - 60 %"  )' -b -q
 #
 #root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V26_0", "v_{2}{6} |vz| < 3", "v_{2}{6} 0 - 5 %"    )' -b -q
-#root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V26_1", "v_{2}{6} |vz| < 3", "v_{2}{6} 5 - 10 %"   )' -b -q
-root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V26_2", "v_{2}{6} |vz| < 3", "v_{2}{6} 10 - 20 %"  )' -b -q
+root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V26_1", "v_{2}{6} |vz| < 3", "v_{2}{6} 5 - 10 %"   )' -b -q
+#root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V26_2", "v_{2}{6} |vz| < 3", "v_{2}{6} 10 - 20 %"  )' -b -q
 #root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V26_3", "v_{2}{6} |vz| < 3", "v_{2}{6} 20 - 30 %"  )' -b -q
 #root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V26_4", "v_{2}{6} |vz| < 3", "v_{2}{6} 30 - 40 %"  )' -b -q
 #root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V26_5", "v_{2}{6} |vz| < 3", "v_{2}{6} 40 - 50 %"  )' -b -q
 #root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V26_6", "v_{2}{6} |vz| < 3", "v_{2}{6} 50 - 60 %"  )' -b -q
 #
 #root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V28_0", "v_{2}{8} |vz| < 3", "v_{2}{8} 0 - 5 %"    )' -b -q
-#root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V28_1", "v_{2}{8} |vz| < 3", "v_{2}{8} 5 - 10 %"   )' -b -q
-root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V28_2", "v_{2}{8} |vz| < 3", "v_{2}{8} 10 - 20 %"  )' -b -q
+root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V28_1", "v_{2}{8} |vz| < 3", "v_{2}{8} 5 - 10 %"   )' -b -q
+#root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V28_2", "v_{2}{8} |vz| < 3", "v_{2}{8} 10 - 20 %"  )' -b -q
 #root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V28_3", "v_{2}{8} |vz| < 3", "v_{2}{8} 20 - 30 %"  )' -b -q
 #root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V28_4", "v_{2}{8} |vz| < 3", "v_{2}{8} 30 - 40 %"  )' -b -q
 #root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V28_5", "v_{2}{8} |vz| < 3", "v_{2}{8} 40 - 50 %"  )' -b -q
@@ -174,24 +174,24 @@ root -l 'compare3.C("fresult2_48_43.root", "fresult2_24_19.root", "gr_V28_2", "v
 #
 ####### Vz1
 #root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V24_0", "v_{2}{4} 3 < |vz| < 15", "v_{2}{4} 0 - 5 %"    )' -b -q
-#root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V24_1", "v_{2}{4} 3 < |vz| < 15", "v_{2}{4} 5 - 10 %"   )' -b -q
-root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V24_2", "v_{2}{4} 3 < |vz| < 15", "v_{2}{4} 10 - 20 %"  )' -b -q
+root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V24_1", "v_{2}{4} 3 < |vz| < 15", "v_{2}{4} 5 - 10 %"   )' -b -q
+#root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V24_2", "v_{2}{4} 3 < |vz| < 15", "v_{2}{4} 10 - 20 %"  )' -b -q
 #root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V24_3", "v_{2}{4} 3 < |vz| < 15", "v_{2}{4} 20 - 30 %"  )' -b -q
 #root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V24_4", "v_{2}{4} 3 < |vz| < 15", "v_{2}{4} 30 - 40 %"  )' -b -q
 #root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V24_5", "v_{2}{4} 3 < |vz| < 15", "v_{2}{4} 40 - 50 %"  )' -b -q
 #root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V24_6", "v_{2}{4} 3 < |vz| < 15", "v_{2}{4} 50 - 60 %"  )' -b -q
 #
 #root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V26_0", "v_{2}{6} 3 < |vz| < 15", "v_{2}{6} 0 - 5 %"    )' -b -q
-#root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V26_1", "v_{2}{6} 3 < |vz| < 15", "v_{2}{6} 5 - 10 %"   )' -b -q
-root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V26_2", "v_{2}{6} 3 < |vz| < 15", "v_{2}{6} 10 - 20 %"  )' -b -q
+root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V26_1", "v_{2}{6} 3 < |vz| < 15", "v_{2}{6} 5 - 10 %"   )' -b -q
+#root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V26_2", "v_{2}{6} 3 < |vz| < 15", "v_{2}{6} 10 - 20 %"  )' -b -q
 #root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V26_3", "v_{2}{6} 3 < |vz| < 15", "v_{2}{6} 20 - 30 %"  )' -b -q
 #root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V26_4", "v_{2}{6} 3 < |vz| < 15", "v_{2}{6} 30 - 40 %"  )' -b -q
 #root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V26_5", "v_{2}{6} 3 < |vz| < 15", "v_{2}{6} 40 - 50 %"  )' -b -q
 #root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V26_6", "v_{2}{6} 3 < |vz| < 15", "v_{2}{6} 50 - 60 %"  )' -b -q
 #
 #root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V28_0", "v_{2}{8} 3 < |vz| < 15", "v_{2}{8} 0 - 5 %"    )' -b -q
-#root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V28_1", "v_{2}{8} 3 < |vz| < 15", "v_{2}{8} 5 - 10 %"   )' -b -q
-root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V28_2", "v_{2}{8} 3 < |vz| < 15", "v_{2}{8} 10 - 20 %"  )' -b -q
+root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V28_1", "v_{2}{8} 3 < |vz| < 15", "v_{2}{8} 5 - 10 %"   )' -b -q
+#root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V28_2", "v_{2}{8} 3 < |vz| < 15", "v_{2}{8} 10 - 20 %"  )' -b -q
 #root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V28_3", "v_{2}{8} 3 < |vz| < 15", "v_{2}{8} 20 - 30 %"  )' -b -q
 #root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V28_4", "v_{2}{8} 3 < |vz| < 15", "v_{2}{8} 30 - 40 %"  )' -b -q
 #root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V28_5", "v_{2}{8} 3 < |vz| < 15", "v_{2}{8} 40 - 50 %"  )' -b -q
@@ -200,7 +200,7 @@ root -l 'compare3.C("fresult2_54_49.root", "fresult2_24_19.root", "gr_V28_2", "v
 ###### HLT
 #root -l 'compare3.C("fresult2_24_56.root", "fresult2_24_19.root", "gr_V24_0", "v_{2}{4} L1MinimumBias", "v_{2}{4} 0 - 5 %"    )' -b -q
 #root -l 'compare3.C("fresult2_24_56.root", "fresult2_24_19.root", "gr_V24_1", "v_{2}{4} L1MinimumBias", "v_{2}{4} 5 - 10 %"   )' -b -q
-root -l 'compare3.C("fresult2_24_56.root", "fresult2_24_19.root", "gr_V24_2", "v_{2}{4} L1MinimumBias", "v_{2}{4} 10 - 20 %"  )' -b -q
+#root -l 'compare3.C("fresult2_24_56.root", "fresult2_24_19.root", "gr_V24_2", "v_{2}{4} L1MinimumBias", "v_{2}{4} 10 - 20 %"  )' -b -q
 #root -l 'compare3.C("fresult2_24_56.root", "fresult2_24_19.root", "gr_V24_3", "v_{2}{4} L1MinimumBias", "v_{2}{4} 20 - 30 %"  )' -b -q
 #root -l 'compare3.C("fresult2_24_56.root", "fresult2_24_19.root", "gr_V24_4", "v_{2}{4} L1MinimumBias", "v_{2}{4} 30 - 40 %"  )' -b -q
 #root -l 'compare3.C("fresult2_24_56.root", "fresult2_24_19.root", "gr_V24_5", "v_{2}{4} L1MinimumBias", "v_{2}{4} 40 - 50 %"  )' -b -q
@@ -208,7 +208,7 @@ root -l 'compare3.C("fresult2_24_56.root", "fresult2_24_19.root", "gr_V24_2", "v
 #
 #root -l 'compare3.C("fresult2_24_56.root", "fresult2_24_19.root", "gr_V26_0", "v_{2}{6} L1MinimumBias", "v_{2}{6} 0 - 5 %"    )' -b -q
 #root -l 'compare3.C("fresult2_24_56.root", "fresult2_24_19.root", "gr_V26_1", "v_{2}{6} L1MinimumBias", "v_{2}{6} 5 - 10 %"   )' -b -q
-root -l 'compare3.C("fresult2_24_56.root", "fresult2_24_19.root", "gr_V26_2", "v_{2}{6} L1MinimumBias", "v_{2}{6} 10 - 20 %"  )' -b -q
+#root -l 'compare3.C("fresult2_24_56.root", "fresult2_24_19.root", "gr_V26_2", "v_{2}{6} L1MinimumBias", "v_{2}{6} 10 - 20 %"  )' -b -q
 #root -l 'compare3.C("fresult2_24_56.root", "fresult2_24_19.root", "gr_V26_3", "v_{2}{6} L1MinimumBias", "v_{2}{6} 20 - 30 %"  )' -b -q
 #root -l 'compare3.C("fresult2_24_56.root", "fresult2_24_19.root", "gr_V26_4", "v_{2}{6} L1MinimumBias", "v_{2}{6} 30 - 40 %"  )' -b -q
 #root -l 'compare3.C("fresult2_24_56.root", "fresult2_24_19.root", "gr_V26_5", "v_{2}{6} L1MinimumBias", "v_{2}{6} 40 - 50 %"  )' -b -q
@@ -216,7 +216,7 @@ root -l 'compare3.C("fresult2_24_56.root", "fresult2_24_19.root", "gr_V26_2", "v
 #
 #root -l 'compare3.C("fresult2_24_56.root", "fresult2_24_19.root", "gr_V28_0", "v_{2}{8} L1MinimumBias", "v_{2}{8} 0 - 5 %"    )' -b -q
 #root -l 'compare3.C("fresult2_24_56.root", "fresult2_24_19.root", "gr_V28_1", "v_{2}{8} L1MinimumBias", "v_{2}{8} 5 - 10 %"   )' -b -q
-root -l 'compare3.C("fresult2_24_56.root", "fresult2_24_19.root", "gr_V28_2", "v_{2}{8} L1MinimumBias", "v_{2}{8} 10 - 20 %"  )' -b -q
+#root -l 'compare3.C("fresult2_24_56.root", "fresult2_24_19.root", "gr_V28_2", "v_{2}{8} L1MinimumBias", "v_{2}{8} 10 - 20 %"  )' -b -q
 #root -l 'compare3.C("fresult2_24_56.root", "fresult2_24_19.root", "gr_V28_3", "v_{2}{8} L1MinimumBias", "v_{2}{8} 20 - 30 %"  )' -b -q
 #root -l 'compare3.C("fresult2_24_56.root", "fresult2_24_19.root", "gr_V28_4", "v_{2}{8} L1MinimumBias", "v_{2}{8} 30 - 40 %"  )' -b -q
 #root -l 'compare3.C("fresult2_24_56.root", "fresult2_24_19.root", "gr_V28_5", "v_{2}{8} L1MinimumBias", "v_{2}{8} 40 - 50 %"  )' -b -q
