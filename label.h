@@ -74,14 +74,14 @@ char const * fname[] = {
 	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysEff_v13/160405_114855/0000/",	// 63 PbPb HP AOD sysEff
 	"../PbPb2015/HIMinimumBias1/crab_HIMB1_cal_eff_v13/160407_203940/0000/",			// 64 MB1
 	"../PbPb2015/HIMinimumBias2/crab_HIMB2_cal_eff_v14/160412_181108/0000/",			// 65 MB2
-	"",			// 66 MB3
+	"../PbPb2015/HIMinimumBias3/crab_HIMB3_cal_eff_v14/160412_182621/0000/",			// 66 MB3
 	"../PbPb2015/HIMinimumBias4/crab_HIMB4_cal_eff_v13/160407_210005/0000/",			// 67 MB4
 	"NA",												// 68 MB all
 
 	"../PbPb2015/HIHardProbes/crab_HIHardProbes_Skim_cumu_noeff_sysCalo_v13/160405_114810/0000/",	// 69 PbPb HP AOD sysCalo
 	"../PbPb2015/HIMinimumBias1/crab_HIMB1_cal_noeff_sysCalo_v13/160407_203858/0000/",		// 70 MB1
 	"../PbPb2015/HIMinimumBias2/crab_HIMB2_cal_noeff_sysCalo_v13/160407_205612/0000/",		// 71 MB2
-	"",		// 72 MB3
+	"../PbPb2015/HIMinimumBias3/crab_HIMB3_cal_noeff_sysCalo_v14/160412_182613/0000/",		// 72 MB3
 	"../PbPb2015/HIMinimumBias4/crab_HIMB4_cal_noeff_sysCalo_v13/160407_205920/0000/",		// 73 MB4
 	"NA",												// 74 MB all
 
