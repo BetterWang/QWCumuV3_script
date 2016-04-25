@@ -4,7 +4,7 @@
 // 3, 30 - 40
 // 4, 40 - 50
 // 5, 50 - 60
-TMultiGraph * mgrHIN11012_v2[6] = {};
+TMultiGraph * mgrHIN11012_v2[20] = {};
 TGraphErrors * grHIN_v2pt[6] = {};
 TGraphErrors * grHIN_v2pt_sys[6] = {};
 

@@ -10,7 +10,7 @@ TColor *blue = new TColor(3003, 0, 0, 1, "blue", 0.4);
 
 void QuanCumu()
 {
-	TFile * fCumu = new TFile("QuanCumu.root");
+	TFile * fCumu = new TFile("fsave.root");
 
 	for ( int np = 1; np < 4; np++ ) {
 		for ( int c = 1; c < 6; c++ ) {

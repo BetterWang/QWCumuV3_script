@@ -14,13 +14,15 @@ char const * strSteveCent[8] = {
 TGraphErrors * grV2[4][20];
 TGraphErrors * grV2s[4][20];
 
-double pTlimit[4][20] = {
+double pTlimit[4][20] = 
+{
 	{0},
 	// 0   1    2    3    4   5    6
-	{  0, 60, 100,  80,  80, 60, 0},
-	{  0, 60, 100,  80,  80, 60, 0},
-	{  0, 60, 100,  80,  80, 60, 0},
+	{  0, 80,  80,  80,  100, 60, 0},
+	{  0, 80,  80,  80,  100, 60, 0},
+	{  0, 80,  80,  80,  100, 60, 0},
 };
+
 
 // < 14
 double sys1[4][20] = {
@@ -59,7 +61,7 @@ double sys4[4][20] = {
 };
 
 
-void fplot(TString s1 = "fresult2_24_56.root")
+void fplot(TString s1 = "fresult2_62_57.root")
 {
 	TFile * f1 = new TFile(s1.Data());
 
