@@ -261,8 +261,9 @@ void genPlot(int s1 =2, int sx = 0)
 	TF1 *finputv2 = new TF1("finputv2", "0.165646*exp(-( (x-2.64741)/1.36298 + exp( -(x-2.64741)/1.36298 ) )/2.)", 0.2, 15);
 
 //	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 12, 1, 0, 0.35);
-	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 100, 1, 0, 0.35);
+	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 100, 1, -0.05, 0.35);
 	InitHist(hframe_pt, "p_{T} (GeV/c)", "v_{2}");
+	TLine * line0 = new TLine(0, 0, 100, 0);
 	TH2D * hframe_eta = new TH2D("hframe_eta", "", 1, -2.5, 2.5, 1, 0, 0.35);
 	InitHist(hframe_eta, "#eta", "v_{2}");
 	TH2D * hframe_cent = new TH2D("hframe_cent", "", 1, 0, 100, 1, 0, 0.35);
@@ -291,6 +292,7 @@ void genPlot(int s1 =2, int sx = 0)
 			cT->cd();
 			hframe_pt->GetYaxis()->SetTitle(Form("v_{%i}",n));
 			hframe_pt->Draw();
+			line0->Draw();
 
 			TLegend * legPt = new TLegend(0.2, 0.7, 0.55, 0.9);
 			legPt->SetFillColor(kWhite);
