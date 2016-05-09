@@ -1,5 +1,5 @@
 #root -l -b -q "genPlot.C(99)"
-#root -l -b -q "genPlot.C(62)"
+root -l -b -q "genPlot.C(62)"
 #root -l -b -q "genPlot.C(68)"
 #root -l -b -q "genPlot.C(86)"
 #root -l -b -q "mergeTrig.C(68, 63)" # eff

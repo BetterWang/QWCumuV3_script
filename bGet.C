@@ -204,7 +204,7 @@ void bGet(int s1 = 7, int s2 = 0, int s3 =10, int sx = 0){
 			double nevt = 0;
 			for (int m = pCent[np][i]; m < pCent[np][i+1]; m++ ) {
 				if ( m >= 200 ) continue;
-				nevt += hNoff->GetBinContent(m);
+				nevt += hNoff->GetBinContent(m+1);
 			}
 			hNevtCent[np]->SetBinContent(i+1, nevt);
 		}
@@ -395,6 +395,9 @@ void bGet(int s1 = 7, int s2 = 0, int s3 =10, int sx = 0){
 				fWc[n][np][i]->Write();
 			}
 		}
+	}
+	for ( int i = 0; i < 4; i++ ) {
+		hNevtCent[i]->Write();
 	}
 	fwrite->Close();
 }
