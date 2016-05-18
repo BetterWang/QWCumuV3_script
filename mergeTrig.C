@@ -155,7 +155,7 @@ void mergeTrig(int sMB = 62, int sHP = 57, int n = 2)
 
 	TFile * fsave = new TFile(Form("fresult%i_%i_%i.root", n, sMB, sHP), "recreate" );
 	for ( int np = 0; np < 4; np++ ) {
-		for ( int c = 0; c < 7; c++ ) {
+		for ( int c = 0; c < 13; c++ ) {
 			gr_V2[np][c]->SetName(Form("gr_V%i%i_%i", n, 2+2*np, c));
 			gr_V2[np][c]->Write();
 		}
