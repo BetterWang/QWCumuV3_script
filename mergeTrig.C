@@ -92,7 +92,7 @@ void mergeTrig(int sMB = 62, int sHP = 57, int n = 2)
 
 
 	TCanvas * cT = MakeCanvas("cT", "cT", 600, 500);
-	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 20, 1, 0, 0.35);
+	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 100, 1, 0, 0.35);
 	TH2D * hframe_Ratio = new TH2D("hframe_Ratio", "", 1, 0, 100, 1, 0, 3.99);
 	InitHist(hframe_pt, "p_{T} (GeV/c)", Form("v_{%i}", n));
 	InitHist(hframe_Ratio, "p_{T} (GeV/c)", Form("Ratio v_{%i}", n));
@@ -109,22 +109,22 @@ void mergeTrig(int sMB = 62, int sHP = 57, int n = 2)
 			grSteveSPv2[c]->Draw("P");
 			legPt->AddEntry(grSteveSPv2[c], Form("v_{2}{SP} %s", strSteveCent[c]), "p");
 		}
-		grMB_v2[1][c]->Draw("psame");
-		grMB_v2[2][c]->Draw("psame");
-		grMB_v2[3][c]->Draw("psame");
+//		grMB_v2[1][c]->Draw("psame");
+//		grMB_v2[2][c]->Draw("psame");
+//		grMB_v2[3][c]->Draw("psame");
 
-//		gr_V2[1][c]->Draw("psame");
-//		gr_V2[2][c]->Draw("psame");
-//		gr_V2[3][c]->Draw("psame");
+		gr_V2[1][c]->Draw("psame");
+		gr_V2[2][c]->Draw("psame");
+		gr_V2[3][c]->Draw("psame");
 
 //		legPt->AddEntry(grMB_v2[1][c], Form("v_{%i}{4} MB PbPb", n), "p");
-//		legPt->AddEntry(gr_V2[1][c], Form("v_{%i}{4}", n), "p");
-//		legPt->AddEntry(gr_V2[2][c], Form("v_{%i}{6}", n), "p");
-//		legPt->AddEntry(gr_V2[3][c], Form("v_{%i}{8}", n), "p");
+		legPt->AddEntry(gr_V2[1][c], Form("v_{%i}{4} %.1f - %.1f%%", n, pCent[1][c]/2., pCent[0][c+1]/2.), "p");
+		legPt->AddEntry(gr_V2[2][c], Form("v_{%i}{6} %.1f - %.1f%%", n, pCent[1][c]/2., pCent[0][c+1]/2.), "p");
+		legPt->AddEntry(gr_V2[3][c], Form("v_{%i}{8} %.1f - %.1f%%", n, pCent[1][c]/2., pCent[0][c+1]/2.), "p");
 //		legPt->AddEntry(grMB_v2[1][c], Form("v_{%i}{4} MB %i - %i%%", n, pCent[1][c]/2, pCent[0][c+1]/2), "p");
-		legPt->AddEntry(grMB_v2[1][c], Form("v_{%i}{4} %.1f - %.1f%%", n, pCent[1][c]/2., pCent[0][c+1]/2.), "p");
-		legPt->AddEntry(grMB_v2[2][c], Form("v_{%i}{6} %.1f - %.1f%%", n, pCent[1][c]/2., pCent[0][c+1]/2.), "p");
-		legPt->AddEntry(grMB_v2[3][c], Form("v_{%i}{8} %.1f - %.1f%%", n, pCent[1][c]/2., pCent[0][c+1]/2.), "p");
+//		legPt->AddEntry(grMB_v2[1][c], Form("v_{%i}{4} %.1f - %.1f%%", n, pCent[1][c]/2., pCent[0][c+1]/2.), "p");
+//		legPt->AddEntry(grMB_v2[2][c], Form("v_{%i}{6} %.1f - %.1f%%", n, pCent[1][c]/2., pCent[0][c+1]/2.), "p");
+//		legPt->AddEntry(grMB_v2[3][c], Form("v_{%i}{8} %.1f - %.1f%%", n, pCent[1][c]/2., pCent[0][c+1]/2.), "p");
 
 		legPt->Draw();
 		cT->SaveAs(Form("v%i_%i.pdf", n, c));
