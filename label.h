@@ -114,6 +114,7 @@ char const * fname[] = {
 	"NA",												// 98 MB all
 
 	"../PbPb2015/PYTHIA_QCD_TuneCUETP8M1_cfi_GEN_SIM_5020GeV/pythia/",				// 99 dijet embedded
+	"../PbPb2015/HIHardProbes/crab_HIHardProbes_fullpt_35_v1/160531_132457/0000",			// 100 PbPb HP AOD fullpt35
 };
 
 char const * ftxt[] = {
@@ -230,6 +231,8 @@ char const * ftxt[] = {
 	"txt/HIMB4_sysVz1_v13/",					// 97
 	"txt/HIMB_sysVz1_v13/",						// 98
 	"txt/pythia/",							// 99
+
+	"txt/HIHardProbe_fullpt35_v13_v1/",				// 100
 };
 
 #include <TChain.h>
