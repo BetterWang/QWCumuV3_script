@@ -115,6 +115,8 @@ char const * fname[] = {
 
 	"../PbPb2015/PYTHIA_QCD_TuneCUETP8M1_cfi_GEN_SIM_5020GeV/pythia/",				// 99 dijet embedded
 	"../PbPb2015/HIHardProbes/crab_HIHardProbes_fullpt_35_v1/160531_132457/0000",			// 100 PbPb HP AOD fullpt35
+/////////////////////////
+	"../PbPb2015/HIMinimumBias2/crab_HIMB2_pixel_noeff_v1/160705_120114/0000/",			// 101 PbPb15 HIMB2 pixel private 0.3 < pT < 3.0, |eta|<2.4
 };
 
 char const * ftxt[] = {
@@ -233,6 +235,8 @@ char const * ftxt[] = {
 	"txt/pythia/",							// 99
 
 	"txt/HIHardProbe_fullpt35_v13_v1/",				// 100
+//////////////
+	"txt/HIMB2_pixel_noeff_v1/",					// 101
 };
 
 #include <TChain.h>
