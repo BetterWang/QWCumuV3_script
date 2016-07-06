@@ -1,4 +1,4 @@
-./runGetE3.sh 62
+./runGetE4.sh 100 10 4
 #./runGetE3.sh 68
 #./runGetE3.sh 86
 
@@ -8,10 +8,11 @@
 #./runGetE3.sh 92
 #./runGetE3.sh 98
 
-./runGetE4.sh 57 10 1 
-./runGetE4.sh 57 10 2 
-./runGetE4.sh 57 10 3 
-./runGetE4.sh 57 10 4 
+#./runGetE4.sh 57 10 1 
+#./runGetE4.sh 57 10 2 
+#./runGetE4.sh 57 10 3 
+#./runGetE4.sh 57 10 4 
+#./runGetE3.sh 62
 #
 #./runGetE4.sh 63 10 1 
 #./runGetE4.sh 63 10 2 

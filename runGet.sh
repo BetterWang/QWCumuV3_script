@@ -1,15 +1,75 @@
-./runGet3.sh 62 0 10  
-./runGet3.sh 62 1 10  
-./runGet3.sh 62 2 10  
-./runGet3.sh 62 3 10  
-./runGet3.sh 62 4 10  
-./runGet3.sh 62 5 10  
-./runGet3.sh 62 6 10  
-./runGet3.sh 62 7 10  
-./runGet3.sh 62 8 10  
-./runGet3.sh 62 9 10  
-./runGet3.sh 62 10 10 
+./runGet4.sh 100 0 10  4
+./runGet4.sh 100 1 10  4
+./runGet4.sh 100 2 10  4
+./runGet4.sh 100 3 10  4
+./runGet4.sh 100 4 10  4
+./runGet4.sh 100 5 10  4
+./runGet4.sh 100 6 10  4
+./runGet4.sh 100 7 10  4
+./runGet4.sh 100 8 10  4
+./runGet4.sh 100 9 10  4
+./runGet4.sh 100 10 10 4
 
+#./runGet3.sh 62 0 10  
+#./runGet3.sh 62 1 10  
+#./runGet3.sh 62 2 10  
+#./runGet3.sh 62 3 10  
+#./runGet3.sh 62 4 10  
+#./runGet3.sh 62 5 10  
+#./runGet3.sh 62 6 10  
+#./runGet3.sh 62 7 10  
+#./runGet3.sh 62 8 10  
+#./runGet3.sh 62 9 10  
+#./runGet3.sh 62 10 10 
+#
+#./runGet4.sh 57 0 10  1
+#./runGet4.sh 57 1 10  1
+#./runGet4.sh 57 2 10  1
+#./runGet4.sh 57 3 10  1
+#./runGet4.sh 57 4 10  1
+#./runGet4.sh 57 5 10  1
+#./runGet4.sh 57 6 10  1
+#./runGet4.sh 57 7 10  1
+#./runGet4.sh 57 8 10  1
+#./runGet4.sh 57 9 10  1
+#./runGet4.sh 57 10 10 1
+#
+#./runGet4.sh 57 0 10  2
+#./runGet4.sh 57 1 10  2
+#./runGet4.sh 57 2 10  2
+#./runGet4.sh 57 3 10  2
+#./runGet4.sh 57 4 10  2
+#./runGet4.sh 57 5 10  2
+#./runGet4.sh 57 6 10  2
+#./runGet4.sh 57 7 10  2
+#./runGet4.sh 57 8 10  2
+#./runGet4.sh 57 9 10  2
+#./runGet4.sh 57 10 10 2
+#
+#./runGet4.sh 57 0 10  3
+#./runGet4.sh 57 1 10  3
+#./runGet4.sh 57 2 10  3
+#./runGet4.sh 57 3 10  3
+#./runGet4.sh 57 4 10  3
+#./runGet4.sh 57 5 10  3
+#./runGet4.sh 57 6 10  3
+#./runGet4.sh 57 7 10  3
+#./runGet4.sh 57 8 10  3
+#./runGet4.sh 57 9 10  3
+#./runGet4.sh 57 10 10 3
+#
+#./runGet4.sh 57 0 10  4
+#./runGet4.sh 57 1 10  4
+#./runGet4.sh 57 2 10  4
+#./runGet4.sh 57 3 10  4
+#./runGet4.sh 57 4 10  4
+#./runGet4.sh 57 5 10  4
+#./runGet4.sh 57 6 10  4
+#./runGet4.sh 57 7 10  4
+#./runGet4.sh 57 8 10  4
+#./runGet4.sh 57 9 10  4
+#./runGet4.sh 57 10 10 4
+#
 #./runGet3.sh 68 0 10  
 #./runGet3.sh 68 1 10  
 #./runGet3.sh 68 2 10  
@@ -83,54 +143,7 @@
 #./runGet3.sh 98 9 10  
 #./runGet3.sh 98 10 10 
 
-./runGet4.sh 57 0 10  1
-./runGet4.sh 57 1 10  1
-./runGet4.sh 57 2 10  1
-./runGet4.sh 57 3 10  1
-./runGet4.sh 57 4 10  1
-./runGet4.sh 57 5 10  1
-./runGet4.sh 57 6 10  1
-./runGet4.sh 57 7 10  1
-./runGet4.sh 57 8 10  1
-./runGet4.sh 57 9 10  1
-./runGet4.sh 57 10 10 1
 
-./runGet4.sh 57 0 10  2
-./runGet4.sh 57 1 10  2
-./runGet4.sh 57 2 10  2
-./runGet4.sh 57 3 10  2
-./runGet4.sh 57 4 10  2
-./runGet4.sh 57 5 10  2
-./runGet4.sh 57 6 10  2
-./runGet4.sh 57 7 10  2
-./runGet4.sh 57 8 10  2
-./runGet4.sh 57 9 10  2
-./runGet4.sh 57 10 10 2
-
-./runGet4.sh 57 0 10  3
-./runGet4.sh 57 1 10  3
-./runGet4.sh 57 2 10  3
-./runGet4.sh 57 3 10  3
-./runGet4.sh 57 4 10  3
-./runGet4.sh 57 5 10  3
-./runGet4.sh 57 6 10  3
-./runGet4.sh 57 7 10  3
-./runGet4.sh 57 8 10  3
-./runGet4.sh 57 9 10  3
-./runGet4.sh 57 10 10 3
-
-./runGet4.sh 57 0 10  4
-./runGet4.sh 57 1 10  4
-./runGet4.sh 57 2 10  4
-./runGet4.sh 57 3 10  4
-./runGet4.sh 57 4 10  4
-./runGet4.sh 57 5 10  4
-./runGet4.sh 57 6 10  4
-./runGet4.sh 57 7 10  4
-./runGet4.sh 57 8 10  4
-./runGet4.sh 57 9 10  4
-./runGet4.sh 57 10 10 4
-#
 #./runGet4.sh 63 0 10  1
 #./runGet4.sh 63 1 10  1
 #./runGet4.sh 63 2 10  1
