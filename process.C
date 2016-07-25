@@ -4,7 +4,7 @@
 #include <TH1.h>
 #include <TMath.h>
 using namespace std;
-void process(int s1 = 13, int s2 = 10, int s3 = 10, int sx = 0)
+void process(int s1 = 0, int s2 = 10, int s3 = 10, int sx = 0)
 {
 //	int s1 = 4;
 //	int s2 = 10;
@@ -15,6 +15,15 @@ void process(int s1 = 13, int s2 = 10, int s3 = 10, int sx = 0)
 
 	int gNoff;
 	int gMult;
+
+	double rQGap[7] = {};
+	double wQGap[7] = {};
+
+	double rQpGap[7][24] = {};
+	double wQpGap[7][24] = {};
+
+	double rQetaGap[7][24] = {};
+	double wQetaGap[7][24] = {};
 
 	double rQ[7][4] = {};
 //	double iQ[7][4] = {};
@@ -38,7 +47,14 @@ void process(int s1 = 13, int s2 = 10, int s3 = 10, int sx = 0)
 
 	chV->SetBranchAddress("Noff", &gNoff);
 	chV->SetBranchAddress("Mult", &gMult);
+	chV->SetBranchAddress("wQGap22", &wQGap[2]);
+	chV->SetBranchAddress("wQpGap22", &wQpGap[2]);
+	chV->SetBranchAddress("wQetaGap22", &wQetaGap[2]);
 	for ( int n = 2; n < 7; n++ ) {
+		chV->SetBranchAddress(Form("rQGap%i2", n), &rQGap[n]);
+		chV->SetBranchAddress(Form("rQpGap%i2", n), &rQpGap[n]);
+		chV->SetBranchAddress(Form("rQetaGap%i2", n), &rQetaGap[n]);
+
 		for ( int np = 0; np < 4; np++ ) {
 			chV->SetBranchAddress(Form("rQ%i%i", n, 2+2*np), &rQ[n][np]);
 //			chV->SetBranchAddress(Form("iQ%i%i", n, 2+2*np), &iQ[n][np]);
@@ -65,8 +81,16 @@ void process(int s1 = 13, int s2 = 10, int s3 = 10, int sx = 0)
 //	int Nevt[500] = {};
 
 
-	TH1D * hMult = new TH1D("hMult", "hMult", 3000, -0.5, 2999.5);
+	TH1D * hMult = new TH1D("hMult", "hMult", 5000, -0.5, 4999.5);
 	TH1D * hNoff = new TH1D("hNoff", "hNoff", 200, -0.5, 199.5);
+
+	TH1D * hQGap[7] = {};
+	TH1D * hQpGap[7][24] = {};
+	TH1D * hQetaGap[7][24] = {};
+
+	TH1D * hWQGap[7] = {};
+	TH1D * hWQpGap[7][24] = {};
+	TH1D * hWQetaGap[7][24] = {};
 
 	TH1D * hQ[7][4] = {};
 	TH1D * hX[7][4] = {};
@@ -82,6 +106,16 @@ void process(int s1 = 13, int s2 = 10, int s3 = 10, int sx = 0)
 
 	// book histo
 	for ( int n = 2; n < 7; n++ ) {
+		hQGap[n] = new TH1D(Form("hQGap%i", n), "", 500, -0.5, 499.5);
+		hWQGap[n] = new TH1D(Form("hWQGap%i", n), "", 500, -0.5, 499.5);
+
+		for ( int i = 0; i < 24; i++ ) {
+			hQpGap[n][i] = new TH1D(Form("hQpGap%i%i", n, i), "", 500, -0.5, 499.5);
+			hWQpGap[n][i] = new TH1D(Form("hWQpGap%i%i", n, i), "", 500, -0.5, 499.5);
+			hQetaGap[n][i] = new TH1D(Form("hQetaGap%i%i", n, i), "", 500, -0.5, 499.5);
+			hWQetaGap[n][i] = new TH1D(Form("hWQetaGap%i%i", n, i), "", 500, -0.5, 499.5);
+		}
+
 		for ( int np = 0; np < 4; np++ ) {
 			hQ[n][np] = new TH1D(Form("hQ%i%i", n, 2+2*np), "", 500, -0.5, 499.5);
 			hX[n][np] = new TH1D(Form("hX%i%i", n, 2+2*np), "", 500, -0.5, 499.5);
@@ -104,6 +138,15 @@ void process(int s1 = 13, int s2 = 10, int s3 = 10, int sx = 0)
 			}
 		}
 	}
+
+	double dQGap[7][500] = {};
+	double yQGap[7][500] = {};
+
+	double dQpGap[7][24][500] = {};
+	double yQpGap[7][24][500] = {};
+
+	double dQetaGap[7][24][500] = {};
+	double yQetaGap[7][24][500] = {};
 
 	double dQ[7][4][500] = {};
 	double dX[7][4][500] = {};
@@ -148,6 +191,17 @@ void process(int s1 = 13, int s2 = 10, int s3 = 10, int sx = 0)
 					yQc[n][np][i][gNoff] += wQc[n][np][i];
 				}
 			}
+
+			dQGap[n][gNoff] += rQGap[n];
+			yQGap[n][gNoff] += wQGap[2];
+
+			for ( int i = 0; i < 24; i++ ) {
+				dQpGap[n][i][gNoff] += rQpGap[n][i];
+				yQpGap[n][i][gNoff] += wQpGap[2][i];
+
+				dQetaGap[n][i][gNoff] += rQetaGap[n][i];
+				yQetaGap[n][i][gNoff] += wQetaGap[2][i];
+			}
 		}
 		hNoff->Fill(gNoff);
 		hMult->Fill(gMult);
@@ -170,6 +224,17 @@ void process(int s1 = 13, int s2 = 10, int s3 = 10, int sx = 0)
 					hQc[n][np][i]->SetBinContent(c+1, dQc[n][np][i][c]);
 					hWc[n][np][i]->SetBinContent(c+1, yQc[n][np][i][c]);
 				}
+			}
+		}
+		for ( int c = 0; c < 500; c++ ) {
+			hQGap[n]->SetBinContent(c+1, dQGap[n][c]);
+			hWQGap[n]->SetBinContent(c+1, yQGap[n][c]);
+			for ( int i = 0; i < 24; i++ ) {
+				hQpGap[n][i]->SetBinContent(c+1, dQpGap[n][i][c]);
+				hWQpGap[n][i]->SetBinContent(c+1, yQpGap[n][i][c]);
+
+				hQetaGap[n][i]->SetBinContent(c+1, dQetaGap[n][i][c]);
+				hWQetaGap[n][i]->SetBinContent(c+1, yQetaGap[n][i][c]);
 			}
 		}
 	}
@@ -202,6 +267,14 @@ void process(int s1 = 13, int s2 = 10, int s3 = 10, int sx = 0)
 				hQc[n][np][i]->Write();
 				hWc[n][np][i]->Write();
 			}
+		}
+		hQGap[n]->Write();
+		hWQGap[n]->Write();
+		for ( int i = 0; i < 24; i++ ) {
+			hQpGap[n][i]->Write();
+			hQetaGap[n][i]->Write();
+			hWQpGap[n][i]->Write();
+			hWQetaGap[n][i]->Write();
 		}
 	}
 	hNoff->Write();
