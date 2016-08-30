@@ -1,10 +1,12 @@
 
 char const * fname[] = {
 	"test/",			// 0
+	"../PbPb2015_cumu/HIMinimumBias5/crab_HIMB5_ppReco_eff_2part_v2/160829_145024/0000/",			// 1 ppReco rfp 1 < pT < 3
 };
 
 char const * ftxt[] = {
 	"txt/test/",							// 0
+	"txt/HIMB5_ppReco_eff_2part/",					// 1
 };
 
 #include <TChain.h>
