@@ -3,20 +3,28 @@
 #include "TH1.h"
 #include "TFile.h"
 
-void bGet(int s1 = 7, int s2 = 0, int s3 =10, int sx = 0){
+void bGet(int s1 = 7, int s2 = 0, int s3 =10){
 //	int s1 = 4;
 //	int s2 = 10;
 //	int s3 = 10;
 
 	cout << "s1 = " << s1 << "\ts2 = " << s2 << "\ts3 = " << s3 << endl;
 	TFile *f;
-	if ( sx == 0 ) {
-		if ( s2 == s3 ) f = new TFile(Form("%s/output.root", ftxt[s1]));
-		else f = new TFile(Form("%s/output_%i_%i.root", ftxt[s1], s2, s3));
-	} else {
-		if ( s2 == s3 ) f = new TFile(Form("%s/output__%i.root", ftxt[s1], sx));
-		else f = new TFile(Form("%s/output_%i_%i__%i.root", ftxt[s1], s2, s3, sx));
-	}
+	if ( s2 == s3 ) f = new TFile(Form("%s/output.root", ftxt[s1]));
+	else f = new TFile(Form("%s/output_%i_%i.root", ftxt[s1], s2, s3));
+
+
+	double dQGap[7][500] = {};
+	double yQGap[7][500] = {};
+
+	double dQpGap[7][24][500] = {};
+	double yQpGap[7][24][500] = {};
+
+	double dQetaGap[7][24][500] = {};
+	double yQetaGap[7][24][500] = {};
+
+	double dQcGap[7][2][500] = {};
+	double yQcGap[7][2][500] = {};
 
 	double dQ[7][4][500] = {};
 	double wQ[7][4][500] = {};
@@ -57,17 +65,50 @@ void bGet(int s1 = 7, int s2 = 0, int s3 =10, int sx = 0){
 
 	TH1D * hNoff = (TH1D*) f->Get("hNoff");
 
-	TH1D * hNoffCent2 = new TH1D("hNoffCent2", "hNoffCent2", 20, 0, 20);
-	TH1D * hNoffCent4 = new TH1D("hNoffCent4", "hNoffCent4", 20, 0, 20);
-	TH1D * hNoffCent6 = new TH1D("hNoffCent6", "hNoffCent6", 20, 0, 20);
-	TH1D * hNoffCent8 = new TH1D("hNoffCent8", "hNoffCent8", 20, 0, 20);
-
 	TH1D * hNevtCent2 = new TH1D("hNevtCent2", "hNevtCent2", 20, 0, 20);
 	TH1D * hNevtCent4 = new TH1D("hNevtCent4", "hNevtCent4", 20, 0, 20);
 	TH1D * hNevtCent6 = new TH1D("hNevtCent6", "hNevtCent6", 20, 0, 20);
 	TH1D * hNevtCent8 = new TH1D("hNevtCent8", "hNevtCent8", 20, 0, 20);
 
 	TH1D * hNevtCent[4] = {hNevtCent2, hNevtCent4, hNevtCent6, hNevtCent8};
+
+	for ( int n = 2; n < 7; n++ ) {
+		TH1D * hQ = (TH1D*) f->Get(Form("hQGap%i", n));
+		TH1D * hW = (TH1D*) f->Get(Form("hWQGap%i", n));
+		for ( int c = 0; c < 500; c++ ) {
+			dQGap[n][c] = hQ->GetBinContent(c+1);
+			yQGap[n][c] = hW->GetBinContent(c+1);
+		}
+		delete hQ;
+		delete hW;
+		for ( int i = 0; i < 24; i++ ) {
+			TH1D * hQp = (TH1D*) f->Get(Form("hQpGap%i%i", n, i));
+			TH1D * hWp = (TH1D*) f->Get(Form("hWQpGap%i%i", n, i));
+			TH1D * hQeta = (TH1D*) f->Get(Form("hQetaGap%i%i", n, i));
+			TH1D * hWeta = (TH1D*) f->Get(Form("hWQetaGap%i%i", n, i));
+			for ( int c = 0; c < 500; c++ ) {
+				dQpGap[n][i][c] = hQp->GetBinContent(c+1);
+				yQpGap[n][i][c] = hWp->GetBinContent(c+1);
+
+				dQetaGap[n][i][c] = hQeta->GetBinContent(c+1);
+				yQetaGap[n][i][c] = hWeta->GetBinContent(c+1);
+			}
+			delete hQp;
+			delete hWp;
+			delete hQeta;
+			delete hWeta;
+		}
+		for ( int i = 0; i < 2; i++ ) {
+			TH1D * hQc = (TH1D*) f->Get(Form("hQcGap%i%i", n, i));
+			TH1D * hWc = (TH1D*) f->Get(Form("hWQcGap%i%i", n, i));
+			for ( int c = 0; c < 500; c++ ) {
+				dQcGap[n][i][c] = hQc->GetBinContent(c+1);
+				yQcGap[n][i][c] = hWc->GetBinContent(c+1);
+			}
+			delete hQc;
+			delete hWc;
+		}
+	}
 
 	for ( int n = 2; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
@@ -367,13 +408,8 @@ void bGet(int s1 = 7, int s2 = 0, int s3 =10, int sx = 0){
 	}
 
 	TFile *fwrite;
-	if ( sx == 0 ) {
-		if ( s2 == s3 ) fwrite = new TFile(Form("%s/outputC.root", ftxt[s1]), "recreate");
-		else fwrite = new TFile(Form("%s/outputC_%i_%i.root", ftxt[s1], s2, s3), "recreate");
-	} else {
-		if ( s2 == s3 ) fwrite = new TFile(Form("%s/outputC__%i.root", ftxt[s1], sx), "recreate");
-		else fwrite = new TFile(Form("%s/outputC_%i_%i__%i.root", ftxt[s1], s2, s3, sx), "recreate");
-	}
+	if ( s2 == s3 ) fwrite = new TFile(Form("%s/outputC.root", ftxt[s1]), "recreate");
+	else fwrite = new TFile(Form("%s/outputC_%i_%i.root", ftxt[s1], s2, s3), "recreate");
 	for ( int n = 2; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			fC[n][np]->Write();
