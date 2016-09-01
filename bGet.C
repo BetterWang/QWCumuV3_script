@@ -3,7 +3,7 @@
 #include "TH1.h"
 #include "TFile.h"
 
-void bGet(int s1 = 7, int s2 = 0, int s3 =10){
+void bGet(int s1 = 0, int s2 = 10, int s3 =10){
 //	int s1 = 4;
 //	int s2 = 10;
 //	int s3 = 10;
@@ -16,15 +16,22 @@ void bGet(int s1 = 7, int s2 = 0, int s3 =10){
 
 	double dQGap[7][500] = {};
 	double yQGap[7][500] = {};
-
 	double dQpGap[7][24][500] = {};
 	double yQpGap[7][24][500] = {};
-
 	double dQetaGap[7][24][500] = {};
 	double yQetaGap[7][24][500] = {};
-
 	double dQcGap[7][2][500] = {};
 	double yQcGap[7][2][500] = {};
+
+	double dCGap[7][20] = {};
+	double dCpGap[7][24][20] = {};
+	double dCetaGap[7][24][20] = {};
+	double dCcGap[7][2][20] = {};
+
+	double wCGap[7][20] = {};
+	double wCpGap[7][24][20] = {};
+	double wCetaGap[7][24][20] = {};
+	double wCcGap[7][2][20] = {};
 
 	double dQ[7][4][500] = {};
 	double wQ[7][4][500] = {};
@@ -78,6 +85,8 @@ void bGet(int s1 = 7, int s2 = 0, int s3 =10){
 		for ( int c = 0; c < 500; c++ ) {
 			dQGap[n][c] = hQ->GetBinContent(c+1);
 			yQGap[n][c] = hW->GetBinContent(c+1);
+
+			if ( yQGap[n][c] > 0 ) dQGap[n][c] /= yQGap[n][c];
 		}
 		delete hQ;
 		delete hW;
@@ -92,6 +101,9 @@ void bGet(int s1 = 7, int s2 = 0, int s3 =10){
 
 				dQetaGap[n][i][c] = hQeta->GetBinContent(c+1);
 				yQetaGap[n][i][c] = hWeta->GetBinContent(c+1);
+
+				if ( yQpGap[n][i][c] > 0 ) dQpGap[n][i][c] /= yQpGap[n][i][c];
+				if ( yQetaGap[n][i][c] > 0 ) dQetaGap[n][i][c] /= yQetaGap[n][i][c];
 			}
 			delete hQp;
 			delete hWp;
@@ -104,6 +116,8 @@ void bGet(int s1 = 7, int s2 = 0, int s3 =10){
 			for ( int c = 0; c < 500; c++ ) {
 				dQcGap[n][i][c] = hQc->GetBinContent(c+1);
 				yQcGap[n][i][c] = hWc->GetBinContent(c+1);
+
+				if ( yQcGap[n][i][c] > 0 ) dQcGap[n][i][c] /= yQcGap[n][i][c];
 			}
 			delete hQc;
 			delete hWc;
@@ -140,8 +154,6 @@ void bGet(int s1 = 7, int s2 = 0, int s3 =10){
 					wQp[n][np][c][i] = hWp->GetBinContent(i+1);
 					dQeta[n][np][c][i] = hQeta->GetBinContent(i+1);
 					wQeta[n][np][c][i] = hWeta->GetBinContent(i+1);
-
-//					cout << "n = " << n << "\tnp = " << np << "\tc = " << c << "\ti = " << i << "\tdQp = " << dQp[n][np][c][i] << "\t wQp = " << wQp[n][np][c][i] << endl;
 
 					if ( wQp[n][np][c][i] != 0 ) dQp[n][np][c][i] /= wQp[n][np][c][i];
 					if ( wQeta[n][np][c][i] != 0 ) dQeta[n][np][c][i] /= wQeta[n][np][c][i];
@@ -189,6 +201,7 @@ void bGet(int s1 = 7, int s2 = 0, int s3 =10){
 			dD[n][1][m] = Q4 - 2*Q2*Q2;
 			dD[n][2][m] = Q6 - 9*Q2*Q4 + 12*Q2*Q2*Q2;
 			dD[n][3][m] = Q8 - 16*Q6*Q2 - 18*Q4*Q4 + 144*Q4*Q2*Q2 -144*Q2*Q2*Q2*Q2;
+
 		}
 
 		for ( int i = 0; i < 24; i++ ) {
@@ -217,6 +230,7 @@ void bGet(int s1 = 7, int s2 = 0, int s3 =10){
 				dCeta[n][1][i][m] = Q4p - 2*Q2*Q2p;
 				dCeta[n][2][i][m] = Q6p - 6*Q2*Q4p - 3*Q2p*Q4 + 12*Q2p*Q2*Q2;
 				dCeta[n][3][i][m] = Q8p - 12*Q2*Q6p - 4*Q2p*Q6 - 18*Q4p*Q4 + 72*Q4p*Q2*Q2 + 72*Q4*Q2p*Q2 - 144*Q2p*Q2*Q2*Q2;
+
 			}
 		}
 
@@ -236,6 +250,7 @@ void bGet(int s1 = 7, int s2 = 0, int s3 =10){
 				dCc[n][1][i][m] = Q4p - 2*Q2*Q2p;
 				dCc[n][2][i][m] = Q6p - 6*Q2*Q4p - 3*Q2p*Q4 + 12*Q2p*Q2*Q2;
 				dCc[n][3][i][m] = Q8p - 12*Q2*Q6p - 4*Q2p*Q6 - 18*Q4p*Q4 + 72*Q4p*Q2*Q2 + 72*Q4*Q2p*Q2 - 144*Q2p*Q2*Q2*Q2;
+
 			}
 		}
 	}
@@ -251,6 +266,69 @@ void bGet(int s1 = 7, int s2 = 0, int s3 =10){
 		}
 	}
 	for ( int n = 2; n < 7; n++ ) {
+		for ( int i = 0; i < NCent[0]; i++ ) {
+			double sum = 0;
+			double weight = 0;
+			for ( int m = pCent[0][i]; m < pCent[0][i+1]; m++ ) {
+				if ( m >= 500 ) continue;
+				double w = yQGap[n][m];
+				double C = dQGap[n][m];
+
+				sum += C*w;
+				weight += w;
+			}
+			if ( weight > 0 ) sum /= weight;
+			else sum = 0;
+			dCGap[n][i] = sum;
+			wCGap[n][i] = weight;
+		}
+		for ( int j = 0; j < 24; j++ ) {
+			for ( int i = 0; i < NCent[0]; i++ ) {
+				double sump = 0;
+				double weightp = 0;
+				double sumeta = 0;
+				double weighteta = 0;
+				for ( int m = pCent[0][i]; m < pCent[0][i+1]; m++ ) {
+					if ( m >= 500 ) continue;
+					double C = dQpGap[n][j][m];
+					double w = yQpGap[n][j][m];
+					sump += C*w;
+					weightp += w;
+
+					C = dQetaGap[n][j][m];
+					w = yQetaGap[n][j][m];
+					sumeta += C*w;
+					weighteta += w;
+				}
+				if ( weightp > 0 ) sump /= weightp;
+				else sump = 0;
+				if ( weighteta > 0 ) sumeta /= weighteta;
+				else sumeta = 0;
+
+				dCpGap[n][j][i] = sump;
+				wCpGap[n][j][i] = weightp;
+				dCetaGap[n][j][i] = sumeta;
+				wCetaGap[n][j][i] = weighteta;
+			}
+		}
+		for ( int j = 0; j < 2; j++ ) {
+			for ( int i = 0; i < NCent[0]; i++ ) {
+				double sumc = 0;
+				double weightc = 0;
+				for ( int m = pCent[0][i]; m < pCent[0][i+1]; m++ ) {
+					if ( m >= 500 ) continue;
+					double C = dQcGap[n][j][m];
+					double w = yQcGap[n][j][m];
+					sumc += C*w;
+					weightc += w;
+				}
+				if ( weightc > 0 ) sumc /= weightc;
+				else sumc = 0;
+				dCcGap[n][j][i] = sumc;
+				wCcGap[n][j][i] = weightc;
+			}
+		}
+
 		for ( int np = 0; np < 4; np++ ) {
 			for ( int i = 0; i < NCent[np]; i++ ) {
 				double sum = 0;
@@ -273,7 +351,6 @@ void bGet(int s1 = 7, int s2 = 0, int s3 =10){
 				if ( weight > 0 ) sum /= weight;
 				else sum = 0;
 				if ( weightX > 0 ) sumX /= weightX;
-//				cout << " n = " << n << "\t np = " << np << "\t i = " << i << "\t sum = " << sum << "\t weight = " << weight << endl;;
 				dCx[n][np][i] = sum;
 				wCx[n][np][i] = weight;
 
@@ -343,7 +420,6 @@ void bGet(int s1 = 7, int s2 = 0, int s3 =10){
 	TH1D * fDraw[7][4];
 	TH1D * fXraw[7][4];
 
-
 	TH1D * fCp[7][4][24];
 	TH1D * fCeta[7][4][24];
 	TH1D * fCc[7][4][2];
@@ -351,23 +427,56 @@ void bGet(int s1 = 7, int s2 = 0, int s3 =10){
 	TH1D * fWeta[7][4][24];
 	TH1D * fWc[7][4][2];
 
-	TH1D * fCrawp[7][4][24];
-	TH1D * fCraweta[7][4][24];
-	TH1D * fCrawc[7][4][2];
-	TH1D * fWrawp[7][4][24];
-	TH1D * fWraweta[7][4][24];
-	TH1D * fWrawc[7][4][2];
-	for ( int n = 2; n < 7; n++ ) {
-		for ( int np = 0; np < 4; np++ ) {
-			fC[n][np] = new TH1D(Form("hC%i%i", n, 2+2*np), "", 20, 0, 20);
-			fD[n][np] = new TH1D(Form("hD%i%i", n, 2+2*np), "", 20, 0, 20);
-			fW[n][np] = new TH1D(Form("hW%i%i", n, 2+2*np), "", 20, 0, 20);
-			fX[n][np] = new TH1D(Form("hX%i%i", n, 2+2*np), "", 20, 0, 20);
+	TH1D * fCGap[7];
+	TH1D * fCpGap[7][24];
+	TH1D * fCetaGap[7][24];
+	TH1D * fCcGap[7][2];
 
-			fCraw[n][np] = new TH1D(Form("hCraw%i%i", n, 2+2*np), "", 500, 0, 500);
-			fDraw[n][np] = new TH1D(Form("hDraw%i%i", n, 2+2*np), "", 500, 0, 500);
-			fWraw[n][np] = new TH1D(Form("hWraw%i%i", n, 2+2*np), "", 500, 0, 500);
-			fXraw[n][np] = new TH1D(Form("hXraw%i%i", n, 2+2*np), "", 500, 0, 500);
+	TH1D * fWGap[7];
+	TH1D * fWpGap[7][24];
+	TH1D * fWetaGap[7][24];
+	TH1D * fWcGap[7][2];
+
+	for ( int n = 2; n < 7; n++ ) {
+		fCGap[n] = new TH1D(Form("hCGap%i", n), Form("hCGap%i", n), 20, 0, 20);
+		fWGap[n] = new TH1D(Form("hWGap%i", n), Form("hWGap%i", n), 20, 0, 20);
+		for ( int i = 0; i < 20; i++ ) {
+			fCGap[n]->SetBinContent(i+1, dCGap[n][i]);
+			fWGap[n]->SetBinContent(i+1, wCGap[n][i]);
+		}
+		for ( int j = 0; j < 24; j++ ) {
+			fCpGap[n][j] = new TH1D(Form("hCpGap%i_%i", n, j), Form("hCpGap%i_%i", n, j), 20, 0, 20);
+			fWpGap[n][j] = new TH1D(Form("hWpGap%i_%i", n, j), Form("hWpGap%i_%i", n, j), 20, 0, 20);
+			fCetaGap[n][j] = new TH1D(Form("hCetaGap%i_%i", n, j), Form("hCetaGap%i_%i", n, j), 20, 0, 20);
+			fWetaGap[n][j] = new TH1D(Form("hWetaGap%i_%i", n, j), Form("hWetaGap%i_%i", n, j), 20, 0, 20);
+
+			for ( int i = 0; i < 20; i++ ) {
+				fCpGap[n][j]->SetBinContent(i+1, dCpGap[n][j][i]);
+				fWpGap[n][j]->SetBinContent(i+1, wCpGap[n][j][i]);
+				fCetaGap[n][j]->SetBinContent(i+1, dCetaGap[n][j][i]);
+				fWetaGap[n][j]->SetBinContent(i+1, wCetaGap[n][j][i]);
+			}
+		}
+		for ( int j = 0; j < 2; j++ ) {
+			fCcGap[n][j] = new TH1D(Form("hCcGap%i_%i", n, j), Form("hCcGap%i_%i", n, j), 20, 0, 20);
+			fWcGap[n][j] = new TH1D(Form("hWcGap%i_%i", n, j), Form("hWcGap%i_%i", n, j), 20, 0, 20);
+
+			for ( int i = 0; i < 20; i++ ) {
+				fCcGap[n][j]->SetBinContent(i+1, dCcGap[n][j][i]);
+				fWcGap[n][j]->SetBinContent(i+1, wCcGap[n][j][i]);
+			}
+		}
+
+		for ( int np = 0; np < 4; np++ ) {
+			fC[n][np] = new TH1D(Form("hC%i%i", n, 2+2*np), Form("hC%i%i", n, 2+2*np), 20, 0, 20);
+			fD[n][np] = new TH1D(Form("hD%i%i", n, 2+2*np), Form("hD%i%i", n, 2+2*np), 20, 0, 20);
+			fW[n][np] = new TH1D(Form("hW%i%i", n, 2+2*np), Form("hW%i%i", n, 2+2*np), 20, 0, 20);
+			fX[n][np] = new TH1D(Form("hX%i%i", n, 2+2*np), Form("hX%i%i", n, 2+2*np), 20, 0, 20);
+
+			fCraw[n][np] = new TH1D(Form("hCraw%i%i", n, 2+2*np), Form("hCraw%i%i", n, 2+2*np), 500, 0, 500);
+			fDraw[n][np] = new TH1D(Form("hDraw%i%i", n, 2+2*np), Form("hDraw%i%i", n, 2+2*np), 500, 0, 500);
+			fWraw[n][np] = new TH1D(Form("hWraw%i%i", n, 2+2*np), Form("hWraw%i%i", n, 2+2*np), 500, 0, 500);
+			fXraw[n][np] = new TH1D(Form("hXraw%i%i", n, 2+2*np), Form("hXraw%i%i", n, 2+2*np), 500, 0, 500);
 
 			for ( int i = 0; i < 20; i++ ) {
 				fC[n][np]->SetBinContent(i+1, dCx[n][np][i]);
@@ -383,10 +492,10 @@ void bGet(int s1 = 7, int s2 = 0, int s3 =10){
 			}
 
 			for ( int j = 0; j < 24; j++ ) {
-				fCp[n][np][j] = new TH1D(Form("hCp%i%i_%i", n, 2+2*np, j), "", 20, 0, 20);
-				fWp[n][np][j] = new TH1D(Form("hWp%i%i_%i", n, 2+2*np, j), "", 20, 0, 20);
-				fCeta[n][np][j] = new TH1D(Form("hCeta%i%i_%i", n, 2+2*np, j), "", 20, 0, 20);
-				fWeta[n][np][j] = new TH1D(Form("hWeta%i%i_%i", n, 2+2*np, j), "", 20, 0, 20);
+				fCp[n][np][j] = new TH1D(Form("hCp%i%i_%i", n, 2+2*np, j), Form("hCp%i%i_%i", n, 2+2*np, j), 20, 0, 20);
+				fWp[n][np][j] = new TH1D(Form("hWp%i%i_%i", n, 2+2*np, j), Form("hWp%i%i_%i", n, 2+2*np, j), 20, 0, 20);
+				fCeta[n][np][j] = new TH1D(Form("hCeta%i%i_%i", n, 2+2*np, j), Form("hCeta%i%i_%i", n, 2+2*np, j), 20, 0, 20);
+				fWeta[n][np][j] = new TH1D(Form("hWeta%i%i_%i", n, 2+2*np, j), Form("hWeta%i%i_%i", n, 2+2*np, j), 20, 0, 20);
 				for ( int i = 0; i < 20; i++ ) {
 					fCp[n][np][j]->SetBinContent(i+1, dCxp[n][np][j][i]);
 					fWp[n][np][j]->SetBinContent(i+1, wCxp[n][np][j][i]);
@@ -396,8 +505,8 @@ void bGet(int s1 = 7, int s2 = 0, int s3 =10){
 			}
 
 			for ( int j = 0; j < 2; j++ ) {
-				fCc[n][np][j] = new TH1D(Form("hCc%i%i_%i", n, 2+2*np, j), "", 20, 0, 20);
-				fWc[n][np][j] = new TH1D(Form("hWc%i%i_%i", n, 2+2*np, j), "", 20, 0, 20);
+				fCc[n][np][j] = new TH1D(Form("hCc%i%i_%i", n, 2+2*np, j), Form("hCc%i%i_%i", n, 2+2*np, j), 20, 0, 20);
+				fWc[n][np][j] = new TH1D(Form("hWc%i%i_%i", n, 2+2*np, j), Form("hWc%i%i_%i", n, 2+2*np, j), 20, 0, 20);
 				for ( int i = 0; i < 20; i++ ) {
 					fCc[n][np][j]->SetBinContent(i+1, dCxc[n][np][j][i]);
 					fWc[n][np][j]->SetBinContent(i+1, wCxc[n][np][j][i]);
@@ -430,6 +539,18 @@ void bGet(int s1 = 7, int s2 = 0, int s3 =10){
 				fCc[n][np][i]->Write();
 				fWc[n][np][i]->Write();
 			}
+		}
+		fCGap[n]->Write();
+		fWGap[n]->Write();
+		for ( int j = 0; j < 24; j++ ) {
+			fCpGap[n][j]->Write();
+			fWpGap[n][j]->Write();
+			fCetaGap[n][j]->Write();
+			fWetaGap[n][j]->Write();
+		}
+		for ( int j = 0; j < 2; j++ ) {
+			fCcGap[n][j]->Write();
+			fWcGap[n][j]->Write();
 		}
 	}
 	fwrite->Close();

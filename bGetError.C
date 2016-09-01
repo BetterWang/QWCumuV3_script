@@ -4,7 +4,7 @@
 #include <TFile.h>
 #include <TH1.h>
 
-void bGetError(int s1 = 1, int s3 = 10, int sx = 0)
+void bGetError(int s1 = 0, int s3 = 10)
 {
 //	int s1 = 92;
 //	int s3 = 10;
@@ -14,14 +14,24 @@ void bGetError(int s1 = 1, int s3 = 10, int sx = 0)
 	// Get TFile
 	TFile *fr[50];
 	for ( int i = 0; i <= s3; i++ ) {
-		if ( sx == 0 ) {
-			if ( i == s3 ) fr[i] = new TFile(Form("%s/outputC.root", ftxt[s1]));
-			else fr[i] = new TFile(Form("%s/outputC_%i_%i.root", ftxt[s1], i, s3));
-		} else {
-			if ( i == s3 ) fr[i] = new TFile(Form("%s/outputC__%i.root", ftxt[s1], sx));
-			else fr[i] = new TFile(Form("%s/outputC_%i_%i__%i.root", ftxt[s1], i, s3, sx));
-		}
+		if ( i == s3 ) fr[i] = new TFile(Form("%s/outputC.root", ftxt[s1]));
+		else fr[i] = new TFile(Form("%s/outputC_%i_%i.root", ftxt[s1], i, s3));
 	}
+
+	double dCGap[50][7][20];
+	double wCGap[50][7][20];
+
+	double dCpGap[50][7][24][20];
+	double wCpGap[50][7][24][20];
+	double dCetaGap[50][7][24][20];
+	double wCetaGap[50][7][24][20];
+	double dCcGap[50][7][2][20];
+	double wCcGap[50][7][2][20];
+
+	double dVGap[50][7][20];
+	double dVpGap[50][7][24][20];
+	double dVetaGap[50][7][24][20];
+	double dVcGap[50][7][2][20];
 
 	double dV[50][7][4][20];
 	double dX[50][7][4][20];
@@ -43,11 +53,47 @@ void bGetError(int s1 = 1, int s3 = 10, int sx = 0)
 	double wCc[50][7][4][2][20];
 
 
-
 	// Get
 	for ( int fn = 0; fn <= s3; fn++ ) {
 		TFile * f = fr[fn];
 		for ( int n = 2; n < 7; n++ ) {
+			TH1D * h1 = (TH1D*) f->Get(Form("hCGap%i", n));
+			TH1D * h2 = (TH1D*) f->Get(Form("hWGap%i", n));
+			for ( int i = 0; i < 20; i++ ) {
+				dCGap[fn][n][i] = h1->GetBinContent(i+1);
+				wCGap[fn][n][i] = h2->GetBinContent(i+1);
+			}
+			delete h1;
+			delete h2;
+			for ( int j = 0; j < 24; j++ ) {
+				TH1D *h1 = (TH1D*) f->Get(Form("hCpGap%i_%i", n, j));
+				TH1D *h2 = (TH1D*) f->Get(Form("hWpGap%i_%i", n, j));
+				TH1D *h3 = (TH1D*) f->Get(Form("hCetaGap%i_%i", n, j));
+				TH1D *h4 = (TH1D*) f->Get(Form("hWetaGap%i_%i", n, j));
+				for ( int i = 0; i < 20; i++ ) {
+					dCpGap[fn][n][j][i] = h1->GetBinContent(i+1);
+					wCpGap[fn][n][j][i] = h2->GetBinContent(i+1);
+					dCetaGap[fn][n][j][i] = h3->GetBinContent(i+1);
+					wCetaGap[fn][n][j][i] = h4->GetBinContent(i+1);
+				}
+				delete h1;
+				delete h2;
+				delete h3;
+				delete h4;
+			}
+			for ( int j = 0; j < 2; j++ ) {
+				TH1D *h1 = (TH1D*) f->Get(Form("hCcGap%i_%i", n, j));
+				TH1D *h2 = (TH1D*) f->Get(Form("hWcGap%i_%i", n, j));
+				for ( int i = 0; i < 20; i++ ) {
+					dCcGap[fn][n][j][i] = h1->GetBinContent(i+1);
+					wCcGap[fn][n][j][i] = h2->GetBinContent(i+1);
+				}
+				delete h1;
+				delete h2;
+				delete h3;
+				delete h4;
+			}
+
 			for ( int np = 0; np < 4; np++ ) {
 				TH1D * h1 = (TH1D*) f->Get(Form("hC%i%i", n, 2+2*np));
 				TH1D * h2 = (TH1D*) f->Get(Form("hD%i%i", n, 2+2*np));
@@ -126,6 +172,10 @@ void bGetError(int s1 = 1, int s3 = 10, int sx = 0)
 				dX[fn][n][2][i] = V6;
 				dX[fn][n][3][i] = V8;
 
+				C2 = dCGap[fn][n][i];
+				if ( C2 > 0 ) V2 = pow(C2, 1./2); else V2 = -pow(-C2, 1./2);
+				dVGap[fn][n][i] = V2;
+
 				for ( int j = 0; j < 24; j++ ) {
 					C2 = dC[fn][n][0][i];
 					C4 = dC[fn][n][1][i];
@@ -161,6 +211,15 @@ void bGetError(int s1 = 1, int s3 = 10, int sx = 0)
 					dVeta[fn][n][1][j][i] = V4;
 					dVeta[fn][n][2][j][i] = V6;
 					dVeta[fn][n][3][j][i] = V8;
+
+					C2 = dCGap[fn][n][i];
+					C2p = dCpGap[fn][n][j][i];
+					if ( C2 > 0 ) V2 =       C2p/pow(C2, 1./2) ; else V2 = -fabs(C2p/pow(-C2, 1./2));
+					dVpGap[fn][n][j][i] = V2;
+
+					C2p = dCetaGap[fn][n][j][i];
+					if ( C2 > 0 ) V2 =       C2p/pow(C2, 1./2) ; else V2 = -fabs(C2p/pow(-C2, 1./2));
+					dVetaGap[fn][n][j][i] = V2;
 				}
 
 				for ( int j = 0; j < 2; j++ ) {
@@ -183,6 +242,11 @@ void bGetError(int s1 = 1, int s3 = 10, int sx = 0)
 					dVc[fn][n][1][j][i] = V4;
 					dVc[fn][n][2][j][i] = V6;
 					dVc[fn][n][3][j][i] = V8;
+
+					C2 = dCGap[fn][n][i];
+					C2p = dCcGap[fn][n][j][i];
+					if ( C2 > 0 ) V2 =       C2p/pow(C2, 1./2) ; else V2 = -fabs(C2p/pow(-C2, 1./2));
+					dVcGap[fn][n][j][i] = C2p;
 				}
 			}
 		}
@@ -206,7 +270,29 @@ void bGetError(int s1 = 1, int s3 = 10, int sx = 0)
 	TH1D * fWeta[7][4][24];
 	TH1D * fWc[7][4][2];
 
+	TH1D * fCGap[7];
+	TH1D * fCpGap[7][24];
+	TH1D * fCetaGap[7][24];
+	TH1D * fCcGap[7][2];
+
+	TH1D * fWGap[7];
+	TH1D * fWpGap[7][24];
+	TH1D * fWetaGap[7][24];
+	TH1D * fWcGap[7][2];
+
 	for ( int n = 2; n < 7; n++ ) {
+		fCGap[n] = (TH1D*)fr[s3]->Get(Form("hCGap%i", n));
+		fWGap[n] = (TH1D*)fr[s3]->Get(Form("hWGap%i", n));
+		for ( int j = 0; j < 24; j++ ) {
+			fCpGap[n][j] = (TH1D*)fr[s3]->Get(Form("hCpGap%i_%i", n, j));
+			fWpGap[n][j] = (TH1D*)fr[s3]->Get(Form("hWpGap%i_%i", n, j));
+			fCetaGap[n][j] = (TH1D*)fr[s3]->Get(Form("hCetaGap%i_%i", n, j));
+			fWetaGap[n][j] = (TH1D*)fr[s3]->Get(Form("hWetaGap%i_%i", n, j));
+		}
+		for ( int j = 0; j < 2; j++ ) {
+			fCcGap[n][j] = (TH1D*)fr[s3]->Get(Form("hCcGap%i_%i", n, j));
+			fWcGap[n][j] = (TH1D*)fr[s3]->Get(Form("hWcGap%i_%i", n, j));
+		}
 		for ( int np = 0; np < 4; np++ ) {
 			fC[n][np] = (TH1D*)fr[s3]->Get(Form("hC%i%i", n, 2+2*np));
 			fD[n][np] = (TH1D*)fr[s3]->Get(Form("hD%i%i", n, 2+2*np));
@@ -237,12 +323,21 @@ void bGetError(int s1 = 1, int s3 = 10, int sx = 0)
 	TH1D * fVeta[7][4][24];
 	TH1D * fVc[7][4][2];
 
-
 	TH1D * fcV[7][4];
 	TH1D * fcX[7][4];
 	TH1D * fcVp[7][4][24];
 	TH1D * fcVeta[7][4][24];
 	TH1D * fcVc[7][4][2];
+
+	TH1D * fVGap[7];
+	TH1D * fVpGap[7][24];
+	TH1D * fVetaGap[7][24];
+	TH1D * fVcGap[7][2];
+
+	TH1D * fcVGap[7];
+	TH1D * fcVpGap[7][24];
+	TH1D * fcVetaGap[7][24];
+	TH1D * fcVcGap[7][2];
 
 	for ( int n = 2; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
@@ -406,11 +501,7 @@ void bGetError(int s1 = 1, int s3 = 10, int sx = 0)
 
 	// Write
 	TFile * fwrite = 0;
-	if ( sx == 0 ) {
-		fwrite = new TFile(Form("%s/outputE.root", ftxt[s1]), "recreate");
-	} else {
-		fwrite = new TFile(Form("%s/outputE__%i.root", ftxt[s1], sx), "recreate");
-	}
+	fwrite = new TFile(Form("%s/outputE.root", ftxt[s1]), "recreate");
 	for ( int n = 2; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			fC[n][np]->Write();
