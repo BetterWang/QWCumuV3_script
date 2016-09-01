@@ -90,8 +90,6 @@ void bGetError(int s1 = 0, int s3 = 10)
 				}
 				delete h1;
 				delete h2;
-				delete h3;
-				delete h4;
 			}
 
 			for ( int np = 0; np < 4; np++ ) {
@@ -318,6 +316,16 @@ void bGetError(int s1 = 0, int s3 = 10)
 		}
 	}
 
+	TH1D * fVGap[7];
+	TH1D * fVpGap[7][24];
+	TH1D * fVetaGap[7][24];
+	TH1D * fVcGap[7][24];
+
+	TH1D * fcVGap[7];
+	TH1D * fcVpGap[7][24];
+	TH1D * fcVetaGap[7][24];
+	TH1D * fcVcGap[7][24];
+
 	TH1D * fV[7][4];
 	TH1D * fVp[7][4][24];
 	TH1D * fVeta[7][4][24];
@@ -329,30 +337,35 @@ void bGetError(int s1 = 0, int s3 = 10)
 	TH1D * fcVeta[7][4][24];
 	TH1D * fcVc[7][4][2];
 
-	TH1D * fVGap[7];
-	TH1D * fVpGap[7][24];
-	TH1D * fVetaGap[7][24];
-	TH1D * fVcGap[7][2];
-
-	TH1D * fcVGap[7];
-	TH1D * fcVpGap[7][24];
-	TH1D * fcVetaGap[7][24];
-	TH1D * fcVcGap[7][2];
-
 	for ( int n = 2; n < 7; n++ ) {
+		fVGap[n] = new TH1D(Form("hVGap%i", n), Form("hVGap%i", n), 20, 0, 20);
+		fcVGap[n] = new TH1D(Form("hcVGap%i", n), Form("hcVGap%i", n), 20, 0, 20);
+
+		for ( int j = 0; j < 24; j++ ) {
+			fVpGap[n][j] = new TH1D(Form("hVpGap%i_%i", n, j), Form("hVpGap%i_%i", n, j), 20, 0, 20);
+			fVetaGap[n][j] = new TH1D(Form("hVetaGap%i_%i", n, j), Form("hVetaGap%i_%i", n, j), 20, 0, 20);
+
+			fcVpGap[n][j] = new TH1D(Form("hcVpGap%i_%i", n, j), Form("hcVpGap%i_%i", n, j), 20, 0, 20);
+			fcVetaGap[n][j] = new TH1D(Form("hcVetaGap%i_%i", n, j), Form("hcVetaGap%i_%i", n, j), 20, 0, 20);
+		}
+		for ( int j = 0; j < 2; j++ ) {
+			fVcGap[n][j] = new TH1D(Form("hVcGap%i_%i", n, j), Form("hVcGap%i_%i", n, j), 20, 0, 20);
+			fcVcGap[n][j] = new TH1D(Form("hcVcGap%i_%i", n, j), Form("hcVcGap%i_%i", n, j), 20, 0, 20);
+		}
+
 		for ( int np = 0; np < 4; np++ ) {
-			fV[n][np] = new TH1D(Form("hV%i%i", n, 2+2*np), "", 20, 0, 20);
-			fcV[n][np] = new TH1D(Form("hcV%i%i", n, 2+2*np), "", 20, 0, 20);
-			fcX[n][np] = new TH1D(Form("hcX%i%i", n, 2+2*np), "", 20, 0, 20);
+			fV[n][np] = new TH1D(Form("hV%i%i", n, 2+2*np), Form("hV%i%i", n, 2+2*np), 20, 0, 20);
+			fcV[n][np] = new TH1D(Form("hcV%i%i", n, 2+2*np), Form("hcV%i%i", n, 2+2*np), 20, 0, 20);
+			fcX[n][np] = new TH1D(Form("hcX%i%i", n, 2+2*np), Form("hcX%i%i", n, 2+2*np), 20, 0, 20);
 			for ( int j = 0; j < 24; j++ ) {
-				fVp[n][np][j] = new TH1D(Form("hVp%i%i_%i", n, 2+2*np, j), "", 20, 0, 20);
-				fVeta[n][np][j] = new TH1D(Form("hVeta%i%i_%i", n, 2+2*np, j), "", 20, 0, 20);
-				fcVp[n][np][j] = new TH1D(Form("hcVp%i%i_%i", n, 2+2*np, j), "", 20, 0, 20);
-				fcVeta[n][np][j] = new TH1D(Form("hcVeta%i%i_%i", n, 2+2*np, j), "", 20, 0, 20);
+				fVp[n][np][j] = new TH1D(Form("hVp%i%i_%i", n, 2+2*np, j), Form("hVp%i%i_%i", n, 2+2*np, j), 20, 0, 20);
+				fVeta[n][np][j] = new TH1D(Form("hVeta%i%i_%i", n, 2+2*np, j), Form("hVeta%i%i_%i", n, 2+2*np, j), 20, 0, 20);
+				fcVp[n][np][j] = new TH1D(Form("hcVp%i%i_%i", n, 2+2*np, j), Form("hcVp%i%i_%i", n, 2+2*np, j), 20, 0, 20);
+				fcVeta[n][np][j] = new TH1D(Form("hcVeta%i%i_%i", n, 2+2*np, j), Form("hcVeta%i%i_%i", n, 2+2*np, j), 20, 0, 20);
 			}
 			for ( int j = 0; j < 2; j++ ) {
-				fVc[n][np][j] = new TH1D(Form("hVc%i%i_%i", n, 2+2*np, j), "", 20, 0, 20);
-				fcVc[n][np][j] = new TH1D(Form("hcVc%i%i_%i", n, 2+2*np, j), "", 20, 0, 20);
+				fVc[n][np][j] = new TH1D(Form("hVc%i%i_%i", n, 2+2*np, j), Form("hVc%i%i_%i", n, 2+2*np, j), 20, 0, 20);
+				fcVc[n][np][j] = new TH1D(Form("hcVc%i%i_%i", n, 2+2*np, j), Form("hcVc%i%i_%i", n, 2+2*np, j), 20, 0, 20);
 			}
 		}
 	}
@@ -376,8 +389,76 @@ void bGetError(int s1 = 0, int s3 = 10)
 
 	// Get Error
 	for ( int n = 2; n < 7; n++ ) {
-		for ( int np = 0; np < 4; np++ ) {
-			for ( int i = 0; i < 20; i++ ) {
+		for ( int i = 0; i < 20; i++ ) {
+			double sumC = 0;
+			double sumV = 0;
+			for ( int fn = 0; fn < s3; fn++ ) {
+				sumC += (dCGap[fn][n][i] - dCGap[s3][n][i])*(dCGap[fn][n][i] - dCGap[s3][n][i]);
+				sumV += (dVGap[fn][n][i] - dVGap[s3][n][i])*(dVGap[fn][n][i] - dVGap[s3][n][i]);
+			}
+			double errC = sqrt ( sumC )/s3;
+			double errV = sqrt ( sumV )/s3;
+			fCGap[n]->SetBinError(i+1, errC);
+			fVGap[n]->SetBinError(i+1, errV);
+			errV = dVGap[s3][n][i] * fabs(errC / dCGap[s3][n][i]) / 2.;
+			fcVGap[n]->SetBinError(i+1, errV);
+			for ( int j = 0; j < 24; j++ ) {
+				double sumVp = 0;
+				double sumVeta = 0;
+				double sumCp = 0;
+				double sumCeta = 0;
+				for ( int fn = 0; fn < s3; fn++ ) {
+					sumVp += (dVpGap[fn][n][j][i] - dVpGap[s3][n][j][i]) * (dVpGap[fn][n][j][i] - dVpGap[s3][n][j][i]);
+					sumVeta += (dVetaGap[fn][n][j][i] - dVetaGap[s3][n][j][i]) * (dVetaGap[fn][n][j][i] - dVetaGap[s3][n][j][i]);
+
+					sumCp += (dCpGap[fn][n][j][i] - dCpGap[s3][n][j][i]) * (dCpGap[fn][n][j][i] - dCpGap[s3][n][j][i]);
+					sumCeta += (dCetaGap[fn][n][j][i] - dCetaGap[s3][n][j][i]) * (dCetaGap[fn][n][j][i] - dCetaGap[s3][n][j][i]);
+				}
+				double errVp = sqrt( sumVp )/s3;
+				double errCp = sqrt( sumCp )/s3;
+				double errVeta = sqrt( sumVeta )/s3;
+				double errCeta = sqrt( sumCeta )/s3;
+
+				fCpGap[n][j]->SetBinError(i+1, errCp);
+				fCetaGap[n][j]->SetBinError(i+1, errCeta);
+
+				fVpGap[n][j]->SetBinContent(i+1, dVpGap[s3][n][j][i]);
+				fVpGap[n][j]->SetBinError(i+1, errVp);
+
+				fVetaGap[n][j]->SetBinContent(i+1, dVetaGap[s3][n][j][i]);
+				fVetaGap[n][j]->SetBinError(i+1, errVeta);
+
+				fcVpGap[n][j]->SetBinContent(i+1, dVpGap[s3][n][j][i]);
+				errVp = sqrt( errCp*errCp/dCpGap[s3][n][j][i]/dCpGap[s3][n][j][i]
+						+ errC*errC/dCGap[s3][n][i]/dCGap[s3][n][i] ) * fabs( dVpGap[s3][n][j][i] );
+				fVpGap[n][j]->SetBinError(i+1, errVp);
+
+				fcVetaGap[n][j]->SetBinContent(i+1, dVetaGap[s3][n][j][i]);
+				errVeta = sqrt( errCeta*errCeta/dCetaGap[s3][n][j][i]/dCetaGap[s3][n][j][i]
+						+ errC*errC/dCGap[s3][n][i]/dCGap[s3][n][i] ) * fabs( dVetaGap[s3][n][j][i] );
+				fVetaGap[n][j]->SetBinError(i+1, errVeta);
+			}
+			for ( int j = 0; j < 2; j++ ) {
+				double sumVc = 0;
+				double sumCc = 0;
+				for ( int fn = 0; fn < s3; fn++ ) {
+					sumVc += (dVcGap[fn][n][j][i] - dVcGap[s3][n][j][i]) * (dVcGap[fn][n][j][i] - dVcGap[s3][n][j][i]);
+					sumCc += (dCcGap[fn][n][j][i] - dCcGap[s3][n][j][i]) * (dCcGap[fn][n][j][i] - dCcGap[s3][n][j][i]);
+				}
+				double errVc = sqrt( sumVc )/s3;
+				double errCc = sqrt( sumCc )/s3;
+
+				fCcGap[n][j]->SetBinError(i+1, errCc);
+
+				fVcGap[n][j]->SetBinContent(i+1, dVcGap[s3][n][j][i]);
+				fVcGap[n][j]->SetBinError(i+1, errVc);
+
+				fcVcGap[n][j]->SetBinContent(i+1, dVcGap[s3][n][j][i]);
+				errVc = sqrt( errCc*errCc/dCcGap[s3][n][j][i]/dCcGap[s3][n][j][i]
+						+ errC*errC/dCGap[s3][n][i]/dCGap[s3][n][i] ) * fabs( dVcGap[s3][n][j][i] );
+				fcVcGap[n][j]->SetBinError(i+1, errVc);
+			}
+			for ( int np = 0; np < 4; np++ ) {
 				double sumC = 0;
 				double sumD = 0;
 				double sumV = 0;
@@ -390,10 +471,10 @@ void bGetError(int s1 = 0, int s3 = 10)
 				}
 				double errC = sqrt( sumC )/s3;
 				double errD = sqrt( sumD )/s3;
-//				double errV = sqrt( sumV )/s3;
-//				double errX = sqrt( sumX )/s3;
-                                double errV = dV[s3][n][np][i] * fabs(errC / dC[s3][n][np][i]) / (2*np+2);
-                                double errX = dX[s3][n][np][i] * fabs(errD / dD[s3][n][np][i]) / (2*np+2);
+				double errV = sqrt( sumV )/s3;
+				double errX = sqrt( sumX )/s3;
+//                                double errV = dV[s3][n][np][i] * fabs(errC / dC[s3][n][np][i]) / (2*np+2);
+//                                double errX = dX[s3][n][np][i] * fabs(errD / dD[s3][n][np][i]) / (2*np+2);
 				fC[n][np]->SetBinError(i+1, errC);
 				fD[n][np]->SetBinError(i+1, errD);
 
@@ -503,6 +584,30 @@ void bGetError(int s1 = 0, int s3 = 10)
 	TFile * fwrite = 0;
 	fwrite = new TFile(Form("%s/outputE.root", ftxt[s1]), "recreate");
 	for ( int n = 2; n < 7; n++ ) {
+		fCGap[n]->Write();
+		fWGap[n]->Write();
+		fVGap[n]->Write();
+		fcVGap[n]->Write();
+		for ( int i = 0; i < 24; i++ ) {
+			fCpGap[n][i]->Write();
+			fWpGap[n][i]->Write();
+
+			fCetaGap[n][i]->Write();
+			fWetaGap[n][i]->Write();
+
+			fVpGap[n][i]->Write();
+			fVetaGap[n][i]->Write();
+
+			fcVpGap[n][i]->Write();
+			fcVetaGap[n][i]->Write();
+		}
+		for ( int i = 0; i < 2; i++ ) {
+			fCcGap[n][i]->Write();
+			fWcGap[n][i]->Write();
+
+			fVcGap[n][i]->Write();
+			fcVcGap[n][i]->Write();
+		}
 		for ( int np = 0; np < 4; np++ ) {
 			fC[n][np]->Write();
 			fW[n][np]->Write();

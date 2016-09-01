@@ -3,7 +3,7 @@
 #include "../../style.h"
 #include "HIN-11-012.h"
 
-void genPlot(int s1 =2, int sx = 0)
+void genPlot(int s1 =2)
 {
 
 	int sC = 1;
@@ -12,11 +12,7 @@ void genPlot(int s1 =2, int sx = 0)
 	bool SAVE = true;
 
 	TFile *f;
-	if ( sx == 0 ) {
-		f = new TFile(Form("%s/outputE.root", ftxt[s1]));
-	} else {
-		f = new TFile(Form("%s/outputE__%i.root", ftxt[s1], sx));
-	}
+	f = new TFile(Form("%s/outputE.root", ftxt[s1]));
 	HIN_11_012();
 
 	SetStyle();
@@ -381,14 +377,9 @@ void genPlot(int s1 =2, int sx = 0)
 
 
 	TFile * fsave;
-	ofstream txtout;
-	if ( sx == 0 ) {
-		fsave = new TFile(Form("%s/outGraph.root", ftxt[s1]),"recreate");
-		txtout.open(Form("%s/Graph.txt", ftxt[s1]));
-	} else {
-		fsave = new TFile(Form("%s/outGraph__%i.root", ftxt[s1], sx),"recreate");
-		txtout.open(Form("%s/Graph__%i.txt", ftxt[s1], sx));
-	}
+//	ofstream txtout;
+	fsave = new TFile(Form("%s/outGraph.root", ftxt[s1]),"recreate");
+//	txtout.open(Form("%s/Graph.txt", ftxt[s1]));
 	for ( int n = 2; n < 7; n++ ) {
 		for ( int np = 0; np < 4; np++ ) {
 			for ( int c = 0; c < 20; c++ ) {
@@ -396,53 +387,53 @@ void genPlot(int s1 =2, int sx = 0)
 					gr_vnPtV[n][np][c]->SetName(Form("gr_vnPtV_%i_%i_%i", n, np, c));
 					gr_vnPtV[n][np][c]->Write();
 
-					txtout << endl;
-					txtout << Form("# name: %s", gr_vnPtV[n][np][c]->GetName()) << endl << "# type: matrix" << endl;
-					txtout << "# rows: " << gr_vnPtV[n][np][c]->GetN() << endl;
-					txtout << "# columns: 3" << endl;
-					for ( int i = 0; i < gr_vnPtV[n][np][c]->GetN(); i++ ) {
-						txtout << " " << gr_vnPtV[n][np][c]->GetX()[i] << " " << gr_vnPtV[n][np][c]->GetY()[i] << " " << gr_vnPtV[n][np][c]->GetEY()[i] << endl;
-					}
-					txtout << endl;
+//					txtout << endl;
+//					txtout << Form("# name: %s", gr_vnPtV[n][np][c]->GetName()) << endl << "# type: matrix" << endl;
+//					txtout << "# rows: " << gr_vnPtV[n][np][c]->GetN() << endl;
+//					txtout << "# columns: 3" << endl;
+//					for ( int i = 0; i < gr_vnPtV[n][np][c]->GetN(); i++ ) {
+//						txtout << " " << gr_vnPtV[n][np][c]->GetX()[i] << " " << gr_vnPtV[n][np][c]->GetY()[i] << " " << gr_vnPtV[n][np][c]->GetEY()[i] << endl;
+//					}
+//					txtout << endl;
 				}
 				if (gr_vnPtC[n][np][c]) {
 					gr_vnPtC[n][np][c]->SetName(Form("gr_vnPtC_%i_%i_%i", n, np, c));
 					gr_vnPtC[n][np][c]->Write();
 
-					txtout << endl;
-					txtout << Form("# name: %s", gr_vnPtC[n][np][c]->GetName()) << endl << "# type: matrix" << endl;
-					txtout << "# rows: " << gr_vnPtC[n][np][c]->GetN() << endl;
-					txtout << "# columns: 3" << endl;
-					for ( int i = 0; i < gr_vnPtC[n][np][c]->GetN(); i++ ) {
-						txtout << " " << gr_vnPtC[n][np][c]->GetX()[i] << " " << gr_vnPtC[n][np][c]->GetY()[i] << " " << gr_vnPtC[n][np][c]->GetEY()[i] << endl;
-					}
-					txtout << endl;
+//					txtout << endl;
+//					txtout << Form("# name: %s", gr_vnPtC[n][np][c]->GetName()) << endl << "# type: matrix" << endl;
+//					txtout << "# rows: " << gr_vnPtC[n][np][c]->GetN() << endl;
+//					txtout << "# columns: 3" << endl;
+//					for ( int i = 0; i < gr_vnPtC[n][np][c]->GetN(); i++ ) {
+//						txtout << " " << gr_vnPtC[n][np][c]->GetX()[i] << " " << gr_vnPtC[n][np][c]->GetY()[i] << " " << gr_vnPtC[n][np][c]->GetEY()[i] << endl;
+//					}
+//					txtout << endl;
 				}
 				if (gr_vnEtaV[n][np][c]) {
 					gr_vnEtaV[n][np][c]->SetName(Form("gr_vnEtaV_%i_%i_%i", n, np, c));
 					gr_vnEtaV[n][np][c]->Write();
 
-					txtout << endl;
-					txtout << Form("# name: %s", gr_vnEtaV[n][np][c]->GetName()) << endl << "# type: matrix" << endl;
-					txtout << "# rows: " << gr_vnEtaV[n][np][c]->GetN() << endl;
-					txtout << "# columns: 3" << endl;
-					for ( int i = 0; i < gr_vnEtaV[n][np][c]->GetN(); i++ ) {
-						txtout << " " << gr_vnEtaV[n][np][c]->GetX()[i] << " " << gr_vnEtaV[n][np][c]->GetY()[i] << " " << gr_vnEtaV[n][np][c]->GetEY()[i] << endl;
-					}
-					txtout << endl;
+//					txtout << endl;
+//					txtout << Form("# name: %s", gr_vnEtaV[n][np][c]->GetName()) << endl << "# type: matrix" << endl;
+//					txtout << "# rows: " << gr_vnEtaV[n][np][c]->GetN() << endl;
+//					txtout << "# columns: 3" << endl;
+//					for ( int i = 0; i < gr_vnEtaV[n][np][c]->GetN(); i++ ) {
+//						txtout << " " << gr_vnEtaV[n][np][c]->GetX()[i] << " " << gr_vnEtaV[n][np][c]->GetY()[i] << " " << gr_vnEtaV[n][np][c]->GetEY()[i] << endl;
+//					}
+//					txtout << endl;
 				}
 				if (gr_vnEtaC[n][np][c]) {
 					gr_vnEtaC[n][np][c]->SetName(Form("gr_vnEtaC_%i_%i_%i", n, np, c));
 					gr_vnEtaC[n][np][c]->Write();
 
-					txtout << endl;
-					txtout << Form("# name: %s", gr_vnEtaC[n][np][c]->GetName()) << endl << "# type: matrix" << endl;
-					txtout << "# rows: " << gr_vnEtaC[n][np][c]->GetN() << endl;
-					txtout << "# columns: 3" << endl;
-					for ( int i = 0; i < gr_vnEtaC[n][np][c]->GetN(); i++ ) {
-						txtout << " " << gr_vnEtaC[n][np][c]->GetX()[i] << " " << gr_vnEtaC[n][np][c]->GetY()[i] << " " << gr_vnEtaC[n][np][c]->GetEY()[i] << endl;
-					}
-					txtout << endl;
+//					txtout << endl;
+//					txtout << Form("# name: %s", gr_vnEtaC[n][np][c]->GetName()) << endl << "# type: matrix" << endl;
+//					txtout << "# rows: " << gr_vnEtaC[n][np][c]->GetN() << endl;
+//					txtout << "# columns: 3" << endl;
+//					for ( int i = 0; i < gr_vnEtaC[n][np][c]->GetN(); i++ ) {
+//						txtout << " " << gr_vnEtaC[n][np][c]->GetX()[i] << " " << gr_vnEtaC[n][np][c]->GetY()[i] << " " << gr_vnEtaC[n][np][c]->GetEY()[i] << endl;
+//					}
+//					txtout << endl;
 				}
 			}
 		}
