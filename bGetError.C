@@ -244,7 +244,7 @@ void bGetError(int s1 = 0, int s3 = 10)
 					C2 = dCGap[fn][n][i];
 					C2p = dCcGap[fn][n][j][i];
 					if ( C2 > 0 ) V2 =       C2p/pow(C2, 1./2) ; else V2 = -fabs(C2p/pow(-C2, 1./2));
-					dVcGap[fn][n][j][i] = C2p;
+					dVcGap[fn][n][j][i] = V2;
 				}
 			}
 		}
@@ -386,7 +386,6 @@ void bGetError(int s1 = 0, int s3 = 10)
 	TH1D * hFGausVeta = new TH1D("hFGausVeta", "hFGausVeta", 2000, -10, 10);
 	TH1D * hFGausVc = new TH1D("hFGausVc", "hFGausVc", 2000, -10, 10);
 
-
 	// Get Error
 	for ( int n = 2; n < 7; n++ ) {
 		for ( int i = 0; i < 20; i++ ) {
@@ -399,8 +398,10 @@ void bGetError(int s1 = 0, int s3 = 10)
 			double errC = sqrt ( sumC )/s3;
 			double errV = sqrt ( sumV )/s3;
 			fCGap[n]->SetBinError(i+1, errC);
+			fVGap[n]->SetBinContent(i+1, dVGap[s3][n][i]);
 			fVGap[n]->SetBinError(i+1, errV);
 			errV = dVGap[s3][n][i] * fabs(errC / dCGap[s3][n][i]) / 2.;
+			fcVGap[n]->SetBinContent(i+1, dVGap[s3][n][i]);
 			fcVGap[n]->SetBinError(i+1, errV);
 			for ( int j = 0; j < 24; j++ ) {
 				double sumVp = 0;
@@ -430,13 +431,13 @@ void bGetError(int s1 = 0, int s3 = 10)
 
 				fcVpGap[n][j]->SetBinContent(i+1, dVpGap[s3][n][j][i]);
 				errVp = sqrt( errCp*errCp/dCpGap[s3][n][j][i]/dCpGap[s3][n][j][i]
-						+ errC*errC/dCGap[s3][n][i]/dCGap[s3][n][i] ) * fabs( dVpGap[s3][n][j][i] );
-				fVpGap[n][j]->SetBinError(i+1, errVp);
+						+ errC*errC/dCGap[s3][n][i]/dCGap[s3][n][i]/4 ) * fabs( dVpGap[s3][n][j][i] );
+				fcVpGap[n][j]->SetBinError(i+1, errVp);
 
 				fcVetaGap[n][j]->SetBinContent(i+1, dVetaGap[s3][n][j][i]);
 				errVeta = sqrt( errCeta*errCeta/dCetaGap[s3][n][j][i]/dCetaGap[s3][n][j][i]
-						+ errC*errC/dCGap[s3][n][i]/dCGap[s3][n][i] ) * fabs( dVetaGap[s3][n][j][i] );
-				fVetaGap[n][j]->SetBinError(i+1, errVeta);
+						+ errC*errC/dCGap[s3][n][i]/dCGap[s3][n][i]/4 ) * fabs( dVetaGap[s3][n][j][i] );
+				fcVetaGap[n][j]->SetBinError(i+1, errVeta);
 			}
 			for ( int j = 0; j < 2; j++ ) {
 				double sumVc = 0;
@@ -455,7 +456,7 @@ void bGetError(int s1 = 0, int s3 = 10)
 
 				fcVcGap[n][j]->SetBinContent(i+1, dVcGap[s3][n][j][i]);
 				errVc = sqrt( errCc*errCc/dCcGap[s3][n][j][i]/dCcGap[s3][n][j][i]
-						+ errC*errC/dCGap[s3][n][i]/dCGap[s3][n][i] ) * fabs( dVcGap[s3][n][j][i] );
+						+ errC*errC/dCGap[s3][n][i]/dCGap[s3][n][i]/4 ) * fabs( dVcGap[s3][n][j][i] );
 				fcVcGap[n][j]->SetBinError(i+1, errVc);
 			}
 			for ( int np = 0; np < 4; np++ ) {

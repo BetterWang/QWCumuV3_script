@@ -40,7 +40,62 @@ void genPlot(int s1 =2)
 	double eVc[7][4][2][20];
 	double cVc[7][4][2][20];
 
+	double dVGap[7][20];
+	double eVGap[7][20];
+	double cVGap[7][20];
+
+	double dVpGap[7][24][20];
+	double eVpGap[7][24][20];
+	double cVpGap[7][24][20];
+
+	double dVetaGap[7][24][20];
+	double eVetaGap[7][24][20];
+	double cVetaGap[7][24][20];
+
+	double dVcGap[7][2][20];
+	double eVcGap[7][2][20];
+	double cVcGap[7][2][20];
+
 	for ( int n = 2; n < 7; n++ ) {
+		TH1D * h1 = (TH1D*) f->Get(Form("hVGap%i", n));
+		TH1D * h2 = (TH1D*) f->Get(Form("hcVGap%i", n));
+		for ( int i = 0; i < 20; i++ ) {
+			dVGap[n][i] = h1->GetBinContent(i+1);
+			eVGap[n][i] = h1->GetBinError(i+1);
+			cVGap[n][i] = h2->GetBinError(i+1);
+		}
+		delete h1;
+		delete h2;
+		for ( int j = 0; j < 24; j++ ) {
+			TH1D * h1 = (TH1D*) f->Get(Form("hVpGap%i_%i", n, j));
+			TH1D * h2 = (TH1D*) f->Get(Form("hcVpGap%i_%i", n, j));
+			TH1D * h3 = (TH1D*) f->Get(Form("hVetaGap%i_%i", n, j));
+			TH1D * h4 = (TH1D*) f->Get(Form("hcVetaGap%i_%i", n, j));
+			for ( int i = 0; i < 20; i++ ) {
+				dVpGap[n][j][i] = h1->GetBinContent(i+1);
+				eVpGap[n][j][i] = h1->GetBinError(i+1);
+				cVpGap[n][j][i] = h2->GetBinError(i+1);
+
+				dVetaGap[n][j][i] = h3->GetBinContent(i+1);
+				eVetaGap[n][j][i] = h3->GetBinError(i+1);
+				cVetaGap[n][j][i] = h4->GetBinError(i+1);
+			}
+			delete h1;
+			delete h2;
+			delete h3;
+			delete h4;
+		}
+		for ( int j = 0; j < 2; j++ ) {
+			TH1D * h1 = (TH1D*) f->Get(Form("hVcGap%i_%i", n, j));
+			TH1D * h2 = (TH1D*) f->Get(Form("hcVcGap%i_%i", n, j));
+			for ( int i = 0; i < 20; i++ ) {
+				dVcGap[n][j][i] = h1->GetBinContent(i+1);
+				eVcGap[n][j][i] = h1->GetBinError(i+1);
+				cVcGap[n][j][i] = h2->GetBinError(i+1);
+			}
+			delete h1;
+			delete h2;
+		}
 		for ( int np = 0; np < 4; np++ ) {
 			TH1D * h1 = (TH1D*) f->Get(Form("hV%i%i", n, 2+2*np));
 			TH1D * h2 = (TH1D*) f->Get(Form("hX%i%i", n, 2+2*np));
@@ -49,11 +104,11 @@ void genPlot(int s1 =2)
 			for ( int i = 0; i < 20; i++ ) {
 				dV[n][np][i] = h1->GetBinContent(i+1);
 				eV[n][np][i] = h1->GetBinError(i+1);
-				cV[n][np][i] = h3->GetBinContent(i+1);
+				cV[n][np][i] = h3->GetBinError(i+1);
 
 				dX[n][np][i] = h2->GetBinContent(i+1);
 				eX[n][np][i] = h2->GetBinError(i+1);
-				cX[n][np][i] = h4->GetBinContent(i+1);
+				cX[n][np][i] = h4->GetBinError(i+1);
 				if ( dX[n][np][i] != h4->GetBinContent(i+1) ) cout << "!! dX[" << n << "][" << np << "][" << i << "] = " << dX[n][np][i] << "\tdcX = " << h4->GetBinContent(i+1) << endl;
 			}
 			delete h1;
@@ -101,6 +156,17 @@ void genPlot(int s1 =2)
 	TGraphErrors * gr_vnCentV[7][4] = {};
 	TGraphErrors * gr_vnCentC[7][4] = {};
 
+	TGraphErrors * gr_vnCentGapV[7] = {};
+	TGraphErrors * gr_vnCentGapC[7] = {};
+
+	TGraphErrors * gr_vnCCentGapV[7][2] = {};
+	TGraphErrors * gr_vnCCentGapC[7][2] = {};
+
+	TGraphErrors * gr_vnPtGapV[7][20] = {};
+	TGraphErrors * gr_vnPtGapC[7][20] = {};
+	TGraphErrors * gr_vnEtaGapV[7][20] = {};
+	TGraphErrors * gr_vnEtaGapC[7][20] = {};
+
 	double dY[100];
 	double eY[100];
 	double cY[100];
@@ -111,10 +177,87 @@ void genPlot(int s1 =2)
 
         Int_t const * pCent[4] = { pCent4, pCent4, pCent6, pCent8 };
 
+	const double * CentX[4] = {CentPbPbX, CentPbPbX, CentPbPbX, CentPbPbX};
+
+	if ( s1 == 4 ) {
+		pCent[0] = CentNoffCutPA8TeV4;
+		pCent[1] = CentNoffCutPA8TeV4;
+		pCent[2] = CentNoffCutPA8TeV6;
+		pCent[3] = CentNoffCutPA8TeV8;
+
+		NCent[0] = NCent8TeV4;
+		NCent[1] = NCent8TeV4;
+		NCent[2] = NCent8TeV6;
+		NCent[3] = NCent8TeV8;
+
+		CentX[0] = CentPPbX4;
+		CentX[1] = CentPPbX4;
+		CentX[2] = CentPPbX6;
+		CentX[3] = CentPPbX8;
+	}
+
 	// pT
 	for ( int n = 2; n < 7; n++ ) {
+		for ( int i = 0; i < NCent[0]; i++ ) {
+			dY[i] = dVGap[n][i];
+			eY[i] = eVGap[n][i];
+			cY[i] = cVGap[n][i];
+		}
+		gr_vnCentGapV[n] = new TGraphErrors(NCent[0], CentX[0], dY, 0, eY);
+		gr_vnCentGapC[n] = new TGraphErrors(NCent[0], CentX[0], dY, 0, cY);
+		gr_vnCentGapV[n]->SetMarkerStyle(kOpenSquare);
+		gr_vnCentGapC[n]->SetMarkerStyle(kOpenSquare);
+
+		for ( int i = 0; i < NCent[0]; i++ ) {
+			dY[i] = dVcGap[n][0][i];
+			eY[i] = eVcGap[n][0][i];
+			cY[i] = cVcGap[n][0][i];
+		}
+		gr_vnCCentGapV[n][0] = new TGraphErrors(NCent[0], CentX[0], dY, 0, eY);
+		gr_vnCCentGapC[n][0] = new TGraphErrors(NCent[0], CentX[0], dY, 0, cY);
+		gr_vnCCentGapV[n][0]->SetMarkerStyle(kOpenCircle);
+		gr_vnCCentGapC[n][0]->SetMarkerStyle(kOpenCircle);
+
+		for ( int i = 0; i < NCent[0]; i++ ) {
+			dY[i] = dVcGap[n][1][i];
+			eY[i] = eVcGap[n][1][i];
+			cY[i] = cVcGap[n][1][i];
+		}
+		gr_vnCCentGapV[n][1] = new TGraphErrors(NCent[0], CentX[0], dY, 0, eY);
+		gr_vnCCentGapC[n][1] = new TGraphErrors(NCent[0], CentX[0], dY, 0, cY);
+		gr_vnCCentGapV[n][1]->SetMarkerStyle(kOpenStar);
+		gr_vnCCentGapC[n][1]->SetMarkerStyle(kOpenStar);
+
+		for ( int i = 0; i < NCent[0]; i++ ) {
+			for ( int j = 0; j < 24; j++ ) {
+				dY[j] = dVpGap[n][j][i];
+				eY[j] = eVpGap[n][j][i];
+				cY[j] = cVpGap[n][j][i];
+				if (eY[i] != eY[i]) eY[i] = 999;
+				if (cY[i] != cY[i]) cY[i] = 999;
+				if (dY[i] != dY[i]) dY[i] = 999;
+			}
+			gr_vnPtGapV[n][i] = new TGraphErrors(24, ptX, dY, 0, eY);
+			gr_vnPtGapC[n][i] = new TGraphErrors(24, ptX, dY, 0, cY);
+			gr_vnPtGapV[n][i]->SetMarkerStyle(kOpenSquare);
+			gr_vnPtGapC[n][i]->SetMarkerStyle(kOpenSquare);
+
+			for ( int j = 0; j < 24; j++ ) {
+				dY[j] = dVetaGap[n][j][i];
+				eY[j] = eVetaGap[n][j][i];
+				cY[j] = cVetaGap[n][j][i];
+				if (eY[i] != eY[i]) eY[i] = 999;
+				if (cY[i] != cY[i]) cY[i] = 999;
+				if (dY[i] != dY[i]) dY[i] = 999;
+			}
+			gr_vnEtaGapV[n][i] = new TGraphErrors(24, etaX, dY, 0, eY);
+			gr_vnEtaGapC[n][i] = new TGraphErrors(24, etaX, dY, 0, cY);
+			gr_vnEtaGapV[n][i]->SetMarkerStyle(kOpenSquare);
+			gr_vnEtaGapC[n][i]->SetMarkerStyle(kOpenSquare);
+		}
+
 		for ( int np = 0; np < 4; np++ ) {
-			for ( int i = 0; i < 14; i++ ) {
+			for ( int i = 0; i < NCent4; i++ ) {
 				dY[i] = dV[n][np][i];
 				cY[i] = cV[n][np][i];
 				eY[i] = eV[n][np][i];
@@ -122,8 +265,8 @@ void genPlot(int s1 =2)
 				if (cY[i] != cY[i]) cY[i] = 999;
 				if (dY[i] != dY[i]) dY[i] = 999;
 			}
-			gr_vnCentV[n][np] = new TGraphErrors(NCent[0], CentPbPbX, dY, 0, eY);
-			gr_vnCentC[n][np] = new TGraphErrors(NCent[0], CentPbPbX, cY, 0, eY);
+			gr_vnCentV[n][np] = new TGraphErrors(NCent[0], CentX[np], dY, 0, eY);
+			gr_vnCentC[n][np] = new TGraphErrors(NCent[0], CentX[np], dY, 0, cY);
 			if ( np == 0 ) {
 				gr_vnCentV[n][np]->SetMarkerStyle(kFullCircle);
 				gr_vnCentV[n][np]->SetMarkerColor(kGreen+2);
@@ -163,8 +306,8 @@ void genPlot(int s1 =2)
 					if (eY[j] != eY[j]) eY[j] = 999;
 					if (cY[j] != cY[j]) cY[j] = 999;
 				}
-				gr_vnPtV[n][np][i] = new TGraphErrors(23, ptX, dY, 0, eY);
-				gr_vnPtC[n][np][i] = new TGraphErrors(23, ptX, dY, 0, cY);
+				gr_vnPtV[n][np][i] = new TGraphErrors(24, ptX, dY, 0, eY);
+				gr_vnPtC[n][np][i] = new TGraphErrors(24, ptX, dY, 0, cY);
 				if ( np == 0 ) {
 					gr_vnPtV[n][np][i]->SetMarkerStyle(kFullCircle);
 					gr_vnPtV[n][np][i]->SetMarkerColor(kGreen+2);
@@ -257,11 +400,11 @@ void genPlot(int s1 =2)
 	TF1 *finputv2 = new TF1("finputv2", "0.165646*exp(-( (x-2.64741)/1.36298 + exp( -(x-2.64741)/1.36298 ) )/2.)", 0.2, 15);
 
 //	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 12, 1, 0, 0.35);
-	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 100, 1, 0, 0.35);
+	TH2D * hframe_pt = new TH2D("hframe_pt", "", 1, 0, 10, 1, 0, 0.35);
 	InitHist(hframe_pt, "p_{T} (GeV/c)", "v_{2}");
 	TH2D * hframe_eta = new TH2D("hframe_eta", "", 1, -2.5, 2.5, 1, 0, 0.35);
 	InitHist(hframe_eta, "#eta", "v_{2}");
-	TH2D * hframe_cent = new TH2D("hframe_cent", "", 1, 0, 100, 1, 0, 0.35);
+	TH2D * hframe_cent = new TH2D("hframe_cent", "", 1, 0, 400, 1, 0, 0.35);
 	InitHist(hframe_cent, "Centrality", "v_{2}");
 
 	TCanvas * cT = MakeCanvas("cT", "cT", 600, 500);
@@ -271,18 +414,24 @@ void genPlot(int s1 =2)
 		hframe_cent->GetYaxis()->SetTitle(Form("v_{%i}",n));
 		hframe_cent->Draw();
 		if (sC) {
-//			gr_vnCentC[n][0]->Draw("Psame");
+			gr_vnCentC[n][0]->Draw("Psame");
 			gr_vnCentC[n][1]->Draw("Psame");
 			gr_vnCentC[n][2]->Draw("Psame");
 			gr_vnCentC[n][3]->Draw("Psame");
+			gr_vnCentGapC[n]->Draw("Psame");
+			gr_vnCCentGapC[n][0]->Draw("Psame");
+			gr_vnCCentGapC[n][1]->Draw("Psame");
 		} else {
 			gr_vnCentV[n][0]->Draw("Psame");
 			gr_vnCentV[n][1]->Draw("Psame");
 			gr_vnCentV[n][2]->Draw("Psame");
 			gr_vnCentV[n][3]->Draw("Psame");
+			gr_vnCentGapV[n]->Draw("Psame");
+			gr_vnCCentGapV[n][0]->Draw("Psame");
+			gr_vnCCentGapV[n][1]->Draw("Psame");
 		}
 		cT->SaveAs(Form("%s/cCent_%i_%i.pdf", ftxt[s1], n, sC));
-		for ( int i = 0; i < 14; i++ ) {
+		for ( int i = 0; i < NCent4; i++ ) {
 			//if (pCent[0][i] == 0) break;
 			cT->cd();
 			hframe_pt->GetYaxis()->SetTitle(Form("v_{%i}",n));
@@ -309,21 +458,23 @@ void genPlot(int s1 =2)
 //			}
 
 			// plot HIN-11-012
-			if ( n==2 && mgrHIN11012_v2[i] ) {
-				mgrHIN11012_v2[i]->Draw("P");
-				legPt->AddEntry(mgrHIN11012_v2[i]->GetListOfGraphs()->At(1), "v_{2}{EP} HIN-11-012", "p");
-			}
+//			if ( n==2 && mgrHIN11012_v2[i] ) {
+//				mgrHIN11012_v2[i]->Draw("P");
+//				legPt->AddEntry(mgrHIN11012_v2[i]->GetListOfGraphs()->At(1), "v_{2}{EP} HIN-11-012", "p");
+//			}
 
 			if (sC) {
-//				gr_vnPtC[n][0][i]->Draw("Psame");
+				gr_vnPtC[n][0][i]->Draw("Psame");
 				gr_vnPtC[n][1][i]->Draw("Psame");
 				gr_vnPtC[n][2][i]->Draw("Psame");
 				gr_vnPtC[n][3][i]->Draw("Psame");
+				gr_vnPtGapC[n][i]->Draw("Psame");
 			} else {
 				gr_vnPtV[n][0][i]->Draw("Psame");
 				gr_vnPtV[n][1][i]->Draw("Psame");
 				gr_vnPtV[n][2][i]->Draw("Psame");
 				gr_vnPtV[n][3][i]->Draw("Psame");
+				gr_vnPtGapV[n][i]->Draw("Psame");
 			}
 
 			if ( sSimV2 ) {
@@ -332,10 +483,11 @@ void genPlot(int s1 =2)
 				}
 			}
 
-//			legPt->AddEntry(gr_vnPtV[n][0][i], Form("v_{%i}{2} %i%% < Centrality < %i%%", n, pCent[0][i]/2, pCent[0][i+1]/2), "p");
-			legPt->AddEntry(gr_vnPtV[n][1][i], Form("v_{%i}{4} %i%% < Centrality < %i%%", n, pCent[1][i]/2, pCent[0][i+1]/2), "p");
-			legPt->AddEntry(gr_vnPtV[n][2][i], Form("v_{%i}{6} %i%% < Centrality < %i%%", n, pCent[2][i]/2, pCent[2][i+1]/2), "p");
-			legPt->AddEntry(gr_vnPtV[n][3][i], Form("v_{%i}{8} %i%% < Centrality < %i%%", n, pCent[3][i]/2, pCent[3][i+1]/2), "p");
+			legPt->AddEntry(gr_vnPtV[n][0][i], Form("v_{%i}{2} %i #leq N_{trk}^{offline} < %i", n, pCent[0][i], pCent[0][i+1]), "p");
+			legPt->AddEntry(gr_vnPtV[n][1][i], Form("v_{%i}{4} %i #leq N_{trk}^{offline} < %i", n, pCent[1][i], pCent[0][i+1]), "p");
+			legPt->AddEntry(gr_vnPtV[n][2][i], Form("v_{%i}{6} %i #leq N_{trk}^{offline} < %i", n, pCent[2][i], pCent[2][i+1]), "p");
+			legPt->AddEntry(gr_vnPtV[n][3][i], Form("v_{%i}{8} %i #leq N_{trk}^{offline} < %i", n, pCent[3][i], pCent[3][i+1]), "p");
+			legPt->AddEntry(gr_vnPtGapC[n][i], Form("v_{%i}{2, |#Delta#eta|>2.0} %i #leq N_{trk}^{offline} < %i", n, pCent[0][i], pCent[0][i+1]), "p");
 
 			legPt->Draw();
 			cT->SaveAs(Form("%s/cPt_%i_%i_%i.pdf", ftxt[s1], n, i, sC));
@@ -348,15 +500,17 @@ void genPlot(int s1 =2)
 			hframe_eta->Draw();
 
 			if (sC) {
-//				gr_vnEtaC[n][0][i]->Draw("Psame");
+				gr_vnEtaC[n][0][i]->Draw("Psame");
 				gr_vnEtaC[n][1][i]->Draw("Psame");
 				gr_vnEtaC[n][2][i]->Draw("Psame");
 				gr_vnEtaC[n][3][i]->Draw("Psame");
+				gr_vnEtaGapC[n][i]->Draw("Psame");
 			} else {
 				gr_vnEtaV[n][0][i]->Draw("Psame");
 				gr_vnEtaV[n][1][i]->Draw("Psame");
 				gr_vnEtaV[n][2][i]->Draw("Psame");
 				gr_vnEtaV[n][3][i]->Draw("Psame");
+				gr_vnEtaGapV[n][i]->Draw("Psame");
 			}
 			TLegend * legEta = new TLegend(0.2, 0.6, 0.55, 0.9);
 			legEta->SetFillColor(kWhite);
@@ -364,10 +518,10 @@ void genPlot(int s1 =2)
 			legEta->SetTextSize(0.03);
 			legEta->SetBorderSize(0);
 
-//			legEta->AddEntry(gr_vnEtaV[n][0][i], Form("v_{%i}{2} %i%% < Centrality < %i%%", n, pCent[0][i]/2, pCent[0][i+1]/2), "p");
-			legEta->AddEntry(gr_vnEtaV[n][1][i], Form("v_{%i}{4} %i%% < Centrality < %i%%", n, pCent[1][i]/2, pCent[0][i+1]/2), "p");
-			legEta->AddEntry(gr_vnEtaV[n][2][i], Form("v_{%i}{6} %i%% < Centrality < %i%%", n, pCent[2][i]/2, pCent[2][i+1]/2), "p");
-			legEta->AddEntry(gr_vnEtaV[n][3][i], Form("v_{%i}{8} %i%% < Centrality < %i%%", n, pCent[3][i]/2, pCent[3][i+1]/2), "p");
+//			legEta->AddEntry(gr_vnEtaV[n][0][i], Form("v_{%i}{2} %i #leq N_{trk}^{offline} < %i", n, pCent[0][i], pCent[0][i+1]), "p");
+			legEta->AddEntry(gr_vnEtaV[n][1][i], Form("v_{%i}{4} %i #leq N_{trk}^{offline} < %i", n, pCent[1][i], pCent[0][i+1]), "p");
+			legEta->AddEntry(gr_vnEtaV[n][2][i], Form("v_{%i}{6} %i #leq N_{trk}^{offline} < %i", n, pCent[2][i], pCent[2][i+1]), "p");
+			legEta->AddEntry(gr_vnEtaV[n][3][i], Form("v_{%i}{8} %i #leq N_{trk}^{offline} < %i", n, pCent[3][i], pCent[3][i+1]), "p");
 
 			legEta->Draw();
 			cT->SaveAs(Form("%s/cEta_%i_%i_%i.pdf", ftxt[s1], n, i, sC));
@@ -381,6 +535,38 @@ void genPlot(int s1 =2)
 	fsave = new TFile(Form("%s/outGraph.root", ftxt[s1]),"recreate");
 //	txtout.open(Form("%s/Graph.txt", ftxt[s1]));
 	for ( int n = 2; n < 7; n++ ) {
+		gr_vnCentGapV[n]->SetName(Form("gr_vnCentGapV_%i", n));
+		gr_vnCentGapC[n]->SetName(Form("gr_vnCentGapC_%i", n));
+		gr_vnCentGapV[n]->Write();
+		gr_vnCentGapC[n]->Write();
+
+		gr_vnCCentGapV[n][0]->SetName(Form("gr_vnCCentGapV_%i_0", n));
+		gr_vnCCentGapC[n][0]->SetName(Form("gr_vnCCentGapC_%i_0", n));
+		gr_vnCCentGapV[n][1]->SetName(Form("gr_vnCCentGapV_%i_1", n));
+		gr_vnCCentGapC[n][1]->SetName(Form("gr_vnCCentGapC_%i_1", n));
+		gr_vnCCentGapV[n][0]->Write();
+		gr_vnCCentGapC[n][0]->Write();
+		gr_vnCCentGapV[n][1]->Write();
+		gr_vnCCentGapC[n][1]->Write();
+
+		for ( int np = 0; np < 4; np++ ) {
+			gr_vnCentC[n][np]->Write(Form("gr_vnCentC_%i_%i", n, np));
+			gr_vnCentV[n][np]->Write(Form("gr_vnCentV_%i_%i", n, np));
+		}
+
+		for ( int c = 0; c < 20; c++ ) {
+			if ( gr_vnPtGapV[n][c] ) {
+				gr_vnPtGapV[n][c]->SetName(Form("gr_vnPtGapV_%i_%i", n, c));
+				gr_vnPtGapC[n][c]->SetName(Form("gr_vnPtGapC_%i_%i", n, c));
+
+				gr_vnEtaGapV[n][c]->SetName(Form("gr_vnEtaGapV_%i_%i", n, c));
+				gr_vnEtaGapC[n][c]->SetName(Form("gr_vnEtaGapC_%i_%i", n, c));
+				gr_vnPtGapV[n][c]->Write();
+				gr_vnPtGapC[n][c]->Write();
+				gr_vnEtaGapV[n][c]->Write();
+				gr_vnEtaGapC[n][c]->Write();
+			}
+		}
 		for ( int np = 0; np < 4; np++ ) {
 			for ( int c = 0; c < 20; c++ ) {
 				if (gr_vnPtV[n][np][c]) {

@@ -58,6 +58,18 @@ void bGet(int s1 = 0, int s2 = 10, int s3 =10){
 
 	Int_t const * pCent[4] = { pCent4, pCent4, pCent6, pCent8 };
 
+	if ( s1 == 4 ) {
+		pCent[0] = CentNoffCutPA8TeV4;
+		pCent[1] = CentNoffCutPA8TeV4;
+		pCent[2] = CentNoffCutPA8TeV6;
+		pCent[3] = CentNoffCutPA8TeV8;
+
+		NCent[0] = NCent8TeV4;
+		NCent[1] = NCent8TeV4;
+		NCent[2] = NCent8TeV6;
+		NCent[3] = NCent8TeV8;
+	}
+
 	double dCx[7][4][20] = {};
 	double wCx[7][4][20] = {};
 	double dDx[7][4][20] = {};
@@ -259,7 +271,7 @@ void bGet(int s1 = 0, int s2 = 10, int s3 =10){
 		for ( int i = 0; i < NCent[np]; i++ ) {
 			double nevt = 0;
 			for (int m = pCent[np][i]; m < pCent[np][i+1]; m++ ) {
-				if ( m >= 200 ) continue;
+				if ( m >= 500 ) continue;
 				nevt += hNoff->GetBinContent(m);
 			}
 			hNevtCent[np]->SetBinContent(i+1, nevt);
