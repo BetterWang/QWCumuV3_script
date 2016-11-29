@@ -92,8 +92,8 @@ void process(int s1 = 0, int s2 = 10, int s3 = 10)
 //	int Nevt[500] = {};
 
 
-	TH1D * hMult = new TH1D("hMult", "hMult", 5000, -0.5, 4999.5);
-	TH1D * hNoff = new TH1D("hNoff", "hNoff", 500, -0.5, 199.5);
+	TH1D * hMult = new TH1D("hMult", "hMult", 1000, -0.5, 999.5);
+	TH1D * hNoff = new TH1D("hNoff", "hNoff", 1000, -0.5, 999.5);
 
 	TH1D * hQGap[7] = {};
 	TH1D * hQpGap[7][24] = {};
