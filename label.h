@@ -6,7 +6,7 @@ char const * fname[] = {
 	"../PbPb2015_cumu/HIMinimumBias5/crab_HIMB5_Cumu_ppReco_eff_noff_v1/161128_173103/0000/",		// 3 ppReco rfp 0.3 < pT < 3
 	"../PbPb2015_cumu/ExpressPhysicsPA/crab_Express_pA8_noeff_noff_v2/161121_172911/0000/",			// 4 pPb 8 TeV rfp 0.3 < pT < 3
 	"../PbPb2015_cumu/PAHighMultiplicity0/crab_PAHM0_noeff_v1/161122_182345/0000/",				// 5 pPb 8 TeV rfp 0.3 < pT < 3
-	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_v2/161128_235420/0000/",		// 6 PbPb pixel rfp 0.3 < pT < 3
+	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_v3/161130_004904/0000/",		// 6 PbPb pixel rfp 0.3 < pT < 3
 	"../PbPb2015_cumu/PAHighPt/crab_pPb5_Cumu_eff_noff_v1/161124_111445/0000/",				// 7 pPb 2013 5 TeV rfp 0.3 < pT < 3
 };
 
