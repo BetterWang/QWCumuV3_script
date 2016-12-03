@@ -5,9 +5,25 @@ char const * fname[] = {
 	"../PbPb2015_cumu/HIMinimumBias3/crab_HIMB3_Reco_eff_2part_v1/160831_001948/0000/",			// 2 Reco rfp 1 < pT < 3
 	"../PbPb2015_cumu/HIMinimumBias5/crab_HIMB5_Cumu_ppReco_eff_noff_v1/161128_173103/0000/",		// 3 ppReco rfp 0.3 < pT < 3
 	"../PbPb2015_cumu/ExpressPhysicsPA/crab_Express_pA8_noeff_noff_v2/161121_172911/0000/",			// 4 pPb 8 TeV rfp 0.3 < pT < 3
-	"../PbPb2015_cumu/PAHighMultiplicity0/crab_PAHM0_noeff_v1/161122_182345/0000/",				// 5 pPb 8 TeV rfp 0.3 < pT < 3
+	"",													// 5 pPb 8 TeV rfp 0.3 < pT < 3
 	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_v3/161130_004904/0000/",		// 6 PbPb pixel rfp 0.3 < pT < 3
 	"../PbPb2015_cumu/PAHighPt/crab_pPb5_Cumu_eff_noff_v1/161124_111445/0000/",				// 7 pPb 2013 5 TeV rfp 0.3 < pT < 3
+	"../PbPb2015_cumu/PAHighMultiplicity0/crab_PAHM0_cumu_eff_v2/161201_195046/0000/",			// 8 pPb 8 TeV HM0 rfp 0.3 < pT < 3
+	"../PbPb2015_cumu/PAHighMultiplicity1/crab_PAHM1_cumu_eff_v2/161201_195101/0000/",			// 9 pPb 8 TeV HM1 rfp 0.3 < pT < 3
+	"../PbPb2015_cumu/PAHighMultiplicity2/crab_PAHM2_cumu_eff_v2/161201_195116/0000/",			// 10 pPb 8 TeV HM2 rfp 0.3 < pT < 3
+	"",				// 11 pPb 8 TeV HM3 rfp 0.3 < pT < 3
+	"",				// 12 pPb 8 TeV HM4 rfp 0.3 < pT < 3
+	"../PbPb2015_cumu/PAHighMultiplicity5/crab_PAHM5_cumu_eff_v2/161201_195220/0000/",			// 13 pPb 8 TeV HM5 rfp 0.3 < pT < 3
+	"../PbPb2015_cumu/PAHighMultiplicity6/crab_PAHM6_cumu_eff_v2/161201_195238/0000/",			// 14 pPb 8 TeV HM6 rfp 0.3 < pT < 3
+	"../PbPb2015_cumu/PAHighMultiplicity7/crab_PAHM7_cumu_eff_v2/161201_195255/0000/",			// 15 pPb 8 TeV HM7 rfp 0.3 < pT < 3
+	"../PbPb2015_cumu/PAMinimumBias1/crab_PAMB1_cumu_eff_v1/161201_162146/0000/",				// 16 pPb 8 TeV MB1 rfp 0.3 < pT < 3
+	"../PbPb2015_cumu/PAMinimumBias2/crab_PAMB2_cumu_eff_v1/161201_162201/0000/",				// 17 pPb 8 TeV MB2 rfp 0.3 < pT < 3
+	"../PbPb2015_cumu/PAMinimumBias3/crab_PAMB3_cumu_eff_v1/161201_162216/0000/",				// 18 pPb 8 TeV MB3 rfp 0.3 < pT < 3
+	"",				// 19 pPb 8 TeV MB4 rfp 0.3 < pT < 3
+	"../PbPb2015_cumu/PAMinimumBias5/crab_PAMB5_cumu_eff_v1/161201_162246/0000/",				// 20 pPb 8 TeV MB5 rfp 0.3 < pT < 3
+	"",				// 21 pPb 8 TeV MB6 rfp 0.3 < pT < 3
+	"../PbPb2015_cumu/PAMinimumBias7/crab_PAMB7_cumu_eff_v1/161201_162311/0000/",				// 22 pPb 8 TeV MB7 rfp 0.3 < pT < 3
+	"",				// 23 pPb 8 TeV MB8 rfp 0.3 < pT < 3
 };
 
 char const * ftxt[] = {
@@ -19,6 +35,22 @@ char const * ftxt[] = {
 	"txt/PAHM_8TeV/",						// 5
 	"txt/HIMB2_pixel/",						// 6
 	"txt/PA5T3V_2013/",						// 7
+	"txt/PAHM0_8TeV/",						// 8
+	"txt/PAHM1_8TeV/",						// 9
+	"txt/PAHM2_8TeV/",						// 10
+	"txt/PAHM3_8TeV/",						// 11
+	"txt/PAHM4_8TeV/",						// 12
+	"txt/PAHM5_8TeV/",						// 13
+	"txt/PAHM6_8TeV/",						// 14
+	"txt/PAHM7_8TeV/",						// 15
+	"txt/PAMB1_8TeV/",						// 16
+	"txt/PAMB2_8TeV/",						// 17
+	"txt/PAMB3_8TeV/",						// 18
+	"txt/PAMB4_8TeV/",						// 19
+	"txt/PAMB5_8TeV/",						// 20
+	"txt/PAMB6_8TeV/",						// 21
+	"txt/PAMB7_8TeV/",						// 22
+	"txt/PAMB8_8TeV/",						// 23
 };
 
 #include <TChain.h>
