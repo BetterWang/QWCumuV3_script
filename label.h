@@ -24,6 +24,11 @@ char const * fname[] = {
 	"",				// 21 pPb 8 TeV MB6 rfp 0.3 < pT < 3
 	"../PbPb2015_cumu/PAMinimumBias7/crab_PAMB7_cumu_eff_v1/161201_162311/0000/",				// 22 pPb 8 TeV MB7 rfp 0.3 < pT < 3
 	"",				// 23 pPb 8 TeV MB8 rfp 0.3 < pT < 3
+	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_v4/161212_200141/0000/",		// 24 PbPb pixel rfp 0.3 < pT < 3
+	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_v4/161212_200141/0001/",		// 25 PbPb pixel rfp 0.3 < pT < 3
+	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_v4/161212_200141/0002/",		// 26 PbPb pixel rfp 0.3 < pT < 3
+	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_v4/161212_200141/0003/",		// 27 PbPb pixel rfp 0.3 < pT < 3
+	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_v4/161212_200141/0004/",		// 28 PbPb pixel rfp 0.3 < pT < 3
 };
 
 char const * ftxt[] = {
@@ -51,6 +56,11 @@ char const * ftxt[] = {
 	"txt/PAMB6_8TeV/",						// 21
 	"txt/PAMB7_8TeV/",						// 22
 	"txt/PAMB8_8TeV/",						// 23
+	"txt/HIMB2_pixel_part0/",					// 24
+	"txt/HIMB2_pixel_part1/",					// 25
+	"txt/HIMB2_pixel_part2/",					// 26
+	"txt/HIMB2_pixel_part3/",					// 27
+	"txt/HIMB2_pixel_part4/",					// 28
 };
 
 #include <TChain.h>
