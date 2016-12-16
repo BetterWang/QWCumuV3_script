@@ -29,6 +29,12 @@ char const * fname[] = {
 	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_v4/161212_200141/0002/",		// 26 PbPb pixel rfp 0.3 < pT < 3
 	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_v4/161212_200141/0003/",		// 27 PbPb pixel rfp 0.3 < pT < 3
 	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_v4/161212_200141/0004/",		// 28 PbPb pixel rfp 0.3 < pT < 3
+	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v5/161215_202815/0000/",		// 29 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0
+	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v5/161215_202815/0001/",		// 30 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0
+	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v5/161215_202815/0002/",		// 31 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0
+	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v5/161215_202815/0003/",		// 32 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0
+	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v5/161215_202815/0004/",		// 33 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0
+	"",													// 34 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0
 };
 
 char const * ftxt[] = {
@@ -61,6 +67,12 @@ char const * ftxt[] = {
 	"txt/HIMB2_pixel_part2/",					// 26
 	"txt/HIMB2_pixel_part3/",					// 27
 	"txt/HIMB2_pixel_part4/",					// 28
+	"txt/HIMB2_pixel_eta1_part0/",					// 29
+	"txt/HIMB2_pixel_eta1_part1/",					// 30
+	"txt/HIMB2_pixel_eta1_part2/",					// 31
+	"txt/HIMB2_pixel_eta1_part3/",					// 32
+	"txt/HIMB2_pixel_eta1_part4/",					// 33
+	"txt/HIMB2_pixel_eta1/",					// 34
 };
 
 #include <TChain.h>
