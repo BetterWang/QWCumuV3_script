@@ -8,7 +8,7 @@ char const * fname[] = {
 	"",													// 5 pPb 8 TeV rfp 0.3 < pT < 3
 	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_v3/161130_004904/0000/",		// 6 PbPb pixel rfp 0.3 < pT < 3
 	"../PbPb2015_cumu/PAHighPt/crab_pPb5_Cumu_eff_noff_v1/161124_111445/0000/",				// 7 pPb 2013 5 TeV rfp 0.3 < pT < 3
-	"../PbPb2015_cumu/PAHighMultiplicity0/crab_PAHM0_cumu_eff_v2/161201_195046/0000/",			// 8 pPb 8 TeV HM0 rfp 0.3 < pT < 3
+	"../pPb/PAHighMultiplicity0/crab_PAHM0_cumu_eff_v4/161215_142033/0000/",				// 8 pPb 8 TeV HM0 rfp 0.3 < pT < 3
 	"../PbPb2015_cumu/PAHighMultiplicity1/crab_PAHM1_cumu_eff_v2/161201_195101/0000/",			// 9 pPb 8 TeV HM1 rfp 0.3 < pT < 3
 	"../PbPb2015_cumu/PAHighMultiplicity2/crab_PAHM2_cumu_eff_v2/161201_195116/0000/",			// 10 pPb 8 TeV HM2 rfp 0.3 < pT < 3
 	"",				// 11 pPb 8 TeV HM3 rfp 0.3 < pT < 3
@@ -29,12 +29,20 @@ char const * fname[] = {
 	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_v4/161212_200141/0002/",		// 26 PbPb pixel rfp 0.3 < pT < 3
 	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_v4/161212_200141/0003/",		// 27 PbPb pixel rfp 0.3 < pT < 3
 	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_v4/161212_200141/0004/",		// 28 PbPb pixel rfp 0.3 < pT < 3
-	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v5/161215_202815/0000/",		// 29 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0
-	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v5/161215_202815/0001/",		// 30 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0
-	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v5/161215_202815/0002/",		// 31 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0
-	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v5/161215_202815/0003/",		// 32 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0
-	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v5/161215_202815/0004/",		// 33 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0
-	"",													// 34 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0
+	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v5/161215_202815/0000/",		// 29 PbPb pixel rfp 1.0 < pT < 3 |eta|<2.4
+	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v5/161215_202815/0001/",		// 30 PbPb pixel rfp 1.0 < pT < 3 |eta|<2.4
+	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v5/161215_202815/0002/",		// 31 PbPb pixel rfp 1.0 < pT < 3 |eta|<2.4
+	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v5/161215_202815/0003/",		// 32 PbPb pixel rfp 1.0 < pT < 3 |eta|<2.4
+	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v5/161215_202815/0004/",		// 33 PbPb pixel rfp 1.0 < pT < 3 |eta|<2.4
+	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v5/161215_202815/0005/",		// 34 PbPb pixel rfp 1.0 < pT < 3 |eta|<2.4
+	"",													// 35 PbPb pixel rfp 1.0 < pT < 3 |eta|<2.4
+	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v6/161220_112708/0000/",		// 36 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0
+	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v6/161220_112708/0001/",		// 37 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0
+	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v6/161220_112708/0002/",		// 38 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0
+	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v6/161220_112708/0003/",		// 39 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0
+	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v6/161220_112708/0004/",		// 40 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0
+	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v6/161220_112708/0005/",		// 41 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0
+	"",													// 42 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0
 };
 
 char const * ftxt[] = {
@@ -67,12 +75,20 @@ char const * ftxt[] = {
 	"txt/HIMB2_pixel_part2/",					// 26
 	"txt/HIMB2_pixel_part3/",					// 27
 	"txt/HIMB2_pixel_part4/",					// 28
-	"txt/HIMB2_pixel_eta1_part0/",					// 29
-	"txt/HIMB2_pixel_eta1_part1/",					// 30
-	"txt/HIMB2_pixel_eta1_part2/",					// 31
-	"txt/HIMB2_pixel_eta1_part3/",					// 32
-	"txt/HIMB2_pixel_eta1_part4/",					// 33
-	"txt/HIMB2_pixel_eta1/",					// 34
+	"txt/HIMB2_pixel_pt1_part0/",					// 29
+	"txt/HIMB2_pixel_pt1_part1/",					// 30
+	"txt/HIMB2_pixel_pt1_part2/",					// 31
+	"txt/HIMB2_pixel_pt1_part3/",					// 32
+	"txt/HIMB2_pixel_pt1_part4/",					// 33
+	"txt/HIMB2_pixel_pt1_part5/",					// 34
+	"txt/HIMB2_pixel_pt1/",						// 35
+	"txt/HIMB2_pixel_eta1_part0/",					// 36
+	"txt/HIMB2_pixel_eta1_part1/",					// 37
+	"txt/HIMB2_pixel_eta1_part2/",					// 38
+	"txt/HIMB2_pixel_eta1_part3/",					// 39
+	"txt/HIMB2_pixel_eta1_part4/",					// 40
+	"txt/HIMB2_pixel_eta1_part5/",					// 41
+	"txt/HIMB2_pixel_eta1/",					// 42
 };
 
 #include <TChain.h>
