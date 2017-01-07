@@ -43,6 +43,7 @@ char const * fname[] = {
 	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v6/161220_112708/0004/",		// 40 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0 Deta > 1.0
 	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v6/161220_112708/0005/",		// 41 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0 Deta > 1.0
 	"",													// 42 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0 Deta > 1.0
+	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_general_eff_cent_v7/170105_224504/0000/",		// 43 PbPb general rfp 1.0 < pT < 3 |eta|<1.0 Deta > 1.0
 };
 
 char const * ftxt[] = {
@@ -89,6 +90,7 @@ char const * ftxt[] = {
 	"txt/HIMB2_pixel_eta1_part4/",					// 40
 	"txt/HIMB2_pixel_eta1_part5/",					// 41
 	"txt/HIMB2_pixel_eta1/",					// 42
+	"txt/HIMB2_general_eta1/",					// 43
 };
 
 #include <TChain.h>
