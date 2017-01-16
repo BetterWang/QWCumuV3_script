@@ -44,6 +44,14 @@ char const * fname[] = {
 	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v6/161220_112708/0005/",		// 41 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0 Deta > 1.0
 	"",													// 42 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0 Deta > 1.0
 	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_general_eff_cent_v7/170105_224504/0000/",		// 43 PbPb general rfp 1.0 < pT < 3 |eta|<1.0 Deta > 1.0
+	"../pPb/PAHighMultiplicity0/crab_PAHM0_cumu_eff_reverse_v5/170113_111835/0000/",			// 44 Pbp 8 TeV HM0 rfp 0.3 < pT < 3
+	"../pPb/PAHighMultiplicity1/crab_PAHM1_cumu_eff_reverse_v5/170113_111847/0000/",			// 45 Pbp 8 TeV HM1 rfp 0.3 < pT < 3
+	"",				// 46 Pbp 8 TeV HM2 rfp 0.3 < pT < 3
+	"",				// 47 Pbp 8 TeV HM3 rfp 0.3 < pT < 3
+	"",				// 48 Pbp 8 TeV HM4 rfp 0.3 < pT < 3
+	"",				// 49 Pbp 8 TeV HM5 rfp 0.3 < pT < 3
+	"",				// 50 Pbp 8 TeV HM6 rfp 0.3 < pT < 3
+	"../pPb/PAHighMultiplicity7/crab_PAHM7_cumu_eff_reverse_v5/170113_111900/0000/",			// 51 Pbp 8 TeV HM7 rfp 0.3 < pT < 3
 };
 
 char const * ftxt[] = {
@@ -91,6 +99,14 @@ char const * ftxt[] = {
 	"txt/HIMB2_pixel_eta1_part5/",					// 41
 	"txt/HIMB2_pixel_eta1/",					// 42
 	"txt/HIMB2_general_eta1/",					// 43
+	"txt/PAHM0_reverse_8TeV/",					// 44
+	"txt/PAHM1_reverse_8TeV/",					// 45
+	"txt/PAHM2_reverse_8TeV/",					// 46
+	"txt/PAHM3_reverse_8TeV/",					// 47
+	"txt/PAHM4_reverse_8TeV/",					// 48
+	"txt/PAHM5_reverse_8TeV/",					// 49
+	"txt/PAHM6_reverse_8TeV/",					// 50
+	"txt/PAHM7_reverse_8TeV/",					// 51
 };
 
 #include <TChain.h>
