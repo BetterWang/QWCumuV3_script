@@ -10,7 +10,7 @@ char const * fname[] = {
 	"../PbPb2015_cumu/PAHighPt/crab_pPb5_Cumu_eff_noff_v1/161124_111445/0000/",				// 7 pPb 2013 5 TeV rfp 0.3 < pT < 3
 	"../pPb/PAHighMultiplicity0/crab_PAHM0_cumu_eff_v5/170110_125206/0000/",				// 8 pPb 8 TeV HM0 rfp 0.3 < pT < 3
 	"../pPb/PAHighMultiplicity1/crab_PAHM1_cumu_eff_v5/170111_084520/0000/",				// 9 pPb 8 TeV HM1 rfp 0.3 < pT < 3
-	"",			// 10 pPb 8 TeV HM2 rfp 0.3 < pT < 3
+	"../pPb/PAHighMultiplicity2/crab_PAHM2_cumu_eff_v5/170112_121913/0000/",				// 10 pPb 8 TeV HM2 rfp 0.3 < pT < 3
 	"",			// 11 pPb 8 TeV HM3 rfp 0.3 < pT < 3
 	"",			// 12 pPb 8 TeV HM4 rfp 0.3 < pT < 3
 	"",			// 13 pPb 8 TeV HM5 rfp 0.3 < pT < 3
