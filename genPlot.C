@@ -1,7 +1,12 @@
 #include "label.h"
 #include "noff.h"
-#include "../../style.h"
+#include "TCanvas.h"
+#include "TFile.h"
+#include "TH1.h"
+#include "TGraphErrors.h"
+#include "TMultiGraph.h"
 #include "HIN-11-012.h"
+#include "../../style.h"
 
 void genPlot(int s1 =2)
 {
@@ -179,7 +184,28 @@ void genPlot(int s1 =2)
 
 	const double * CentX[4] = {CentPbPbX, CentPbPbX, CentPbPbX, CentPbPbX};
 
-	if ( s1 == 4 ) {
+	if ( s1 == 4 or
+		s1 == 3 or
+		s1 == 5 or
+		s1 == 7 or
+		s1 == 8 or
+		s1 == 9 or
+		s1 == 10 or
+		s1 == 11 or
+		s1 == 12 or
+		s1 == 13 or
+		s1 == 14 or
+		s1 == 15 or
+		s1 == 16 or
+		s1 == 44 or
+		s1 == 45 or
+		s1 == 46 or
+		s1 == 47 or
+		s1 == 48 or
+		s1 == 49 or
+		s1 == 50 or
+		s1 == 51
+		) {
 		pCent[0] = CentNoffCutPA8TeV4;
 		pCent[1] = CentNoffCutPA8TeV4;
 		pCent[2] = CentNoffCutPA8TeV6;
@@ -257,7 +283,7 @@ void genPlot(int s1 =2)
 		}
 
 		for ( int np = 0; np < 4; np++ ) {
-			for ( int i = 0; i < NCent4; i++ ) {
+			for ( int i = 0; i < NCent[np]; i++ ) {
 				dY[i] = dV[n][np][i];
 				cY[i] = cV[n][np][i];
 				eY[i] = eV[n][np][i];
@@ -431,7 +457,7 @@ void genPlot(int s1 =2)
 			gr_vnCCentGapV[n][1]->Draw("Psame");
 		}
 		cT->SaveAs(Form("%s/cCent_%i_%i.pdf", ftxt[s1], n, sC));
-		for ( int i = 0; i < NCent4; i++ ) {
+		for ( int i = 0; i < NCent[0]; i++ ) {
 			//if (pCent[0][i] == 0) break;
 			cT->cd();
 			hframe_pt->GetYaxis()->SetTitle(Form("v_{%i}",n));

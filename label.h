@@ -52,6 +52,18 @@ char const * fname[] = {
 	"",				// 49 Pbp 8 TeV HM5 rfp 0.3 < pT < 3
 	"",				// 50 Pbp 8 TeV HM6 rfp 0.3 < pT < 3
 	"../pPb/PAHighMultiplicity7/crab_PAHM7_cumu_eff_reverse_v5/170113_111900/0000/",			// 51 Pbp 8 TeV HM7 rfp 0.3 < pT < 3
+	"",				// 52 Pbp 8 MB1
+	"",				// 53 Pbp 8 MB2
+	"",				// 54 Pbp 8 MB3
+	"",				// 55 Pbp 8 MB4
+	"",				// 56 Pbp 8 MB5
+	"",				// 57 Pbp 8 MB6
+	"",				// 58 Pbp 8 MB7
+	"",				// 59 Pbp 8 MB8
+	"",				// 60 pPb 8 HM1-6 merged
+	"",				// 61 pPb 8 MB merged
+	"",				// 62 Pbp 8 HM1-6 merged
+	"",				// 63 Pbp 8 MB merged
 };
 
 char const * ftxt[] = {
@@ -107,6 +119,18 @@ char const * ftxt[] = {
 	"txt/PAHM5_reverse_8TeV/",					// 49
 	"txt/PAHM6_reverse_8TeV/",					// 50
 	"txt/PAHM7_reverse_8TeV/",					// 51
+	"txt/PAMB1_reverse_8TeV/",					// 52
+	"txt/PAMB2_reverse_8TeV/",					// 53
+	"txt/PAMB3_reverse_8TeV/",					// 54
+	"txt/PAMB4_reverse_8TeV/",					// 55
+	"txt/PAMB5_reverse_8TeV/",					// 56
+	"txt/PAMB6_reverse_8TeV/",					// 57
+	"txt/PAMB7_reverse_8TeV/",					// 58
+	"txt/PAMB8_reverse_8TeV/",					// 59
+	"txt/PAHM1to6_merge_8TeV/",					// 60
+	"txt/PAMB_merge_8TeV/",						// 61
+	"txt/PAHM1to6_reverse_merge_8TeV/",				// 62
+	"txt/PAMB_merge_reverse_8TeV/",					// 63
 };
 
 #include <TChain.h>

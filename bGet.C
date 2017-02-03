@@ -58,7 +58,28 @@ void bGet(int s1 = 0, int s2 = 10, int s3 =10){
 
 	Int_t const * pCent[4] = { pCent4, pCent4, pCent6, pCent8 };
 
-	if ( s1 == 4 ) {
+	if ( s1 == 4 or
+		s1 == 3 or
+		s1 == 5 or
+		s1 == 7 or
+		s1 == 8 or
+		s1 == 9 or
+		s1 == 10 or
+		s1 == 11 or
+		s1 == 12 or
+		s1 == 13 or
+		s1 == 14 or
+		s1 == 15 or
+		s1 == 16 or
+		s1 == 44 or
+		s1 == 45 or
+		s1 == 46 or
+		s1 == 47 or
+		s1 == 48 or
+		s1 == 49 or
+		s1 == 50 or
+		s1 == 51
+		) {
 		pCent[0] = CentNoffCutPA8TeV4;
 		pCent[1] = CentNoffCutPA8TeV4;
 		pCent[2] = CentNoffCutPA8TeV6;
