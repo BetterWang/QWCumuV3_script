@@ -46,13 +46,13 @@ char const * fname[] = {
 	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_general_eff_cent_v7/170105_224504/0000/",		// 43 PbPb general rfp 1.0 < pT < 3 |eta|<1.0 Deta > 1.0
 	"../pPb/PAHighMultiplicity0/crab_PAHM0_cumu_eff_reverse_v5/170113_111835/0000/",			// 44 Pbp 8 TeV HM0 rfp 0.3 < pT < 3
 	"../pPb/PAHighMultiplicity1/crab_PAHM1_cumu_eff_reverse_v5/170113_111847/0000/",			// 45 Pbp 8 TeV HM1 rfp 0.3 < pT < 3
-	"",				// 46 Pbp 8 TeV HM2 rfp 0.3 < pT < 3
+	"../pPb/PAHighMultiplicity2/crab_PAHM2_cumu_eff_reverse_v5/170204_191500/0000/",			// 46 Pbp 8 TeV HM2 rfp 0.3 < pT < 3
 	"",				// 47 Pbp 8 TeV HM3 rfp 0.3 < pT < 3
 	"",				// 48 Pbp 8 TeV HM4 rfp 0.3 < pT < 3
 	"",				// 49 Pbp 8 TeV HM5 rfp 0.3 < pT < 3
 	"",				// 50 Pbp 8 TeV HM6 rfp 0.3 < pT < 3
 	"../pPb/PAHighMultiplicity7/crab_PAHM7_cumu_eff_reverse_v5/170113_111900/0000/",			// 51 Pbp 8 TeV HM7 rfp 0.3 < pT < 3
-	"",				// 52 Pbp 8 MB1
+	"../pPb/PAMinimumBias1/crab_PAMB1_cumu_eff_reverse_v5/170204_185931/0000/",				// 52 Pbp 8 MB1
 	"",				// 53 Pbp 8 MB2
 	"",				// 54 Pbp 8 MB3
 	"",				// 55 Pbp 8 MB4
