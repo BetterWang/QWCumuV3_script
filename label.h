@@ -8,15 +8,15 @@ char const * fname[] = {
 	"",													// 5 pPb 8 TeV rfp 0.3 < pT < 3
 	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_v3/161130_004904/0000/",		// 6 PbPb pixel rfp 0.3 < pT < 3
 	"../PbPb2015_cumu/PAHighPt/crab_pPb5_Cumu_eff_noff_v1/161124_111445/0000/",				// 7 pPb 2013 5 TeV rfp 0.3 < pT < 3
-	"../pPb/PAHighMultiplicity0/crab_PAHM0_cumu_eff_v5/170110_125206/0000/",				// 8 pPb 8 TeV HM0 rfp 0.3 < pT < 3
-	"../pPb/PAHighMultiplicity1/crab_PAHM1_cumu_eff_v5/170111_084520/0000/",				// 9 pPb 8 TeV HM1 rfp 0.3 < pT < 3
+	"../pPb/PAHighMultiplicity0/crab_PAHM0_cumu_eff_v8/170219_155607/0000/",				// 8 pPb 8 TeV HM0 rfp 0.3 < pT < 3
+	"../pPb/PAHighMultiplicity1/crab_PAHM1_cumu_eff_v8/170219_155918/0000/",				// 9 pPb 8 TeV HM1 rfp 0.3 < pT < 3
 	"../pPb/PAHighMultiplicity2/crab_PAHM2_cumu_eff_v5/170112_121913/0000/",				// 10 pPb 8 TeV HM2 rfp 0.3 < pT < 3
 	"",			// 11 pPb 8 TeV HM3 rfp 0.3 < pT < 3
 	"",			// 12 pPb 8 TeV HM4 rfp 0.3 < pT < 3
 	"",			// 13 pPb 8 TeV HM5 rfp 0.3 < pT < 3
 	"",			// 14 pPb 8 TeV HM6 rfp 0.3 < pT < 3
-	"../pPb/PAHighMultiplicity7/crab_PAHM7_cumu_eff_v5/170111_084532/0000/",				// 15 pPb 8 TeV HM7 rfp 0.3 < pT < 3
-	"../pPb/PAMinimumBias1/crab_PAMB1_cumu_eff_v5/170117_104310/0000/",					// 16 pPb 8 TeV MB1 rfp 0.3 < pT < 3
+	"../pPb/PAHighMultiplicity7/crab_PAHM7_cumu_eff_v8/170219_160110/0000/",				// 15 pPb 8 TeV HM7 rfp 0.3 < pT < 3
+	"../pPb/PAMinimumBias1/crab_PAMB1_cumu_eff_v8/170219_175845/0000/",					// 16 pPb 8 TeV MB1 rfp 0.3 < pT < 3
 	"",				// 17 pPb 8 TeV MB2 rfp 0.3 < pT < 3
 	"",				// 18 pPb 8 TeV MB3 rfp 0.3 < pT < 3
 	"",				// 19 pPb 8 TeV MB4 rfp 0.3 < pT < 3
@@ -64,6 +64,10 @@ char const * fname[] = {
 	"",				// 61 pPb 8 MB merged
 	"",				// 62 Pbp 8 HM1-6 merged
 	"",				// 63 Pbp 8 MB merged
+	"../pPb/PAHighMultiplicity0/crab_PAHM0_cumu_eff_v8/170219_155607/0001/",				// 64 tmp1 8->part1
+	"../pPb/PAHighMultiplicity1/crab_PAHM1_cumu_eff_v8/170219_155918/0001/",				// 65 tmp2 9->part1
+	"../pPb/PAHighMultiplicity7/crab_PAHM7_cumu_eff_v8/170219_160110/0001/",				// 66 tmp3 15->part1
+	"../pPb/PAMinimumBias1/crab_PAMB1_cumu_eff_v8/170219_175845/0001/",					// 67 tmp4 16->part1
 };
 
 char const * ftxt[] = {
@@ -131,6 +135,10 @@ char const * ftxt[] = {
 	"txt/PAMB_merge_8TeV/",						// 61
 	"txt/PAHM1to6_reverse_merge_8TeV/",				// 62
 	"txt/PAMB_merge_reverse_8TeV/",					// 63
+	"txt/tmp1/",					// 64
+	"txt/tmp2/",					// 65
+	"txt/tmp3/",					// 66
+	"txt/tmp4/",					// 67
 };
 
 #include <TChain.h>
