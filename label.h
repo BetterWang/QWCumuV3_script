@@ -44,15 +44,15 @@ char const * fname[] = {
 	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_eta1_v6/161220_112708/0005/",		// 41 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0 Deta > 1.0
 	"",													// 42 PbPb pixel rfp 0.3 < pT < 3 |eta|<1.0 Deta > 1.0
 	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_general_eff_cent_v7/170105_224504/0000/",		// 43 PbPb general rfp 1.0 < pT < 3 |eta|<1.0 Deta > 1.0
-	"../pPb/PAHighMultiplicity0/crab_PAHM0_cumu_eff_reverse_v5/170113_111835/0000/",			// 44 Pbp 8 TeV HM0 rfp 0.3 < pT < 3
-	"../pPb/PAHighMultiplicity1/crab_PAHM1_cumu_eff_reverse_v5/170113_111847/0000/",			// 45 Pbp 8 TeV HM1 rfp 0.3 < pT < 3
+	"../pPb/PAHighMultiplicity0/crab_PAHM0_cumu_eff_reverse_v8/170228_150959/0000/",			// 44 Pbp 8 TeV HM0 rfp 0.3 < pT < 3
+	"../pPb/PAHighMultiplicity1/crab_PAHM1_cumu_eff_reverse_v8/170228_151020/0000/",			// 45 Pbp 8 TeV HM1 rfp 0.3 < pT < 3
 	"../pPb/PAHighMultiplicity2/crab_PAHM2_cumu_eff_reverse_v5/170204_191500/0000/",			// 46 Pbp 8 TeV HM2 rfp 0.3 < pT < 3
 	"",				// 47 Pbp 8 TeV HM3 rfp 0.3 < pT < 3
 	"",				// 48 Pbp 8 TeV HM4 rfp 0.3 < pT < 3
 	"",				// 49 Pbp 8 TeV HM5 rfp 0.3 < pT < 3
 	"",				// 50 Pbp 8 TeV HM6 rfp 0.3 < pT < 3
-	"../pPb/PAHighMultiplicity7/crab_PAHM7_cumu_eff_reverse_v5/170113_111900/0000/",			// 51 Pbp 8 TeV HM7 rfp 0.3 < pT < 3
-	"../pPb/PAMinimumBias1/crab_PAMB1_cumu_eff_reverse_v5/170204_185931/0000/",				// 52 Pbp 8 MB1
+	"../pPb/PAHighMultiplicity7/crab_PAHM7_cumu_eff_reverse_v8/170228_151041/0000/",			// 51 Pbp 8 TeV HM7 rfp 0.3 < pT < 3
+	"../pPb/PAMinimumBias1/crab_PAMB1_cumu_eff_reverse_v8/170228_152313/0000/",				// 52 Pbp 8 MB1
 	"",				// 53 Pbp 8 MB2
 	"",				// 54 Pbp 8 MB3
 	"",				// 55 Pbp 8 MB4
@@ -64,9 +64,9 @@ char const * fname[] = {
 	"",				// 61 pPb 8 MB merged
 	"",				// 62 Pbp 8 HM1-6 merged
 	"",				// 63 Pbp 8 MB merged
-	"../pPb/PAHighMultiplicity0/crab_PAHM0_cumu_eff_v8/170219_155607/0001/",				// 64 tmp1 8->part1
-	"../pPb/PAHighMultiplicity1/crab_PAHM1_cumu_eff_v8/170219_155918/0001/",				// 65 tmp2 9->part1
-	"../pPb/PAHighMultiplicity7/crab_PAHM7_cumu_eff_v8/170219_160110/0001/",				// 66 tmp3 15->part1
+	"../pPb/PAHighMultiplicity0/crab_PAHM0_cumu_eff_reverse_v8/170228_150959/0001/",			// 64 tmp1 8 done,  44->part1
+	"../pPb/PAHighMultiplicity1/crab_PAHM1_cumu_eff_reverse_v8/170228_151020/0001/",			// 65 tmp2 9 done,  45->part1
+	"../pPb/PAHighMultiplicity7/crab_PAHM7_cumu_eff_reverse_v8/170228_151041/0001/",			// 66 tmp3 15 done, 51->part1
 	"../pPb/PAMinimumBias1/crab_PAMB1_cumu_eff_v8/170219_175845/0001/",					// 67 tmp4 16->part1
 };
 
