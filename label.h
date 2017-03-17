@@ -64,10 +64,10 @@ char const * fname[] = {
 	"",				// 61 pPb 8 MB merged
 	"",				// 62 Pbp 8 HM1-6 merged
 	"",				// 63 Pbp 8 MB merged
-	"../pPb/PAHighMultiplicity0/crab_PAHM0_cumu_eff_reverse_v8/170228_150959/0001/",			// 64 tmp1 8 done,  44->part1
-	"../pPb/PAHighMultiplicity1/crab_PAHM1_cumu_eff_reverse_v8/170228_151020/0001/",			// 65 tmp2 9 done,  45->part1
-	"../pPb/PAHighMultiplicity7/crab_PAHM7_cumu_eff_reverse_v8/170228_151041/0001/",			// 66 tmp3 15 done, 51->part1
-	"../pPb/PAMinimumBias1/crab_PAMB1_cumu_eff_reverse_v8/170228_152313/0001/",				// 67 tmp4 16 done, 52->part1
+	"",			// 64 tmp1 8 done,  44->part1
+	"",			// 65 tmp2 9 done,  45->part1
+	"",			// 66 tmp3 15 done, 51 done
+	"",				// 67 tmp4 16 done, 52->part1
 };
 
 char const * ftxt[] = {
