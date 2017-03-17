@@ -25,6 +25,9 @@ void genPlot(int s1 =2)
 	////////////
 	//Get Histo
 
+	double dC[7][4][20];
+	double eC[7][4][20];
+
 	double dV[7][4][20];
 	double eV[7][4][20];
 	double cV[7][4][20];
@@ -45,6 +48,9 @@ void genPlot(int s1 =2)
 	double eVc[7][4][2][20];
 	double cVc[7][4][2][20];
 
+	double dCGap[7][20];
+	double eCGap[7][20];
+
 	double dVGap[7][20];
 	double eVGap[7][20];
 	double cVGap[7][20];
@@ -64,10 +70,13 @@ void genPlot(int s1 =2)
 	for ( int n = 2; n < 7; n++ ) {
 		TH1D * h1 = (TH1D*) f->Get(Form("hVGap%i", n));
 		TH1D * h2 = (TH1D*) f->Get(Form("hcVGap%i", n));
+		TH1D * hc = (TH1D*) f->Get(Form("hCGap%i", n));
 		for ( int i = 0; i < 20; i++ ) {
 			dVGap[n][i] = h1->GetBinContent(i+1);
 			eVGap[n][i] = h1->GetBinError(i+1);
 			cVGap[n][i] = h2->GetBinError(i+1);
+			dCGap[n][i] = hc->GetBinContent(i+1);
+			eCGap[n][i] = hc->GetBinError(i+1);
 		}
 		delete h1;
 		delete h2;
@@ -106,10 +115,14 @@ void genPlot(int s1 =2)
 			TH1D * h2 = (TH1D*) f->Get(Form("hX%i%i", n, 2+2*np));
 			TH1D * h3 = (TH1D*) f->Get(Form("hcV%i%i", n, 2+2*np));
 			TH1D * h4 = (TH1D*) f->Get(Form("hcX%i%i", n, 2+2*np));
+			TH1D * hc = (TH1D*) f->Get(Form("hC%i%i", n, 2+2*np));
 			for ( int i = 0; i < 20; i++ ) {
 				dV[n][np][i] = h1->GetBinContent(i+1);
 				eV[n][np][i] = h1->GetBinError(i+1);
 				cV[n][np][i] = h3->GetBinError(i+1);
+
+				dC[n][np][i] = hc->GetBinContent(i+1);
+				eC[n][np][i] = hc->GetBinError(i+1);
 
 				dX[n][np][i] = h2->GetBinContent(i+1);
 				eX[n][np][i] = h2->GetBinError(i+1);
@@ -161,8 +174,12 @@ void genPlot(int s1 =2)
 	TGraphErrors * gr_vnCentV[7][4] = {};
 	TGraphErrors * gr_vnCentC[7][4] = {};
 
+	TGraphErrors * gr_CnCentC[7][4] = {};
+
 	TGraphErrors * gr_vnCentGapV[7] = {};
 	TGraphErrors * gr_vnCentGapC[7] = {};
+
+	TGraphErrors * gr_CnCentGapC[7] = {};
 
 	TGraphErrors * gr_vnCCentGapV[7][2] = {};
 	TGraphErrors * gr_vnCCentGapC[7][2] = {};
@@ -184,28 +201,6 @@ void genPlot(int s1 =2)
 
 	const double * CentX[4] = {CentPbPbX, CentPbPbX, CentPbPbX, CentPbPbX};
 
-	if ( s1 == 4 or
-		s1 == 3 or
-		s1 == 5 or
-		s1 == 7 or
-		s1 == 8 or
-		s1 == 9 or
-		s1 == 10 or
-		s1 == 11 or
-		s1 == 12 or
-		s1 == 13 or
-		s1 == 14 or
-		s1 == 15 or
-		s1 == 16 or
-		s1 == 44 or
-		s1 == 45 or
-		s1 == 46 or
-		s1 == 47 or
-		s1 == 48 or
-		s1 == 49 or
-		s1 == 50 or
-		s1 == 51
-		) {
 		pCent[0] = CentNoffCutPA8TeV4;
 		pCent[1] = CentNoffCutPA8TeV4;
 		pCent[2] = CentNoffCutPA8TeV6;
@@ -220,7 +215,6 @@ void genPlot(int s1 =2)
 		CentX[1] = CentPPbX4;
 		CentX[2] = CentPPbX6;
 		CentX[3] = CentPPbX8;
-	}
 
 	// pT
 	for ( int n = 2; n < 7; n++ ) {
@@ -233,6 +227,13 @@ void genPlot(int s1 =2)
 		gr_vnCentGapC[n] = new TGraphErrors(NCent[0], CentX[0], dY, 0, cY);
 		gr_vnCentGapV[n]->SetMarkerStyle(kOpenSquare);
 		gr_vnCentGapC[n]->SetMarkerStyle(kOpenSquare);
+
+		for ( int i = 0; i < NCent[0]; i++ ) {
+			dY[i] = dCGap[n][i];
+			eY[i] = eCGap[n][i];
+		}
+		gr_CnCentGapC[n] = new TGraphErrors(NCent[0], CentX[0], dY, 0, eY);
+		gr_CnCentGapC[n]->SetMarkerStyle(kOpenSquare);
 
 		for ( int i = 0; i < NCent[0]; i++ ) {
 			dY[i] = dVcGap[n][0][i];
@@ -293,6 +294,13 @@ void genPlot(int s1 =2)
 			}
 			gr_vnCentV[n][np] = new TGraphErrors(NCent[0], CentX[np], dY, 0, eY);
 			gr_vnCentC[n][np] = new TGraphErrors(NCent[0], CentX[np], dY, 0, cY);
+			for ( int i = 0; i < NCent[np]; i++ ) {
+				dY[i] = dC[n][np][i];
+				eY[i] = eC[n][np][i];
+				if (dY[i] != dY[i]) dY[i] = 999;
+				if (eY[i] != eY[i]) eY[i] = 999;
+			}
+			gr_CnCentC[n][np] = new TGraphErrors(NCent[0], CentX[np], dY, 0, eY);
 			if ( np == 0 ) {
 				gr_vnCentV[n][np]->SetMarkerStyle(kFullCircle);
 				gr_vnCentV[n][np]->SetMarkerColor(kGreen+2);
@@ -300,6 +308,10 @@ void genPlot(int s1 =2)
 				gr_vnCentC[n][np]->SetMarkerStyle(kFullCircle);
 				gr_vnCentC[n][np]->SetMarkerColor(kGreen+2);
 				gr_vnCentC[n][np]->SetLineColor(kGreen+2);
+
+				gr_CnCentC[n][np]->SetMarkerStyle(kFullCircle);
+				gr_CnCentC[n][np]->SetMarkerColor(kGreen+2);
+				gr_CnCentC[n][np]->SetLineColor(kGreen+2);
 			} else if ( np == 1 ) {
 				gr_vnCentV[n][np]->SetMarkerStyle(kFullSquare);
 				gr_vnCentV[n][np]->SetMarkerColor(kGreen+2);
@@ -307,6 +319,10 @@ void genPlot(int s1 =2)
 				gr_vnCentC[n][np]->SetMarkerStyle(kFullSquare);
 				gr_vnCentC[n][np]->SetMarkerColor(kGreen+2);
 				gr_vnCentC[n][np]->SetLineColor(kGreen+2);
+
+				gr_CnCentC[n][np]->SetMarkerStyle(kFullSquare);
+				gr_CnCentC[n][np]->SetMarkerColor(kGreen+2);
+				gr_CnCentC[n][np]->SetLineColor(kGreen+2);
 			} else if ( np == 2 ) {
 				gr_vnCentV[n][np]->SetMarkerStyle(kFullCross);
 				gr_vnCentV[n][np]->SetMarkerColor(kBlue);
@@ -314,6 +330,10 @@ void genPlot(int s1 =2)
 				gr_vnCentC[n][np]->SetMarkerStyle(kFullCross);
 				gr_vnCentC[n][np]->SetMarkerColor(kBlue);
 				gr_vnCentC[n][np]->SetLineColor(kBlue);
+
+				gr_CnCentC[n][np]->SetMarkerStyle(kFullCross);
+				gr_CnCentC[n][np]->SetMarkerColor(kBlue);
+				gr_CnCentC[n][np]->SetLineColor(kBlue);
 			} else if ( np == 3 ) {
 				gr_vnCentV[n][np]->SetMarkerStyle(kFullDiamond);
 				gr_vnCentV[n][np]->SetMarkerColor(kRed);
@@ -321,6 +341,10 @@ void genPlot(int s1 =2)
 				gr_vnCentC[n][np]->SetMarkerStyle(kFullDiamond);
 				gr_vnCentC[n][np]->SetMarkerColor(kRed);
 				gr_vnCentC[n][np]->SetLineColor(kRed);
+
+				gr_CnCentC[n][np]->SetMarkerStyle(kFullDiamond);
+				gr_CnCentC[n][np]->SetMarkerColor(kRed);
+				gr_CnCentC[n][np]->SetLineColor(kRed);
 			}
 
 			for ( int i = 0; i < 20; i++ ) {
@@ -566,6 +590,8 @@ void genPlot(int s1 =2)
 		gr_vnCentGapV[n]->Write();
 		gr_vnCentGapC[n]->Write();
 
+		gr_CnCentGapC[n]->Write(Form("gr_CnCentGapC_%i", n));
+
 		gr_vnCCentGapV[n][0]->SetName(Form("gr_vnCCentGapV_%i_0", n));
 		gr_vnCCentGapC[n][0]->SetName(Form("gr_vnCCentGapC_%i_0", n));
 		gr_vnCCentGapV[n][1]->SetName(Form("gr_vnCCentGapV_%i_1", n));
@@ -578,6 +604,7 @@ void genPlot(int s1 =2)
 		for ( int np = 0; np < 4; np++ ) {
 			gr_vnCentC[n][np]->Write(Form("gr_vnCentC_%i_%i", n, np));
 			gr_vnCentV[n][np]->Write(Form("gr_vnCentV_%i_%i", n, np));
+			gr_CnCentC[n][np]->Write(Form("gr_CnCentC_%i_%i", n, np));
 		}
 
 		for ( int c = 0; c < 20; c++ ) {

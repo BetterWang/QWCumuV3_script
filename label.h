@@ -60,10 +60,10 @@ char const * fname[] = {
 	"",				// 57 Pbp 8 MB6
 	"",				// 58 Pbp 8 MB7
 	"",				// 59 Pbp 8 MB8
-	"",				// 60 pPb 8 HM1-6 merged
-	"",				// 61 pPb 8 MB merged
-	"",				// 62 Pbp 8 HM1-6 merged
-	"",				// 63 Pbp 8 MB merged
+	"",				// 60 pPb+Pbp 8 HM0 merged
+	"",				// 61 pPb+Pbp 8 HM1 merged
+	"",				// 62 pPb+Pbp 8 HM7 merged
+	"",				// 63 pPb+Pbp 8 MB1 merged
 	"",			// 64 tmp1 8 done,  44->part1
 	"",			// 65 tmp2 9 done,  45->part1
 	"",			// 66 tmp3 15 done, 51 done
@@ -131,10 +131,10 @@ char const * ftxt[] = {
 	"txt/PAMB6_reverse_8TeV/",					// 57
 	"txt/PAMB7_reverse_8TeV/",					// 58
 	"txt/PAMB8_reverse_8TeV/",					// 59
-	"txt/PAHM1to6_merge_8TeV/",					// 60
-	"txt/PAMB_merge_8TeV/",						// 61
-	"txt/PAHM1to6_reverse_merge_8TeV/",				// 62
-	"txt/PAMB_merge_reverse_8TeV/",					// 63
+	"txt/PAHM0_merge_8TeV/",					// 60
+	"txt/PAHM1_merge_8TeV/",					// 61
+	"txt/PAHM7_merge_8TeV/",					// 62
+	"txt/PAMB1_merge_8TeV/",					// 63
 	"txt/tmp1/",					// 64
 	"txt/tmp2/",					// 65
 	"txt/tmp3/",					// 66
