@@ -3,7 +3,7 @@ char const * fname[] = {
 	"test/",			// 0
 	"../PbPb2015_cumu/HIMinimumBias5/crab_HIMB5_ppReco_eff_2part_v2/160829_145024/0000/",			// 1 ppReco rfp 1 < pT < 3
 	"../PbPb2015_cumu/HIMinimumBias3/crab_HIMB3_Reco_eff_2part_v1/160831_001948/0000/",			// 2 Reco rfp 1 < pT < 3
-	"../PbPb2015_cumu/HIMinimumBias5/crab_HIMB5_Cumu_ppReco_eff_noff_v1/161128_173103/0000/",		// 3 ppReco rfp 0.3 < pT < 3
+	"../PbPb2015_cumu/HIMinimumBias5/crab_HIMB5_Cumu_ppReco_eff_noff_v5/170317_161332/0000/",		// 3 ppReco rfp 0.3 < pT < 3
 	"../PbPb2015_cumu/ExpressPhysicsPA/crab_Express_pA8_noeff_noff_v2/161121_172911/0000/",			// 4 pPb 8 TeV rfp 0.3 < pT < 3
 	"",													// 5 pPb 8 TeV rfp 0.3 < pT < 3
 	"../PbPb2015_cumu/HIMinimumBias2/crab_HIMB2_Cumu_pixel_eff_cent_v3/161130_004904/0000/",		// 6 PbPb pixel rfp 0.3 < pT < 3
@@ -64,10 +64,13 @@ char const * fname[] = {
 	"",				// 61 pPb+Pbp 8 HM1 merged
 	"",				// 62 pPb+Pbp 8 HM7 merged
 	"",				// 63 pPb+Pbp 8 MB1 merged
-	"",			// 64 tmp1 8 done,  44->part1
-	"",			// 65 tmp2 9 done,  45->part1
-	"",			// 66 tmp3 15 done, 51 done
+	"../PbPb2015_cumu/HIMinimumBias5/crab_HIMB5_Cumu_ppReco_eff_noff_v5/170317_161332/0001/",		// 64 tmp1 68
+	"../PbPb2015_cumu/HIMinimumBias6/crab_HIMB6_Cumu_ppReco_eff_noff_v5/170317_161350/0001/",		// 65 tmp2 69
+	"../PbPb2015_cumu/HIMinimumBias7/crab_HIMB7_Cumu_ppReco_eff_noff_v5/170317_161411/0001/",		// 66 tmp3 70
 	"",				// 67 tmp4 16 done, 52->part1
+	"../PbPb2015_cumu/HIMinimumBias5/crab_HIMB5_Cumu_ppReco_eff_noff_v5/170317_161332/0000/",		// 68 HIMB5 ppReco rfp 0.3 < pT < 3
+	"../PbPb2015_cumu/HIMinimumBias6/crab_HIMB6_Cumu_ppReco_eff_noff_v5/170317_161350/0000/",		// 69 HIMB6 ppReco rfp 0.3 < pT < 3
+	"../PbPb2015_cumu/HIMinimumBias7/crab_HIMB7_Cumu_ppReco_eff_noff_v5/170317_161411/0000/",		// 70 HIMB7 ppReco rfp 0.3 < pT < 3
 };
 
 char const * ftxt[] = {
@@ -139,6 +142,9 @@ char const * ftxt[] = {
 	"txt/tmp2/",					// 65
 	"txt/tmp3/",					// 66
 	"txt/tmp4/",					// 67
+	"txt/HIMB5_ppReco/",						// 68
+	"txt/HIMB6_ppReco/",						// 69
+	"txt/HIMB7_ppReco/",						// 70
 };
 
 #include <TChain.h>
