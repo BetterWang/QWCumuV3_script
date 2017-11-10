@@ -14,8 +14,7 @@ void bGetError(int s1 = 0, int s3 = 10)
 	// Get TFile
 	TFile *fr[50];
 	for ( int i = 0; i <= s3; i++ ) {
-		if ( i == s3 ) fr[i] = new TFile(Form("%s/outputC.root", ftxt[s1]));
-		else fr[i] = new TFile(Form("%s/outputC_%i_%i.root", ftxt[s1], i, s3));
+		fr[i] = new TFile(Form("%s/outputC_%i_%i.root", ftxt[s1], i, s3));
 	}
 
 	double dCGap[50][7][20];
