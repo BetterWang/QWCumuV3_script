@@ -50,21 +50,11 @@ void bGet(int s1 = 0, int s2 = 10, int s3 =10){
 	double dCeta[7][4][24][500] = {};
 	double dCc[7][4][2][500] = {};
 
-	Int_t const * pCent4 = CentPbPb4;
-	Int_t const * pCent6 = CentPbPb6;
-	Int_t const * pCent8 = CentPbPb8;
+	Int_t const * pCent4 = CentXeXe4;
+	Int_t const * pCent6 = CentXeXe6;
+	Int_t const * pCent8 = CentXeXe8;
 
 	Int_t const * pCent[4] = { pCent4, pCent4, pCent6, pCent8 };
-
-		pCent[0] = CentNoffCutPA8TeV4;
-		pCent[1] = CentNoffCutPA8TeV4;
-		pCent[2] = CentNoffCutPA8TeV6;
-		pCent[3] = CentNoffCutPA8TeV8;
-
-		NCent[0] = NCent8TeV4;
-		NCent[1] = NCent8TeV4;
-		NCent[2] = NCent8TeV6;
-		NCent[3] = NCent8TeV8;
 
 	double dCx[7][4][20] = {};
 	double wCx[7][4][20] = {};
@@ -372,7 +362,6 @@ void bGet(int s1 = 0, int s2 = 10, int s3 =10){
 					double weightp = 0;
 					double sumeta = 0;
 					double weighteta = 0;
-
 					for ( int m = pCent[np][i]; m < pCent[np][i+1]; m++ ) {
 						if ( m >= 500 ) continue;
 						double w = wQp[n][np][j][m];

@@ -8,7 +8,7 @@
 #include "HIN-11-012.h"
 #include "../../style.h"
 
-void genPlot(int s1 =2)
+void genPlot(int s1 =1)
 {
 
 	int sC = 1;
@@ -193,28 +193,13 @@ void genPlot(int s1 =2)
 	double eY[100];
 	double cY[100];
 
-        Int_t const * pCent4 = CentPbPb4;
-        Int_t const * pCent6 = CentPbPb6;
-        Int_t const * pCent8 = CentPbPb8;
+        Int_t const * pCent4 = CentXeXe4;
+        Int_t const * pCent6 = CentXeXe6;
+        Int_t const * pCent8 = CentXeXe8;
 
         Int_t const * pCent[4] = { pCent4, pCent4, pCent6, pCent8 };
 
-	const double * CentX[4] = {CentPbPbX, CentPbPbX, CentPbPbX, CentPbPbX};
-
-		pCent[0] = CentNoffCutPA8TeV4;
-		pCent[1] = CentNoffCutPA8TeV4;
-		pCent[2] = CentNoffCutPA8TeV6;
-		pCent[3] = CentNoffCutPA8TeV8;
-
-		NCent[0] = NCent8TeV4;
-		NCent[1] = NCent8TeV4;
-		NCent[2] = NCent8TeV6;
-		NCent[3] = NCent8TeV8;
-
-		CentX[0] = CentPPbX4;
-		CentX[1] = CentPPbX4;
-		CentX[2] = CentPPbX6;
-		CentX[3] = CentPPbX8;
+	const double * CentX[4] = {CentXeXeX, CentXeXeX, CentXeXeX, CentXeXeX};
 
 	// pT
 	for ( int n = 2; n < 7; n++ ) {
@@ -454,7 +439,7 @@ void genPlot(int s1 =2)
 	InitHist(hframe_pt, "p_{T} (GeV/c)", "v_{2}");
 	TH2D * hframe_eta = new TH2D("hframe_eta", "", 1, -2.5, 2.5, 1, 0, 0.35);
 	InitHist(hframe_eta, "#eta", "v_{2}");
-	TH2D * hframe_cent = new TH2D("hframe_cent", "", 1, 0, 400, 1, 0, 0.35);
+	TH2D * hframe_cent = new TH2D("hframe_cent", "", 1, 0, 100, 1, 0, 0.35);
 	InitHist(hframe_cent, "Centrality", "v_{2}");
 
 	TCanvas * cT = MakeCanvas("cT", "cT", 600, 500);
@@ -516,8 +501,8 @@ void genPlot(int s1 =2)
 			if (sC) {
 				gr_vnPtC[n][0][i]->Draw("Psame");
 				gr_vnPtC[n][1][i]->Draw("Psame");
-				gr_vnPtC[n][2][i]->Draw("Psame");
-				gr_vnPtC[n][3][i]->Draw("Psame");
+//				gr_vnPtC[n][2][i]->Draw("Psame");
+//				gr_vnPtC[n][3][i]->Draw("Psame");
 				gr_vnPtGapC[n][i]->Draw("Psame");
 			} else {
 				gr_vnPtV[n][0][i]->Draw("Psame");
