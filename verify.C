@@ -7,11 +7,9 @@ void verify(int s1 = 1, int sx = 0){
 	TFile *f;
 	for ( int s2 = 0; s2 <= s3; s2++ ) {
 		if ( sx == 0 ) {
-			if ( s2 == s3 ) f = new TFile(Form("%s/output.root", ftxt[s1]));
-			else f = new TFile(Form("%s/output_%i_%i.root", ftxt[s1], s2, s3));
+			f = new TFile(Form("%s/output_%i_%i.root", ftxt[s1], s2, s3));
 		} else {
-			if ( s2 == s3 ) f = new TFile(Form("%s/output__%i.root", ftxt[s1], sx));
-			else f = new TFile(Form("%s/output_%i_%i__%i.root", ftxt[s1], s2, s3, sx));
+			f = new TFile(Form("%s/output_%i_%i__%i.root", ftxt[s1], s2, s3, sx));
 		}
 
 		TH1D * h;
