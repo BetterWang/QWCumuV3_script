@@ -233,6 +233,8 @@ void InitHist(TH1        *hist,
   return;
 }
 
+
+
 TCanvas* MakeCanvas(const char* name, const char *title, int x = 0, int y = 0)
 {
   // Start with a canvas
@@ -245,8 +247,8 @@ TCanvas* MakeCanvas(const char* name, const char *title, int x = 0, int y = 0)
   canvas->SetBorderSize     (10);
   // Set margins to reasonable defaults
   canvas->SetLeftMargin     (0.15);
-  canvas->SetRightMargin    (0.06);
-  canvas->SetTopMargin      (0.08);
+  canvas->SetRightMargin    (0.05);
+  canvas->SetTopMargin      (0.05);
   canvas->SetBottomMargin   (0.15);
   // Setup a frame which makes sense
   canvas->SetFrameFillStyle (0);
