@@ -499,10 +499,10 @@ void genPlot(int s1 =1)
 //			}
 
 			if (sC) {
-				gr_vnPtC[n][0][i]->Draw("Psame");
+//				gr_vnPtC[n][0][i]->Draw("Psame");
 				gr_vnPtC[n][1][i]->Draw("Psame");
-//				gr_vnPtC[n][2][i]->Draw("Psame");
-//				gr_vnPtC[n][3][i]->Draw("Psame");
+				gr_vnPtC[n][2][i]->Draw("Psame");
+				gr_vnPtC[n][3][i]->Draw("Psame");
 				gr_vnPtGapC[n][i]->Draw("Psame");
 			} else {
 				gr_vnPtV[n][0][i]->Draw("Psame");
@@ -518,11 +518,11 @@ void genPlot(int s1 =1)
 				}
 			}
 
-			legPt->AddEntry(gr_vnPtV[n][0][i], Form("v_{%i}{2} %i #leq N_{trk}^{offline} < %i", n, pCent[0][i], pCent[0][i+1]), "p");
-			legPt->AddEntry(gr_vnPtV[n][1][i], Form("v_{%i}{4} %i #leq N_{trk}^{offline} < %i", n, pCent[1][i], pCent[0][i+1]), "p");
-			legPt->AddEntry(gr_vnPtV[n][2][i], Form("v_{%i}{6} %i #leq N_{trk}^{offline} < %i", n, pCent[2][i], pCent[2][i+1]), "p");
-			legPt->AddEntry(gr_vnPtV[n][3][i], Form("v_{%i}{8} %i #leq N_{trk}^{offline} < %i", n, pCent[3][i], pCent[3][i+1]), "p");
-			legPt->AddEntry(gr_vnPtGapC[n][i], Form("v_{%i}{2, |#Delta#eta|>2.0} %i #leq N_{trk}^{offline} < %i", n, pCent[0][i], pCent[0][i+1]), "p");
+			legPt->AddEntry(gr_vnPtGapC[n][i], Form("v_{%i}{2, |#Delta#eta|>2.0} %i%% < Centrality < %i%%", n, pCent[0][i]/2, pCent[0][i+1]/2), "p");
+			//legPt->AddEntry(gr_vnPtC[n][0][i], Form("v_{%i}{2} %i%% < Centrality < %i%%", n, pCent[0][i]/2, pCent[0][i+1]/2), "p");
+			legPt->AddEntry(gr_vnPtC[n][1][i], Form("v_{%i}{4} %i%% < Centrality < %i%%", n, pCent[1][i]/2, pCent[0][i+1]/2), "p");
+			legPt->AddEntry(gr_vnPtC[n][2][i], Form("v_{%i}{6} %i%% < Centrality < %i%%", n, pCent[2][i]/2, pCent[2][i+1]/2), "p");
+			legPt->AddEntry(gr_vnPtC[n][3][i], Form("v_{%i}{8} %i%% < Centrality < %i%%", n, pCent[3][i]/2, pCent[3][i+1]/2), "p");
 
 			legPt->Draw();
 			cT->SaveAs(Form("%s/cPt_%i_%i_%i.pdf", ftxt[s1], n, i, sC));
