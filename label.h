@@ -107,6 +107,48 @@ char const * fname[] = {
 	"NA",			//104 XeXe Cent sysNarrow
 	"NA",			//105 XeXe Cent sysWide
 	"../XeXe/XeXeMinBias_5p44TeV-AMPT-withmelt/crab_XeXe_CumuV3_AMPT_Cent_GEN_v2/180215_162921/0000/",	//106 XeXe Cent AMPT melt
+	"../XeXe/HIMinimumBias1/crab_XeXe1_CumuV3_eff_Cent_sysTag92_v2/180413_023121/0000/",			// 107 XeXe1 Cent sysTag92
+	"../XeXe/HIMinimumBias2/crab_XeXe2_CumuV3_eff_Cent_sysTag92_v2/180413_023134/0000/",			// 108 XeXe2 Cent sysTag92
+	"../XeXe/HIMinimumBias3/crab_XeXe3_CumuV3_eff_Cent_sysTag92_v2/180413_023146/0000/",			// 109 XeXe3 Cent sysTag92
+	"../XeXe/HIMinimumBias4/crab_XeXe4_CumuV3_eff_Cent_sysTag92_v2/180413_023159/0000/",			// 110 XeXe4 Cent sysTag92
+	"../XeXe/HIMinimumBias5/crab_XeXe5_CumuV3_eff_Cent_sysTag92_v2/180413_023211/0000/",			// 111 XeXe5 Cent sysTag92
+	"../XeXe/HIMinimumBias6/crab_XeXe6_CumuV3_eff_Cent_sysTag92_v2/180413_023224/0000/",			// 112 XeXe6 Cent sysTag92
+	"../XeXe/HIMinimumBias7/crab_XeXe7_CumuV3_eff_Cent_sysTag92_v2/180413_023237/0000/",			// 113 XeXe7 Cent sysTag92
+	"../XeXe/HIMinimumBias8/crab_XeXe8_CumuV3_eff_Cent_sysTag92_v2/180413_023249/0000/",			// 114 XeXe8 Cent sysTag92
+	"../XeXe/HIMinimumBias9/crab_XeXe9_CumuV3_eff_Cent_sysTag92_v2/180413_023302/0000/",			// 115 XeXe9 Cent sysTag92
+	"../XeXe/HIMinimumBias10/crab_XeXe10_CumuV3_eff_Cent_sysTag92_v2/180413_023315/0000/",			// 116 XeXe10 Cent sysTag92
+	"../XeXe/HIMinimumBias11/crab_XeXe11_CumuV3_eff_Cent_sysTag92_v2/180413_023328/0000/",			// 117 XeXe11 Cent sysTag92
+	"../XeXe/HIMinimumBias12/crab_XeXe12_CumuV3_eff_Cent_sysTag92_v2/180413_023341/0000/",			// 118 XeXe12 Cent sysTag92
+	"../XeXe/HIMinimumBias13/crab_XeXe13_CumuV3_eff_Cent_sysTag92_v2/180413_023354/0000/",			// 119 XeXe13 Cent sysTag92
+	"../XeXe/HIMinimumBias14/crab_XeXe14_CumuV3_eff_Cent_sysTag92_v2/180413_023408/0000/",			// 120 XeXe14 Cent sysTag92
+	"../XeXe/HIMinimumBias15/crab_XeXe15_CumuV3_eff_Cent_sysTag92_v2/180413_023420/0000/",			// 121 XeXe15 Cent sysTag92
+	"../XeXe/HIMinimumBias16/crab_XeXe16_CumuV3_eff_Cent_sysTag92_v2/180413_023433/0000/",			// 122 XeXe16 Cent sysTag92
+	"../XeXe/HIMinimumBias17/crab_XeXe17_CumuV3_eff_Cent_sysTag92_v2/180413_023445/0000/",			// 123 XeXe17 Cent sysTag92
+	"../XeXe/HIMinimumBias18/crab_XeXe18_CumuV3_eff_Cent_sysTag92_v2/180413_023501/0000/",			// 124 XeXe18 Cent sysTag92
+	"../XeXe/HIMinimumBias19/crab_XeXe19_CumuV3_eff_Cent_sysTag92_v2/180413_023517/0000/",			// 125 XeXe19 Cent sysTag92
+	"../XeXe/HIMinimumBias20/crab_XeXe20_CumuV3_eff_Cent_sysTag92_v2/180413_023539/0000/",			// 126 XeXe20 Cent sysTag92
+	"../XeXe/HIMinimumBias1/crab_XeXe1_CumuV3_eff_Cent_sysTag98_v2/180413_023709/0000/",			// 127 XeXe1 Cent sysTag98
+	"../XeXe/HIMinimumBias2/crab_XeXe2_CumuV3_eff_Cent_sysTag98_v2/180413_023722/0000/",			// 128 XeXe2 Cent sysTag98
+	"../XeXe/HIMinimumBias3/crab_XeXe3_CumuV3_eff_Cent_sysTag98_v2/180413_023735/0000/",			// 129 XeXe3 Cent sysTag98
+	"../XeXe/HIMinimumBias4/crab_XeXe4_CumuV3_eff_Cent_sysTag98_v2/180413_023747/0000/",			// 130 XeXe4 Cent sysTag98
+	"../XeXe/HIMinimumBias5/crab_XeXe5_CumuV3_eff_Cent_sysTag98_v2/180413_023800/0000/",			// 131 XeXe5 Cent sysTag98
+	"../XeXe/HIMinimumBias6/crab_XeXe6_CumuV3_eff_Cent_sysTag98_v2/180413_023815/0000/",			// 132 XeXe6 Cent sysTag98
+	"../XeXe/HIMinimumBias7/crab_XeXe7_CumuV3_eff_Cent_sysTag98_v2/180413_023834/0000/",			// 133 XeXe7 Cent sysTag98
+	"../XeXe/HIMinimumBias8/crab_XeXe8_CumuV3_eff_Cent_sysTag98_v2/180413_023847/0000/",			// 134 XeXe8 Cent sysTag98
+	"../XeXe/HIMinimumBias9/crab_XeXe9_CumuV3_eff_Cent_sysTag98_v2/180413_023859/0000/",			// 135 XeXe9 Cent sysTag98
+	"../XeXe/HIMinimumBias10/crab_XeXe10_CumuV3_eff_Cent_sysTag98_v2/180413_023912/0000/",			// 136 XeXe10 Cent sysTag98
+	"../XeXe/HIMinimumBias11/crab_XeXe11_CumuV3_eff_Cent_sysTag98_v2/180413_023925/0000/",			// 137 XeXe11 Cent sysTag98
+	"../XeXe/HIMinimumBias12/crab_XeXe12_CumuV3_eff_Cent_sysTag98_v2/180413_023938/0000/",			// 138 XeXe12 Cent sysTag98
+	"../XeXe/HIMinimumBias13/crab_XeXe13_CumuV3_eff_Cent_sysTag98_v2/180413_023950/0000/",			// 139 XeXe13 Cent sysTag98
+	"../XeXe/HIMinimumBias14/crab_XeXe14_CumuV3_eff_Cent_sysTag98_v2/180413_024004/0000/",			// 140 XeXe14 Cent sysTag98
+	"../XeXe/HIMinimumBias15/crab_XeXe15_CumuV3_eff_Cent_sysTag98_v2/180413_024017/0000/",			// 141 XeXe15 Cent sysTag98
+	"../XeXe/HIMinimumBias16/crab_XeXe16_CumuV3_eff_Cent_sysTag98_v2/180413_024030/0000/",			// 142 XeXe16 Cent sysTag98
+	"../XeXe/HIMinimumBias17/crab_XeXe17_CumuV3_eff_Cent_sysTag98_v2/180413_024043/0000/",			// 143 XeXe17 Cent sysTag98
+	"../XeXe/HIMinimumBias18/crab_XeXe18_CumuV3_eff_Cent_sysTag98_v2/180413_024056/0000/",			// 144 XeXe18 Cent sysTag98
+	"../XeXe/HIMinimumBias19/crab_XeXe19_CumuV3_eff_Cent_sysTag98_v2/180413_024109/0000/",			// 145 XeXe19 Cent sysTag98
+	"../XeXe/HIMinimumBias20/crab_XeXe20_CumuV3_eff_Cent_sysTag98_v2/180413_024122/0000/",			// 146 XeXe20 Cent sysTag98
+	"NA",			// 147 XeXe Cent sysTag92
+	"NA",			// 148 XeXe Cent sysTag98
 };
 
 char const * ftxt[] = {
@@ -217,6 +259,48 @@ char const * ftxt[] = {
 	"txt/XeXe_MB_Cent_sysNarrow",						//104
 	"txt/XeXe_MB_Cent_sysWide",						//105
 	"txt/XeXe_MB_Cent_AMPT",						//106
+	"txt/XeXe_MB1_Cent_sysTag92",						//107
+	"txt/XeXe_MB2_Cent_sysTag92",						//108
+	"txt/XeXe_MB3_Cent_sysTag92",						//109
+	"txt/XeXe_MB4_Cent_sysTag92",						//110
+	"txt/XeXe_MB5_Cent_sysTag92",						//111
+	"txt/XeXe_MB6_Cent_sysTag92",						//112
+	"txt/XeXe_MB7_Cent_sysTag92",						//113
+	"txt/XeXe_MB8_Cent_sysTag92",						//114
+	"txt/XeXe_MB9_Cent_sysTag92",						//115
+	"txt/XeXe_MB10_Cent_sysTag92",						//116
+	"txt/XeXe_MB11_Cent_sysTag92",						//117
+	"txt/XeXe_MB12_Cent_sysTag92",						//118
+	"txt/XeXe_MB13_Cent_sysTag92",						//119
+	"txt/XeXe_MB14_Cent_sysTag92",						//120
+	"txt/XeXe_MB15_Cent_sysTag92",						//121
+	"txt/XeXe_MB16_Cent_sysTag92",						//122
+	"txt/XeXe_MB17_Cent_sysTag92",						//123
+	"txt/XeXe_MB18_Cent_sysTag92",						//124
+	"txt/XeXe_MB19_Cent_sysTag92",						//125
+	"txt/XeXe_MB20_Cent_sysTag92",						//126
+	"txt/XeXe_MB1_Cent_sysTag98",						//127
+	"txt/XeXe_MB2_Cent_sysTag98",						//128
+	"txt/XeXe_MB3_Cent_sysTag98",						//129
+	"txt/XeXe_MB4_Cent_sysTag98",						//130
+	"txt/XeXe_MB5_Cent_sysTag98",						//131
+	"txt/XeXe_MB6_Cent_sysTag98",						//132
+	"txt/XeXe_MB7_Cent_sysTag98",						//133
+	"txt/XeXe_MB8_Cent_sysTag98",						//134
+	"txt/XeXe_MB9_Cent_sysTag98",						//135
+	"txt/XeXe_MB10_Cent_sysTag98",						//136
+	"txt/XeXe_MB11_Cent_sysTag98",						//137
+	"txt/XeXe_MB12_Cent_sysTag98",						//138
+	"txt/XeXe_MB13_Cent_sysTag98",						//139
+	"txt/XeXe_MB14_Cent_sysTag98",						//140
+	"txt/XeXe_MB15_Cent_sysTag98",						//141
+	"txt/XeXe_MB16_Cent_sysTag98",						//142
+	"txt/XeXe_MB17_Cent_sysTag98",						//143
+	"txt/XeXe_MB18_Cent_sysTag98",						//144
+	"txt/XeXe_MB19_Cent_sysTag98",						//145
+	"txt/XeXe_MB20_Cent_sysTag98",						//146
+	"txt/XeXe_MB_Cent_sysTag92",						//147
+	"txt/XeXe_MB_Cent_sysTag98",						//148
 };
 
 #include <TChain.h>
