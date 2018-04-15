@@ -3,27 +3,47 @@
 void splitCanv(TCanvas * c);
 void initHist(TH2D* h);
 
-void compare3(TString s1, TString s2, TString str_gr, TString str_leg1 = "", TString str_leg2 = "")
+void compare3(string s1 = "txt/XeXe_MB_Cent_sysLoose/outGraph.root", string s2 = "txt/XeXe_MB_Cent_sysTight/outGraph.root", string s3 = "txt/XeXe_MB_Cent/outGraph.root",
+		string str_gr = "gr_vnPtC_2_1_1", string fname = "comp_XeXe_trk_v24pt1.pdf",
+		string str_leg1 = "Loose", string str_leg2 = "Tight", string str_leg3 = "XeXe",
+		string str_xlabel = "p_{T}", string str_ylabel = "v_{2}{4}")
 {
 
-	TFile * f1 = new TFile(s1.Data());
-	TFile * f2 = new TFile(s2.Data());
+	TFile * f1 = new TFile(s1.c_str());
+	TFile * f2 = new TFile(s2.c_str());
+	TFile * f3 = new TFile(s3.c_str());
 
-	TGraphErrors * gr1 = (TGraphErrors*) f1->Get(str_gr.Data());
-	TGraphErrors * gr2 = (TGraphErrors*) f2->Get(str_gr.Data());
+	TGraphErrors * gr1 = (TGraphErrors*) f1->Get(str_gr.c_str());
+	TGraphErrors * gr2 = (TGraphErrors*) f2->Get(str_gr.c_str());
+	TGraphErrors * gr3 = (TGraphErrors*) f3->Get(str_gr.c_str());
 
 	gr1->SetMarkerColor(kRed);
 	gr1->SetLineColor(kRed);
 	gr2->SetMarkerColor(kBlue);
 	gr2->SetLineColor(kBlue);
+	gr3->SetMarkerColor(kBlack);
+	gr3->SetLineColor(kBlack);
+
+	double y_up = 0.5;
+	double y_down = -0.1;
+	double x_left = 0.0;
+	double x_right = 10.0;
+
+	if ( string::npos != str_gr.find("gr_vnCent") ) {
+		x_left = 0.0;
+		x_right = 100.0;
+	}
 
 	TCanvas * cT = MakeCanvas("cT", "cT", 600, 600);
 	splitCanv(cT);
 
-	TH2D * hframe_pt = new TH2D("hframe_pt", ";p_{T} (GeV/c);v_{2}", 1, 0, 100, 1, 0.01, 0.35);
-	initHist(hframe_pt);
-	TH2D * hframeR_pt = new TH2D("hframeR_pt", ";p_{T} (GeV/c);Ratio", 1, 0, 100, 1, 0.9, 1.10);
-	initHist(hframeR_pt);
+	TH2D * hframe = new TH2D("hframe", "", 1, x_left, x_right, 1, -0.1, 0.5);
+	hframe->SetYTitle(str_ylabel.c_str());
+	hframe->SetXTitle(str_xlabel.c_str());
+	initHist(hframe);
+	TH2D * hframeR = new TH2D("hframeR", ";N_{trk}^{offline};Ratio", 1, x_left, x_right, 1, 0.91, 1.09);
+	hframeR->SetXTitle(str_xlabel.c_str());
+	initHist(hframeR);
 
 	TLegend * legPt = new TLegend(0.5, 0.7, 0.85, 0.9);
 	legPt->SetFillColor(kWhite);
@@ -31,31 +51,48 @@ void compare3(TString s1, TString s2, TString str_gr, TString str_leg1 = "", TSt
 	legPt->SetTextSize(0.06);
 	legPt->SetBorderSize(0);
 
-	legPt->AddEntry(gr1, str_leg1.Data(), "p"); 
-	legPt->AddEntry(gr2, str_leg2.Data(), "p"); 
+	legPt->AddEntry(gr1, str_leg1.c_str(), "p"); 
+	legPt->AddEntry(gr2, str_leg2.c_str(), "p"); 
+	legPt->AddEntry(gr3, str_leg3.c_str(), "p"); 
 
+	TLine * l0 = new TLine(0, 0, 399, 0);
 	cT->cd(1);
-	hframe_pt->Draw();
+	hframe->Draw();
+	l0->Draw();
 	gr1->Draw("Psame");
 	gr2->Draw("Psame");
+	gr3->Draw("Psame");
 	legPt->Draw();
 	cT->cd(2);
-	TGraphErrors * grR = (TGraphErrors*) gr1->Clone("grR");
-	grR->SetMarkerColor(kBlack);
-	grR->SetLineColor(kBlack);
-	for ( int i = 0; i < grR->GetN(); i++ ) {
-		grR->GetY()[i] = gr1->GetY()[i] / gr2->GetY()[i];
-		grR->GetEY()[i] = fabs( grR->GetY()[i] * sqrt( (gr1->GetEY()[i]/gr1->GetY()[i])*(gr1->GetEY()[i]/gr1->GetY()[i]) + (gr2->GetEY()[i]/gr2->GetY()[i])*(gr2->GetEY()[i]/gr2->GetY()[i]) ) );
+
+	TGraphErrors * grR1 = (TGraphErrors*) gr1->Clone("grR1");
+	TGraphErrors * grR2 = (TGraphErrors*) gr2->Clone("grR2");
+
+	for ( int i = 0; i < grR1->GetN(); i++ ) {
+		grR1->GetY()[i] = gr1->GetY()[i] / gr3->GetY()[i];
+		grR1->GetEY()[i] = fabs( grR1->GetY()[i] * sqrt( (gr1->GetEY()[i]/gr1->GetY()[i])*(gr1->GetEY()[i]/gr1->GetY()[i]) + (gr3->GetEY()[i]/gr3->GetY()[i])*(gr3->GetEY()[i]/gr3->GetY()[i])
+					- 2 * gr1->GetEY()[i] * gr3->GetEY()[i] /gr1->GetY()[i] / gr3->GetY()[i]
+					) );
 	}
-	hframeR_pt->Draw();
-	grR->Draw("Psame");
+	for ( int i = 0; i < grR2->GetN(); i++ ) {
+		grR2->GetY()[i] = gr2->GetY()[i] / gr3->GetY()[i];
+		grR2->GetEY()[i] = fabs( grR2->GetY()[i] * sqrt( (gr2->GetEY()[i]/gr2->GetY()[i])*(gr2->GetEY()[i]/gr2->GetY()[i]) + (gr3->GetEY()[i]/gr3->GetY()[i])*(gr3->GetEY()[i]/gr3->GetY()[i]) 
+					- 2 * gr2->GetEY()[i] * gr3->GetEY()[i] /gr2->GetY()[i] / gr3->GetY()[i]
+					) );
+	}
 
-	TString fname = str_gr + "-" + s1 + "-" + s2 + ".pdf";
-	fname.ReplaceAll(".root", "");
-	fname.ReplaceAll("fresult", "");
+	hframeR->Draw();
+	grR1->Draw("Psame");
+	grR2->Draw("Psame");
 
-	cT->SaveAs(fname.Data());
+//	TF1 *fR1 = new TF1("fR1", "pol0", 100., 300.);
+//	TF1 *fR2 = new TF1("fR2", "pol0", 100., 300.);
+//	fR1->SetLineColor(grR1->GetMarkerColor());
+//	fR2->SetLineColor(grR2->GetMarkerColor());
+//	grR1->Fit(fR1, "E", "", 100, 300);
+//	grR2->Fit(fR2, "E", "", 100, 300);
 
+	cT->SaveAs(fname.c_str());
 }
 
 void splitCanv(TCanvas * c)
@@ -67,7 +104,7 @@ void splitCanv(TCanvas * c)
 	p1->SetLeftMargin(0.15);
 	p1->SetRightMargin(0.05);
 	p1->SetBottomMargin(0.);
-	p1->SetTopMargin(0.05);
+	p1->SetTopMargin(0.07);
 	p1->Draw();
 	p1->SetNumber(1);
 
@@ -76,7 +113,7 @@ void splitCanv(TCanvas * c)
 	p2->SetRightMargin(0.05);
 	p2->SetBottomMargin(0.25);
 	p2->SetTopMargin(0.);
-	p2->SetGrid();
+	p2->SetGridy();
 	p2->Draw();
 	p2->SetNumber(2);
 }
