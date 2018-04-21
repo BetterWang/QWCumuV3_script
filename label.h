@@ -149,6 +149,10 @@ char const * fname[] = {
 	"../XeXe/HIMinimumBias20/crab_XeXe20_CumuV3_eff_Cent_sysTag98_v2/180413_024122/0000/",			// 146 XeXe20 Cent sysTag98
 	"NA",			// 147 XeXe Cent sysTag92
 	"NA",			// 148 XeXe Cent sysTag98
+	"../XeXe/XeXeMinBias_5p44TeV-ReggeGribovPartonMC_EposLHC/crab_XeXe1_CumuV3_EPOS_GEM_v1/180420_220754/0000/",		// 149 XeXe EPOS GEN
+	"../XeXe/XeXeMinBias_5p44TeV-ReggeGribovPartonMC_EposLHC/crab_XeXe1_CumuV3_EPOS_RECO_v1/180420_220715/0000/",		// 150 XeXe EPOS RECO
+	"",		// 151 XeXe Hydjet GEN
+	"",		// 152 XeXe Hydjet RECO
 };
 
 char const * ftxt[] = {
@@ -301,6 +305,10 @@ char const * ftxt[] = {
 	"txt/XeXe_MB20_Cent_sysTag98",						//146
 	"txt/XeXe_MB_Cent_sysTag92",						//147
 	"txt/XeXe_MB_Cent_sysTag98",						//148
+	"txt/XeXe_EPOS_GEN",							//149
+	"txt/XeXe_EPOS_RECO",							//150
+	"txt/XeXe_Hydjet_GEN",							//151
+	"txt/XeXe_Hydjet_RECO",							//152
 };
 
 #include <TChain.h>
