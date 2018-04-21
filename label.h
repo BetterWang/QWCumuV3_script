@@ -151,8 +151,8 @@ char const * fname[] = {
 	"NA",			// 148 XeXe Cent sysTag98
 	"../XeXe/XeXeMinBias_5p44TeV-ReggeGribovPartonMC_EposLHC/crab_XeXe1_CumuV3_EPOS_GEM_v1/180420_220754/0000/",		// 149 XeXe EPOS GEN
 	"../XeXe/XeXeMinBias_5p44TeV-ReggeGribovPartonMC_EposLHC/crab_XeXe1_CumuV3_EPOS_RECO_v1/180420_220715/0000/",		// 150 XeXe EPOS RECO
-	"",		// 151 XeXe Hydjet GEN
-	"",		// 152 XeXe Hydjet RECO
+	"../XeXe/XeXeMinBias_5p44TeV-HydjetCymb5Ev8/crab_XeXe1_CumuV3_Hydjet_GEM_v1/180421_034616/0000/",		// 151 XeXe Hydjet GEN
+	"../XeXe/XeXeMinBias_5p44TeV-HydjetCymb5Ev8/crab_XeXe1_CumuV3_Hydjet_RECO_v1/180421_034912/0000/",		// 152 XeXe Hydjet RECO
 };
 
 char const * ftxt[] = {
