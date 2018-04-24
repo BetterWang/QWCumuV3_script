@@ -155,6 +155,10 @@ char const * fname[] = {
 	"../XeXe/XeXeMinBias_5p44TeV-HydjetCymb5Ev8/crab_XeXe1_CumuV3_Hydjet_RECO_v1/180421_034912/0000/",			// 152 XeXe Hydjet RECO
 	"../XeXe/XeXeMinBias_5p44TeV-ReggeGribovPartonMC_EposLHC/crab_XeXe1_CumuV3_EPOS_GEN_v2/180423_161642/0000/",		// 153 XeXe EPOS Gen K, pi, p
 	"../XeXe/XeXeMinBias_5p44TeV-HydjetCymb5Ev8/crab_XeXe1_CumuV3_Hydjet_GEN_v2/180423_161807/0000/",			// 154 XeXe Hydjet Gen K, pi, p
+	"../XeXe/XeXeMinBias_5p44TeV-ReggeGribovPartonMC_EposLHC/crab_XeXe1_CumuV3_EPOS_GEN_v3/180424_005145/0000/",		// 155 XeXe EPOS Gen K, pi, p, nonPrompt
+	"../XeXe/XeXeMinBias_5p44TeV-HydjetCymb5Ev8/crab_XeXe1_CumuV3_Hydjet_GEN_v3/180424_033546/0000/",			// 156 XeXe Hydjet Gen K, pi, p, nonPrompt
+	"../XeXe/XeXeMinBias_5p44TeV-ReggeGribovPartonMC_EposLHC/crab_XeXe1_CumuV3_EPOS_GEN_v4/180424_041829/0000/",		// 157 XeXe EPOS nonPrompt
+	"../XeXe/XeXeMinBias_5p44TeV-HydjetCymb5Ev8/crab_XeXe1_CumuV3_Hydjet_GEN_v4/180424_052512/0000/",			// 158 XeXe Hydjet nonPrompt
 };
 
 char const * ftxt[] = {
@@ -313,6 +317,10 @@ char const * ftxt[] = {
 	"txt/XeXe_Hydjet_RECO",							//152
 	"txt/XeXe_EPOS_GEN_pdg",						//153
 	"txt/XeXe_Hydjet_GEN_pdg",						//154
+	"txt/XeXe_EPOS_GEN_pdg_nonPrompt",					//155
+	"txt/XeXe_Hydjet_GEN_pdg_nonPrompt",					//156
+	"txt/XeXe_EPOS_GEN_nonPrompt",						//157
+	"txt/XeXe_Hydjet_GEN_nonPrompt",					//158
 };
 
 #include <TChain.h>
