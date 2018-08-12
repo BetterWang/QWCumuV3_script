@@ -1,4 +1,4 @@
-#include "../../style.h"
+#include "style.h"
 
 void splitCanv(TCanvas * c);
 void initHist(TH2D* h);

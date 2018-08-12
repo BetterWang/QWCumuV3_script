@@ -481,7 +481,7 @@ void bGet(int s1 = 0, int s2 = 10, int s3 =10){
 				fW[n][np]->SetBinContent(i+1, wCx[n][np][i]);
 				fX[n][np]->SetBinContent(i+1, wDx[n][np][i]);
 			}
-			for ( int i = 1; i < 500; i++ ) {
+			for ( int i = 0; i < 500; i++ ) {
 				fCraw[n][np]->SetBinContent(i+1, dC[n][np][i]);
 				fDraw[n][np]->SetBinContent(i+1, dD[n][np][i]);
 				fWraw[n][np]->SetBinContent(i+1, wQ[n][np][i]);
