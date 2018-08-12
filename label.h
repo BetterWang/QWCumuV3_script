@@ -163,6 +163,7 @@ char const * fname[] = {
 	"../XeXe/XeXeMinBias_5p44TeV-HydjetCymb5Ev8/crab_XeXe1_CumuV3_Hydjet_RECO_sysTight_v1/180424_201928/0000/",		// 160 XeXe Hydjet RECO sysTight
 	"../XeXe/XeXeMinBias_5p44TeV-HydjetCymb5Ev8/crab_XeXe1_CumuV3_Hydjet_GEN_bCent_v1/180425_165543/0000/",			// 161 XeXe Hydjet GEN K, pi, p, e, mu, nonPrompt bCent AMPT
 	"../XeXe/XeXeMinBias_5p44TeV-HydjetCymb5Ev8/crab_XeXe1_CumuV3_Hydjet_GEN_bCentHydjet_v2/180426_143318/0000/",		// 162 XeXe Hydjet GEN K, pi, p, e, mu, nonPrompt bCent Hydjet
+	"../XeXe/HIMinimumBias2/crab_XeXeRepack_CumuV3_eff_Cent_v2/180810_110519/0000/",					// 163 XeXe repack
 };
 
 char const * ftxt[] = {
@@ -329,6 +330,7 @@ char const * ftxt[] = {
 	"txt/XeXe_Hydjet_RECO_sysTight",					//160
 	"txt/XeXe_Hydjet_GEN_pdg2_nonPrompt_bCent",				//161
 	"txt/XeXe_Hydjet_GEN_pdg2_nonPrompt_bCentHydjet",			//162
+	"txt/XeXe_Repack",							//163
 };
 
 #include <TChain.h>
