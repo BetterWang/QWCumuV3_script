@@ -6,7 +6,7 @@
 #include "TGraphErrors.h"
 #include "TMultiGraph.h"
 #include "HIN-11-012.h"
-#include "../../style.h"
+#include "style.h"
 
 void genPlot(int s1 =1)
 {
