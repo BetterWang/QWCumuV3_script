@@ -1,10 +1,12 @@
 
 char const * fname[] = {
 	"test/",			// 0
+	"../PbPb2018/HIMinimumBias1/crab_HIMB1_CumuV3_noeff_v1/190328_031243/0000/",			// 1
 };
 
 char const * ftxt[] = {
 	"txt/test/",							// 0
+	"txt/HIMinBias1_noeff/",				// 1
 };
 
 #include <TChain.h>
