@@ -3,12 +3,14 @@ char const * fname[] = {
 	"test/",			// 0
 	"../PbPb2018/HIMinimumBias1/crab_HIMB1_CumuV3_noeff_v1/190328_031243/0000/",			                    // 1 MB1 no eff
 	"../PbPb2018/MinBias_Hydjet_Drum5F_2018_5p02TeV/crab_Hydjet_CumuV3_noeff_v2/190411_045820/0000/",			// 2 Hydjet MB no eff
+	"../PbPb2018/MinBias_Hydjet_Drum5F_2018_5p02TeV/crab_Hydjet_CumuV3_eff_v3/190420_181709/0000/",			    // 3 Hydjet MB eff
 };
 
 char const * ftxt[] = {
 	"txt/test/",							// 0
 	"txt/HIMinBias1_noeff/",				// 1
 	"txt/Hydjet_noeff/",				    // 2
+	"txt/Hydjet_eff/",				        // 3
 };
 
 #include <TChain.h>
